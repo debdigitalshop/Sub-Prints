@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub Prints | Powered by Deb Digital Shop</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-orange: #FF6A00;
+            --primary-deep: #EE0979;
+            --accent-saffron: #FF8008;
+            --bg-light: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 12px 28px rgba(255, 106, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: var(--surface-white);
+            border-bottom: 2px solid #FFE4D6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-text h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .brand-text span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* --- Printer Animation --- */
+        .printer-anim {
+            width: 44px;
+            height: 38px;
+            position: relative;
+            background: #334155;
+            border-radius: 6px 6px 4px 4px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .printer-slot {
+            width: 30px;
+            height: 3px;
+            background: #0f172a;
+            position: absolute;
+            top: 14px;
+        }
+
+        .printer-paper {
+            width: 24px;
+            height: 18px;
+            background: #FFF;
+            border: 1px solid #CBD5E1;
+            border-top: none;
+            position: absolute;
+            top: 15px;
+            animation: printJob 2.5s ease-in-out infinite;
+        }
+
+        @keyframes printJob {
+            0% { height: 2px; opacity: 0; }
+            30% { height: 18px; opacity: 1; }
+            70% { height: 24px; opacity: 1; transform: translateY(0); }
+            90% { transform: translateY(6px); opacity: 0; }
+            100% { height: 2px; opacity: 0; }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, #FF6A00 0%, #FF8008 100%);
+            color: #FFF;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* --- Main Content --- */
+        .container {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h3 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h3::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-orange);
+            margin: 6px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Category Grid --- */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--surface-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-orange);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+
+        .category-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Modal Dialogs --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-box {
+            background: var(--surface-white);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: modalFade 0.25s ease-out;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        /* --- Forms & Buttons --- */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.15);
+        }
+
+        .type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .type-option {
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .type-option.active {
+            border-color: var(--primary-orange);
+            background: #FFF5EE;
+            color: var(--primary-orange);
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background: var(--primary-orange);
+            color: #FFF;
+            border: none;
+            padding: 0.9rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #e65c00;
+        }
+
+        /* --- Product Catalog --- */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .catalog-item {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-align: center;
+            background: #FFF;
+        }
+
+        .catalog-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            background: #f1f5f9;
+        }
+
+        /* --- Delivery Radio Choices --- */
+        .radio-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .radio-card {
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .radio-card input {
+            accent-color: var(--primary-orange);
+        }
+
+        /* --- Terms Section --- */
+        .terms-section {
+            background: #FFF;
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-subtle);
+            border-left: 5px solid var(--primary-orange);
+            margin-top: 3.5rem;
+        }
+
+        .terms-section h4 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .terms-section ul {
+            list-style: none;
+        }
+
+        .terms-section li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .terms-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-weight: 700;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0F172A;
+            color: #CBD5E1;
+            padding: 3rem 1.5rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            border-bottom: 1px solid #1E293B;
+            padding-bottom: 2rem;
+        }
+
+        .footer-brand h2 {
+            color: #FFF;
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #1E293B;
+            color: #FFF;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .footer-copy {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            color: #64748B;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="logo-wrap">
+                <!-- Printer Animation Container -->
+                <div class="printer-anim" title="Live Precision Printing">
+                    <div class="printer-slot"></div>
+                    <div class="printer-paper"></div>
+                </div>
+                <div class="brand-text">
+                    <h1>Sub Prints</h1>
+                    <span>Powered by Deb Digital Shop</span>
+                </div>
+            </div>
+            <div>
+                <a href="https://wa.me/919732322525" target="_blank" class="btn-primary" style="padding: 0.5rem 1.2rem; text-decoration: none; font-size: 0.9rem;">
+                    <i class="fa-brands fa-whatsapp"></i> সরাসরি যোগাযোগ
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h2>প্রিমিয়াম কোয়ালিটি কাস্টম প্রিন্টিং সল্যুশন</h2>
+        <p>বিয়ের নিমন্ত্রণ কার্ড থেকে শুরু করে অফিসিয়াল ভিজিটিং কার্ড, ব্যানার ও যাবতীয় অফলাইন-অনলাইন প্রিন্টিং পরিষেবা এক ছাতার তলায়।</p>
+    </section>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <div class="section-title">
+            <h3>আমাদের প্রিন্টিং সেবাসমূহ</h3>
+        </div>
+
+        <!-- Categories -->
+        <div class="category-grid">
+            <div class="category-card" onclick="openWeddingFlow()">
+                <div class="category-icon"><i class="fa-solid fa-heart"></i></div>
+                <h4>বিয়ের কার্ড</h4>
+                <p>হিন্দু ও মুসলিম সম্প্রদায়ের জন্য বাছাই করা প্রিমিয়াম ডিজাইনের কার্ড ক্যাটালগ।</p>
+            </div>
+
+            <div class="category-card" onclick="openGeneralOrder('ভিজিটিং কার্ড')">
+                <div class="category-icon"><i class="fa-solid fa-id-card"></i></div>
+                <h4>ভিজিটিং কার্ড</h4>
+                <p>ম্যাট, গ্লস, স্পট UV সহ কর্পোরেট স্ট্যান্ডার্ডের পার্সোনাল কার্ড।</p>
+            </div>
+
+            <div class="category-card" onclick="openGeneralOrder('ফ্লেক্স ও ব্যানার')">
+                <div class="category-icon"><i class="fa-solid fa-panorama"></i></div>
+                <h4>ফ্লেক্স ব্যানার</h4>
+                <p>উচ্চমানের কালার গ্যারান্টিযুক্ত অ্যাডভার্টাইজিং ব্যানার ও ফেস্টুন।</p>
+            </div>
+
+            <div class="category-card" onclick="openGeneralOrder('হ্যান্ডবিল ও লিফলেট')">
+                <div class="category-icon"><i class="fa-solid fa-newspaper"></i></div>
+                <h4>হ্যান্ডবিল ও লিফলেট</h4>
+                <p>ব্যবসার প্রচারের জন্য সিঙ্গেল ও মাল্টিকালার প্রচারপত্র।</p>
+            </div>
+        </div>
+
+        <!-- Terms and Conditions -->
+        <section class="terms-section">
+            <h4><i class="fa-solid fa-shield-halved"></i> নিয়মাবলী ও শর্তাবলী (Terms & Conditions)</h4>
+            <ul>
+                <li>ডিজাইন কনফার্মেশন ও ফাইনাল প্রুফ চেকের দায়িত্ব গ্রাহকের। প্রুফ অনুমোদনের পর টেক্সটের কোনো ত্রুটির জন্য রিপ্রিন্ট চার্জ প্রযোজ্য হবে।</li>
+                <li>কাস্টমাইজড অর্ডারের ক্ষেত্রে ন্যূনতম ৫০% বা সম্পূর্ণ অগ্রিম পেমেন্ট জমা করার পর কাজ শুরু হবে।</li>
+                <li>নির্দিষ্ট ডেডলাইনের মধ্যে নির্ভুলভাবে ডেলিভারি নিশ্চিত করা হয়। কুরিয়ার বা বাহ্যিক কারণে বিলম্ব ঘটলে সরাসরি অবহিত করা হবে।</li>
+                <li>হোম ডেলিভারির ক্ষেত্রে ডেলিভারি পার্টনারের নির্ধারিত অতিরিক্ত চার্জ প্রযোজ্য হতে পারে। অফিস পিক-আপ সম্পূর্ণ বিনামূল্যে।</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Wedding Card Step 1 Modal -->
+    <div class="modal-overlay" id="weddingModalStep1">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('weddingModalStep1')">&times;</button>
+            <h3 style="margin-bottom: 1rem; color: var(--primary-orange);">বিয়ের কার্ড অর্ডার প্রক্রিয়া</h3>
+            
+            <div class="form-group">
+                <label>কত পিস কার্ড প্রয়োজন?</label>
+                <input type="number" id="cardQuantity" class="form-control" placeholder="যেমন: ৩০০, ৫০০" min="50">
+            </div>
+
+            <div class="form-group">
+                <label>কার্ডের ধরন নির্বাচন করুন:</label>
+                <div class="type-selector">
+                    <div class="type-option" id="typeHindu" onclick="selectWeddingType('হিন্দু')">
+                        <i class="fa-solid fa-om"></i> হিন্দু কার্ড
+                    </div>
+                    <div class="type-option" id="typeMuslim" onclick="selectWeddingType('মুসলিম')">
+                        <i class="fa-solid fa-star-and-crescent"></i> মুসলিম কার্ড
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="proceedToCatalog()">ক্যাটালগ দেখুন</button>
+        </div>
+    </div>
+
+    <!-- Catalog & Final Order Modal -->
+    <div class="modal-overlay" id="catalogModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('catalogModal')">&times;</button>
+            <h3 id="catalogTitle" style="color: var(--primary-orange); margin-bottom: 0.5rem;"></h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">পছন্দের ডিজাইন নির্বাচন করে ডেলিভারি অপশন বেছে নিন:</p>
+
+            <!-- Catalog Items List -->
+            <div class="catalog-grid" id="catalogContainer"></div>
+
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+            <!-- Delivery Choice -->
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="deliveryMethod" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি (ঠিকানায় পৌঁছানো হবে)</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="deliveryMethod" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> আমাদের অফিস থেকে ডেলিভারি (<a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none;">Deb Digital Shop ম্যাপ দেখুন</a>)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wrap">
+            <div class="footer-brand">
+                <h2>Sub Prints</h2>
+                <p>একটি বিশ্বস্ত বাণিজ্যিক প্রিন্টিং প্ল্যাটফর্ম। সর্বাধুনিক ডিজিটাল প্রযুক্তিতে দ্রুত ডেলিভারি দিতে আমরা প্রতিশ্রুতিবদ্ধ।</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/debdigitalshop?dlrf=MTZ2ajNrMHl4YWo1NA%3D%3D" target="_blank" class="social-btn" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/debdigitalshop/" target="_blank" class="social-btn" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/919732322525" target="_blank" class="social-btn" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="color: #FFF; margin-bottom: 0.8rem;">যোগাযোগ ও অফিস</h4>
+                <p style="font-size: 0.95rem; margin-bottom: 0.4rem;"><strong>Deb Digital Shop</strong></p>
+                <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 0.5rem;">রামপুরহাট, বীরভূম, পশ্চিমবঙ্গ</p>
+                <a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none; font-size: 0.9rem;">
+                    <i class="fa-solid fa-location-dot"></i> গুগল ম্যাপে লোকেশন দেখুন
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-copy">
+            &copy; 2026 Sub Prints. Powered by Deb Digital Shop. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        let selectedType = '';
+        let currentQuantity = 0;
+        let selectedCardDesign = 'ডিজাইন ০১';
+
+        const catalogs = {
+            'হিন্দু': [
+                { id: 'H1', name: 'রয়্যাল গোল্ডেন হিন্দু কার্ড', code: 'HC-101' },
+                { id: 'H2', name: 'ট্রেডিশনাল লাল-হলুদ ফোল্ডিং', code: 'HC-102' },
+                { id: 'H3', name: 'প্রিমিয়াম ভেলভেট বক্স কার্ড', code: 'HC-103' }
+            ],
+            'মুসলিম': [
+                { id: 'M1', name: 'রয়্যাল গ্রিন নিকা কার্ড', code: 'MC-201' },
+                { id: 'M2', name: 'গোল্ডেন ফয়েল ডাবল ডোর', code: 'MC-202' },
+                { id: 'M3', name: 'সিলভার বর্ডার ক্লাসিক ইনভাইট', code: 'MC-203' }
+            ]
+        };
+
+        function openWeddingFlow() {
+            document.getElementById('weddingModalStep1').style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function selectWeddingType(type) {
+            selectedType = type;
+            document.getElementById('typeHindu').classList.remove('active');
+            document.getElementById('typeMuslim').classList.remove('active');
+
+            if(type === 'হিন্দু') {
+                document.getElementById('typeHindu').classList.add('active');
+            } else {
+                document.getElementById('typeMuslim').classList.add('active');
+            }
+        }
+
+        function proceedToCatalog() {
+            const qty = document.getElementById('cardQuantity').value;
+            if(!qty || qty <= 0) {
+                alert('অনুগ্রহ করে কার্ডের সংখ্যা (Quantity) উল্লেখ করুন।');
+                return;
+            }
+            if(!selectedType) {
+                alert('অনুগ্রহ করে হিন্দু অথবা মুসলিম কার্ডের ধরন নির্বাচন করুন।');
+                return;
+            }
+
+            currentQuantity = qty;
+            closeModal('weddingModalStep1');
+
+            // Setup Catalog Modal
+            document.getElementById('catalogTitle').innerText = selectedType + " বিয়ের কার্ড ক্যাটালগ";
+            const container = document.getElementById('catalogContainer');
+            container.innerHTML = '';
+
+            const items = catalogs[selectedType];
+            items.forEach((item, index) => {
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'catalog-item';
+                cardDiv.innerHTML = `
+                    <div style="background:#FFE4D6; height:100px; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#FF6A00; font-weight:700; margin-bottom:8px;">
+                        ${item.code}
+                    </div>
+                    <div style="font-weight:600; font-size:0.95rem;">${item.name}</div>
+                    <label style="display:block; margin-top:6px; font-size:0.85rem; cursor:pointer;">
+                        <input type="radio" name="cardDesign" value="${item.name} (${item.code})" ${index === 0 ? 'checked' : ''} onchange="selectedCardDesign=this.value"> এই ডিজাইনটি নেব
+                    </label>
+                `;
+                container.appendChild(cardDiv);
+            });
+
+            selectedCardDesign = `${items[0].name} (${items[0].code})`;
+            document.getElementById('catalogModal').style.display = 'flex';
+        }
+
+        function submitToWhatsApp() {
+            const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
+            
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: বিয়ের কার্ড%0A` +
+                            `• ক্যাটাগরি: ${selectedType} কার্ড%0A` +
+                            `• পরিমাণ: ${currentQuantity} পিস%0A` +
+                            `• পছন্দ করা ডিজাইন: ${selectedCardDesign}%0A` +
+                            `• ডেলিভারি মাধ্যম: ${deliveryMethod}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি বিস্তারিত আলোচনা করতে চাই।`;
+
+            const whatsappUrl = `https://wa.me/919732322525?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function openGeneralOrder(serviceName) {
+            const message = `*নতুন ইনকোয়ারি (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: ${serviceName}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি এই সার্ভিসের রেট ও বিস্তারিত জানতে চাই।`;
+            const whatsappUrl = `https://wa.me/919732322525?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
