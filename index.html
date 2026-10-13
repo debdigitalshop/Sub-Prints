@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Google AdSense Script (আপনার ca-pub আইডি থাকলে data-ad-client এ বসাবেন) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
     <style>
         :root {
             --primary-orange: #FF6A00;
@@ -232,7 +235,7 @@
             background: var(--surface-white);
             border-radius: var(--radius-lg);
             width: 100%;
-            max-width: 600px;
+            max-width: 750px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 2rem;
@@ -274,14 +277,41 @@
             padding: 0.8rem 1rem;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            font-size: 1rem;
+            font-size: 1.05rem;
             outline: none;
             transition: border 0.2s;
+            background: #FFF;
+            color: var(--text-main);
         }
 
         .form-control:focus {
             border-color: var(--primary-orange);
             box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.15);
+        }
+
+        .quick-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .pill-btn {
+            background: #F1F5F9;
+            border: 1px solid #CBD5E1;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .pill-btn:hover {
+            background: #FFE4D6;
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
         }
 
         .type-selector {
@@ -329,26 +359,64 @@
         /* --- Product Catalog --- */
         .catalog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .catalog-item {
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1rem;
+            padding: 0.8rem;
             text-align: center;
             background: #FFF;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .catalog-item:hover {
+            border-color: var(--primary-orange);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .catalog-item.selected {
+            border-color: var(--primary-orange);
+            background: #FFF8F4;
         }
 
         .catalog-item img {
             width: 100%;
-            height: 120px;
+            height: 125px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 0.5rem;
-            background: #f1f5f9;
+            border-radius: 8px;
+            margin-bottom: 0.6rem;
+            background: #F1F5F9;
+        }
+
+        .catalog-item .item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+
+        .catalog-item .item-code {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .catalog-item label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-orange);
         }
 
         /* --- Delivery Radio Choices --- */
@@ -407,6 +475,57 @@
             left: 0;
             color: var(--primary-orange);
             font-weight: 700;
+        }
+
+        /* --- Ad Modal Specific Styles --- */
+        .ad-modal-box {
+            max-width: 500px;
+            text-align: center;
+            padding: 1.8rem;
+        }
+
+        .ad-banner-slot {
+            width: 100%;
+            min-height: 250px;
+            background: #F1F5F9;
+            border: 2px dashed #CBD5E1;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            color: var(--text-muted);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-tag {
+            font-size: 0.75rem;
+            background: #E2E8F0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .skip-btn {
+            background: #334155;
+            color: #FFF;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .skip-btn:hover {
+            background: var(--primary-orange);
         }
 
         /* --- Footer --- */
@@ -472,7 +591,6 @@
     <header>
         <div class="navbar">
             <div class="logo-wrap">
-                <!-- Printer Animation Container -->
                 <div class="printer-anim" title="Live Precision Printing">
                     <div class="printer-slot"></div>
                     <div class="printer-paper"></div>
@@ -493,7 +611,7 @@
     <!-- Hero -->
     <section class="hero">
         <h2>প্রিমিয়াম কোয়ালিটি কাস্টম প্রিন্টিং সল্যুশন</h2>
-        <p>বিয়ের নিমন্ত্রণ কার্ড থেকে শুরু করে অফিসিয়াল ভিজিটিং কার্ড, ব্যানার ও যাবতীয় অফলাইন-অনলাইন প্রিন্টিং পরিষেবা এক ছাতার তলায়।</p>
+        <p>বিয়ের নিমন্ত্রণ কার্ড থেকে শুরু করে মেনু কার্ড, অফিসিয়াল ভিজিটিং কার্ড, ব্যানার, স্ট্যাম্প ও যাবতীয় প্রিন্টিং পরিষেবা এক ছাতার তলায়।</p>
     </section>
 
     <!-- Main Container -->
@@ -505,28 +623,60 @@
 
         <!-- Categories -->
         <div class="category-grid">
+            <!-- ১. বিয়ের কার্ড -->
             <div class="category-card" onclick="openWeddingFlow()">
                 <div class="category-icon"><i class="fa-solid fa-heart"></i></div>
                 <h4>বিয়ের কার্ড</h4>
-                <p>হিন্দু ও মুসলিম সম্প্রদায়ের জন্য বাছাই করা প্রিমিয়াম ডিজাইনের কার্ড ক্যাটালগ।</p>
+                <p>১-২৫ পিস এবং ২৫-১০০০ পিসের জন্য আলাদা ২০টি করে স্যাম্পল ক্যাটালগ।</p>
             </div>
 
-            <div class="category-card" onclick="openGeneralOrder('ভিজিটিং কার্ড')">
+            <!-- ২. মেনু কার্ড (বিয়ের কার্ডের ঠিক পাশে) -->
+            <div class="category-card" onclick="openMenuCardFlow()">
+                <div class="category-icon"><i class="fa-solid fa-utensils"></i></div>
+                <h4>মেনু কার্ড</h4>
+                <p>বিয়ে, অন্নপ্রাশন, জন্মদিন, উপনয়ন, শ্রাদ্ধ ও রেস্টুরেন্ট মেনুকার্ড ক্যাটালগ।</p>
+            </div>
+
+            <!-- ৩. ভিজিটিং কার্ড -->
+            <div class="category-card" onclick="openVisitingCardFlow()">
                 <div class="category-icon"><i class="fa-solid fa-id-card"></i></div>
                 <h4>ভিজিটিং কার্ড</h4>
-                <p>ম্যাট, গ্লস, স্পট UV সহ কর্পোরেট স্ট্যান্ডার্ডের পার্সোনাল কার্ড।</p>
+                <p>PVC Card, Plastic Card, 300 GSM, 250 GSM সহ প্রিমিয়াম কোয়ালিটি।</p>
             </div>
 
-            <div class="category-card" onclick="openGeneralOrder('ফ্লেক্স ও ব্যানার')">
+            <!-- ৪. ফ্লেক্স ও ব্যানার -->
+            <div class="category-card" onclick="openFlexFlow()">
                 <div class="category-icon"><i class="fa-solid fa-panorama"></i></div>
                 <h4>ফ্লেক্স ব্যানার</h4>
-                <p>উচ্চমানের কালার গ্যারান্টিযুক্ত অ্যাডভার্টাইজিং ব্যানার ও ফেস্টুন।</p>
+                <p>ভিনাইল প্রিন্ট, ফ্লেক্স প্রিন্ট, গ্লোসাইন বোর্ড ও ওয়ান ওয়ে ভিশন।</p>
             </div>
 
-            <div class="category-card" onclick="openGeneralOrder('হ্যান্ডবিল ও লিফলেট')">
+            <!-- ৫. রাবার স্ট্যাম্প -->
+            <div class="category-card" onclick="openStampFlow()">
+                <div class="category-icon"><i class="fa-solid fa-stamp"></i></div>
+                <h4>স্ট্যাম্প</h4>
+                <p>পলিমার স্ট্যাম্প (কালি ছাড়া) এবং নিও স্ট্যাম্প (কালি ভরা)।</p>
+            </div>
+
+            <!-- ৬. স্টেশনারি ও খাতা -->
+            <div class="category-card" onclick="openStationeryFlow()">
+                <div class="category-icon"><i class="fa-solid fa-book"></i></div>
+                <h4>স্টেশনারি</h4>
+                <p>স্কুল খাতা, দিস্তা খাতা, ক্যাশবুক, রেজিস্টার ও রেজুলেশন বুক ছবি সহ ক্যাটালগ।</p>
+            </div>
+
+            <!-- ৭. বিল বুক প্রিন্ট -->
+            <div class="category-card" onclick="openBillBookFlow()">
+                <div class="category-icon"><i class="fa-solid fa-receipt"></i></div>
+                <h4>বিল বুক প্রিন্ট</h4>
+                <p>ক্যাশমেমো, প্যাড, জি.এস.টি বিল ও পুজোর রসিদ প্রিন্টিং ক্যাটালগ।</p>
+            </div>
+
+            <!-- ৮. হ্যান্ডবিল ও পোস্টার -->
+            <div class="category-card" onclick="openHandbillFlow()">
                 <div class="category-icon"><i class="fa-solid fa-newspaper"></i></div>
-                <h4>হ্যান্ডবিল ও লিফলেট</h4>
-                <p>ব্যবসার প্রচারের জন্য সিঙ্গেল ও মাল্টিকালার প্রচারপত্র।</p>
+                <h4>হ্যান্ডবিল ও পোস্টার</h4>
+                <p>বিজ্ঞাপনের জন্য প্রচারপত্র হ্যান্ডবিল এবং দেয়াল পোস্টার প্রিন্টিং।</p>
             </div>
         </div>
 
@@ -543,15 +693,69 @@
 
     </main>
 
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- শুধুমাত্র বিয়ের কার্ড ও মেনু কার্ডের জন্য গুগল অ্যাড মোডাল -->
+    <div class="modal-overlay" id="adModal">
+        <div class="modal-box ad-modal-box">
+            <span class="ad-tag"><i class="fa-brands fa-google"></i> স্পনসরড বিজ্ঞাপন</span>
+            <h4 style="color: var(--text-main); font-size: 1.15rem; margin-top: 4px;">ডিজাইন লোড হচ্ছে...</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem;" id="adTimerText">বিজ্ঞাপনটি দেখুন (৫ সেকেন্ড পর স্কিপ করতে পারবেন)</p>
+
+            <!-- গুগল অ্যাডসেন্স স্লট -->
+            <div class="ad-banner-slot">
+                <!-- এখানে আপনার আসল Google AdSense কোড বসবে -->
+                <div style="text-align: center; padding: 20px;">
+                    <i class="fa-solid fa-rectangle-ad" style="font-size: 3rem; color: #94A3B8; margin-bottom: 8px;"></i>
+                    <p style="font-size: 0.9rem; font-weight: 600; color: #475569;">Google AdSense Banner</p>
+                    <p style="font-size: 0.75rem; color: #94A3B8;">(Google AdSense কোড যোগ করার পর এখানে বিজ্ঞাপন দেখাবে)</p>
+                </div>
+
+                <!-- 
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="YYYYYYYYYY"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                -->
+            </div>
+
+            <button class="skip-btn" id="adSkipBtn" onclick="skipAdAndOpenCatalog()" disabled style="opacity: 0.6; cursor: not-allowed;">
+                অপেক্ষা করুন (<span id="adSecondsLeft">5</span>s)
+            </button>
+        </div>
+    </div>
+
     <!-- Wedding Card Step 1 Modal -->
     <div class="modal-overlay" id="weddingModalStep1">
         <div class="modal-box">
             <button class="close-btn" onclick="closeModal('weddingModalStep1')">&times;</button>
-            <h3 style="margin-bottom: 1rem; color: var(--primary-orange);">বিয়ের কার্ড অর্ডার প্রক্রিয়া</h3>
+            <h3 style="margin-bottom: 0.5rem; color: var(--primary-orange);">বিয়ের কার্ড অর্ডার প্রক্রিয়া</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem;">আপনার যত পিস কার্ড প্রয়োজন নিচে টাইপ করুন:</p>
             
             <div class="form-group">
-                <label>কত পিস কার্ড প্রয়োজন?</label>
-                <input type="number" id="cardQuantity" class="form-control" placeholder="যেমন: ৩০০, ৫০০" min="50">
+                <label>কত পিস কার্ড প্রয়োজন? (টাইপ করুন):</label>
+                <input type="text" id="cardQuantity" class="form-control" placeholder="যেমন: 1, 2, 5 বা ১, ২, ৫, ৫০, ৫০০" autocomplete="off">
+                
+                <div class="quick-pills">
+                    <span class="pill-btn" onclick="setQuickQty(1)">১ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(2)">২ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(5)">৫ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(10)">১০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(25)">২৫ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(50)">৫০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(100)">১০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(300)">৩০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickQty(500)">৫০০ পিস</span>
+                </div>
+
+                <small style="color: var(--primary-orange); display: block; margin-top: 8px;">
+                    <i class="fa-solid fa-circle-info"></i> ১-২৫ পিসের জন্য বিশেষ শর্ট-রান ক্যাটালগ (২০টি ডিজাইন) এবং ২৫ পিসের বেশি হলে বাল্ক ক্যাটালগ (২০টি ডিজাইন) খুলবে।
+                </small>
             </div>
 
             <div class="form-group">
@@ -566,39 +770,415 @@
                 </div>
             </div>
 
-            <button class="btn-primary" onclick="proceedToCatalog()">ক্যাটালগ দেখুন</button>
+            <button class="btn-primary" onclick="proceedToCatalog()">ডিজাইন ক্যাটালগ দেখুন</button>
         </div>
     </div>
 
-    <!-- Catalog & Final Order Modal -->
+    <!-- Catalog & Final Order Modal (Wedding) -->
     <div class="modal-overlay" id="catalogModal">
         <div class="modal-box">
             <button class="close-btn" onclick="closeModal('catalogModal')">&times;</button>
-            <h3 id="catalogTitle" style="color: var(--primary-orange); margin-bottom: 0.5rem;"></h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">পছন্দের ডিজাইন নির্বাচন করে ডেলিভারি অপশন বেছে নিন:</p>
+            <h3 id="catalogTitle" style="color: var(--primary-orange); margin-bottom: 0.3rem;"></h3>
+            <p id="catalogSubtitle" style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;"></p>
 
-            <!-- Catalog Items List -->
             <div class="catalog-grid" id="catalogContainer"></div>
 
             <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
 
-            <!-- Delivery Choice -->
+            <div class="form-group">
+                <label>নির্বাচিত ডিজাইন:</label>
+                <input type="text" id="selectedWeddingDesignDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
+            </div>
+
             <div class="form-group">
                 <label>ডেলিভারির ধরন বেছে নিন:</label>
                 <div class="radio-options">
                     <label class="radio-card">
-                        <input type="radio" name="deliveryMethod" value="হোম ডেলিভারি" checked>
+                        <input type="radio" name="weddingDeliveryMethod" value="হোম ডেলিভারি" checked>
                         <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি (ঠিকানায় পৌঁছানো হবে)</span>
                     </label>
                     <label class="radio-card">
-                        <input type="radio" name="deliveryMethod" value="অফিস পিক-আপ">
+                        <input type="radio" name="weddingDeliveryMethod" value="অফিস পিক-আপ">
                         <span><i class="fa-solid fa-store"></i> আমাদের অফিস থেকে ডেলিভারি (<a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none;">Deb Digital Shop ম্যাপ দেখুন</a>)</span>
                     </label>
                 </div>
             </div>
 
-            <button class="btn-primary" onclick="submitToWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
+            <button class="btn-primary" onclick="submitWeddingToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বিয়ের কার্ড অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- মেনু কার্ড স্টেপ ১ মোডাল (অনুষ্ঠানের ধরন ও পরিমাণ) -->
+    <div class="modal-overlay" id="menuModalStep1">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('menuModalStep1')">&times;</button>
+            <h3 style="margin-bottom: 0.5rem; color: var(--primary-orange);"><i class="fa-solid fa-utensils"></i> মেনু কার্ড অর্ডার প্রক্রিয়া</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem;">অনুষ্ঠানের ধরন ও প্রয়োজনীয় পরিমাণ নির্বাচন করুন:</p>
+
+            <div class="form-group">
+                <label>অনুষ্ঠানের ধরন নির্বাচন করুন:</label>
+                <select id="menuOccasion" class="form-control">
+                    <option value="বিয়ের মেনুকার্ড">বিয়ের মেনুকার্ড</option>
+                    <option value="অন্নপ্রাশন মেনুকার্ড">অন্নপ্রাশন মেনুকার্ড</option>
+                    <option value="জন্মদিন মেনুকার্ড">জন্মদিন মেনুকার্ড</option>
+                    <option value="উপনয়ন মেনুকার্ড">উপনয়ন মেনুকার্ড</option>
+                    <option value="শ্রাদ্ধের মেনুকার্ড">শ্রাদ্ধের মেনুকার্ড</option>
+                    <option value="রেস্টুরেণ্ট মেনুকার্ড">রেস্টুরেণ্ট মেনুকার্ড</option>
+                    <option value="যেকোনো অনুষ্ঠানের মেনুকার্ড">যেকোনো মেনুকার্ড</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>কত পিস মেনুকার্ড প্রয়োজন? (টাইপ করুন):</label>
+                <input type="text" id="menuQuantity" class="form-control" placeholder="যেমন: 50, 100, 200, 500 বা ৫০, ১০০, ২০০..." autocomplete="off">
+                <div class="quick-pills">
+                    <span class="pill-btn" onclick="setQuickMenuQty(50)">৫০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickMenuQty(100)">১০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickMenuQty(200)">২০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickMenuQty(300)">৩০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickMenuQty(500)">৫০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickMenuQty(1000)">১,০০০ পিস</span>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="proceedToMenuCatalog()">ডিজাইন দেখুন</button>
+        </div>
+    </div>
+
+    <!-- মেনু কার্ড ক্যাটালগ মোডাল (২০টি ছবি সহ ডিজাইন) -->
+    <div class="modal-overlay" id="menuCatalogModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('menuCatalogModal')">&times;</button>
+            <h3 id="menuCatalogTitle" style="color: var(--primary-orange); margin-bottom: 0.3rem;"></h3>
+            <p id="menuCatalogSubtitle" style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;"></p>
+
+            <div class="catalog-grid" id="menuCatalogContainer"></div>
+
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+            <div class="form-group">
+                <label>নির্বাচিত ডিজাইন:</label>
+                <input type="text" id="selectedMenuDesignDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
+            </div>
+
+            <div class="form-group">
+                <label>মেনুর খাবারের তালিকা বা বিশেষ নোট (ঐচ্ছিক):</label>
+                <input type="text" id="menuNotes" class="form-control" placeholder="হোয়াটসঅ্যাপে খাবারের মেনু পাঠিয়ে দেব / অন্য কোনো তথ্য">
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="menuDeliveryMethod" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="menuDeliveryMethod" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ (Deb Digital Shop)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitMenuToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে মেনু কার্ড অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- ভিজিটিং কার্ড মোডাল -->
+    <div class="modal-overlay" id="visitingModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('visitingModal')">&times;</button>
+            <h3 style="margin-bottom: 1rem; color: var(--primary-orange);"><i class="fa-solid fa-id-card"></i> ভিজিটিং কার্ড অর্ডার</h3>
+            
+            <div class="form-group">
+                <label>কার্ডের ধরন বেছে নিন:</label>
+                <div class="type-selector">
+                    <div class="type-option active" id="vcPVC" onclick="selectVCType('PVC card')">PVC card</div>
+                    <div class="type-option" id="vcPlastic" onclick="selectVCType('Plastic Card')">Plastic Card</div>
+                    <div class="type-option" id="vc300" onclick="selectVCType('GSM 300')">GSM 300</div>
+                    <div class="type-option" id="vc250" onclick="selectVCType('GSM 250')">GSM 250</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>কত পিস কার্ড প্রয়োজন?</label>
+                <input type="number" id="vcQuantity" class="form-control" placeholder="যেমন: ১০০, ৩০০, ৫০০, ১০০০" value="100" min="50">
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="vcDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="vcDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitVCToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে ভিজিটিং কার্ড অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- ফ্লেক্স ব্যানার মোডাল -->
+    <div class="modal-overlay" id="flexModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('flexModal')">&times;</button>
+            <h3 style="margin-bottom: 1rem; color: var(--primary-orange);"><i class="fa-solid fa-panorama"></i> ফ্লেক্স ও ব্যানার অর্ডার</h3>
+            
+            <div class="form-group">
+                <label>ব্যানার / প্রিন্টের ধরন:</label>
+                <select id="flexOption" class="form-control">
+                    <option value="ভিনাইল প্রিণ্ট">ভিনাইল প্রিণ্ট</option>
+                    <option value="ফ্লেক্স প্রিণ্ট">ফ্লেক্স প্রিণ্ট</option>
+                    <option value="গ্লোসাইন বোর্ড">গ্লোসাইন বোর্ড</option>
+                    <option value="ওয়ান ওয়ে ভিশন">ওয়ান ওয়ে ভিশন</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>সাইজ বা মাপ (ফিট / ইঞ্চি):</label>
+                <input type="text" id="flexSize" class="form-control" placeholder="যেমন: 6x3 ফিট, 10x4 ফিট">
+            </div>
+
+            <div class="form-group">
+                <label>কত পিস প্রয়োজন?</label>
+                <input type="number" id="flexQty" class="form-control" placeholder="পরিমাণ" value="1" min="1">
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="flexDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="flexDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitFlexToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে ব্যানার অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- স্ট্যাম্প মোডাল -->
+    <div class="modal-overlay" id="stampModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('stampModal')">&times;</button>
+            <h3 style="margin-bottom: 1rem; color: var(--primary-orange);"><i class="fa-solid fa-stamp"></i> স্ট্যাম্প অর্ডার</h3>
+            
+            <div class="form-group">
+                <label>স্ট্যাম্পের ধরন বেছে নিন:</label>
+                <div class="type-selector">
+                    <div class="type-option active" id="stampPoly" onclick="selectStamp('১ পলিমার স্ট্যাম্প কালি ছাড়া')">
+                        ১. পলিমার স্ট্যাম্প<br><small style="font-weight:400; color:var(--text-muted);">(কালি ছাড়া)</small>
+                    </div>
+                    <div class="type-option" id="stampNeo" onclick="selectStamp('২ নিও স্ট্যাম্প কালিভরা')">
+                        ২. নিও স্ট্যাম্প<br><small style="font-weight:400; color:var(--text-muted);">(কালিভরা)</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>কত পিস প্রয়োজন?</label>
+                <input type="number" id="stampQty" class="form-control" value="1" min="1">
+            </div>
+
+            <div class="form-group">
+                <label>স্ট্যাম্পের লেখা / বিবরণ:</label>
+                <input type="text" id="stampText" class="form-control" placeholder="নাম, পদবী বা প্রতিষ্ঠানের নাম">
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="stampDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="stampDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitStampToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে স্ট্যাম্প অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- স্টেশনারি মোডাল -->
+    <div class="modal-overlay" id="stationeryModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('stationeryModal')">&times;</button>
+            <h3 style="margin-bottom: 0.3rem; color: var(--primary-orange);"><i class="fa-solid fa-book"></i> স্টেশনারি ও খাতা ক্যাটালগ</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">প্রোডাক্টের ছবি ও নাম দেখে যেটি পছন্দ তা নির্বাচন করুন:</p>
+            
+            <div class="catalog-grid" id="stationeryProductGrid"></div>
+
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+            <div class="form-group">
+                <label>নির্বাচিত প্রোডাক্ট:</label>
+                <input type="text" id="selectedStatItemDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
+            </div>
+
+            <div class="form-group">
+                <label>কত পিস লাগবে? (Quantity):</label>
+                <input type="number" id="stationeryQty" class="form-control" value="1" min="1">
+            </div>
+
+            <div class="form-group">
+                <label>সাইজ / পেজ সংখ্যা বা বিবরণ (ঐচ্ছিক):</label>
+                <input type="text" id="stationeryNote" class="form-control" placeholder="যেমন: ১০০/২০০ পেজ, রুলটানা, বিশেষ ব্র‍্যান্ড ইত্যাদি">
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="statDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="statDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ (Deb Digital Shop)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitStationeryToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে স্টেশনারি অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- বিল বুক প্রিন্ট মোডাল -->
+    <div class="modal-overlay" id="billBookModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('billBookModal')">&times;</button>
+            <h3 style="margin-bottom: 0.3rem; color: var(--primary-orange);"><i class="fa-solid fa-receipt"></i> বিল বুক প্রিন্টিং ক্যাটালগ</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">পছন্দের প্রোডাক্টটি সিলেক্ট করে সাইজ ও পরিমাণ নির্ধারণ করুন:</p>
+            
+            <div class="catalog-grid" id="billBookProductGrid"></div>
+
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+            <div class="form-group">
+                <label>নির্বাচিত আইটেম:</label>
+                <input type="text" id="selectedBillBookDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
+            </div>
+
+            <div class="form-group">
+                <label>সাইজ বা মাপ নির্বাচন করুন:</label>
+                <select id="billBookSize" class="form-control">
+                    <option value="1/8 সাইজ (ছোট ক্যাশমেমো / রসিদ)">1/8 সাইজ (ছোট মাপ)</option>
+                    <option value="1/6 সাইজ (স্ট্যান্ডার্ড মেমো)">1/6 সাইজ (স্ট্যান্ডার্ড মাপ)</option>
+                    <option value="1/4 সাইজ (মিডিয়াম সাইজ)">1/4 সাইজ (মিডিয়াম মাপ)</option>
+                    <option value="A5 সাইজ">A5 সাইজ</option>
+                    <option value="A4 সাইজ (জি.এস.টি / লেটারহেড প্যাড)">A4 সাইজ (ফুল সাইজ)</option>
+                    <option value="কাস্টম সাইজ">কাস্টম সাইজ (নিচে লিখুন)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>কত পিস / বই প্রয়োজন? (৫০ থেকে ১,০০,০০০ পিস টাইপ করুন):</label>
+                <input type="text" id="billBookQty" class="form-control" placeholder="যেমন: 50, 100, 500, 1000 বা ৫০, ১০০, ৫০০..." value="50" autocomplete="off">
+                
+                <div class="quick-pills">
+                    <span class="pill-btn" onclick="setQuickBillQty(50)">৫০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickBillQty(100)">১০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickBillQty(200)">২০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickBillQty(500)">৫০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickBillQty(1000)">১,০০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickBillQty(5000)">৫,০০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickBillQty(10000)">১০,০০০ পিস</span>
+                    <span class="pill-btn" onclick="setQuickBillQty(100000)">১,০০,০০০ পিস</span>
+                </div>
+                <small style="color: var(--text-muted); display: block; margin-top: 6px;">* সর্বনিম্ন ৫০ পিস থেকে শুরু করে ১,০০,০০০ পিস পর্যন্ত অর্ডার করতে পারবেন।</small>
+            </div>
+
+            <div class="form-group">
+                <label>পেজ সংখ্যা / ডুপ্লিকেট কপি / বিশেষ নোট (ঐচ্ছিক):</label>
+                <input type="text" id="billBookNote" class="form-control" placeholder="যেমন: কার্বন কপি ১+১, ৫০ পাতা, সিরিয়াল নম্বর ইত্যাদি">
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="billDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি / পার্সেল</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="billDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ (Deb Digital Shop)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitBillBookToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বিল বুক অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
+    <!-- হ্যান্ডবিল ও পোস্টার মোডাল -->
+    <div class="modal-overlay" id="handbillModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('handbillModal')">&times;</button>
+            <h3 style="margin-bottom: 1rem; color: var(--primary-orange);"><i class="fa-solid fa-newspaper"></i> হ্যান্ডবিল ও পোস্টার অর্ডার</h3>
+            
+            <div class="form-group">
+                <label>অপশন নির্বাচন করুন:</label>
+                <div class="type-selector">
+                    <div class="type-option active" id="hbOpt" onclick="selectHB('হ্যাণ্ড বিল')">হ্যাণ্ড বিল</div>
+                    <div class="type-option" id="postOpt" onclick="selectHB('পোস্টার')">পোস্টার</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>কত পিস প্রয়োজন?</label>
+                <input type="number" id="hbQuantity" class="form-control" placeholder="যেমন: ৫০০, ১০০০" value="1000" min="100">
+            </div>
+
+            <div class="form-group">
+                <label>সাইজ ও রঙের ধরন (ঐচ্ছিক):</label>
+                <input type="text" id="hbDetails" class="form-control" placeholder="যেমন: 1/8 সাইজ, সিঙ্গেল কালার বা মাল্টিকালার">
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="hbDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="hbDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitHBToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
             </button>
         </div>
     </div>
@@ -610,7 +1190,7 @@
                 <h2>Sub Prints</h2>
                 <p>একটি বিশ্বস্ত বাণিজ্যিক প্রিন্টিং প্ল্যাটফর্ম। সর্বাধুনিক ডিজিটাল প্রযুক্তিতে দ্রুত ডেলিভারি দিতে আমরা প্রতিশ্রুতিবদ্ধ।</p>
                 <div class="social-links">
-                    <a href="https://instagram.com/debdigitalshop?dlrf=MTZ2ajNrMHl4YWo1NA%3D%3D" target="_blank" class="social-btn" title="Instagram">
+                    <a href="https://instagram.com/debdigitalshop" target="_blank" class="social-btn" title="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                     <a href="https://www.facebook.com/debdigitalshop/" target="_blank" class="social-btn" title="Facebook">
@@ -639,29 +1219,186 @@
 
     <!-- Logic Script -->
     <script>
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function parseQuantityNumber(input) {
+            if(!input) return NaN;
+            const banglaMap = {'০':'0', '১':'1', '২':'2', '৩':'3', '৪':'4', '৫':'5', '৬':'6', '৭':'7', '৮':'8', '৯':'9'};
+            let cleanStr = input.toString().trim().replace(/[০-৯]/g, d => banglaMap[d]);
+            let matches = cleanStr.match(/\d+/);
+            return matches ? parseInt(matches[0], 10) : NaN;
+        }
+
+        function setQuickQty(num) {
+            document.getElementById('cardQuantity').value = num;
+        }
+
+        function setQuickBillQty(num) {
+            document.getElementById('billBookQty').value = num;
+        }
+
+        function setQuickMenuQty(num) {
+            document.getElementById('menuQuantity').value = num;
+        }
+
+        /* ---------------- অ্যাডভার্টাইজমেন্ট টাইমার কন্ট্রোলার (শুধু বিয়ে ও মেনু কার্ডের জন্য) ---------------- */
+        let adTargetCatalog = ''; // 'wedding' অথবা 'menu'
+        let adCountdownTimer = null;
+
+        function triggerAdFlow(target) {
+            adTargetCatalog = target;
+            const adModal = document.getElementById('adModal');
+            const skipBtn = document.getElementById('adSkipBtn');
+            const timerSpan = document.getElementById('adSecondsLeft');
+            const timerText = document.getElementById('adTimerText');
+
+            let timeLeft = 5;
+            skipBtn.disabled = true;
+            skipBtn.style.opacity = '0.6';
+            skipBtn.style.cursor = 'not-allowed';
+            skipBtn.innerHTML = `অপেক্ষা করুন (<span id="adSecondsLeft">${timeLeft}</span>s)`;
+            timerText.innerText = `বিজ্ঞাপনটি দেখুন (${timeLeft} সেকেন্ড পর স্কিপ করতে পারবেন)`;
+
+            adModal.style.display = 'flex';
+
+            if(adCountdownTimer) clearInterval(adCountdownTimer);
+
+            adCountdownTimer = setInterval(() => {
+                timeLeft--;
+                if(timeLeft > 0) {
+                    skipBtn.innerHTML = `অপেক্ষা করুন (<span id="adSecondsLeft">${timeLeft}</span>s)`;
+                    timerText.innerText = `বিজ্ঞাপনটি দেখুন (${timeLeft} সেকেন্ড পর স্কিপ করতে পারবেন)`;
+                } else {
+                    clearInterval(adCountdownTimer);
+                    skipBtn.disabled = false;
+                    skipBtn.style.opacity = '1';
+                    skipBtn.style.cursor = 'pointer';
+                    skipBtn.style.background = 'var(--primary-orange)';
+                    skipBtn.innerHTML = '<i class="fa-solid fa-arrow-right"></i> স্কিপ করুন / ডিজাইন দেখুন';
+                    timerText.innerText = 'বিজ্ঞাপন শেষ হয়েছে, নিচে ক্লিক করে ক্যাটালগ দেখুন';
+                }
+            }, 1000);
+        }
+
+        function skipAdAndOpenCatalog() {
+            if(adCountdownTimer) clearInterval(adCountdownTimer);
+            closeModal('adModal');
+
+            if(adTargetCatalog === 'wedding') {
+                renderWeddingCatalogGrid();
+                document.getElementById('catalogModal').style.display = 'flex';
+            } else if(adTargetCatalog === 'menu') {
+                renderMenuCatalogGrid();
+                document.getElementById('menuCatalogModal').style.display = 'flex';
+            }
+        }
+
+        /* ---------------- ১. বিয়ের কার্ড ---------------- */
         let selectedType = '';
         let currentQuantity = 0;
-        let selectedCardDesign = 'ডিজাইন ০১';
+        let selectedCardDesign = '';
+        let currentCardList = [];
 
-        const catalogs = {
-            'হিন্দু': [
-                { id: 'H1', name: 'রয়্যাল গোল্ডেন হিন্দু কার্ড', code: 'HC-101' },
-                { id: 'H2', name: 'ট্রেডিশনাল লাল-হলুদ ফোল্ডিং', code: 'HC-102' },
-                { id: 'H3', name: 'প্রিমিয়াম ভেলভেট বক্স কার্ড', code: 'HC-103' }
-            ],
-            'মুসলিম': [
-                { id: 'M1', name: 'রয়্যাল গ্রিন নিকা কার্ড', code: 'MC-201' },
-                { id: 'M2', name: 'গোল্ডেন ফয়েল ডাবল ডোর', code: 'MC-202' },
-                { id: 'M3', name: 'সিলভার বর্ডার ক্লাসিক ইনভাইট', code: 'MC-203' }
-            ]
+        const weddingCatalogs = {
+            'small': {
+                'হিন্দু': [
+                    { id: 'HS01', name: 'ডিজিটাল হিন্দু কার্ড ০১', code: 'SR-H01', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS02', name: 'ডিজিটাল হিন্দু কার্ড ০২', code: 'SR-H02', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS03', name: 'ডিজিটাল হিন্দু কার্ড ০৩', code: 'SR-H03', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS04', name: 'ডিজিটাল হিন্দু কার্ড ০৪', code: 'SR-H04', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS05', name: 'ডিজিটাল হিন্দু কার্ড ০৫', code: 'SR-H05', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS06', name: 'ডিজিটাল হিন্দু কার্ড ০৬', code: 'SR-H06', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS07', name: 'ডিজিটাল হিন্দু কার্ড ০৭', code: 'SR-H07', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS08', name: 'ডিজিটাল হিন্দু কার্ড ০৮', code: 'SR-H08', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS09', name: 'ডিজিটাল হিন্দু কার্ড ০৯', code: 'SR-H09', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS10', name: 'ডিজিটাল হিন্দু কার্ড ১০', code: 'SR-H10', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS11', name: 'ডিজিটাল হিন্দু কার্ড ১১', code: 'SR-H11', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS12', name: 'ডিজিটাল হিন্দু কার্ড ১২', code: 'SR-H12', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS13', name: 'ডিজিটাল হিন্দু কার্ড ১৩', code: 'SR-H13', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS14', name: 'ডিজিটাল হিন্দু কার্ড ১৪', code: 'SR-H14', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS15', name: 'ডিজিটাল হিন্দু কার্ড ১৫', code: 'SR-H15', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS16', name: 'ডিজিটাল হিন্দু কার্ড ১৬', code: 'SR-H16', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS17', name: 'ডিজিটাল হিন্দু কার্ড ১৭', code: 'SR-H17', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS18', name: 'ডিজিটাল হিন্দু কার্ড ১৮', code: 'SR-H18', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS19', name: 'ডিজিটাল হিন্দু কার্ড ১৯', code: 'SR-H19', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HS20', name: 'ডিজিটাল হিন্দু কার্ড ২০', code: 'SR-H20', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' }
+                ],
+                'মুসলিম': [
+                    { id: 'MS01', name: 'ডিজিটাল মুসলিম কার্ড ০১', code: 'SR-M01', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS02', name: 'ডিজিটাল মুসলিম কার্ড ০২', code: 'SR-M02', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS03', name: 'ডিজিটাল মুসলিম কার্ড ০৩', code: 'SR-M03', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS04', name: 'ডিজিটাল মুসলিম কার্ড ০৪', code: 'SR-M04', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS05', name: 'ডিজিটাল মুসলিম কার্ড ০৫', code: 'SR-M05', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS06', name: 'ডিজিটাল মুসলিম কার্ড ০৬', code: 'SR-M06', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS07', name: 'ডিজিটাল মুসলিম কার্ড ০৭', code: 'SR-M07', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS08', name: 'ডিজিটাল মুসলিম কার্ড ০৮', code: 'SR-M08', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS09', name: 'ডিজিটাল মুসলিম কার্ড ০৯', code: 'SR-M09', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS10', name: 'ডিজিটাল মুসলিম কার্ড ১০', code: 'SR-M10', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS11', name: 'ডিজিটাল মুসলিম কার্ড ১১', code: 'SR-M11', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS12', name: 'ডিজিটাল মুসলিম কার্ড ১২', code: 'SR-M12', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS13', name: 'ডিজিটাল মুসলিম কার্ড ১৩', code: 'SR-M13', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS14', name: 'ডিজিটাল মুসলিম কার্ড ১৪', code: 'SR-M14', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS15', name: 'ডিজিটাল মুসলিম কার্ড ১৫', code: 'SR-M15', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS16', name: 'ডিজিটাল মুসলিম কার্ড ১৬', code: 'SR-M16', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS17', name: 'ডিজিটাল মুসলিম কার্ড ১৭', code: 'SR-M17', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS18', name: 'ডিজিটাল মুসলিম কার্ড ১৮', code: 'SR-M18', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS19', name: 'ডিজিটাল মুসলিম কার্ড ১৯', code: 'SR-M19', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MS20', name: 'ডিজিটাল মুসলিম কার্ড ২০', code: 'SR-M20', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' }
+                ]
+            },
+            'bulk': {
+                'হিন্দু': [
+                    { id: 'HB01', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০১', code: 'BK-H01', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB02', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০২', code: 'BK-H02', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB03', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০৩', code: 'BK-H03', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB04', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০৪', code: 'BK-H04', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB05', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০৫', code: 'BK-H05', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB06', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০৬', code: 'BK-H06', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB07', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০৭', code: 'BK-H07', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB08', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০৮', code: 'BK-H08', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB09', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ০৯', code: 'BK-H09', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB10', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১০', code: 'BK-H10', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB11', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১১', code: 'BK-H11', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB12', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১২', code: 'BK-H12', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB13', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১৩', code: 'BK-H13', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB14', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১৪', code: 'BK-H14', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB15', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১৫', code: 'BK-H15', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB16', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১৬', code: 'BK-H16', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB17', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১৭', code: 'BK-H17', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB18', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১৮', code: 'BK-H18', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB19', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ১৯', code: 'BK-H19', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'HB20', name: 'ট্র্যাডিশনাল হিন্দু কার্ড ২০', code: 'BK-H20', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' }
+                ],
+                'মুসলিম': [
+                    { id: 'MB01', name: 'রয়্যাল নিকা কার্ড ০১', code: 'BK-M01', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB02', name: 'রয়্যাল নিকা কার্ড ০২', code: 'BK-M02', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB03', name: 'রয়্যাল নিকা কার্ড ০৩', code: 'BK-M03', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB04', name: 'রয়্যাল নিকা কার্ড ০৪', code: 'BK-M04', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB05', name: 'রয়্যাল নিকা কার্ড ০৫', code: 'BK-M05', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB06', name: 'রয়্যাল নিকা কার্ড ০৬', code: 'BK-M06', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB07', name: 'রয়্যাল নিকা কার্ড ০৭', code: 'BK-M07', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB08', name: 'রয়্যাল নিকা কার্ড ০৮', code: 'BK-M08', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB09', name: 'রয়্যাল নিকা কার্ড ০৯', code: 'BK-M09', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB10', name: 'রয়্যাল নিকা কার্ড ১০', code: 'BK-M10', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB11', name: 'রয়্যাল নিকা কার্ড ১১', code: 'BK-M11', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB12', name: 'রয়্যাল নিকা কার্ড ১২', code: 'BK-M12', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB13', name: 'রয়্যাল নিকা কার্ড ১৩', code: 'BK-M13', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB14', name: 'রয়্যাল নিকা কার্ড ১৪', code: 'BK-M14', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB15', name: 'রয়্যাল নিকা কার্ড ১৫', code: 'BK-M15', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB16', name: 'রয়্যাল নিকা কার্ড ১৬', code: 'BK-M16', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB17', name: 'রয়্যাল নিকা কার্ড ১৭', code: 'BK-M17', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB18', name: 'রয়্যাল নিকা কার্ড ১৮', code: 'BK-M18', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB19', name: 'রয়্যাল নিকা কার্ড ১৯', code: 'BK-M19', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=300&auto=format&fit=crop&q=60' },
+                    { id: 'MB20', name: 'রয়্যাল নিকা কার্ড ২০', code: 'BK-M20', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=300&auto=format&fit=crop&q=60' }
+                ]
+            }
         };
 
         function openWeddingFlow() {
+            document.getElementById('cardQuantity').value = '';
             document.getElementById('weddingModalStep1').style.display = 'flex';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
         }
 
         function selectWeddingType(type) {
@@ -677,11 +1414,15 @@
         }
 
         function proceedToCatalog() {
-            const qty = document.getElementById('cardQuantity').value;
-            if(!qty || qty <= 0) {
-                alert('অনুগ্রহ করে কার্ডের সংখ্যা (Quantity) উল্লেখ করুন।');
+            const rawVal = document.getElementById('cardQuantity').value;
+            const qty = parseQuantityNumber(rawVal);
+
+            if(!rawVal || isNaN(qty) || qty <= 0) {
+                alert('অনুগ্রহ করে সঠিক সংখ্যায় কার্ডের পরিমাণ লিখুন (যেমন: ১, ২, ৫, ৫০ ইত্যাদি)।');
+                document.getElementById('cardQuantity').focus();
                 return;
             }
+
             if(!selectedType) {
                 alert('অনুগ্রহ করে হিন্দু অথবা মুসলিম কার্ডের ধরন নির্বাচন করুন।');
                 return;
@@ -690,56 +1431,411 @@
             currentQuantity = qty;
             closeModal('weddingModalStep1');
 
-            // Setup Catalog Modal
-            document.getElementById('catalogTitle').innerText = selectedType + " বিয়ের কার্ড ক্যাটালগ";
+            let categoryMode = (qty <= 25) ? 'small' : 'bulk';
+            let subtitleText = (qty <= 25) 
+                ? `(১-২৫ পিস বিশেষ শর্ট-রান ক্যাটালগ | আপনার টাইপ করা পরিমাণ: ${qty} পিস)` 
+                : `(২৫-১০০০ পিস বাল্ক ক্যাটালগ | আপনার টাইপ করা পরিমাণ: ${qty} পিস)`;
+
+            currentCardList = weddingCatalogs[categoryMode][selectedType];
+            selectedCardDesign = `${currentCardList[0].name} (${currentCardList[0].code})`;
+
+            document.getElementById('catalogTitle').innerText = `${selectedType} বিয়ের কার্ড ক্যাটালগ (২০টি স্যাম্পল)`;
+            document.getElementById('catalogSubtitle').innerText = subtitleText;
+
+            // ক্যাটালগ খোলার আগে গুগল অ্যাড দেখানো হচ্ছে
+            triggerAdFlow('wedding');
+        }
+
+        function renderWeddingCatalogGrid() {
             const container = document.getElementById('catalogContainer');
             container.innerHTML = '';
 
-            const items = catalogs[selectedType];
-            items.forEach((item, index) => {
+            currentCardList.forEach((item) => {
+                const isSelected = (selectedCardDesign === `${item.name} (${item.code})`);
                 const cardDiv = document.createElement('div');
-                cardDiv.className = 'catalog-item';
+                cardDiv.className = `catalog-item ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectWeddingCardItem(item);
+
                 cardDiv.innerHTML = `
-                    <div style="background:#FFE4D6; height:100px; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#FF6A00; font-weight:700; margin-bottom:8px;">
-                        ${item.code}
-                    </div>
-                    <div style="font-weight:600; font-size:0.95rem;">${item.name}</div>
-                    <label style="display:block; margin-top:6px; font-size:0.85rem; cursor:pointer;">
-                        <input type="radio" name="cardDesign" value="${item.name} (${item.code})" ${index === 0 ? 'checked' : ''} onchange="selectedCardDesign=this.value"> এই ডিজাইনটি নেব
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="item-title">${item.name}</div>
+                    <div class="item-code">কোড: ${item.code}</div>
+                    <label>
+                        <input type="radio" name="cardDesignRadio" value="${item.name} (${item.code})" ${isSelected ? 'checked' : ''}>
+                        এই ডিজাইনটি নেব
                     </label>
                 `;
                 container.appendChild(cardDiv);
             });
 
-            selectedCardDesign = `${items[0].name} (${items[0].code})`;
-            document.getElementById('catalogModal').style.display = 'flex';
+            document.getElementById('selectedWeddingDesignDisplay').value = selectedCardDesign;
         }
 
-        function submitToWhatsApp() {
-            const deliveryMethod = document.querySelector('input[name="deliveryMethod"]:checked').value;
-            
+        function selectWeddingCardItem(item) {
+            selectedCardDesign = `${item.name} (${item.code})`;
+            renderWeddingCatalogGrid();
+        }
+
+        function submitWeddingToWhatsApp() {
+            const deliveryMethod = document.querySelector('input[name="weddingDeliveryMethod"]:checked').value;
             const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
                             `--------------------------------%0A` +
                             `• সার্ভিস: বিয়ের কার্ড%0A` +
                             `• ক্যাটাগরি: ${selectedType} কার্ড%0A` +
-                            `• পরিমাণ: ${currentQuantity} পিস%0A` +
+                            `• অর্ডার পরিমাণ: ${currentQuantity} পিস%0A` +
                             `• পছন্দ করা ডিজাইন: ${selectedCardDesign}%0A` +
                             `• ডেলিভারি মাধ্যম: ${deliveryMethod}%0A` +
                             `--------------------------------%0A` +
-                            `আমি বিস্তারিত আলোচনা করতে চাই।`;
-
-            const whatsappUrl = `https://wa.me/919732322525?text=${message}`;
-            window.open(whatsappUrl, '_blank');
+                            `আমি অর্ডার ফাইনাল করতে চাই।`;
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
 
-        function openGeneralOrder(serviceName) {
-            const message = `*নতুন ইনকোয়ারি (Sub Prints)*%0A` +
+        /* ---------------- ২. মেনু কার্ড ---------------- */
+        let currentMenuOccasion = 'বিয়ের মেনুকার্ড';
+        let currentMenuQuantity = 0;
+        let selectedMenuDesign = '';
+        let currentMenuList = [];
+
+        const menuDesignCatalog = [
+            { id: 'MN01', name: 'প্রিমিয়াম গোল্ডেন বর্ডার মেনু', code: 'MN-01', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN02', name: 'রয়্যাল ফ্লোরাল আর্ট মেনু', code: 'MN-02', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN03', name: 'ট্রেডিশনাল বাংলা ফন্ট মেনু', code: 'MN-03', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN04', name: 'ক্লাসিক ম্যাট পেপার মেনু', code: 'MN-04', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN05', name: 'মডার্ন টু-ফোল্ড মেনু কার্ড', code: 'MN-05', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN06', name: 'উৎসুক ভোজ লাল-হলুদ মেনু', code: 'MN-06', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN07', name: 'প্রিমিয়াম ভেলভেট টাচ মেনু', code: 'MN-07', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN08', name: 'সিলভার ফয়েল স্পট মেনু', code: 'MN-08', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN09', name: 'অফিসিয়াল কর্পোরেট ডিনার মেনু', code: 'MN-09', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN10', name: 'অন্নপ্রাশন স্পেশাল কিউট মেনু', code: 'MN-10', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN11', name: 'বার্থডে পার্টি ফান মেনু', code: 'MN-11', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN12', name: 'উপনয়ন পবিত্র শান্ত মেনু', code: 'MN-12', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN13', name: 'শ্রাদ্ধ ও স্মরণানুষ্ঠান মেনু', code: 'MN-13', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN14', name: 'মাল্টিকালার আর্ট পেপার মেনু', code: 'MN-14', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN15', name: 'রেস্টুরেন্ট স্পেশাল ফুড মেনু', code: 'MN-15', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN16', name: 'সিঙ্গেল শিট মিনি মেনু', code: 'MN-16', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN17', name: 'থ্রি-ফোল্ড ডেকোরেটিভ মেনু', code: 'MN-17', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN18', name: 'রয়্যাল ভিন্টেজ ফ্রেম মেনু', code: 'MN-18', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN19', name: 'ক্লাসিক ক্যাফে ও রেস্টুরেন্ট কার্ড', code: 'MN-19', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&auto=format&fit=crop&q=60' },
+            { id: 'MN20', name: 'প্রিমিয়াম ওয়েডিং ডিনার মেনু', code: 'MN-20', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&auto=format&fit=crop&q=60' }
+        ];
+
+        function openMenuCardFlow() {
+            document.getElementById('menuQuantity').value = '';
+            document.getElementById('menuModalStep1').style.display = 'flex';
+        }
+
+        function proceedToMenuCatalog() {
+            const rawVal = document.getElementById('menuQuantity').value;
+            const qty = parseQuantityNumber(rawVal);
+
+            if(!rawVal || isNaN(qty) || qty <= 0) {
+                alert('অনুগ্রহ করে সঠিক সংখ্যায় মেনুকার্ডের পরিমাণ লিখুন (যেমন: ৫০, ১০০, ২০০ ইত্যাদি)।');
+                document.getElementById('menuQuantity').focus();
+                return;
+            }
+
+            currentMenuOccasion = document.getElementById('menuOccasion').value;
+            currentMenuQuantity = qty;
+            closeModal('menuModalStep1');
+
+            currentMenuList = menuDesignCatalog;
+            selectedMenuDesign = `${currentMenuList[0].name} (${currentMenuList[0].code})`;
+
+            document.getElementById('menuCatalogTitle').innerText = `${currentMenuOccasion} ক্যাটালগ (২০টি স্যাম্পল)`;
+            document.getElementById('menuCatalogSubtitle').innerText = `পছন্দের ডিজাইন নির্বাচন করুন | অর্ডার পরিমাণ: ${qty} পিস`;
+
+            // ক্যাটালগ খোলার আগে গুগল অ্যাড দেখানো হচ্ছে
+            triggerAdFlow('menu');
+        }
+
+        function renderMenuCatalogGrid() {
+            const container = document.getElementById('menuCatalogContainer');
+            container.innerHTML = '';
+
+            currentMenuList.forEach((item) => {
+                const isSelected = (selectedMenuDesign === `${item.name} (${item.code})`);
+                const cardDiv = document.createElement('div');
+                cardDiv.className = `catalog-item ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectMenuCardItem(item);
+
+                cardDiv.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="item-title">${item.name}</div>
+                    <div class="item-code">কোড: ${item.code}</div>
+                    <label>
+                        <input type="radio" name="menuDesignRadio" value="${item.name} (${item.code})" ${isSelected ? 'checked' : ''}>
+                        এই ডিজাইনটি নেব
+                    </label>
+                `;
+                container.appendChild(cardDiv);
+            });
+
+            document.getElementById('selectedMenuDesignDisplay').value = selectedMenuDesign;
+        }
+
+        function selectMenuCardItem(item) {
+            selectedMenuDesign = `${item.name} (${item.code})`;
+            renderMenuCatalogGrid();
+        }
+
+        function submitMenuToWhatsApp() {
+            const deliveryMethod = document.querySelector('input[name="menuDeliveryMethod"]:checked').value;
+            const notes = document.getElementById('menuNotes').value || 'খাবারের তালিকা হোয়াটসঅ্যাপে পাঠাচ্ছি';
+
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
                             `--------------------------------%0A` +
-                            `• সার্ভিস: ${serviceName}%0A` +
+                            `• সার্ভিস: মেনু কার্ড%0A` +
+                            `• অনুষ্ঠানের ধরন: ${currentMenuOccasion}%0A` +
+                            `• অর্ডার পরিমাণ: ${currentMenuQuantity} পিস%0A` +
+                            `• পছন্দ করা ডিজাইন: ${selectedMenuDesign}%0A` +
+                            `• মেনু বিবরণ/নোট: ${notes}%0A` +
+                            `• ডেলিভারি মাধ্যম: ${deliveryMethod}%0A` +
                             `--------------------------------%0A` +
-                            `আমি এই সার্ভিসের রেট ও বিস্তারিত জানতে চাই।`;
-            const whatsappUrl = `https://wa.me/919732322525?text=${message}`;
-            window.open(whatsappUrl, '_blank');
+                            `আমি মেনু কার্ডের অর্ডার কনফার্ম করতে চাই।`;
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
+        }
+
+        /* ---------------- ৩. ভিজিটিং কার্ড ---------------- */
+        let currentVCType = 'PVC card';
+        function openVisitingCardFlow() {
+            document.getElementById('visitingModal').style.display = 'flex';
+        }
+        function selectVCType(type) {
+            currentVCType = type;
+            const ids = {'PVC card':'vcPVC', 'Plastic Card':'vcPlastic', 'GSM 300':'vc300', 'GSM 250':'vc250'};
+            Object.values(ids).forEach(id => document.getElementById(id).classList.remove('active'));
+            document.getElementById(ids[type]).classList.add('active');
+        }
+        function submitVCToWhatsApp() {
+            const qty = document.getElementById('vcQuantity').value || 100;
+            const delivery = document.querySelector('input[name="vcDelivery"]:checked').value;
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: ভিজিটিং কার্ড%0A` +
+                            `• টাইপ: ${currentVCType}%0A` +
+                            `• পরিমাণ: ${qty} পিস%0A` +
+                            `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি রেট ও ডিজাইন বিষয়ে কথা বলতে চাই।`;
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
+        }
+
+        /* ---------------- ৪. ফ্লেক্স ব্যানার ---------------- */
+        function openFlexFlow() {
+            document.getElementById('flexModal').style.display = 'flex';
+        }
+        function submitFlexToWhatsApp() {
+            const opt = document.getElementById('flexOption').value;
+            const size = document.getElementById('flexSize').value || 'সাইজ আলোচনা সাপেক্ষে';
+            const qty = document.getElementById('flexQty').value || 1;
+            const delivery = document.querySelector('input[name="flexDelivery"]:checked').value;
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: ফ্লেক্স ব্যানার%0A` +
+                            `• আইটেম: ${opt}%0A` +
+                            `• সাইজ: ${size}%0A` +
+                            `• পরিমাণ: ${qty} পিস%0A` +
+                            `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি রেট ও বিস্তারিত জানতে চাই।`;
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
+        }
+
+        /* ---------------- ৫. স্ট্যাম্প ---------------- */
+        let currentStamp = '১ পলিমার স্ট্যাম্প কালি ছাড়া';
+        function openStampFlow() {
+            document.getElementById('stampModal').style.display = 'flex';
+        }
+        function selectStamp(val) {
+            currentStamp = val;
+            if(val.includes('পলিমার')) {
+                document.getElementById('stampPoly').classList.add('active');
+                document.getElementById('stampNeo').classList.remove('active');
+            } else {
+                document.getElementById('stampPoly').classList.remove('active');
+                document.getElementById('stampNeo').classList.add('active');
+            }
+        }
+        function submitStampToWhatsApp() {
+            const qty = document.getElementById('stampQty').value || 1;
+            const text = document.getElementById('stampText').value || 'হোয়াটসঅ্যাপে জানাচ্ছি';
+            const delivery = document.querySelector('input[name="stampDelivery"]:checked').value;
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: স্ট্যাম্প%0A` +
+                            `• ধরন: ${currentStamp}%0A` +
+                            `• পরিমাণ: ${qty} পিস%0A` +
+                            `• লেখার বিবরণ: ${text}%0A` +
+                            `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি অর্ডার কনফার্ম করতে চাই।`;
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
+        }
+
+        /* ---------------- ৬. স্টেশনারি ---------------- */
+        const stationeryProducts = [
+            { id: 'st1', name: 'স্কুল খাতা', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&auto=format&fit=crop&q=60' },
+            { id: 'st2', name: 'দিস্তা খাতা', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=300&auto=format&fit=crop&q=60' },
+            { id: 'st3', name: 'পেন / কলম', img: 'https://images.unsplash.com/photo-1585336261026-77884ffb17c9?w=300&auto=format&fit=crop&q=60' },
+            { id: 'st4', name: 'রেজিস্টার খাতা', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=300&auto=format&fit=crop&q=60' },
+            { id: 'st5', name: 'মিটিং রেজুলেশন বুক', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=300&auto=format&fit=crop&q=60' },
+            { id: 'st6', name: 'ক্যাশবুক', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&auto=format&fit=crop&q=60' },
+            { id: 'st7', name: 'নোটিস বুক', img: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=300&auto=format&fit=crop&q=60' },
+            { id: 'st8', name: 'সার্ভিস বুক', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=300&auto=format&fit=crop&q=60' }
+        ];
+
+        let selectedStatItem = stationeryProducts[0].name;
+
+        function openStationeryFlow() {
+            renderStationeryGrid();
+            document.getElementById('stationeryModal').style.display = 'flex';
+        }
+
+        function renderStationeryGrid() {
+            const grid = document.getElementById('stationeryProductGrid');
+            grid.innerHTML = '';
+            
+            stationeryProducts.forEach((prod) => {
+                const isChecked = (prod.name === selectedStatItem);
+                const cardDiv = document.createElement('div');
+                cardDiv.className = `catalog-item ${isChecked ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectStatProduct(prod.name);
+                
+                cardDiv.innerHTML = `
+                    <img src="${prod.img}" alt="${prod.name}">
+                    <div class="item-title">${prod.name}</div>
+                    <label>
+                        <input type="radio" name="statProductRadio" value="${prod.name}" ${isChecked ? 'checked' : ''}>
+                        এটি নেব
+                    </label>
+                `;
+                grid.appendChild(cardDiv);
+            });
+            document.getElementById('selectedStatItemDisplay').value = selectedStatItem;
+        }
+
+        function selectStatProduct(name) {
+            selectedStatItem = name;
+            renderStationeryGrid();
+        }
+
+        function submitStationeryToWhatsApp() {
+            const qty = document.getElementById('stationeryQty').value || 1;
+            const note = document.getElementById('stationeryNote').value || 'কোনো বাড়তি নোট নেই';
+            const delivery = document.querySelector('input[name="statDelivery"]:checked').value;
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: স্টেশনারি%0A` +
+                            `• নির্বাচিত প্রোডাক্ট: ${selectedStatItem}%0A` +
+                            `• পরিমাণ: ${qty} পিস%0A` +
+                            `• বিবরণ/সাইজ: ${note}%0A` +
+                            `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি এর দাম ও প্রাপ্তিসাধ্যতা জানতে চাই।`;
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
+        }
+
+        /* ---------------- ৭. বিল বুক প্রিন্ট ---------------- */
+        const billBookProducts = [
+            { id: 'bb1', name: 'ক্যাশমেমো প্রিণ্ট', code: 'CM-01', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&auto=format&fit=crop&q=60' },
+            { id: 'bb2', name: 'প্যাড প্রিণ্ট', code: 'PD-02', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=300&auto=format&fit=crop&q=60' },
+            { id: 'bb3', name: 'জি.এস.টি বিল প্রিণ্ট', code: 'GST-03', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=300&auto=format&fit=crop&q=60' },
+            { id: 'bb4', name: 'পুজোর রসিদ প্রিণ্ট', code: 'PR-04', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=300&auto=format&fit=crop&q=60' }
+        ];
+
+        let selectedBillBookItem = billBookProducts[0].name;
+
+        function openBillBookFlow() {
+            renderBillBookGrid();
+            document.getElementById('billBookModal').style.display = 'flex';
+        }
+
+        function renderBillBookGrid() {
+            const grid = document.getElementById('billBookProductGrid');
+            grid.innerHTML = '';
+
+            billBookProducts.forEach((item) => {
+                const isSelected = (item.name === selectedBillBookItem);
+                const cardDiv = document.createElement('div');
+                cardDiv.className = `catalog-item ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectBillBookProduct(item.name);
+
+                cardDiv.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="item-title">${item.name}</div>
+                    <div class="item-code">কোড: ${item.code}</div>
+                    <label>
+                        <input type="radio" name="billBookRadio" value="${item.name}" ${isSelected ? 'checked' : ''}>
+                        এটি নেব
+                    </label>
+                `;
+                grid.appendChild(cardDiv);
+            });
+
+            document.getElementById('selectedBillBookDisplay').value = selectedBillBookItem;
+        }
+
+        function selectBillBookProduct(name) {
+            selectedBillBookItem = name;
+            renderBillBookGrid();
+        }
+
+        function submitBillBookToWhatsApp() {
+            const rawQty = document.getElementById('billBookQty').value;
+            const qty = parseQuantityNumber(rawQty);
+
+            if(!rawQty || isNaN(qty) || qty < 50) {
+                alert('অনুগ্রহ করে সর্বনিম্ন ৫০ পিস থেকে শুরু করে আপনার প্রয়োজনীয় সংখ্যা উল্লেখ করুন (যেমন: ৫০, ১০০, ৫০০ ইত্যাদি)।');
+                document.getElementById('billBookQty').focus();
+                return;
+            }
+
+            const size = document.getElementById('billBookSize').value;
+            const note = document.getElementById('billBookNote').value || 'সাধারণ স্পেসিফিকেশন';
+            const delivery = document.querySelector('input[name="billDelivery"]:checked').value;
+
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: বিল বুক প্রিন্ট%0A` +
+                            `• প্রোডাক্ট: ${selectedBillBookItem}%0A` +
+                            `• সাইজ/মাপ: ${size}%0A` +
+                            `• অর্ডার পরিমাণ: ${qty} পিস%0A` +
+                            `• পেজ/কপি বিবরণ: ${note}%0A` +
+                            `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি এর রেট ও প্রিন্টিং কোয়ালিটি নিয়ে আলোচনা করতে চাই।`;
+
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
+        }
+
+        /* ---------------- ৮. হ্যান্ডবিল ও পোস্টার ---------------- */
+        let currentHB = 'হ্যাণ্ড বিল';
+        function openHandbillFlow() {
+            document.getElementById('handbillModal').style.display = 'flex';
+        }
+        function selectHB(val) {
+            currentHB = val;
+            if(val === 'হ্যাণ্ড বিল') {
+                document.getElementById('hbOpt').classList.add('active');
+                document.getElementById('postOpt').classList.remove('active');
+            } else {
+                document.getElementById('hbOpt').classList.remove('active');
+                document.getElementById('postOpt').classList.add('active');
+            }
+        }
+        function submitHBToWhatsApp() {
+            const qty = document.getElementById('hbQuantity').value || 1000;
+            const details = document.getElementById('hbDetails').value || 'সাধারণ পেপার';
+            const delivery = document.querySelector('input[name="hbDelivery"]:checked').value;
+            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                            `--------------------------------%0A` +
+                            `• সার্ভিস: ${currentHB}%0A` +
+                            `• পরিমাণ: ${qty} পিস%0A` +
+                            `• সাইজ/বিবরণ: ${details}%0A` +
+                            `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                            `--------------------------------%0A` +
+                            `আমি রেট ও প্রিন্টিং বিষয়ে আলোচনা করতে চাই।`;
+            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
     </script>
 </body>
