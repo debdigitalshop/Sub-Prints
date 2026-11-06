@@ -245,6 +245,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .logo-wrap {
@@ -267,6 +269,34 @@
             font-weight: 600;
             color: var(--text-muted);
             letter-spacing: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline-nav {
+            background: #FFF5EE;
+            color: var(--primary-orange);
+            border: 1.5px solid #FFD4B8;
+            padding: 0.45rem 0.95rem;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-outline-nav:hover {
+            background: var(--primary-orange);
+            color: #FFF;
+            border-color: var(--primary-orange);
         }
 
         /* --- Printer Animation --- */
@@ -718,6 +748,58 @@
             font-weight: 700;
         }
 
+        /* --- Collapsible Option Box (About & Privacy) --- */
+        .info-options-wrap {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info-dropdown {
+            background: #FFF;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
+        }
+
+        .info-dropdown summary {
+            padding: 1.1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .info-dropdown summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .info-dropdown summary:hover {
+            background: #FFF8F4;
+            color: var(--primary-orange);
+        }
+
+        .info-dropdown[open] summary {
+            border-bottom: 1px solid var(--border-color);
+            background: #FFF8F4;
+            color: var(--primary-orange);
+        }
+
+        .info-dropdown .dropdown-body {
+            padding: 1.5rem;
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
         /* --- Ad Modal Specific Styles --- */
         .ad-modal-box {
             max-width: 500px;
@@ -909,8 +991,11 @@
                     <span>Powered by Deb Digital Shop</span>
                 </div>
             </div>
-            <div>
-                <a href="https://wa.me/919732322525" target="_blank" class="btn-primary" style="padding: 0.5rem 1.2rem; text-decoration: none; font-size: 0.9rem;">
+            <div class="header-actions">
+                <button type="button" class="btn-outline-nav" onclick="openAboutSection()">
+                    <i class="fa-solid fa-circle-info"></i> আমাদের সম্পর্কে
+                </button>
+                <a href="https://wa.me/919732322525" target="_blank" class="btn-primary" style="padding: 0.5rem 1.2rem; text-decoration: none; font-size: 0.9rem; width: auto;">
                     <i class="fa-brands fa-whatsapp"></i> সরাসরি যোগাযোগ
                 </a>
             </div>
@@ -996,6 +1081,39 @@
                 <li>হোম ডেলিভারির ক্ষেত্রে ডেলিভারি পার্টনারের নির্ধারিত অতিরিক্ত চার্জ প্রযোজ্য হতে পারে। অফিস পিক-আপ সম্পূর্ণ বিনামূল্যে।</li>
             </ul>
         </section>
+
+        <!-- About Us ও Privacy Policy অপশন (ক্লিক করলে খুলবে, উপরটা একদম পরিষ্কার থাকবে) -->
+        <div class="info-options-wrap" id="aboutSectionWrap">
+            <details class="info-dropdown" id="aboutDropdown">
+                <summary>
+                    <span><i class="fa-solid fa-circle-info" style="color: var(--primary-orange); margin-right: 8px;"></i> আমাদের সম্পর্কে (About Sub Prints & Deb Digital Shop)</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.9rem;"></i>
+                </summary>
+                <div class="dropdown-body">
+                    <p style="margin-bottom: 0.8rem;">
+                        <strong>Sub Prints (Deb Digital Shop)</strong> রামপুরহাট ও সমগ্র বীরভূম অঞ্চলের একটি বিশ্বস্ত এবং নির্ভরযোগ্য অনলাইন গ্রাফিক ডিজাইন ও প্রিন্টিং পরিষেবা কেন্দ্র। আমরা বিয়ে, অন্নপ্রাশন, জন্মদিন, উপনয়ন সহ যেকোনো সামাজিক ও বাণিজ্যিক অনুষ্ঠানের জন্য আধুনিক অফসেট এবং ডিজিটাল প্রিন্টিং সমাধান প্রদান করে থাকি।
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        এখানে স্বল্প সংখ্যক (১-২৫ পিস) কার্ড প্রিন্টিং থেকে শুরু করে বাল্ক অর্ডার (১০০০+ পিস) নিখুঁতভাবে প্রুফ চেক করে যথাসময়ে ডেলিভারি দেওয়া হয়। প্রিমিয়াম আর্ট পেপার, পিভিসি ভিজিটিং কার্ড, ফ্লেক্স ব্যানার, সেলফ-ইঙ্কিং নিও স্ট্যাম্প এবং ক্যাশমেমো বই সুলভ মূল্যে প্রস্তুত করা আমাদের প্রধান বৈশিষ্ট্য।
+                    </p>
+                </div>
+            </details>
+
+            <details class="info-dropdown" id="privacyDropdown">
+                <summary>
+                    <span><i class="fa-solid fa-user-shield" style="color: var(--primary-orange); margin-right: 8px;"></i> গোপনীয়তা নীতি (Privacy Policy)</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.9rem;"></i>
+                </summary>
+                <div class="dropdown-body">
+                    <p style="margin-bottom: 0.6rem;">
+                        Sub Prints গ্রাহকদের তথ্যের সুরক্ষাকে সর্বোচ্চ অগ্রাধিকার প্রদান করে। ওয়েবসাইটে অর্ডার বুকিংয়ের সময় সংগৃহীত নাম, যোগাযোগের নম্বর ও ঠিকানা শুধুমাত্র ডেলিভারি এবং কাস্টমার সাপোর্টের উদ্দেশ্যে ব্যবহার করা হয়। তৃতীয় কোনো পক্ষের কাছে এই তথ্য বিক্রি বা হস্তান্তর করা হয় না।
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        আমাদের ওয়েবসাইটে বিজ্ঞাপন পরিবেশন এবং ব্যবহারকারীর অভিজ্ঞতা পর্যবেক্ষণের জন্য Google AdSense ও তৃতীয় পক্ষের কুকিজ (Cookies) ব্যবহৃত হতে পারে। গুগল বিজ্ঞাপনের কুকিজের মাধ্যমে ব্যবহারকারীর আগ্রহ অনুযায়ী প্রাসঙ্গিক বিজ্ঞাপন প্রদর্শন করে। ব্যবহারকারী চাইলে নিজের ব্রাউজার সেটিংস থেকে কুকিজ বন্ধ রাখতে পারেন।
+                    </p>
+                </div>
+            </details>
+        </div>
     </main>
 
     <!-- ==================== MODALS ==================== -->
@@ -1012,15 +1130,15 @@
     <!-- বিজ্ঞাপন মোডাল -->
     <div class="modal-overlay" id="adModal">
         <div class="modal-box ad-modal-box">
-            <span class="ad-tag"><i class="fa-brands fa-google"></i> স্পনসরড বিজ্ঞাপন</span>
+            <span class="ad-tag"><i class="fa-solid fa-gem"></i> বিশেষ নোটিশ</span>
             <h4 style="color: var(--text-main); font-size: 1.15rem; margin-top: 4px;">ডিজাইন লোড হচ্ছে...</h4>
             <p style="color: var(--text-muted); font-size: 0.85rem;" id="adTimerText">বিজ্ঞাপনটি দেখুন (৫ সেকেন্ড পর স্কিপ করতে পারবেন)</p>
 
             <div class="ad-banner-slot">
                 <div style="text-align: center; padding: 20px;">
-                    <i class="fa-solid fa-rectangle-ad" style="font-size: 3rem; color: #94A3B8; margin-bottom: 8px;"></i>
-                    <p style="font-size: 0.9rem; font-weight: 600; color: #475569;">Google AdSense Banner</p>
-                    <p style="font-size: 0.75rem; color: #94A3B8;">(Google AdSense কোড যোগ করার পর এখানে বিজ্ঞাপন দেখাবে)</p>
+                    <i class="fa-solid fa-print" style="font-size: 2.8rem; color: var(--primary-orange); margin-bottom: 8px;"></i>
+                    <p style="font-size: 0.95rem; font-weight: 600; color: #475569;">Sub Prints প্রিমিয়াম ক্যাটালগ</p>
+                    <p style="font-size: 0.8rem; color: #94A3B8;">আমাদের প্রতিটি ডিজাইনে পাবেন প্রফেশনাল কালার ফিনিশিং</p>
                 </div>
             </div>
 
@@ -1574,12 +1692,15 @@
             </div>
 
             <div>
-                <h4 style="color: #FFF; margin-bottom: 0.8rem;">যোগাযোগ ও অফিস</h4>
+                <h4 style="color: #FFF; margin-bottom: 0.8rem;">যোগাযোগ ও তথ্য</h4>
                 <p style="font-size: 0.95rem; margin-bottom: 0.4rem;"><strong>Deb Digital Shop</strong></p>
                 <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 0.5rem;">রামপুরহাট, বীরভূম, পশ্চিমবঙ্গ</p>
-                <a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none; font-size: 0.9rem;">
+                <a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-bottom: 0.5rem;">
                     <i class="fa-solid fa-location-dot"></i> গুগল ম্যাপে লোকেশন দেখুন
                 </a>
+                <br>
+                <a href="javascript:void(0)" onclick="openAboutSection()" style="color: #CBD5E1; text-decoration: underline; font-size: 0.85rem; margin-right: 12px;">আমাদের সম্পর্কে</a>
+                <a href="javascript:void(0)" onclick="openPrivacySection()" style="color: #CBD5E1; text-decoration: underline; font-size: 0.85rem;">গোপনীয়তা নীতি</a>
             </div>
         </div>
 
@@ -1589,6 +1710,23 @@
     </footer>
     <!-- Logic Script -->
     <script>
+        /* ---------------- অ্যাবাউট ও প্রাইভেসি অপশন খোলার ফাংশন ---------------- */
+        function openAboutSection() {
+            const aboutDet = document.getElementById('aboutDropdown');
+            if (aboutDet) {
+                aboutDet.open = true;
+                aboutDet.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function openPrivacySection() {
+            const privDet = document.getElementById('privacyDropdown');
+            if (privDet) {
+                privDet.open = true;
+                privDet.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
         /* ---------------- ইমেজ ডাউনলোড ও স্ক্রিনশট সিকিউরিটি ---------------- */
         document.addEventListener('contextmenu', function(e) {
             if (e.target.nodeName === 'IMG' || e.target.closest('.catalog-item') || e.target.closest('.lightbox-content')) {
@@ -1698,7 +1836,7 @@
             skipBtn.style.opacity = '0.6';
             skipBtn.style.cursor = 'not-allowed';
             skipBtn.innerHTML = `অপেক্ষা করুন (<span id="adSecondsLeft">${timeLeft}</span>s)`;
-            timerText.innerText = `বিজ্ঞাপনটি দেখুন (${timeLeft} সেকেন্ড পর স্কিপ করতে পারবেন)`;
+            timerText.innerText = `অল্প কিছুক্ষণ অপেক্ষা করুন (${timeLeft} সেকেন্ড পর দেখতে পারবেন)`;
 
             adModal.style.display = 'flex';
 
@@ -1708,7 +1846,7 @@
                 timeLeft--;
                 if(timeLeft > 0) {
                     skipBtn.innerHTML = `অপেক্ষা করুন (<span id="adSecondsLeft">${timeLeft}</span>s)`;
-                    timerText.innerText = `বিজ্ঞাপনটি দেখুন (${timeLeft} সেকেন্ড পর স্কিপ করতে পারবেন)`;
+                    timerText.innerText = `অল্প কিছুক্ষণ অপেক্ষা করুন (${timeLeft} সেকেন্ড পর দেখতে পারবেন)`;
                 } else {
                     clearInterval(adCountdownTimer);
                     skipBtn.disabled = false;
@@ -1716,7 +1854,7 @@
                     skipBtn.style.cursor = 'pointer';
                     skipBtn.style.background = 'var(--primary-orange)';
                     skipBtn.innerHTML = '<i class="fa-solid fa-arrow-right"></i> স্কিপ করুন / ডিজাইন দেখুন';
-                    timerText.innerText = 'বিজ্ঞাপন শেষ হয়েছে, নিচে ক্লিক করে ক্যাটালগ দেখুন';
+                    timerText.innerText = 'লোডিং শেষ হয়েছে, নিচে ক্লিক করে ক্যাটালগ দেখুন';
                 }
             }, 1000);
         }
@@ -1765,37 +1903,37 @@
             'bulk': {
                 'হিন্দু': [
                     { 
-    id: 'HB01', 
-    name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০১', 
-    code: 'BK-H01', 
-    img: 'https://lh3.googleusercontent.com/d/1-uegMfk9TiYPcHDUKgO3Sqonk78BtIFE', 
-    img2: 'https://lh3.googleusercontent.com/d/1HPStEMcyzGTTuUCDe0kOsHB9aJNl7Iur', 
-    img3: 'https://lh3.googleusercontent.com/d/1wv38V8K8Ksh1h1O4V96sFu65NHXgFAEC' 
-},
-{ 
-    id: 'HB02', 
-    name: 'হলুদ কালার হিন্দু বিয়ের কার্ড ০২', 
-    code: 'BK-H02', 
-    img: 'https://lh3.googleusercontent.com/d/1nkNYLAedK-zKRBdb42An8orQPOCczBW9', 
-    img2: 'https://lh3.googleusercontent.com/d/19s9ZS_53Erw7I0kZsGBu0t8noXWCjfdA', 
-    img3: 'https://lh3.googleusercontent.com/d/1IvMqN0CZ56e78PGFToB0h0Yh8mZnjYj4' 
-},
-{ 
-            id: 'HB03', 
-            name: 'লাল কালার হিন্দু বিয়ের কার্ড ০৩', 
-            code: 'BK-H03', 
-            img: 'https://lh3.googleusercontent.com/d/1M4exvpCCpNGx1U8tdhgThid38ogvi0xg', 
-            img2: 'https://lh3.googleusercontent.com/d/1Ok_Pe2_--GNOPURD8PKJ_KpEFWNRk3Q-', 
-            img3: 'https://lh3.googleusercontent.com/d/15LnFaWuXRrgI2I0q9y1Q9Z3ZOY48exvE' 
-        },
-        { 
-    id: 'HB04', 
-    name: 'হিন্দু বিয়ের কার্ড ডিজাইন ০৪', 
-    code: 'BK-H04', 
-    img: 'https://lh3.googleusercontent.com/d/1PBDXOz2hLtCB2oE99iC7RAXfpUfmU5uU', 
-    img2: 'https://lh3.googleusercontent.com/d/1QEm80rnG0AhHFw4Zt8oky38wmh9GnaoY', 
-    img3: 'https://lh3.googleusercontent.com/d/1oFw30TwaK71XhlmOy2MIV0qVU32vDINm' 
-},
+                        id: 'HB01', 
+                        name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০১', 
+                        code: 'BK-H01', 
+                        img: 'https://lh3.googleusercontent.com/d/1-uegMfk9TiYPcHDUKgO3Sqonk78BtIFE', 
+                        img2: 'https://lh3.googleusercontent.com/d/1HPStEMcyzGTTuUCDe0kOsHB9aJNl7Iur', 
+                        img3: 'https://lh3.googleusercontent.com/d/1wv38V8K8Ksh1h1O4V96sFu65NHXgFAEC' 
+                    },
+                    { 
+                        id: 'HB02', 
+                        name: 'হলুদ কালার হিন্দু বিয়ের কার্ড ০২', 
+                        code: 'BK-H02', 
+                        img: 'https://lh3.googleusercontent.com/d/1nkNYLAedK-zKRBdb42An8orQPOCczBW9', 
+                        img2: 'https://lh3.googleusercontent.com/d/19s9ZS_53Erw7I0kZsGBu0t8noXWCjfdA', 
+                        img3: 'https://lh3.googleusercontent.com/d/1IvMqN0CZ56e78PGFToB0h0Yh8mZnjYj4' 
+                    },
+                    { 
+                        id: 'HB03', 
+                        name: 'লাল কালার হিন্দু বিয়ের কার্ড ০৩', 
+                        code: 'BK-H03', 
+                        img: 'https://lh3.googleusercontent.com/d/1M4exvpCCpNGx1U8tdhgThid38ogvi0xg', 
+                        img2: 'https://lh3.googleusercontent.com/d/1Ok_Pe2_--GNOPURD8PKJ_KpEFWNRk3Q-', 
+                        img3: 'https://lh3.googleusercontent.com/d/15LnFaWuXRrgI2I0q9y1Q9Z3ZOY48exvE' 
+                    },
+                    { 
+                        id: 'HB04', 
+                        name: 'হিন্দু বিয়ের কার্ড ডিজাইন ০৪', 
+                        code: 'BK-H04', 
+                        img: 'https://lh3.googleusercontent.com/d/1PBDXOz2hLtCB2oE99iC7RAXfpUfmU5uU', 
+                        img2: 'https://lh3.googleusercontent.com/d/1QEm80rnG0AhHFw4Zt8oky38wmh9GnaoY', 
+                        img3: 'https://lh3.googleusercontent.com/d/1oFw30TwaK71XhlmOy2MIV0qVU32vDINm' 
+                    },
                     { id: 'HB05', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৫', code: 'BK-H05', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
                     { id: 'HB06', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৬', code: 'BK-H06', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
                     { id: 'HB07', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৭', code: 'BK-H07', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
@@ -1970,30 +2108,30 @@
                 { id: 'AO15', name: 'অফসেট অন্নপ্রাশন ১৫', code: 'AP-OF15', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' }
             ],
             'ডিজিট্যাল কার্ড': [
-            { 
-    id: 'AD01', 
-    name: 'ডিজিট্যাল অন্নপ্রাশন সাইজ 9x6 ০১', 
-    code: 'AP-DG01', 
-    img1: 'https://lh3.googleusercontent.com/d/1FzQp4B64ehmlKM8_kIINHNQJ_M8nrmXo', 
-    img2: 'https://lh3.googleusercontent.com/d/13CikAaZ8Tgz-y_JnUPlbGAZcPsDxoHQO', 
-    img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
-},
-{ 
-    id: 'AD02', 
-    name: 'ডিজিট্যাল অন্নপ্রাশন সাইজ 9x6 ০২', 
-    code: 'AP-DG02', 
-    img1: 'https://lh3.googleusercontent.com/d/1nmvZ79D1OKyzxO4LyJHy0SH2b8ovPc7A', 
-    img2: 'https://lh3.googleusercontent.com/d/1NIU25r0jRkED6N7H2kBEn_QwHXf-ICpf', 
-    img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
-},
-{ 
-    id: 'AD03', 
-    name: 'ডিজিট্যাল অন্নপ্রাশন পোস্ট কার্ড সাইজ 4x6 ০৩', 
-    code: 'AP-DG03', 
-    img1: 'https://lh3.googleusercontent.com/d/1byuFzUoDAJ4-1VPyHig6_lCf8A7508vJ', 
-    img2: 'https://lh3.googleusercontent.com/d/13CikAaZ8Tgz-y_JnUPlbGAZcPsDxoHQO', 
-    img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
-},
+                { 
+                    id: 'AD01', 
+                    name: 'ডিজিট্যাল অন্নপ্রাশন সাইজ 9x6 ০১', 
+                    code: 'AP-DG01', 
+                    img1: 'https://lh3.googleusercontent.com/d/1FzQp4B64ehmlKM8_kIINHNQJ_M8nrmXo', 
+                    img2: 'https://lh3.googleusercontent.com/d/13CikAaZ8Tgz-y_JnUPlbGAZcPsDxoHQO', 
+                    img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
+                },
+                { 
+                    id: 'AD02', 
+                    name: 'ডিজিট্যাল অন্নপ্রাশন সাইজ 9x6 ০২', 
+                    code: 'AP-DG02', 
+                    img1: 'https://lh3.googleusercontent.com/d/1nmvZ79D1OKyzxO4LyJHy0SH2b8ovPc7A', 
+                    img2: 'https://lh3.googleusercontent.com/d/1NIU25r0jRkED6N7H2kBEn_QwHXf-ICpf', 
+                    img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
+                },
+                { 
+                    id: 'AD03', 
+                    name: 'ডিজিট্যাল অন্নপ্রাশন পোস্ট কার্ড সাইজ 4x6 ০৩', 
+                    code: 'AP-DG03', 
+                    img1: 'https://lh3.googleusercontent.com/d/1byuFzUoDAJ4-1VPyHig6_lCf8A7508vJ', 
+                    img2: 'https://lh3.googleusercontent.com/d/13CikAaZ8Tgz-y_JnUPlbGAZcPsDxoHQO', 
+                    img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
+                },
                 { id: 'AD04', name: 'ডিজিট্যাল অন্নপ্রাশন ০৪', code: 'AP-DG04', img1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' },
                 { id: 'AD05', name: 'ডিজিট্যাল অন্নপ্রাশন ০৫', code: 'AP-DG05', img1: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
                 { id: 'AD06', name: 'ডিজিট্যাল অন্নপ্রাশন ০৬', code: 'AP-DG06', img1: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80' },
@@ -2114,20 +2252,20 @@
             'বিয়ের মেনুকার্ড': [
                 { id: 'WMN01', name: 'বিয়ের স্পেশাল মেনু ০১', code: 'W-MN01', img: 'https://lh3.googleusercontent.com/d/1VbDUORKAaXfnO0OSI_0sNZ0AFFSBtIi2' },
                 { id: 'WMN02', name: 'বিয়ের আধার স্টাইল মেনু ০২', code: 'W-MN02', img: 'https://lh3.googleusercontent.com/d/1xUnWC_QxpyLZsiiV7c8BHfPmLSRWUs9J' },
-                { id: 'WMN03', name: 'বিয়ের টেবিল মেনুকার্ড ডিজাইন ০৩', code: 'W-MN02', img: 'https://lh3.googleusercontent.com/d/1GQD1dgESQKqLHZKFlQZkYGOEEU2OjS20' },
-                { id: 'WMN03', name: 'বিয়ের টেবিল মেনুকার্ড ডিজাইন ০৪', code: 'W-MN03', img: 'https://lh3.googleusercontent.com/d/1_245G2pAbG2Djfh2ebKx8mzjbtfG8q9h' },
-                { id: 'WMN03', name: 'হ্যাণ্ড মেনুকার্ড ডিজাইন ০৫', code: 'W-MN04', img: 'https://lh3.googleusercontent.com/d/1RtgEKbyMhhiiYdRXvNBK_-wGYOGkBPr3' },
-                { id: 'WMN06', name: ' হ্যাণ্ড মেনুকার্ড ডিজাইন ০৬', code: 'W-MN06', img: 'https://lh3.googleusercontent.com/d/1EPylHqAI_08HSy0KB50IbyJgDLvRiIMR' },
+                { id: 'WMN03', name: 'বিয়ের টেবিল মেনুকার্ড ডিজাইন ০৩', code: 'W-MN03', img: 'https://lh3.googleusercontent.com/d/1GQD1dgESQKqLHZKFlQZkYGOEEU2OjS20' },
+                { id: 'WMN04', name: 'বিয়ের টেবিল মেনুকার্ড ডিজাইন ০৪', code: 'W-MN04', img: 'https://lh3.googleusercontent.com/d/1_245G2pAbG2Djfh2ebKx8mzjbtfG8q9h' },
+                { id: 'WMN05', name: 'হ্যাণ্ড মেনুকার্ড ডিজাইন ০৫', code: 'W-MN05', img: 'https://lh3.googleusercontent.com/d/1RtgEKbyMhhiiYdRXvNBK_-wGYOGkBPr3' },
+                { id: 'WMN06', name: 'হ্যাণ্ড মেনুকার্ড ডিজাইন ০৬', code: 'W-MN06', img: 'https://lh3.googleusercontent.com/d/1EPylHqAI_08HSy0KB50IbyJgDLvRiIMR' },
                 { id: 'WMN07', name: 'ring ceremony মেনু ০৭', code: 'W-MN07', img: 'https://lh3.googleusercontent.com/d/1VYoccJs18570Z7buBO2JvQOYDIozjoID' },
                 { id: 'WMN08', name: 'বিয়ের ডিনার কার্ড ০৮', code: 'W-MN08', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=80' },
                 { id: 'WMN09', name: 'বিয়ের ভিন্টেজ আর্ট মেনু ০৯', code: 'W-MN09', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
                 { id: 'WMN10', name: 'বিয়ের লাক্সারি ফয়েল মেনু ১০', code: 'W-MN10', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80' }
             ],
             'অন্নপ্রাশন মেনুকার্ড': [
-            { id: 'AMN01', name: 'অন্নপ্রাশন ডিজিট্যাল মেনু ডিজাইন ০১', code: 'A-MN01', img: 'https://lh3.googleusercontent.com/d/19WGzQhbp2NxnAfggxv3PvTDV0_NDhoUt' },
-            { id: 'AMN02', name: 'অন্নপ্রাশন ডিজিট্যাল মেনু ডিজাইন ০২', code: 'A-MN02', img: 'https://lh3.googleusercontent.com/d/1JFDnhSAoxT040RY1ZcKkrSX-TQLocWWg' },
-            { id: 'AMN03', name: 'অন্নপ্রাশন থিম ডেকোরেশন ০৩', code: 'A-MN03', img: 'https://lh3.googleusercontent.com/d/1IeKnC7vUA-JmmQCB7jD9sCaxkhAclryb' },
-            { id: 'AMN04', name: 'অন্নপ্রাশন কার্টুন প্রিন্ট ০৪', code: 'A-MN04', img: 'https://lh3.googleusercontent.com/d/1GRfO9CVxlHUIm5Gk3ufIrkdSIW-BQEmM' },
+                { id: 'AMN01', name: 'অন্নপ্রাশন ডিজিট্যাল মেনু ডিজাইন ০১', code: 'A-MN01', img: 'https://lh3.googleusercontent.com/d/19WGzQhbp2NxnAfggxv3PvTDV0_NDhoUt' },
+                { id: 'AMN02', name: 'অন্নপ্রাশন ডিজিট্যাল মেনু ডিজাইন ০২', code: 'A-MN02', img: 'https://lh3.googleusercontent.com/d/1JFDnhSAoxT040RY1ZcKkrSX-TQLocWWg' },
+                { id: 'AMN03', name: 'অন্নপ্রাশন থিম ডেকোরেশন ০৩', code: 'A-MN03', img: 'https://lh3.googleusercontent.com/d/1IeKnC7vUA-JmmQCB7jD9sCaxkhAclryb' },
+                { id: 'AMN04', name: 'অন্নপ্রাশন কার্টুন প্রিন্ট ০৪', code: 'A-MN04', img: 'https://lh3.googleusercontent.com/d/1GRfO9CVxlHUIm5Gk3ufIrkdSIW-BQEmM' },
                 { id: 'AMN06', name: 'অন্নপ্রাশন রঙিন ভোজ ০৬', code: 'A-MN06', img: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' },
                 { id: 'AMN07', name: 'অন্নপ্রাশন ফটো ফ্রেম মেনু ০৭', code: 'A-MN07', img: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
                 { id: 'AMN08', name: 'অন্নপ্রাশন সিঙ্গেল পেজ ০৮', code: 'A-MN08', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80' },
@@ -2135,8 +2273,8 @@
                 { id: 'AMN10', name: 'অন্নপ্রাশন উৎসব স্পেশাল ১০', code: 'A-MN10', img: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' }
             ],
             'জন্মদিন মেনুকার্ড': [
-            { id: 'B-MN01', name: 'শুভ জন্মদিন টেবিল মেনুকার্ড ০১', code: 'A-MN05', img: 'https://lh3.googleusercontent.com/d/1gcby_KM48rxC2p6hSQ77Lyxnm40P2hHv' },
-            { id: 'B-MN02', name: 'জন্মদিনের হ্যাণ্ড মেনুকার্ড ডিজাইন ০২', code: 'B-MN02', img: 'https://lh3.googleusercontent.com/d/1x-sKEo8D6DM0cu95uBYhlpj56dlce-HH' },
+                { id: 'BMN01', name: 'শুভ জন্মদিন টেবিল মেনুকার্ড ০১', code: 'B-MN01', img: 'https://lh3.googleusercontent.com/d/1gcby_KM48rxC2p6hSQ77Lyxnm40P2hHv' },
+                { id: 'BMN02', name: 'জন্মদিনের হ্যাণ্ড মেনুকার্ড ডিজাইন ০২', code: 'B-MN02', img: 'https://lh3.googleusercontent.com/d/1x-sKEo8D6DM0cu95uBYhlpj56dlce-HH' },
                 { id: 'BMN03', name: 'ডিজিটাল বার্থডে স্পেশাল ০৩', code: 'B-MN03', img: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80' },
                 { id: 'BMN04', name: 'কিডস বার্থডে মেনু ০৪', code: 'B-MN04', img: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop&q=80' },
                 { id: 'BMN05', name: 'বার্থডে ডিনার কার্ড ০৫', code: 'B-MN05', img: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&auto=format&fit=crop&q=80' },
@@ -2154,7 +2292,7 @@
                 { id: 'UMN05', name: 'উপনয়ন প্রথাগত ০৫', code: 'U-MN05', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
                 { id: 'UMN06', name: 'উপনয়ন ক্লাসিক কার্ড ০৬', code: 'U-MN06', img: 'https://images.unsplash.com/photo-1545232979-fbf6c63b787d?w=600&auto=format&fit=crop&q=80' },
                 { id: 'UMN07', name: 'উপনয়ন স্মরণিকা ০৭', code: 'U-MN07', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                { id: 'UMN08', name: 'উপনয়ন প্রিমিয়াম ফোল্ড ০৮', code: 'U-MN08', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
+                { id: 'UMN08', name: 'উপনয়ন প্রিমিয়াম ফোল্ড ০৮', code: 'U-MN08', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
                 { id: 'UMN09', name: 'উপনয়ন ভোজ কার্ড ০৯', code: 'U-MN09', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
                 { id: 'UMN10', name: 'উপনয়ন শুভ দিন ১০', code: 'U-MN10', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' }
             ],
@@ -2363,10 +2501,10 @@
             { id: 'st7', name: 'নোটিস বুক', img: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
             { id: 'st8', name: 'সার্ভিস বুক', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
             { id: 'st9', name: 'লেজার খাতা', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st10', name: 'স্টুডেন্ট ডায়েরি', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st10', name: 'স্টুডেন্ট ডায়েরি', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
             { id: 'st11', name: 'অফিস ফাইল কভার', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
             { id: 'st12', name: 'অ্যাটেনডেন্স রেজিস্টার', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st13', name: 'ড্রয়িং বুক', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st13', name: 'ড্রয়িং বুক', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
             { id: 'st14', name: 'গ্রাফ খাতা', img: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
             { id: 'st15', name: 'স্পাইরাল নোটবুক', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
             { id: 'st16', name: 'প্র্যাকটিক্যাল খাতা', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
