@@ -228,6 +228,63 @@
             padding: 20px;
         }
 
+        /* --- ইউনিভার্সাল স্কেলিটন লোডার ডিজাইন (Skeleton Shimmer Style) --- */
+        @keyframes skeletonShimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .skeleton-loader,
+        .catalog-item img.catalog-main-img,
+        .thumb-box,
+        .slider-card img {
+            background: linear-gradient(90deg, #E2E8F0 25%, #F8FAFC 50%, #E2E8F0 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.5s infinite linear;
+        }
+
+        .img-loaded {
+            animation: none !important;
+            background: #F1F5F9 !important;
+        }
+
+        .skeleton-card-box {
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.8rem;
+            background: #FFF;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skeleton-img-slot {
+            width: 100%;
+            height: 125px;
+            border-radius: 8px;
+        }
+
+        .skeleton-text-line {
+            height: 14px;
+            width: 80%;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .skeleton-text-short {
+            height: 12px;
+            width: 50%;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .skeleton-btn-slot {
+            height: 28px;
+            width: 100%;
+            border-radius: 6px;
+            margin-top: 4px;
+        }
+
         /* --- Header & Navigation --- */
         header {
             background: var(--surface-white);
@@ -609,7 +666,6 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 0.5rem;
-            background: #F1F5F9;
             cursor: zoom-in;
             transition: transform 0.2s ease;
         }
@@ -965,6 +1021,122 @@
             margin-top: 1.5rem;
             color: #64748B;
         }
+
+        /* --- স্টুডেন্ট স্পেশাল হরিজন্টাল স্লাইডার CSS --- */
+        .student-slider-container {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            padding: 0 1.5rem;
+        }
+
+        .student-slider {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 6px 2px 12px;
+        }
+
+        .student-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .student-slider {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .slider-card {
+            flex: 0 0 210px;
+            background: var(--surface-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            cursor: pointer;
+            border: 1.5px solid #FFE4D6;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .slider-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-orange);
+        }
+
+        .slider-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 115px;
+            overflow: hidden;
+        }
+
+        .slider-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: zoom-in;
+            transition: transform 0.25s ease;
+        }
+
+        .slider-card img:hover {
+            transform: scale(1.04);
+        }
+
+        .zoom-hint-badge {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(15, 23, 42, 0.7);
+            color: #fff;
+            font-size: 0.68rem;
+            padding: 2px 7px;
+            border-radius: 12px;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .slider-card-info {
+            padding: 10px 12px 12px;
+            text-align: center;
+        }
+
+        .slider-card-info h4 {
+            margin: 0;
+            font-size: 0.98rem;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .slider-card-info p {
+            margin: 3px 0 9px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .slider-order-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--primary-orange);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+        }
+
+        .student-inline-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -1007,6 +1179,96 @@
         <h2>প্রিমিয়াম কোয়ালিটি কাস্টম প্রিন্টিং সল্যুশন</h2>
         <p>বিয়ের নিমন্ত্রণ কার্ড থেকে শুরু করে অন্নপ্রাশন, মেনু কার্ড, অফিসিয়াল ভিজিটিং কার্ড, ব্যানার, স্ট্যাম্প ও যাবতীয় প্রিন্টিং পরিষেবা এক ক্লিকেই।</p>
     </section>
+
+    <!-- স্টুডেন্ট স্পেশাল হরিজন্টাল স্লাইডার (ছবিতে ক্লিক করলে বড় করে দেখাবে, অর্ডারে ক্লিক করলে ফর্ম খুলবে) -->
+    <div class="student-slider-container">
+        <div class="student-slider">
+            <!-- কার্ড ১: বই-খাতার নেম স্টিকার -->
+            <div class="slider-card" onclick="openStudentItemModal('sticker')">
+                <div class="slider-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80" 
+                         alt="বই-খাতার নেম স্টিকার" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'বই-খাতার নেম স্টিকার (স্কুলের নাম, ক্লাস ও রোল সহ)')">
+                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
+                </div>
+                <div class="slider-card-info">
+                    <h4>বই-খাতার নেম স্টিকার</h4>
+                    <p>স্কুলের নাম, ক্লাস ও রোল সহ প্রিন্ট</p>
+                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                </div>
+            </div>
+
+            <!-- কার্ড ২: প্রজেক্ট ফ্রন্ট পেজ -->
+            <div class="slider-card" onclick="openStudentItemModal('project')">
+                <div class="slider-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80" 
+                         alt="প্রজেক্ট ফ্রন্ট পেজ" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'স্কুল ও কলেজ প্রজেক্ট ফ্রন্ট পেজ ডিজাইন')">
+                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
+                </div>
+                <div class="slider-card-info">
+                    <h4>প্রজেক্ট ফ্রন্ট পেজ</h4>
+                    <p>স্কুল ও কলেজ প্রজেক্ট কভার ডিজাইন</p>
+                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                </div>
+            </div>
+
+            <!-- কার্ড ৩: স্কুল রুটিন ও চার্ট -->
+            <div class="slider-card" onclick="openStudentItemModal('routine')">
+                <div class="slider-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&auto=format&fit=crop&q=80" 
+                         alt="ক্লাস রুটিন ও চার্ট" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'পড়ার রুটিন ও টাইম-টেবিল চার্ট')">
+                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
+                </div>
+                <div class="slider-card-info">
+                    <h4>পড়ার রুটিন ও চার্ট</h4>
+                    <p>নিজের নাম দিয়ে রঙিন টাইম-টেবিল</p>
+                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                </div>
+            </div>
+
+            <!-- কার্ড ৪: সিভি / বায়োডাটা প্রিন্ট -->
+            <div class="slider-card" onclick="openStudentItemModal('cv')">
+                <div class="slider-img-wrap">
+                    <img src="https://lh3.googleusercontent.com/d/1ZJ1oCDMDNsamy503mJRHyfG057ADdaW1" 
+                         alt="সিভি ও বায়োডাটা প্রিন্ট" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'প্রফেশনাল সিভি / বায়োডাটা তৈরি ও প্রিন্ট')">
+                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
+                </div>
+                <div class="slider-card-info">
+                    <h4>সিভি / বায়োডাটা তৈরি</h4>
+                    <p>কলেজ ও চাকরির ইন্টারভিউয়ের জন্য</p>
+                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                </div>
+            </div>
+
+            <!-- কার্ড ৫: স্টুডেন্ট আইডি কার্ড -->
+            <div class="slider-card" onclick="openStudentItemModal('idcard')">
+                <div class="slider-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=600&auto=format&fit=crop&q=80" 
+                         alt="স্টুডেন্ট আইডি কার্ড" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'স্টুডেন্ট PVC আইডি কার্ড ও ফিতা প্রিন্ট')">
+                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
+                </div>
+                <div class="slider-card-info">
+                    <h4>স্টুডেন্ট PVC আইডি কার্ড</h4>
+                    <p>স্কুল, কোচিং ও কলেজের ফিতা সহ কার্ড</p>
+                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Container -->
     <main class="container">
@@ -1118,11 +1380,108 @@
 
     <!-- ==================== MODALS ==================== -->
 
+    <!-- স্টুডেন্ট স্লাইডার ডিটেইলস পপ-আপ মোডাল -->
+    <div class="modal-overlay" id="studentOrderModal">
+        <div class="modal-box" style="max-width: 480px;">
+            <button class="close-btn" onclick="closeModal('studentOrderModal')">&times;</button>
+            <h3 id="studentModalTitle" style="margin-bottom: 0.4rem; color: var(--primary-orange);">প্রোডাক্টের বিবরণ দিন</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.2rem;">নিচের তথ্যগুলো পূরণ করে হোয়াটসঅ্যাপে অর্ডার পাঠান:</p>
+
+            <!-- ১. নেম স্টিকার ফিল্ডস -->
+            <div id="stkFormFields" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>ছাত্র/ছাত্রীর নাম *</label>
+                    <input type="text" id="stkStudentName" class="form-control" placeholder="নাম লিখুন">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>স্কুলের নাম *</label>
+                    <input type="text" id="stkSchoolName" class="form-control" placeholder="স্কুলের নাম লিখুন">
+                </div>
+                <div class="student-inline-inputs" style="margin-bottom: 0.9rem;">
+                    <div>
+                        <label style="font-weight: 600; font-size: 0.9rem; display:block; margin-bottom:4px;">ক্লাস *</label>
+                        <input type="text" id="stkClass" class="form-control" placeholder="যেমন: Class 5">
+                    </div>
+                    <div>
+                        <label style="font-weight: 600; font-size: 0.9rem; display:block; margin-bottom:4px;">রোল ও সেকশন *</label>
+                        <input type="text" id="stkRollSec" class="form-control" placeholder="যেমন: Roll 12, Sec A">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ২. প্রজেক্ট ফ্রন্ট পেজ ফিল্ডস -->
+            <div id="projFormFields" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>ছাত্র/ছাত্রীর নাম *</label>
+                    <input type="text" id="projStudentName" class="form-control" placeholder="নাম লিখুন">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>স্কুল বা কলেজের নাম ও ঠিকানা *</label>
+                    <input type="text" id="projSchoolName" class="form-control" placeholder="প্রতিষ্ঠানের নাম ও ঠিকানা">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>বিষয় / প্রজেক্টের নাম (Subject/Topic) *</label>
+                    <input type="text" id="projSubject" class="form-control" placeholder="যেমন: বাংলা / পরিবেশ / ইতিহাস প্রজেক্ট">
+                </div>
+                <div class="student-inline-inputs" style="margin-bottom: 0.9rem;">
+                    <div>
+                        <label style="font-weight: 600; font-size: 0.9rem; display:block; margin-bottom:4px;">ক্লাস / সেমিস্টার *</label>
+                        <input type="text" id="projClass" class="form-control" placeholder="যেমন: Class 10 / 1st Sem">
+                    </div>
+                    <div>
+                        <label style="font-weight: 600; font-size: 0.9rem; display:block; margin-bottom:4px;">রোল / রেজিঃ নম্বর *</label>
+                        <input type="text" id="projRoll" class="form-control" placeholder="রোল বা রেজিঃ নম্বর">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ৩. রুটিন, সিভি ও আইডি কার্ডের কমন ফিল্ডস -->
+            <div id="otherStudentFields" style="display: none;">
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>নাম *</label>
+                    <input type="text" id="otherStdName" class="form-control" placeholder="আপনার নাম লিখুন">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>স্কুল / কলেজ বা শিক্ষাগত যোগ্যতা *</label>
+                    <input type="text" id="otherStdInst" class="form-control" placeholder="প্রতিষ্ঠানের নাম বা ডিগ্রি (BA/B.Sc/HS)">
+                </div>
+                <div class="form-group" style="margin-bottom: 0.9rem;">
+                    <label>ক্লাস / রোল / মোবাইল নম্বর</label>
+                    <input type="text" id="otherStdInfo" class="form-control" placeholder="প্রয়োজনীয় তথ্য লিখুন">
+                </div>
+            </div>
+
+            <!-- অতিরিক্ত বিবরণ ও ডেলিভারি -->
+            <div class="form-group" style="margin-bottom: 1rem;">
+                <label>অতিরিক্ত কোনো তথ্য বা কত পিস লাগবে (ঐচ্ছিক):</label>
+                <input type="text" id="studentExtraNote" class="form-control" placeholder="যেমন: ২ শিট স্টিকার / ৫ কপি প্রিন্ট / ছবি হোয়াটসঅ্যাপে দেব">
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1.2rem;">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options" style="margin-bottom: 0;">
+                    <label class="radio-card">
+                        <input type="radio" name="studentDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="studentDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ (Deb Digital Shop)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitStudentOrderToWA()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+
     <!-- ফুলস্ক্রিন ইমেজ ভিউয়ার মোডাল (Lightbox) -->
     <div class="modal-overlay" id="imageLightboxModal" onclick="closeLightbox()">
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <button class="lightbox-close-btn" onclick="closeLightbox()">&times;</button>
-            <img id="lightboxImage" src="" alt="Full Preview">
+            <img id="lightboxImage" src="" alt="Full Preview" class="skeleton-loader" onload="this.classList.add('img-loaded')">
             <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
@@ -1710,6 +2069,131 @@
     </footer>
     <!-- Logic Script -->
     <script>
+        /* ---------------- ইউনিভার্সাল স্কেলিটন লোডার জেনারেটর ফাংশন ---------------- */
+        function showSkeletonInGrid(containerId, count, callback) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            let skelHTML = '';
+            for (let i = 0; i < count; i++) {
+                skelHTML += `
+                    <div class="skeleton-card-box">
+                        <div class="skeleton-loader skeleton-img-slot"></div>
+                        <div class="skeleton-loader skeleton-text-line"></div>
+                        <div class="skeleton-loader skeleton-text-short"></div>
+                        <div class="skeleton-loader skeleton-btn-slot"></div>
+                    </div>
+                `;
+            }
+            container.innerHTML = skelHTML;
+            setTimeout(() => {
+                if (typeof callback === 'function') callback();
+            }, 350);
+        }
+
+        /* ---------------- স্টুডেন্ট স্লাইডার অর্ডার ফাংশন ---------------- */
+        let currentStudentItemType = '';
+
+        function openStudentItemModal(type) {
+            currentStudentItemType = type;
+            document.getElementById('stkFormFields').style.display = 'none';
+            document.getElementById('projFormFields').style.display = 'none';
+            document.getElementById('otherStudentFields').style.display = 'none';
+            document.getElementById('studentExtraNote').value = '';
+
+            const titleEl = document.getElementById('studentModalTitle');
+
+            if (type === 'sticker') {
+                titleEl.innerHTML = '<i class="fa-solid fa-note-sticky"></i> বই-খাতার নেম স্টিকার অর্ডার';
+                document.getElementById('stkFormFields').style.display = 'block';
+            } else if (type === 'project') {
+                titleEl.innerHTML = '<i class="fa-solid fa-file-signature"></i> প্রজেক্ট ফ্রন্ট পেজ অর্ডার';
+                document.getElementById('projFormFields').style.display = 'block';
+            } else if (type === 'routine') {
+                titleEl.innerHTML = '<i class="fa-solid fa-calendar-days"></i> পড়ার রুটিন ও চার্ট অর্ডার';
+                document.getElementById('otherStudentFields').style.display = 'block';
+            } else if (type === 'cv') {
+                titleEl.innerHTML = '<i class="fa-solid fa-user-graduate"></i> সিভি / বায়োডাটা প্রিন্ট অর্ডার';
+                document.getElementById('otherStudentFields').style.display = 'block';
+            } else if (type === 'idcard') {
+                titleEl.innerHTML = '<i class="fa-solid fa-id-badge"></i> স্টুডেন্ট PVC আইডি কার্ড অর্ডার';
+                document.getElementById('otherStudentFields').style.display = 'block';
+            }
+
+            document.getElementById('studentOrderModal').style.display = 'flex';
+        }
+
+        function submitStudentOrderToWA() {
+            const delivery = document.querySelector('input[name="studentDelivery"]:checked').value;
+            const extraNote = document.getElementById('studentExtraNote').value.trim() || 'কোনো বাড়তি নোট নেই';
+            let detailsMsg = '';
+
+            if (currentStudentItemType === 'sticker') {
+                const name = document.getElementById('stkStudentName').value.trim();
+                const school = document.getElementById('stkSchoolName').value.trim();
+                const cls = document.getElementById('stkClass').value.trim();
+                const roll = document.getElementById('stkRollSec').value.trim();
+
+                if (!name || !school || !cls) {
+                    alert('অনুগ্রহ করে নাম, স্কুলের নাম এবং ক্লাস পূরণ করুন।');
+                    return;
+                }
+                detailsMsg = `• সার্ভিস: বই-খাতার নেম স্টিকার%0A` +
+                             `• ছাত্র/ছাত্রীর নাম: ${name}%0A` +
+                             `• স্কুলের নাম: ${school}%0A` +
+                             `• ক্লাস: ${cls}%0A` +
+                             `• রোল ও সেকশন: ${roll || 'দেওয়া হয়নি'}%0A`;
+
+            } else if (currentStudentItemType === 'project') {
+                const name = document.getElementById('projStudentName').value.trim();
+                const school = document.getElementById('projSchoolName').value.trim();
+                const subject = document.getElementById('projSubject').value.trim();
+                const cls = document.getElementById('projClass').value.trim();
+                const roll = document.getElementById('projRoll').value.trim();
+
+                if (!name || !school || !subject) {
+                    alert('অনুগ্রহ করে নাম, স্কুল/কলেজের নাম এবং প্রজেক্টের বিষয় পূরণ করুন।');
+                    return;
+                }
+                detailsMsg = `• সার্ভিস: স্কুল/কলেজ প্রজেক্ট ফ্রন্ট পেজ%0A` +
+                             `• ছাত্র/ছাত্রীর নাম: ${name}%0A` +
+                             `• প্রতিষ্ঠান ও ঠিকানা: ${school}%0A` +
+                             `• বিষয়/টপিক: ${subject}%0A` +
+                             `• ক্লাস/সেমিস্টার: ${cls || 'দেওয়া হয়নি'}%0A` +
+                             `• রোল/রেজিঃ নম্বর: ${roll || 'দেওয়া হয়নি'}%0A`;
+
+            } else {
+                const name = document.getElementById('otherStdName').value.trim();
+                const inst = document.getElementById('otherStdInst').value.trim();
+                const info = document.getElementById('otherStdInfo').value.trim();
+
+                if (!name || !inst) {
+                    alert('অনুগ্রহ করে নাম এবং স্কুল/কলেজ বা যোগ্যতার ঘরটি পূরণ করুন।');
+                    return;
+                }
+
+                let serviceTitle = 'স্টুডেন্ট সার্ভিস';
+                if (currentStudentItemType === 'routine') serviceTitle = 'পড়ার রুটিন ও চার্ট';
+                if (currentStudentItemType === 'cv') serviceTitle = 'সিভি / বায়োডাটা প্রিন্ট';
+                if (currentStudentItemType === 'idcard') serviceTitle = 'স্টুডেন্ট PVC আইডি কার্ড';
+
+                detailsMsg = `• সার্ভিস: ${serviceTitle}%0A` +
+                             `• নাম: ${name}%0A` +
+                             `• প্রতিষ্ঠান/যোগ্যতা: ${inst}%0A` +
+                             `• অন্যান্য তথ্য: ${info || 'হোয়াটসঅ্যাপে জানাচ্ছি'}%0A`;
+            }
+
+            const finalMessage = `*নতুন স্টুডেন্ট অর্ডার (Sub Prints)*%0A` +
+                                 `--------------------------------%0A` +
+                                 detailsMsg +
+                                 `• নোট/পরিমাণ: ${extraNote}%0A` +
+                                 `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                                 `--------------------------------%0A` +
+                                 `আমি অর্ডারটি কনফার্ম করতে চাই।`;
+
+            window.open(`https://wa.me/919732322525?text=${finalMessage}`, '_blank');
+            closeModal('studentOrderModal');
+        }
+
         /* ---------------- অ্যাবাউট ও প্রাইভেসি অপশন খোলার ফাংশন ---------------- */
         function openAboutSection() {
             const aboutDet = document.getElementById('aboutDropdown');
@@ -1774,6 +2258,7 @@
             const img = document.getElementById('lightboxImage');
             const caption = document.getElementById('lightboxCaption');
 
+            img.classList.remove('img-loaded');
             img.src = src;
             caption.innerText = title || '';
             lightbox.style.display = 'flex';
@@ -1811,6 +2296,7 @@
         function changeDisplayImage(mainImgId, newSrc, thumbElement) {
             const mainImg = document.getElementById(mainImgId);
             if (mainImg) {
+                mainImg.classList.remove('img-loaded');
                 mainImg.src = newSrc;
             }
             if (thumbElement && thumbElement.parentElement) {
@@ -1864,14 +2350,14 @@
             closeModal('adModal');
 
             if(adTargetCatalog === 'wedding') {
-                renderWeddingCatalogGrid();
                 document.getElementById('catalogModal').style.display = 'flex';
+                showSkeletonInGrid('catalogContainer', 6, renderWeddingCatalogGrid);
             } else if(adTargetCatalog === 'menu') {
-                renderMenuCatalogGrid();
                 document.getElementById('menuCatalogModal').style.display = 'flex';
+                showSkeletonInGrid('menuCatalogContainer', 6, renderMenuCatalogGrid);
             } else if(adTargetCatalog === 'anna') {
-                renderAnnaCatalogGrid();
                 document.getElementById('annaCatalogModal').style.display = 'flex';
+                showSkeletonInGrid('annaCatalogContainer', 6, renderAnnaCatalogGrid);
             }
         }
 
@@ -2041,11 +2527,11 @@
 
                 cardDiv.innerHTML = `
                     <div onclick="selectWeddingCardItem('${item.name} (${item.code})')">
-                        <img src="${img1}" id="${mainImgId}" class="catalog-main-img" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
+                        <img src="${img1}" id="${mainImgId}" class="catalog-main-img" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                         <div class="thumb-row">
-                            <img src="${img1}" class="thumb-box active" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img1}', this)" title="ছবি ১">
-                            <img src="${img2}" class="thumb-box" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img2}', this)" title="ছবি ২">
-                            <img src="${img3}" class="thumb-box" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img3}', this)" title="ছবি ৩">
+                            <img src="${img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img1}', this)" title="ছবি ১">
+                            <img src="${img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img2}', this)" title="ছবি ২">
+                            <img src="${img3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img3}', this)" title="ছবি ৩">
                         </div>
                         <div class="item-title">${item.name}</div>
                         <div class="item-code">কোড: ${item.code}</div>
@@ -2200,11 +2686,11 @@
 
                 cardDiv.innerHTML = `
                     <div onclick="selectAnnaCardItem('${item.name} (${item.code})')">
-                        <img src="${item.img1}" id="${mainImgId}" class="catalog-main-img" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
+                        <img src="${item.img1}" id="${mainImgId}" class="catalog-main-img" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                         <div class="thumb-row">
-                            <img src="${item.img1}" class="thumb-box active" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img1}', this)" title="ছবি ১">
-                            <img src="${item.img2}" class="thumb-box" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img2}', this)" title="ছবি ২">
-                            <img src="${thumb3}" class="thumb-box" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${thumb3}', this)" title="ছবি ৩">
+                            <img src="${item.img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img1}', this)" title="ছবি ১">
+                            <img src="${item.img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img2}', this)" title="ছবি ২">
+                            <img src="${thumb3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${thumb3}', this)" title="ছবি ৩">
                         </div>
                         <div class="item-title">${item.name}</div>
                         <div class="item-code">কোড: ${item.code}</div>
@@ -2373,7 +2859,7 @@
 
                 cardDiv.innerHTML = `
                     <div onclick="selectMenuCardItem('${item.name} (${item.code})')">
-                        <img class="catalog-main-img" src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
+                        <img class="catalog-main-img" src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                         <div class="item-title">${item.name}</div>
                         <div class="item-code">কোড: ${item.code}</div>
                         <label onclick="event.stopPropagation(); selectMenuCardItem('${item.name} (${item.code})')">
@@ -2517,8 +3003,8 @@
         let selectedStatItem = stationeryProducts[0].name;
 
         function openStationeryFlow() {
-            renderStationeryGrid();
             document.getElementById('stationeryModal').style.display = 'flex';
+            showSkeletonInGrid('stationeryProductGrid', 6, renderStationeryGrid);
         }
 
         function renderStationeryGrid() {
@@ -2532,7 +3018,7 @@
                 
                 cardDiv.innerHTML = `
                     <div onclick="selectStatProduct('${prod.name}')">
-                        <img class="catalog-main-img" src="${prod.img}" alt="${prod.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onclick="openImageLightbox(event, this.src, '${prod.name}')">
+                        <img class="catalog-main-img" src="${prod.img}" alt="${prod.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${prod.name}')">
                         <div class="item-title">${prod.name}</div>
                         <label onclick="event.stopPropagation(); selectStatProduct('${prod.name}')">
                             <input type="radio" name="statProductRadio" value="${prod.name}" ${isChecked ? 'checked' : ''}>
@@ -2591,8 +3077,8 @@
         let selectedBillBookItem = billBookProducts[0].name;
 
         function openBillBookFlow() {
-            renderBillBookGrid();
             document.getElementById('billBookModal').style.display = 'flex';
+            showSkeletonInGrid('billBookProductGrid', 6, renderBillBookGrid);
         }
 
         function renderBillBookGrid() {
@@ -2606,7 +3092,7 @@
 
                 cardDiv.innerHTML = `
                     <div onclick="selectBillBookProduct('${item.name}')">
-                        <img class="catalog-main-img" src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
+                        <img class="catalog-main-img" src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                         <div class="item-title">${item.name}</div>
                         <div class="item-code">কোড: ${item.code}</div>
                         <label onclick="event.stopPropagation(); selectBillBookProduct('${item.name}')">
