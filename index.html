@@ -237,7 +237,7 @@
         .skeleton-loader,
         .catalog-item img.catalog-main-img,
         .thumb-box,
-        .slider-card img {
+        .ecom-img-box img {
             background: linear-gradient(90deg, #E2E8F0 25%, #F8FAFC 50%, #E2E8F0 75%);
             background-size: 200% 100%;
             animation: skeletonShimmer 1.5s infinite linear;
@@ -260,7 +260,7 @@
 
         .skeleton-img-slot {
             width: 100%;
-            height: 125px;
+            height: 140px;
             border-radius: 8px;
         }
 
@@ -279,7 +279,7 @@
         }
 
         .skeleton-btn-slot {
-            height: 28px;
+            height: 30px;
             width: 100%;
             border-radius: 6px;
             margin-top: 4px;
@@ -331,7 +331,47 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* --- প্রফেশনাল পার্মানেন্ট ভিজিটর কাউন্টার স্টাইল --- */
+        .visitor-counter-pill {
+            background: #0F172A;
+            color: #F8FAFC;
+            padding: 0.42rem 0.85rem;
+            border-radius: var(--radius-md);
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            border: 1px solid #334155;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+            user-select: none;
+        }
+
+        .live-pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22C55E;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulseGreen 1.8s infinite;
+        }
+
+        @keyframes pulseGreen {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .visitor-count-num {
+            color: #FACC15;
+            font-weight: 700;
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         .btn-outline-nav {
@@ -413,6 +453,145 @@
             max-width: 650px;
             margin: 0 auto;
             opacity: 0.95;
+        }
+
+        /* --- ক্লিন ই-কমার্স কার্ড ডিজাইন (স্লাইডার ও ক্যাটালগের জন্য) --- */
+        .student-slider-container {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            padding: 0 1.5rem;
+        }
+
+        .student-slider {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 8px 4px 16px;
+        }
+
+        .student-slider::-webkit-scrollbar { display: none; }
+        .student-slider { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .ecom-card {
+            flex: 0 0 220px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            border: 1.5px solid #E2E8F0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .ecom-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-orange);
+        }
+
+        .ecom-img-box {
+            position: relative;
+            width: 100%;
+            height: 155px;
+            background: #F8FAFC;
+            overflow: hidden;
+        }
+
+        .ecom-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+
+        .ecom-img-box img:hover {
+            transform: scale(1.04);
+        }
+
+        /* উপরের কোণার ব্যাজ (Best Seller / Trending Now) */
+        .ecom-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            color: #FFF;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 5px;
+            z-index: 2;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            pointer-events: none;
+        }
+        .badge-bestseller { background: #D9381E; }
+        .badge-trending { background: #F57C00; }
+
+        /* কার্ডের ভেতরের টেক্সট ও দাম */
+        .ecom-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .ecom-title {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: #0F172A;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .ecom-meta {
+            font-size: 0.78rem;
+            color: #475569;
+            line-height: 1.4;
+            margin-bottom: 2px;
+        }
+
+        .ecom-price-main {
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin: 6px 0 10px;
+            display: block;
+        }
+
+        /* সবুজ রঙের অর্ডার করুন বাটন */
+        .ecom-green-btn {
+            width: 100%;
+            background: #25D366;
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .ecom-green-btn:hover {
+            background: #1DA851;
+        }
+
+        .student-inline-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
         /* --- Main Content --- */
@@ -507,7 +686,7 @@
             background: var(--surface-white);
             border-radius: var(--radius-lg);
             width: 100%;
-            max-width: 750px;
+            max-width: 820px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 2rem;
@@ -628,12 +807,47 @@
             background: #e65c00;
         }
 
-        /* --- Product Catalog --- */
+        /* --- Product Catalog Grid & E-com Catalog Cards --- */
         .catalog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
             gap: 1rem;
             margin-top: 1rem;
+        }
+
+        .catalog-grid .ecom-card {
+            flex: unset;
+            width: 100%;
+        }
+
+        .catalog-grid .ecom-card.selected {
+            border: 2px solid #25D366;
+            background: #F0FDF4;
+        }
+
+        /* ৪টি কার্ডের পর ১টি গুগল অ্যাড বক্স (In-Feed AdSense Box) */
+        .catalog-ad-card {
+            grid-column: 1 / -1;
+            background: #FFF;
+            border: 1.5px dashed #CBD5E1;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            min-height: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 4px 0;
+        }
+
+        .catalog-ad-label {
+            font-size: 0.65rem;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
         .catalog-item {
@@ -677,15 +891,15 @@
         .thumb-row {
             display: flex;
             justify-content: center;
-            gap: 5px;
-            margin-bottom: 0.5rem;
+            gap: 6px;
+            margin: 6px 0;
         }
 
         .thumb-box {
             width: 32px;
             height: 32px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 5px;
             border: 1.5px solid var(--border-color);
             cursor: pointer;
             transition: all 0.2s;
@@ -693,7 +907,7 @@
 
         .thumb-box:hover, .thumb-box.active {
             border-color: var(--primary-orange);
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .catalog-item .item-title {
@@ -727,13 +941,13 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            margin-top: 8px;
+            margin-top: 6px;
             padding: 5px 10px;
             background: #F8FAFC;
             color: #475569;
             border: 1px solid #CBD5E1;
             border-radius: 6px;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -1021,122 +1235,6 @@
             margin-top: 1.5rem;
             color: #64748B;
         }
-
-        /* --- স্টুডেন্ট স্পেশাল হরিজন্টাল স্লাইডার CSS --- */
-        .student-slider-container {
-            max-width: 1200px;
-            margin: 1.5rem auto 0;
-            padding: 0 1.5rem;
-        }
-
-        .student-slider {
-            display: flex;
-            gap: 14px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            padding: 6px 2px 12px;
-        }
-
-        .student-slider::-webkit-scrollbar {
-            display: none;
-        }
-
-        .student-slider {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .slider-card {
-            flex: 0 0 210px;
-            background: var(--surface-white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            cursor: pointer;
-            border: 1.5px solid #FFE4D6;
-            transition: all 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .slider-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary-orange);
-        }
-
-        .slider-img-wrap {
-            position: relative;
-            width: 100%;
-            height: 115px;
-            overflow: hidden;
-        }
-
-        .slider-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            cursor: zoom-in;
-            transition: transform 0.25s ease;
-        }
-
-        .slider-card img:hover {
-            transform: scale(1.04);
-        }
-
-        .zoom-hint-badge {
-            position: absolute;
-            bottom: 6px;
-            right: 6px;
-            background: rgba(15, 23, 42, 0.7);
-            color: #fff;
-            font-size: 0.68rem;
-            padding: 2px 7px;
-            border-radius: 12px;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .slider-card-info {
-            padding: 10px 12px 12px;
-            text-align: center;
-        }
-
-        .slider-card-info h4 {
-            margin: 0;
-            font-size: 0.98rem;
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        .slider-card-info p {
-            margin: 3px 0 9px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .slider-order-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--primary-orange);
-            color: #ffffff;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 5px 14px;
-            border-radius: 20px;
-        }
-
-        .student-inline-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
     </style>
 </head>
 <body>
@@ -1164,6 +1262,13 @@
                 </div>
             </div>
             <div class="header-actions">
+                <!-- প্রফেশনাল পার্মানেন্ট ভিজিটর কাউন্টার -->
+                <div class="visitor-counter-pill" title="মোট ওয়েবসাইট ভিজিটর (পার্মানেন্ট কাউন্ট)">
+                    <span class="live-pulse-dot"></span>
+                    <i class="fa-solid fa-users" style="color: #38BDF8; font-size: 0.8rem;"></i>
+                    <span>ভিজিটর: <strong id="permanentVisitorCount" class="visitor-count-num">...</strong></span>
+                </div>
+
                 <button type="button" class="btn-outline-nav" onclick="openAboutSection()">
                     <i class="fa-solid fa-circle-info"></i> আমাদের সম্পর্কে
                 </button>
@@ -1180,93 +1285,361 @@
         <p>বিয়ের নিমন্ত্রণ কার্ড থেকে শুরু করে অন্নপ্রাশন, মেনু কার্ড, অফিসিয়াল ভিজিটিং কার্ড, ব্যানার, স্ট্যাম্প ও যাবতীয় প্রিন্টিং পরিষেবা এক ক্লিকেই।</p>
     </section>
 
-    <!-- স্টুডেন্ট স্পেশাল হরিজন্টাল স্লাইডার (ছবিতে ক্লিক করলে বড় করে দেখাবে, অর্ডারে ক্লিক করলে ফর্ম খুলবে) -->
+    <!-- ১ম সেকশন: স্টুডেন্ট স্পেশাল আইটেম স্লাইডার -->
     <div class="student-slider-container">
         <div class="student-slider">
-            <!-- কার্ড ১: বই-খাতার নেম স্টিকার -->
-            <div class="slider-card" onclick="openStudentItemModal('sticker')">
-                <div class="slider-img-wrap">
+
+            <!-- কার্ড ১: নেম স্টিকার -->
+            <div class="ecom-card" onclick="openStudentItemModal('sticker')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
                     <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80" 
                          alt="বই-খাতার নেম স্টিকার" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
                          onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'বই-খাতার নেম স্টিকার (স্কুলের নাম, ক্লাস ও রোল সহ)')">
-                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
+                         onclick="openImageLightbox(event, this.src, 'বই-খাতার নেম স্টিকার (১ শিটে ৩০টি প্রিন্ট)')">
                 </div>
-                <div class="slider-card-info">
-                    <h4>বই-খাতার নেম স্টিকার</h4>
-                    <p>স্কুলের নাম, ক্লাস ও রোল সহ প্রিন্ট</p>
-                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">বই-খাতার নেম স্টিকার</div>
+                        <div class="ecom-meta">নাম, স্কুল, ক্লাস ও রোল সহ প্রিন্ট</div>
+                        <span class="ecom-price-main">মূল্য: ₹৯৯</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
                 </div>
             </div>
 
             <!-- কার্ড ২: প্রজেক্ট ফ্রন্ট পেজ -->
-            <div class="slider-card" onclick="openStudentItemModal('project')">
-                <div class="slider-img-wrap">
+            <div class="ecom-card" onclick="openStudentItemModal('project')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">Trending Now</span>
                     <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80" 
                          alt="প্রজেক্ট ফ্রন্ট পেজ" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
                          onload="this.classList.add('img-loaded')"
                          onclick="openImageLightbox(event, this.src, 'স্কুল ও কলেজ প্রজেক্ট ফ্রন্ট পেজ ডিজাইন')">
-                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
                 </div>
-                <div class="slider-card-info">
-                    <h4>প্রজেক্ট ফ্রন্ট পেজ</h4>
-                    <p>স্কুল ও কলেজ প্রজেক্ট কভার ডিজাইন</p>
-                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
-                </div>
-            </div>
-
-            <!-- কার্ড ৩: স্কুল রুটিন ও চার্ট -->
-            <div class="slider-card" onclick="openStudentItemModal('routine')">
-                <div class="slider-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&auto=format&fit=crop&q=80" 
-                         alt="ক্লাস রুটিন ও চার্ট" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'পড়ার রুটিন ও টাইম-টেবিল চার্ট')">
-                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
-                </div>
-                <div class="slider-card-info">
-                    <h4>পড়ার রুটিন ও চার্ট</h4>
-                    <p>নিজের নাম দিয়ে রঙিন টাইম-টেবিল</p>
-                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">প্রজেক্ট ফ্রন্ট পেজ</div>
+                        <div class="ecom-meta">স্কুল ও কলেজ প্রজেক্ট কভার ডিজাইন</div>
+                        <span class="ecom-price-main">মূল্য: ₹৫০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
                 </div>
             </div>
 
-            <!-- কার্ড ৪: সিভি / বায়োডাটা প্রিন্ট -->
-            <div class="slider-card" onclick="openStudentItemModal('cv')">
-                <div class="slider-img-wrap">
+            <!-- কার্ড ৩: সিভি / বায়োডাটা তৈরি (আপনার গুগল ড্রাইভের ছবি সহ) -->
+            <div class="ecom-card" onclick="openStudentItemModal('cv')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
                     <img src="https://lh3.googleusercontent.com/d/1ZJ1oCDMDNsamy503mJRHyfG057ADdaW1" 
-                         alt="সিভি ও বায়োডাটা প্রিন্ট" 
+                         alt="সিভি ও বায়োডাটা তৈরি" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
                          onload="this.classList.add('img-loaded')"
                          onclick="openImageLightbox(event, this.src, 'প্রফেশনাল সিভি / বায়োডাটা তৈরি ও প্রিন্ট')">
-                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
                 </div>
-                <div class="slider-card-info">
-                    <h4>সিভি / বায়োডাটা তৈরি</h4>
-                    <p>কলেজ ও চাকরির ইন্টারভিউয়ের জন্য</p>
-                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">সিভি / বায়োডাটা তৈরি</div>
+                        <div class="ecom-meta">কলেজ ও চাকরির ইন্টারভিউয়ের জন্য</div>
+                        <span class="ecom-price-main">মূল্য: ₹৬০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
                 </div>
             </div>
 
-            <!-- কার্ড ৫: স্টুডেন্ট আইডি কার্ড -->
-            <div class="slider-card" onclick="openStudentItemModal('idcard')">
-                <div class="slider-img-wrap">
+            <!-- কার্ড ৪: পড়ার রুটিন ও চার্ট -->
+            <div class="ecom-card" onclick="openStudentItemModal('routine')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&auto=format&fit=crop&q=80" 
+                         alt="পড়ার রুটিন ও চার্ট" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'পড়ার রুটিন ও টাইম-টেবিল চার্ট')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">পড়ার রুটিন ও চার্ট</div>
+                        <div class="ecom-meta">নিজের নাম দিয়ে রঙিন টাইম-টেবিল</div>
+                        <span class="ecom-price-main">মূল্য: ₹৭০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- কার্ড ৫: স্টুডেন্ট PVC আইডি কার্ড -->
+            <div class="ecom-card" onclick="openStudentItemModal('idcard')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
                     <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=600&auto=format&fit=crop&q=80" 
-                         alt="স্টুডেন্ট আইডি কার্ড" 
+                         alt="স্টুডেন্ট PVC আইডি কার্ড" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
                          onload="this.classList.add('img-loaded')"
                          onclick="openImageLightbox(event, this.src, 'স্টুডেন্ট PVC আইডি কার্ড ও ফিতা প্রিন্ট')">
-                    <span class="zoom-hint-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> বড় দেখুন</span>
                 </div>
-                <div class="slider-card-info">
-                    <h4>স্টুডেন্ট PVC আইডি কার্ড</h4>
-                    <p>স্কুল, কোচিং ও কলেজের ফিতা সহ কার্ড</p>
-                    <span class="slider-order-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</span>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">স্টুডেন্ট PVC আইডি কার্ড</div>
+                        <div class="ecom-meta">স্কুল, কোচিং ও কলেজের ফিতা সহ কার্ড</div>
+                        <span class="ecom-price-main">মূল্য: ₹৬০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
                 </div>
             </div>
+
+        </div>
+    </div>
+
+    <!-- ২য় সেকশন: পড়ার বই (১০টি বইয়ের ছবি ও ডিটেইলস সহ স্লাইডার) -->
+    <div class="student-slider-container" style="margin-top: 2rem;">
+        <div class="section-title" style="margin-bottom: 0.8rem; text-align: left;">
+            <h3 style="font-size: 1.4rem;"><i class="fa-solid fa-book-open" style="color: var(--primary-orange); margin-right: 6px;"></i> পড়ার বই</h3>
+        </div>
+
+        <div class="student-slider">
+
+            <!-- বই ১ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('প্রশ্নবিচিত্রা (Class 10)', 'রায় ও মার্টিন প্রকাশনী', 'লেখক: রায় ও মার্টিন সম্পাদনা পর্ষদ', '₹৩৮০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80" 
+                         alt="প্রশ্নবিচিত্রা দশম শ্রেণি" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'প্রশ্নবিচিত্রা (Class 10) - রায় ও মার্টিন | মূল্য: ₹৩৮০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">প্রশ্নবিচিত্রা (Class 10)</div>
+                        <div class="ecom-meta">প্রকাশনী: রায় ও মার্টিন</div>
+                        <div class="ecom-meta">লেখক: রায় ও মার্টিন সম্পাদনা পর্ষদ</div>
+                        <span class="ecom-price-main">মূল্য: ₹৩৮০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ২ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('ভৌতবিজ্ঞান সহায়িকা (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', '₹৩২০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80" 
+                         alt="ভৌতবিজ্ঞান সহায়িকা" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'ভৌতবিজ্ঞান সহায়িকা (Class 10) - ছায়া প্রকাশনী | মূল্য: ₹৩২০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">ভৌতবিজ্ঞান সহায়িকা (X)</div>
+                        <div class="ecom-meta">প্রকাশনী: ছায়া প্রকাশনী</div>
+                        <div class="ecom-meta">লেখক: দুয়ারী, গাঙ্গুলী, মাইতি</div>
+                        <span class="ecom-price-main">মূল্য: ₹৩২০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ৩ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('Applied English Grammar', 'কথা ও কাহিনী প্রকাশনী', 'লেখক: P.C. Das', '₹৪০০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80" 
+                         alt="English Grammar P.C. Das" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'Applied English Grammar (P.C. Das) | মূল্য: ₹৪০০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">English Grammar</div>
+                        <div class="ecom-meta">প্রকাশনী: কথা ও কাহিনী</div>
+                        <div class="ecom-meta">লেখক: P.C. Das</div>
+                        <span class="ecom-price-main">মূল্য: ₹৪০০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ৪ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('জীবনবিজ্ঞান সহায়িকা (Class 12)', 'সাঁতরা পাবলিকেশন', 'লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা', '₹৪৫০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80" 
+                         alt="জীবনবিজ্ঞান দ্বাদশ শ্রেণি" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'জীবনবিজ্ঞান (Class 12) - সাঁতরা পাবলিকেশন | মূল্য: ₹৪৫০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">জীবনবিজ্ঞান (Class 12)</div>
+                        <div class="ecom-meta">প্রকাশনী: সাঁতরা পাবলিকেশন</div>
+                        <div class="ecom-meta">লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা</div>
+                        <span class="ecom-price-main">মূল্য: ₹৪৫০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ৫ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('কলেজ বাংলা সহায়িকা (BA)', 'পারুল প্রকাশনী', 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', '₹২৬০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80" 
+                         alt="কলেজ সহায়িকা বই" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'কলেজ বাংলা সহায়িকা (BA) - পারুল প্রকাশনী | মূল্য: ₹২৬০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">কলেজ বাংলা সহায়িকা (BA)</div>
+                        <div class="ecom-meta">প্রকাশনী: পারুল প্রকাশনী</div>
+                        <div class="ecom-meta">লেখক: ড. সৌমিত্র শেখর ও অন্যান্য</div>
+                        <span class="ecom-price-main">মূল্য: ₹২৬০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ৬ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('ইতিহাস সহায়িকা (Class 10)', 'প্রান্তিক প্রকাশনী', 'লেখক: ড. সুভাষ বিশ্বাস', '₹২৯০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80" 
+                         alt="ইতিহাস সহায়িকা দশম শ্রেণি" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'ইতিহাস সহায়িকা (Class 10) - প্রান্তিক প্রকাশনী | মূল্য: ₹২৯০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">ইতিহাস সহায়িকা (X)</div>
+                        <div class="ecom-meta">প্রকাশনী: প্রান্তিক প্রকাশনী</div>
+                        <div class="ecom-meta">লেখক: ড. সুভাষ বিশ্বাস</div>
+                        <span class="ecom-price-main">মূল্য: ₹২৯০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ৭ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('ভূগোল ও পরিবেশ (Class 10)', 'বাণী সংসদ প্রকাশনী', 'লেখক: বসু ও মৌলিক', '₹৩১০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80" 
+                         alt="ভূগোল ও পরিবেশ দশম শ্রেণি" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'ভূগোল ও পরিবেশ (Class 10) - বাণী সংসদ | মূল্য: ₹৩১০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">ভূগোল ও পরিবেশ (X)</div>
+                        <div class="ecom-meta">প্রকাশনী: বাণী সংসদ</div>
+                        <div class="ecom-meta">লেখক: বসু ও মৌলিক</div>
+                        <span class="ecom-price-main">মূল্য: ₹৩১০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ৮ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('গণিত প্রকাশ সমাধান (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: কেশব চন্দ্র নাগ', '₹৩৫০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80" 
+                         alt="গণিত সহায়িকা দশম শ্রেণি" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'গণিত সহায়িকা (Class 10) - ছায়া প্রকাশনী | মূল্য: ₹৩৫০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">গণিত সহায়িকা (Class 10)</div>
+                        <div class="ecom-meta">প্রকাশনী: ছায়া প্রকাশনী</div>
+                        <div class="ecom-meta">লেখক: কেশব চন্দ্র নাগ</div>
+                        <span class="ecom-price-main">মূল্য: ₹৩৫০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ৯ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12)', 'নিউ বুক এজেন্সি', 'লেখক: ড. অনাদি কুমার মহাপাত্র', '₹৩৪০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80" 
+                         alt="উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12) | মূল্য: ₹৩৪০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">রাষ্ট্রবিজ্ঞান (Class 12)</div>
+                        <div class="ecom-meta">প্রকাশনী: নিউ বুক এজেন্সি</div>
+                        <div class="ecom-meta">লেখক: ড. অনাদি কুমার মহাপাত্র</div>
+                        <span class="ecom-price-main">মূল্য: ₹৩৪০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
+            <!-- বই ১০ -->
+            <div class="ecom-card" onclick="openPredefinedBookModal('কলেজ ইতিহাস অনার্স ও পাস (BA)', 'বুকস ওয়ে প্রকাশনী', 'লেখক: ড. গোপালকৃষ্ণ পাহাড়ী', '₹৩৯০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80" 
+                         alt="কলেজ ইতিহাস বই" 
+                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                         onload="this.classList.add('img-loaded')"
+                         onclick="openImageLightbox(event, this.src, 'কলেজ ইতিহাস অনার্স ও পাস (BA) - বুকস ওয়ে | মূল্য: ₹৩৯০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">কলেজ ইতিহাস গাইড (BA)</div>
+                        <div class="ecom-meta">প্রকাশনী: বুকস ওয়ে</div>
+                        <div class="ecom-meta">লেখক: ড. গোপালকৃষ্ণ পাহাড়ী</div>
+                        <span class="ecom-price-main">মূল্য: ₹৩৯০</span>
+                    </div>
+                    <button type="button" class="ecom-green-btn">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -1379,6 +1752,62 @@
     </main>
 
     <!-- ==================== MODALS ==================== -->
+
+    <!-- পড়ার বই ডেলিভারি ও অ্যাড্রেস পপ-আপ মোডাল -->
+    <div class="modal-overlay" id="predefinedBookModal">
+        <div class="modal-box" style="max-width: 460px;">
+            <button class="close-btn" onclick="closeModal('predefinedBookModal')">&times;</button>
+            <h3 style="margin-bottom: 0.5rem; color: var(--primary-orange);"><i class="fa-solid fa-book-open"></i> বই অর্ডার কনফার্মেশন</h3>
+            
+            <!-- নির্বাচিত বইয়ের বিবরণ বক্স -->
+            <div style="background: #FFF8F4; border: 1.5px solid #FFD4B8; border-radius: var(--radius-md); padding: 12px; margin-bottom: 1.2rem; font-size: 0.92rem;">
+                <div id="selBookTitle" style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;"></div>
+                <div id="selBookPub" style="color: var(--text-muted); margin-top: 2px;"></div>
+                <div id="selBookAuthor" style="color: var(--text-muted);"></div>
+                <div id="selBookPrice" style="font-weight: 700; color: var(--primary-orange); margin-top: 4px; font-size: 1rem;"></div>
+            </div>
+
+            <!-- ডেলিভারির ধরন নির্বাচন -->
+            <div class="form-group" style="margin-bottom: 1rem;">
+                <label>ডেলিভারি কীভাবে নিতে চান?</label>
+                <div class="radio-options" style="margin-bottom: 0;">
+                    <label class="radio-card" onclick="toggleBookDeliveryView('home')">
+                        <input type="radio" name="preBookDelivery" value="হোম ডেলিভারি" checked onchange="toggleBookDeliveryView('home')">
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি (বাড়ির ঠিকানায়)</span>
+                    </label>
+                    <label class="radio-card" onclick="toggleBookDeliveryView('shop')">
+                        <input type="radio" name="preBookDelivery" value="দোকান থেকে পিক-আপ" onchange="toggleBookDeliveryView('shop')">
+                        <span><i class="fa-solid fa-store"></i> দোকান থেকে নেব (অফিস পিক-আপ)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- হোম ডেলিভারি নিলে গ্রাহকের ঠিকানা লেখার বক্স খুলবে -->
+            <div id="bookHomeAddressBox" style="display: block; margin-bottom: 1.2rem;">
+                <div class="form-group" style="margin-bottom: 0.8rem;">
+                    <label>আপনার নাম *</label>
+                    <input type="text" id="bookBuyerName" class="form-control" placeholder="নাম লিখুন">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label>ডেলিভারির সম্পূর্ণ ঠিকানা (গ্রাম/পাড়া, পোস্ট, পিন, মোবাইল নম্বর) *</label>
+                    <textarea id="bookBuyerAddress" class="form-control" rows="2" placeholder="আপনার সম্পূর্ণ ঠিকানা ও মোবাইল নম্বর লিখুন..."></textarea>
+                </div>
+            </div>
+
+            <!-- দোকানে নিলে দোকানের ঠিকানা দেখাবে -->
+            <div id="bookShopAddressBox" style="display: none; background: #F1F5F9; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px; margin-bottom: 1.2rem; font-size: 0.9rem;">
+                <p style="font-weight: 700; color: var(--text-main); margin-bottom: 4px;"><i class="fa-solid fa-location-dot" style="color: var(--primary-orange);"></i> আমাদের দোকানের ঠিকানা:</p>
+                <p style="color: #475569; margin-bottom: 6px;"><strong>Deb Digital Shop (Sub Prints)</strong><br>রামপুরহাট, বীরভূম, পশ্চিমবঙ্গ - ৭৩১২২৪</p>
+                <a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); font-weight: 600; text-decoration: none; font-size: 0.85rem;">
+                    <i class="fa-solid fa-map-location-dot"></i> গুগল ম্যাপে লোকেশন দেখুন
+                </a>
+            </div>
+
+            <button class="btn-primary" onclick="sendPredefinedBookToWA()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
 
     <!-- স্টুডেন্ট স্লাইডার ডিটেইলস পপ-আপ মোডাল -->
     <div class="modal-overlay" id="studentOrderModal">
@@ -2067,8 +2496,44 @@
             &copy; 2026 Sub Prints. Powered by Deb Digital Shop. All Rights Reserved.
         </div>
     </footer>
+
     <!-- Logic Script -->
     <script>
+        /* ---------------- পার্মানেন্ট গ্লোবাল ও লোকাল ভিজিটর কাউন্টার ফাংশন ---------------- */
+        function toBanglaDigits(num) {
+            const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            return num.toString().replace(/\d/g, d => banglaDigits[d]);
+        }
+
+        function initPermanentVisitorCounter() {
+            const countEl = document.getElementById('permanentVisitorCount');
+            if (!countEl) return;
+
+            const storageKey = 'subprints_permanent_total_visits';
+            let localSaved = parseInt(localStorage.getItem(storageKey) || '1250', 10);
+            localSaved += 1; // প্রতিবার পেজ ওপেন বা রিলোড করলেই ১ করে বাড়বে
+            localStorage.setItem(storageKey, localSaved);
+            countEl.innerText = toBanglaDigits(localSaved);
+
+            // গ্লোবাল ক্লাউড কাউন্টার (CounterAPI) - সব ডিভাইসের মোট ভিজিট পার্মানেন্টভাবে যোগ করবে
+            fetch('https://api.counterapi.dev/v1/debdigitalshop_subprints/total_visits/up')
+                .then(res => res.json())
+                .then(data => {
+                    if (data && typeof data.count === 'number') {
+                        const globalTotal = 1250 + data.count;
+                        const finalCount = Math.max(localSaved, globalTotal);
+                        localStorage.setItem(storageKey, finalCount);
+                        countEl.innerText = toBanglaDigits(finalCount);
+                    }
+                })
+                .catch(() => {
+                    // অফলাইন বা নেট স্লো হলেও লোকাল পার্মানেন্ট কাউন্ট দেখাবে ও বাড়বে
+                    countEl.innerText = toBanglaDigits(localSaved);
+                });
+        }
+
+        window.addEventListener('DOMContentLoaded', initPermanentVisitorCounter);
+
         /* ---------------- ইউনিভার্সাল স্কেলিটন লোডার জেনারেটর ফাংশন ---------------- */
         function showSkeletonInGrid(containerId, count, callback) {
             const container = document.getElementById(containerId);
@@ -2090,7 +2555,27 @@
             }, 350);
         }
 
-        /* ---------------- স্টুডেন্ট স্লাইডার অর্ডার ফাংশন ---------------- */
+        /* ---------------- ৪টি কার্ডের পর ১টি AdSense বক্স তৈরির ফাংশন ---------------- */
+        function createCatalogAdBox() {
+            const adDiv = document.createElement('div');
+            adDiv.className = 'catalog-ad-card';
+            adDiv.innerHTML = `
+                <div class="catalog-ad-label"><i class="fa-solid fa-rectangle-ad"></i> Sponsored Advertisement</div>
+                <ins class="adsbygoogle"
+                     style="display:block; width:100%; min-height:90px;"
+                     data-ad-client="ca-pub-1658969397946689"
+                     data-ad-format="fluid"
+                     data-full-width-responsive="true"></ins>
+            `;
+            setTimeout(() => {
+                try {
+                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (e) {}
+            }, 150);
+            return adDiv;
+        }
+
+        /* ---------------- ১ম স্লাইডার: স্টুডেন্ট স্পেশাল অর্ডার ফাংশন ---------------- */
         let currentStudentItemType = '';
 
         function openStudentItemModal(type) {
@@ -2137,7 +2622,7 @@
                     alert('অনুগ্রহ করে নাম, স্কুলের নাম এবং ক্লাস পূরণ করুন।');
                     return;
                 }
-                detailsMsg = `• সার্ভিস: বই-খাতার নেম স্টিকার%0A` +
+                detailsMsg = `• সার্ভিস: বই-খাতার নেম স্টিকার (₹৯৯)%0A` +
                              `• ছাত্র/ছাত্রীর নাম: ${name}%0A` +
                              `• স্কুলের নাম: ${school}%0A` +
                              `• ক্লাস: ${cls}%0A` +
@@ -2154,7 +2639,7 @@
                     alert('অনুগ্রহ করে নাম, স্কুল/কলেজের নাম এবং প্রজেক্টের বিষয় পূরণ করুন।');
                     return;
                 }
-                detailsMsg = `• সার্ভিস: স্কুল/কলেজ প্রজেক্ট ফ্রন্ট পেজ%0A` +
+                detailsMsg = `• সার্ভিস: স্কুল/কলেজ প্রজেক্ট ফ্রন্ট পেজ (₹৫০)%0A` +
                              `• ছাত্র/ছাত্রীর নাম: ${name}%0A` +
                              `• প্রতিষ্ঠান ও ঠিকানা: ${school}%0A` +
                              `• বিষয়/টপিক: ${subject}%0A` +
@@ -2172,9 +2657,9 @@
                 }
 
                 let serviceTitle = 'স্টুডেন্ট সার্ভিস';
-                if (currentStudentItemType === 'routine') serviceTitle = 'পড়ার রুটিন ও চার্ট';
-                if (currentStudentItemType === 'cv') serviceTitle = 'সিভি / বায়োডাটা প্রিন্ট';
-                if (currentStudentItemType === 'idcard') serviceTitle = 'স্টুডেন্ট PVC আইডি কার্ড';
+                if (currentStudentItemType === 'routine') serviceTitle = 'পড়ার রুটিন ও চার্ট (₹৭০)';
+                if (currentStudentItemType === 'cv') serviceTitle = 'সিভি / বায়োডাটা তৈরি (₹৬০)';
+                if (currentStudentItemType === 'idcard') serviceTitle = 'স্টুডেন্ট PVC আইডি কার্ড (₹৬০)';
 
                 detailsMsg = `• সার্ভিস: ${serviceTitle}%0A` +
                              `• নাম: ${name}%0A` +
@@ -2192,6 +2677,65 @@
 
             window.open(`https://wa.me/919732322525?text=${finalMessage}`, '_blank');
             closeModal('studentOrderModal');
+        }
+
+        /* ---------------- ২য় স্লাইডার: পড়ার বই (১০টি বই ও অ্যাড্রেস) ফাংশন ---------------- */
+        let currentBookData = { title: '', pub: '', author: '', price: '' };
+
+        function openPredefinedBookModal(title, pub, author, price) {
+            currentBookData = { title, pub, author, price };
+            document.getElementById('selBookTitle').innerText = title;
+            document.getElementById('selBookPub').innerText = `প্রকাশনী: ${pub}`;
+            document.getElementById('selBookAuthor').innerText = author;
+            document.getElementById('selBookPrice').innerText = `মূল্য: ${price}`;
+
+            const radios = document.getElementsByName('preBookDelivery');
+            if (radios.length > 0) radios[0].checked = true;
+            toggleBookDeliveryView('home');
+
+            document.getElementById('predefinedBookModal').style.display = 'flex';
+        }
+
+        function toggleBookDeliveryView(mode) {
+            if (mode === 'home') {
+                document.getElementById('bookHomeAddressBox').style.display = 'block';
+                document.getElementById('bookShopAddressBox').style.display = 'none';
+            } else {
+                document.getElementById('bookHomeAddressBox').style.display = 'none';
+                document.getElementById('bookShopAddressBox').style.display = 'block';
+            }
+        }
+
+        function sendPredefinedBookToWA() {
+            const deliveryType = document.querySelector('input[name="preBookDelivery"]:checked').value;
+            let addressSection = '';
+
+            if (deliveryType === 'হোম ডেলিভারি') {
+                const buyerName = document.getElementById('bookBuyerName').value.trim();
+                const buyerAddr = document.getElementById('bookBuyerAddress').value.trim();
+                if (!buyerName || !buyerAddr) {
+                    alert('হোম ডেলিভারির জন্য অনুগ্রহ করে আপনার নাম এবং সম্পূর্ণ ঠিকানা লিখুন।');
+                    return;
+                }
+                addressSection = `• গ্রাহকের নাম: ${buyerName}%0A` +
+                                 `• ডেলিভারি ঠিকানা: ${buyerAddr}%0A`;
+            } else {
+                addressSection = `• পিক-আপ লোকেশন: Deb Digital Shop (রামপুরহাট, বীরভূম)%0A`;
+            }
+
+            const waMessage = `*নতুন পড়ার বই অর্ডার (Sub Prints)*%0A` +
+                              `--------------------------------%0A` +
+                              `• বইয়ের নাম: ${currentBookData.title}%0A` +
+                              `• প্রকাশনী: ${currentBookData.pub}%0A` +
+                              `• ${currentBookData.author}%0A` +
+                              `• নির্ধারিত মূল্য: ${currentBookData.price}%0A` +
+                              `• ডেলিভারি মাধ্যম: ${deliveryType}%0A` +
+                              addressSection +
+                              `--------------------------------%0A` +
+                              `আমি এই বইটি অর্ডার করতে চাই।`;
+
+            window.open(`https://wa.me/919732322525?text=${waMessage}`, '_blank');
+            closeModal('predefinedBookModal');
         }
 
         /* ---------------- অ্যাবাউট ও প্রাইভেসি অপশন খোলার ফাংশন ---------------- */
@@ -2213,7 +2757,7 @@
 
         /* ---------------- ইমেজ ডাউনলোড ও স্ক্রিনশট সিকিউরিটি ---------------- */
         document.addEventListener('contextmenu', function(e) {
-            if (e.target.nodeName === 'IMG' || e.target.closest('.catalog-item') || e.target.closest('.lightbox-content')) {
+            if (e.target.nodeName === 'IMG' || e.target.closest('.catalog-item') || e.target.closest('.ecom-card') || e.target.closest('.lightbox-content')) {
                 e.preventDefault();
             }
         });
@@ -2361,7 +2905,7 @@
             }
         }
 
-        /* ---------------- ১. বিয়ের কার্ড (শর্ট রান ৬টি ও বাল্ক ২০টি করে) ---------------- */
+        /* ---------------- ১. বিয়ের কার্ড (ই-কমার্স স্টাইল + ৪টি কার্ডের পর ১টি অ্যাড বক্স) ---------------- */
         let selectedType = '';
         let currentQuantity = 0;
         let selectedCardDesign = '';
@@ -2518,33 +3062,46 @@
             currentCardList.forEach((item, index) => {
                 const isSelected = (selectedCardDesign === `${item.name} (${item.code})`);
                 const cardDiv = document.createElement('div');
-                cardDiv.className = `catalog-item ${isSelected ? 'selected' : ''}`;
+                cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
                 
                 const img1 = item.img;
                 const img2 = item.img2 || 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80';
                 const img3 = item.img3 || 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80';
                 const mainImgId = `wedding-main-img-${index}`;
+                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
+                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div onclick="selectWeddingCardItem('${item.name} (${item.code})')">
-                        <img src="${img1}" id="${mainImgId}" class="catalog-main-img" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
-                        <div class="thumb-row">
-                            <img src="${img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img1}', this)" title="ছবি ১">
-                            <img src="${img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img2}', this)" title="ছবি ২">
-                            <img src="${img3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img3}', this)" title="ছবি ৩">
-                        </div>
-                        <div class="item-title">${item.name}</div>
-                        <div class="item-code">কোড: ${item.code}</div>
-                        <label onclick="event.stopPropagation(); selectWeddingCardItem('${item.name} (${item.code})')">
-                            <input type="radio" name="cardDesignRadio" value="${item.name} (${item.code})" ${isSelected ? 'checked' : ''}>
-                            এই ডিজাইনটি নেব
-                        </label>
+                    <div class="ecom-img-box" onclick="selectWeddingCardItem('${item.name} (${item.code})')">
+                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
+                        <img src="${img1}" id="${mainImgId}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                     </div>
-                    <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                        <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                    </button>
+                    <div class="ecom-body" onclick="selectWeddingCardItem('${item.name} (${item.code})')">
+                        <div>
+                            <div class="thumb-row">
+                                <img src="${img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img1}', this)" title="ছবি ১">
+                                <img src="${img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img2}', this)" title="ছবি ২">
+                                <img src="${img3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img3}', this)" title="ছবি ৩">
+                            </div>
+                            <div class="ecom-title">${item.name}</div>
+                            <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button type="button" class="ecom-green-btn" onclick="event.stopPropagation(); selectWeddingCardItem('${item.name} (${item.code})')">
+                                <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
+                            </button>
+                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
+                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
+                            </button>
+                        </div>
+                    </div>
                 `;
                 container.appendChild(cardDiv);
+
+                // প্রতি ৪টি কার্ডের পর ১টি AdSense বক্স
+                if ((index + 1) % 4 === 0) {
+                    container.appendChild(createCatalogAdBox());
+                }
             });
 
             document.getElementById('selectedWeddingDesignDisplay').value = selectedCardDesign;
@@ -2569,7 +3126,7 @@
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
 
-        /* ---------------- ২. অন্নপ্রাশন কার্ড (প্রতিটিতে ১৫টি করে স্লট) ---------------- */
+        /* ---------------- ২. অন্নপ্রাশন কার্ড (ই-কমার্স স্টাইল + ৪টি কার্ডের পর ১টি অ্যাড বক্স) ---------------- */
         let selectedAnnaType = 'অফসেট কার্ড';
         let currentAnnaQuantity = 100;
         let selectedAnnaDesign = '';
@@ -2679,31 +3236,44 @@
             currentAnnaList.forEach((item, index) => {
                 const isSelected = (selectedAnnaDesign === `${item.name} (${item.code})`);
                 const cardDiv = document.createElement('div');
-                cardDiv.className = `catalog-item ${isSelected ? 'selected' : ''}`;
+                cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
                 
                 const mainImgId = `anna-main-img-${index}`;
                 const thumb3 = item.img3 || item.img1;
+                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
+                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div onclick="selectAnnaCardItem('${item.name} (${item.code})')">
-                        <img src="${item.img1}" id="${mainImgId}" class="catalog-main-img" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
-                        <div class="thumb-row">
-                            <img src="${item.img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img1}', this)" title="ছবি ১">
-                            <img src="${item.img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img2}', this)" title="ছবি ২">
-                            <img src="${thumb3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${thumb3}', this)" title="ছবি ৩">
-                        </div>
-                        <div class="item-title">${item.name}</div>
-                        <div class="item-code">কোড: ${item.code}</div>
-                        <label onclick="event.stopPropagation(); selectAnnaCardItem('${item.name} (${item.code})')">
-                            <input type="radio" name="annaDesignRadio" value="${item.name} (${item.code})" ${isSelected ? 'checked' : ''}>
-                            এই ডিজাইনটি নেব
-                        </label>
+                    <div class="ecom-img-box" onclick="selectAnnaCardItem('${item.name} (${item.code})')">
+                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
+                        <img src="${item.img1}" id="${mainImgId}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                     </div>
-                    <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                        <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                    </button>
+                    <div class="ecom-body" onclick="selectAnnaCardItem('${item.name} (${item.code})')">
+                        <div>
+                            <div class="thumb-row">
+                                <img src="${item.img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img1}', this)" title="ছবি ১">
+                                <img src="${item.img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img2}', this)" title="ছবি ২">
+                                <img src="${thumb3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${thumb3}', this)" title="ছবি ৩">
+                            </div>
+                            <div class="ecom-title">${item.name}</div>
+                            <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button type="button" class="ecom-green-btn" onclick="event.stopPropagation(); selectAnnaCardItem('${item.name} (${item.code})')">
+                                <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
+                            </button>
+                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
+                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
+                            </button>
+                        </div>
+                    </div>
                 `;
                 container.appendChild(cardDiv);
+
+                // প্রতি ৪টি কার্ডের পর ১টি AdSense বক্স
+                if ((index + 1) % 4 === 0) {
+                    container.appendChild(createCatalogAdBox());
+                }
             });
 
             document.getElementById('selectedAnnaDesignDisplay').value = selectedAnnaDesign;
@@ -2728,7 +3298,7 @@
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
 
-        /* ---------------- ৩. মেনু কার্ড (প্রতিটি অনুষ্ঠানে ১০টি করে ডিজাইন) ---------------- */
+        /* ---------------- ৩. মেনু কার্ড (ই-কমার্স স্টাইল + ৪টি কার্ডের পর ১টি অ্যাড বক্স) ---------------- */
         let currentMenuOccasion = 'বিয়ের মেনুকার্ড';
         let currentMenuQuantity = 0;
         let selectedMenuDesign = '';
@@ -2852,26 +3422,39 @@
             const container = document.getElementById('menuCatalogContainer');
             container.innerHTML = '';
 
-            currentMenuList.forEach((item) => {
+            currentMenuList.forEach((item, index) => {
                 const isSelected = (selectedMenuDesign === `${item.name} (${item.code})`);
                 const cardDiv = document.createElement('div');
-                cardDiv.className = `catalog-item ${isSelected ? 'selected' : ''}`;
+                cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
+                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div onclick="selectMenuCardItem('${item.name} (${item.code})')">
-                        <img class="catalog-main-img" src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
-                        <div class="item-title">${item.name}</div>
-                        <div class="item-code">কোড: ${item.code}</div>
-                        <label onclick="event.stopPropagation(); selectMenuCardItem('${item.name} (${item.code})')">
-                            <input type="radio" name="menuDesignRadio" value="${item.name} (${item.code})" ${isSelected ? 'checked' : ''}>
-                            এই ডিজাইনটি নেব
-                        </label>
+                    <div class="ecom-img-box" onclick="selectMenuCardItem('${item.name} (${item.code})')">
+                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
+                        <img src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                     </div>
-                    <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                        <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                    </button>
+                    <div class="ecom-body" onclick="selectMenuCardItem('${item.name} (${item.code})')">
+                        <div>
+                            <div class="ecom-title">${item.name}</div>
+                            <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button type="button" class="ecom-green-btn" onclick="event.stopPropagation(); selectMenuCardItem('${item.name} (${item.code})')">
+                                <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
+                            </button>
+                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
+                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
+                            </button>
+                        </div>
+                    </div>
                 `;
                 container.appendChild(cardDiv);
+
+                // প্রতি ৪টি কার্ডের পর ১টি AdSense বক্স
+                if ((index + 1) % 4 === 0) {
+                    container.appendChild(createCatalogAdBox());
+                }
             });
 
             document.getElementById('selectedMenuDesignDisplay').value = selectedMenuDesign;
