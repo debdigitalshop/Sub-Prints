@@ -3936,6 +3936,48 @@ const prashnaPublishersData = {
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
             closeModal('prashnaBichitraModal');
         }
+        /* ---------------- মোবাইল ব্যাক বাটন (Back Button) কন্ট্রোল ---------------- */
+        // সব পপ-আপ মোডালের লিস্ট
+        const allModals = [
+            'prashnaBichitraModal', 'predefinedBookModal', 'studentOrderModal',
+            'imageLightboxModal', 'adModal', 'weddingModalStep1', 'catalogModal',
+            'annaprashanStep1', 'annaCatalogModal', 'menuModalStep1', 'menuCatalogModal',
+            'visitingModal', 'flexModal', 'stampModal', 'stationeryModal',
+            'billBookModal', 'handbillModal'
+        ];
+
+        // কোনো পপ-আপ খুললে ব্রাউজার হিস্ট্রিতে একটি স্টেট যোগ হবে
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'style') {
+                    const el = mutation.target;
+                    if (el.style.display === 'flex' && !el.dataset.historyPushed) {
+                        history.pushState({ modalOpen: el.id }, '');
+                        el.dataset.historyPushed = 'true';
+                    } else if (el.style.display === 'none') {
+                        delete el.dataset.historyPushed;
+                    }
+                }
+            });
+        });
+
+        allModals.forEach(id => {
+            const modalEl = document.getElementById(id);
+            if (modalEl) {
+                observer.observe(modalEl, { attributes: true });
+            }
+        });
+
+        // ইউজার ব্যাক বাটন চাপলে শুধু খোলা পপ-আপটি বন্ধ হবে, পুরো সাইট কাটবে না
+        window.addEventListener('popstate', () => {
+            allModals.forEach(id => {
+                const modalEl = document.getElementById(id);
+                if (modalEl && modalEl.style.display === 'flex') {
+                    modalEl.style.display = 'none';
+                    delete modalEl.dataset.historyPushed;
+                }
+            });
+        });
     </script>
 </body>
 </html>
