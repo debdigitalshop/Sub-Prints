@@ -1401,38 +1401,29 @@
 
         </div>
     </div>
+<!-- ২য় সেকশন: পড়ার বই (১০টি বইয়ের ছবি ও ডিটেইলস সহ স্লাইডার) -->
+<div class="student-slider-container">
+    <div class="student-slider">
 
-    <!-- ২য় সেকশন: পড়ার বই (১০টি বইয়ের ছবি ও ডিটেইলস সহ স্লাইডার) -->
-    <div class="student-slider-container" style="margin-top: 2rem;">
-        <div class="section-title" style="margin-bottom: 0.8rem; text-align: left;">
-            <h3 style="font-size: 1.4rem;"><i class="fa-solid fa-book-open" style="color: var(--primary-orange); margin-right: 6px;"></i> পড়ার বই</h3>
-        </div>
-
-        <div class="student-slider">
-
-            <!-- বই ১ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('প্রশ্নবিচিত্রা (Class 10)', 'রায় ও মার্টিন প্রকাশনী', 'লেখক: রায় ও মার্টিন সম্পাদনা পর্ষদ', '₹৩৮০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80" 
-                         alt="প্রশ্নবিচিত্রা দশম শ্রেণি" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'প্রশ্নবিচিত্রা (Class 10) - রায় ও মার্টিন | মূল্য: ₹৩৮০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">প্রশ্নবিচিত্রা (Class 10)</div>
-                        <div class="ecom-meta">প্রকাশনী: রায় ও মার্টিন</div>
-                        <div class="ecom-meta">লেখক: রায় ও মার্টিন সম্পাদনা পর্ষদ</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৮০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
+        <!-- নতুন প্রশ্নবিচিত্রা (ক্লাস ১ - ১২) কার্ড -->
+        <div class="ecom-card" onclick="openPrashnaBichitraFlow()">
+            <div class="ecom-img-box">
+                <span class="ecom-badge badge-bestseller">Class 1-12</span>
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80" 
+                     alt="প্রশ্নবিচিত্রা ক্লাস ১ থেকে ১২" 
+                     onload="this.classList.add('img-loaded')">
             </div>
-
+            <div class="ecom-body">
+                <div>
+                    <div class="ecom-title">প্রশ্নবিচিত্রা (ক্লাস ১ - ১২)</div>
+                    <div class="ecom-meta">সকল ক্লাস ও লেখক</div>
+                    <span class="ecom-price-main">দরদাম অনুযায়ী</span>
+                </div>
+                <button type="button" class="ecom-green-btn">
+                    <i class="fa-solid fa-list"></i> ক্লাস সিলেক্ট করুন
+                </button>
+            </div>
+        </div>
             <!-- বই ২ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('ভৌতবিজ্ঞান সহায়িকা (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', '₹৩২০')">
                 <div class="ecom-img-box">
@@ -2456,6 +2447,52 @@
 
             <button class="btn-primary" onclick="submitHBToWhatsApp()">
                 <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
+            </button>
+        </div>
+    </div>
+    <!-- ==================== নতুন প্রশ্নবিচিত্রা ক্লাস ১ থেকে ১২ পপ-আপ মোডাল ==================== -->
+    <div class="modal-overlay" id="prashnaBichitraModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeModal('prashnaBichitraModal')">&times;</button>
+            <h3 style="color: var(--primary-orange); margin-bottom: 0.3rem;"><i class="fa-solid fa-book"></i> প্রশ্নবিচিত্রা সংগ্রহ (Class 1 থেকে 12)</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">আপনার কাঙ্ক্ষিত ক্লাস এবং লেখকের বই নির্বাচন করুন:</p>
+
+            <div class="catalog-grid" id="prashnaBichitraGrid"></div>
+
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+
+            <div class="form-group">
+                <label>নির্বাচিত ক্লাস ও বই:</label>
+                <input type="text" id="selectedPrashnaDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
+            </div>
+
+            <div class="form-group">
+                <label>লেখকের নাম বা প্রকাশনী সিলেক্ট করুন:</label>
+                <select id="prashnaAuthorSelect" class="form-control">
+                    <option value="রায় ও মার্টিন (Ray & Martin)">রায় ও মার্টিন (Ray & Martin)</option>
+                    <option value="ছায়া প্রকাশনী (Chhaya)">ছায়া প্রকাশনী (Chhaya)</option>
+                    <option value="প্রান্তিক প্রকাশনী (Prantik)">প্রান্তিক প্রকাশনী (Prantik)</option>
+                    <option value="সাঁতরা পাবলিকেশন (Santra)">সাঁতরা পাবলিকেশন (Santra)</option>
+                    <option value="অন্যান্য লেখক / প্রকাশনী">অন্যান্য লেখক / প্রকাশনী</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>ডেলিভারির ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="prashnaDelivery" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="prashnaDelivery" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> দোকান থেকে পিক-আপ (Deb Digital Shop)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="submitPrashnaToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে প্রশ্নবিচিত্রা অর্ডার পাঠান
             </button>
         </div>
     </div>
@@ -3777,6 +3814,81 @@
                 });
             }
         }
+        /* ---------------- প্রশ্নবিচিত্রা ক্লাস ১ থেকে ১২ লজিক ---------------- */
+const prashnaClasses = [
+    { id: 'c1', name: 'প্রশ্নবিচিত্রা - ক্লাস ১ (Class 1)', price: '₹১৮০', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c2', name: 'প্রশ্নবিচিত্রা - ক্লাস ২ (Class 2)', price: '₹১৯০', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c3', name: 'প্রশ্নবিচিত্রা - ক্লাস ৩ (Class 3)', price: '₹২১০', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c4', name: 'প্রশ্নবিচিত্রা - ক্লাস ৪ (Class 4)', price: '₹২২০', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c5', name: 'প্রশ্নবিচিত্রা - ক্লাস ৫ (Class 5)', price: '₹২৫০', img: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c6', name: 'প্রশ্নবিচিত্রা - ক্লাস ৬ (Class 6)', price: '₹২৮০', img: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c7', name: 'প্রশ্নবিচিত্রা - ক্লাস ৭ (Class 7)', price: '₹৩০০', img: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c8', name: 'প্রশ্নবিচিত্রা - ক্লাস ৮ (Class 8)', price: '₹৩৩০', img: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c9', name: 'প্রশ্নবিচিত্রা - ক্লাস ৯ (Class 9)', price: '₹৩৬০', img: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c10', name: 'প্রশ্নবিচিত্রা - ক্লাস ১০ (Class 10)', price: '₹৩৮০', img: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c11', name: 'প্রশ্নবিচিত্রা - ক্লাস ১১ (Class 11)', price: '₹৪২০', img: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80' },
+    { id: 'c12', name: 'প্রশ্নবিচিত্রা - ক্লাস ১২ (Class 12)', price: '₹৪৫০', img: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80' }
+];
+
+let selectedPrashnaItem = prashnaClasses[9].name + ' (' + prashnaClasses[9].price + ')';
+
+function openPrashnaBichitraFlow() {
+    document.getElementById('prashnaBichitraModal').style.display = 'flex';
+    renderPrashnaGrid();
+}
+
+function renderPrashnaGrid() {
+    const grid = document.getElementById('prashnaBichitraGrid');
+    if(!grid) return;
+    grid.innerHTML = '';
+
+    prashnaClasses.forEach((item) => {
+        const itemFullName = `${item.name} (${item.price})`;
+        const isSelected = (itemFullName === selectedPrashnaItem);
+        const cardDiv = document.createElement('div');
+        cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+
+        cardDiv.innerHTML = `
+            <div class="ecom-img-box" onclick="selectPrashnaClass('${item.name}', '${item.price}')">
+                <span class="ecom-badge badge-bestseller">${item.price}</span>
+                <img src="${item.img}" alt="${item.name}" onload="this.classList.add('img-loaded')">
+            </div>
+            <div class="ecom-body" onclick="selectPrashnaClass('${item.name}', '${item.price}')">
+                <div>
+                    <div class="ecom-title" style="font-size:0.88rem;">${item.name}</div>
+                    <span class="ecom-price-main" style="font-size:1rem;">মূল্য: ${item.price}</span>
+                </div>
+                <button type="button" class="ecom-green-btn" style="padding: 6px; font-size: 0.78rem;">
+                    <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'সিলেক্টেড' : 'বাছুন'}
+                </button>
+            </div>
+        `;
+        grid.appendChild(cardDiv);
+    });
+    const displayInput = document.getElementById('selectedPrashnaDisplay');
+    if(displayInput) displayInput.value = selectedPrashnaItem;
+}
+
+function selectPrashnaClass(name, price) {
+    selectedPrashnaItem = `${name} (${price})`;
+    renderPrashnaGrid();
+}
+
+function submitPrashnaToWhatsApp() {
+    const author = document.getElementById('prashnaAuthorSelect').value;
+    const delivery = document.querySelector('input[name="prashnaDelivery"]:checked').value;
+
+    const message = `*প্রশ্নবিচিত্রা অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
+                    `--------------------------------%0A` +
+                    `• বই: ${selectedPrashnaItem}%0A` +
+                    `• লেখক/প্রকাশনী: ${author}%0A` +
+                    `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
+                    `--------------------------------%0A` +
+                    `আমি এই প্রশ্নবিচিত্রাটি অর্ডার করতে চাই।`;
+
+    window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
+    closeModal('prashnaBichitraModal');
+}
     </script>
 </body>
 </html>
