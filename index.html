@@ -1741,7 +1741,57 @@
             </details>
         </div>
     </main>
+<!-- পড়ার বই অর্ডার মোডাল (Predefined Book Modal) -->
+<div class="modal-overlay" id="predefinedBookModal">
+    <div class="modal-box" style="max-width: 500px;">
+        <button class="close-btn" onclick="closeModal('predefinedBookModal')">&times;</button>
+        <h3 style="color: var(--primary-orange); margin-bottom: 0.5rem;"><i class="fa-solid fa-book"></i> বই অর্ডার কনফার্মেশন</h3>
+        
+        <div style="background: #FFF8F4; border: 1.5px solid #FFD4B8; border-radius: 12px; padding: 12px; margin-bottom: 1.2rem;">
+            <div id="selBookTitle" style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);"></div>
+            <div id="selBookPub" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;"></div>
+            <div id="selBookAuthor" style="font-size: 0.88rem; color: var(--text-muted);"></div>
+            <div id="selBookPrice" style="font-size: 1.05rem; font-weight: 700; color: var(--primary-orange); margin-top: 6px;"></div>
+        </div>
 
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label>ডেলিভারির ধরন বেছে নিন:</label>
+            <div class="radio-options" style="margin-bottom: 0;">
+                <label class="radio-card" onclick="toggleBookDeliveryView('home')">
+                    <input type="radio" name="preBookDelivery" value="হোম ডেলিভারি" checked onchange="toggleBookDeliveryView('home')">
+                    <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
+                </label>
+                <label class="radio-card" onclick="toggleBookDeliveryView('shop')">
+                    <input type="radio" name="preBookDelivery" value="অফিস পিক-আপ" onchange="toggleBookDeliveryView('shop')">
+                    <span><i class="fa-solid fa-store"></i> দোকান থেকে পিক-আপ (Deb Digital Shop)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- হোম ডেলিভারির ঠিকানা বক্স -->
+        <div id="bookHomeAddressBox">
+            <div class="form-group" style="margin-bottom: 0.9rem;">
+                <label>আপনার নাম *</label>
+                <input type="text" id="bookBuyerName" class="form-control" placeholder="সম্পূর্ণ নাম লিখুন">
+            </div>
+            <div class="form-group" style="margin-bottom: 1.2rem;">
+                <label>ডেলিভারি ঠিকানা ও মোবাইল নম্বর *</label>
+                <textarea id="bookBuyerAddress" class="form-control" rows="2" placeholder="গ্রাম/পাড়া, পোস্ট অফিস, থানা, পিন কোড এবং মোবাইল নম্বর লিখুন"></textarea>
+            </div>
+        </div>
+
+        <!-- দোকান থেকে পিক-আপ ঠিকানা বক্স -->
+        <div id="bookShopAddressBox" style="display: none; background: #F1F5F9; padding: 12px; border-radius: 10px; margin-bottom: 1.2rem; font-size: 0.9rem; color: var(--text-main);">
+            <strong><i class="fa-solid fa-location-dot" style="color: var(--primary-orange);"></i> পিক-আপ ঠিকানা:</strong><br>
+            Deb Digital Shop, রামপুরহাট, বীরভূম, পশ্চিমবঙ্গ।<br>
+            <a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); font-weight: 600; text-decoration: none; display: inline-block; margin-top: 4px;">গুগল ম্যাপে লোকেশন দেখুন &rarr;</a>
+        </div>
+
+        <button class="btn-primary" onclick="sendPredefinedBookToWA()">
+            <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বই অর্ডার পাঠান
+        </button>
+    </div>
+</div>
     <!-- ==================== আপডেটেড প্রশ্নবিচিত্রা মোডাল (প্রকাশনী ও ক্লাস ৫-১০) ==================== -->
     <div class="modal-overlay" id="prashnaBichitraModal">
         <div class="modal-box">
@@ -2904,29 +2954,31 @@
             }
         }
 
-        /* ---------------- ১. বিয়ের কার্ড (ই-কমার্স স্টাইল + ৪টি কার্ডের পর ১টি অ্যাড বক্স) ---------------- */
-        let selectedType = '';
+ /* ---------------- ১. বিয়ের কার্ড (ফ্রন্ট স্টাইল + ৩টি ছবি + দাম + সঠিক ছবির লিঙ্ক) ---------------- */
+ let selectedType = '';
         let currentQuantity = 0;
         let selectedCardDesign = '';
+        let selectedCardPrice = '';
+        let selectedCardImg = '';
         let currentCardList = [];
 
         const weddingCatalogs = {
             'small': {
                 'হিন্দু': [
-                    { id: 'HS01', name: 'ডিজিটাল হিন্দু কার্ড ০১', code: 'SR-H01', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HS02', name: 'ডিজিটাল হিন্দু কার্ড ০২', code: 'SR-H02', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HS03', name: 'ডিজিটাল হিন্দু কার্ড ০৩', code: 'SR-H03', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HS04', name: 'ডিজিটাল হিন্দু কার্ড ০৪', code: 'SR-H04', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HS05', name: 'ডিজিটাল হিন্দু কার্ড ০৫', code: 'SR-H05', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HS06', name: 'ডিজিটাল হিন্দু কার্ড ০৬', code: 'SR-H06', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'HS01', name: 'ডিজিটাল হিন্দু কার্ড ০১', code: 'SR-H01', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HS02', name: 'ডিজিটাল হিন্দু কার্ড ০২', code: 'SR-H02', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HS03', name: 'ডিজিটাল হিন্দু কার্ড ০৩', code: 'SR-H03', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HS04', name: 'ডিজিটাল হিন্দু কার্ড ০৪', code: 'SR-H04', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HS05', name: 'ডিজিটাল হিন্দু কার্ড ০৫', code: 'SR-H05', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HS06', name: 'ডিজিটাল হিন্দু কার্ড ০৬', code: 'SR-H06', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' }
                 ],
                 'মুসলিম': [
-                    { id: 'MS01', name: 'ডিজিটাল মুসলিম কার্ড ০১', code: 'SR-M01', img: 'https://lh3.googleusercontent.com/d/1p5ywjHh48f8cygru-A5SnamFZ7xF94lK' },
-                    { id: 'MS02', name: 'ডিজিটাল মুসলিম কার্ড ০২', code: 'SR-M02', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MS03', name: 'ডিজিটাল মুসলিম কার্ড ০৩', code: 'SR-M03', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MS04', name: 'ডিজিটাল মুসলিম কার্ড ০৪', code: 'SR-M04', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MS05', name: 'ডিজিটাল মুসলিম কার্ড ০৫', code: 'SR-M05', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MS06', name: 'ডিজিটাল মুসলিম কার্ড ০৬', code: 'SR-M06', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'MS01', name: 'ডিজিটাল মুসলিম কার্ড ০১', code: 'SR-M01', price: '₹২৫ / পিস', img1: 'https://lh3.googleusercontent.com/d/1p5ywjHh48f8cygru-A5SnamFZ7xF94lK', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MS02', name: 'ডিজিটাল মুসলিম কার্ড ০২', code: 'SR-M02', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MS03', name: 'ডিজিটাল মুসলিম কার্ড ০৩', code: 'SR-M03', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MS04', name: 'ডিজিটাল মুসলিম কার্ড ০৪', code: 'SR-M04', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MS05', name: 'ডিজিটাল মুসলিম কার্ড ০৫', code: 'SR-M05', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MS06', name: 'ডিজিটাল মুসলিম কার্ড ০৬', code: 'SR-M06', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' }
                 ]
             },
             'bulk': {
@@ -2935,7 +2987,8 @@
                         id: 'HB01', 
                         name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০১', 
                         code: 'BK-H01', 
-                        img: 'https://lh3.googleusercontent.com/d/1-uegMfk9TiYPcHDUKgO3Sqonk78BtIFE', 
+                        price: '₹১২ / পিস',
+                        img1: 'https://lh3.googleusercontent.com/d/1-uegMfk9TiYPcHDUKgO3Sqonk78BtIFE', 
                         img2: 'https://lh3.googleusercontent.com/d/1HPStEMcyzGTTuUCDe0kOsHB9aJNl7Iur', 
                         img3: 'https://lh3.googleusercontent.com/d/1wv38V8K8Ksh1h1O4V96sFu65NHXgFAEC' 
                     },
@@ -2943,7 +2996,8 @@
                         id: 'HB02', 
                         name: 'হলুদ কালার হিন্দু বিয়ের কার্ড ০২', 
                         code: 'BK-H02', 
-                        img: 'https://lh3.googleusercontent.com/d/1nkNYLAedK-zKRBdb42An8orQPOCczBW9', 
+                        price: '₹১৪ / পিস',
+                        img1: 'https://lh3.googleusercontent.com/d/1nkNYLAedK-zKRBdb42An8orQPOCczBW9', 
                         img2: 'https://lh3.googleusercontent.com/d/19s9ZS_53Erw7I0kZsGBu0t8noXWCjfdA', 
                         img3: 'https://lh3.googleusercontent.com/d/1IvMqN0CZ56e78PGFToB0h0Yh8mZnjYj4' 
                     },
@@ -2951,7 +3005,8 @@
                         id: 'HB03', 
                         name: 'লাল কালার হিন্দু বিয়ের কার্ড ০৩', 
                         code: 'BK-H03', 
-                        img: 'https://lh3.googleusercontent.com/d/1M4exvpCCpNGx1U8tdhgThid38ogvi0xg', 
+                        price: '₹১৫ / পিস',
+                        img1: 'https://lh3.googleusercontent.com/d/1M4exvpCCpNGx1U8tdhgThid38ogvi0xg', 
                         img2: 'https://lh3.googleusercontent.com/d/1Ok_Pe2_--GNOPURD8PKJ_KpEFWNRk3Q-', 
                         img3: 'https://lh3.googleusercontent.com/d/15LnFaWuXRrgI2I0q9y1Q9Z3ZOY48exvE' 
                     },
@@ -2959,48 +3014,49 @@
                         id: 'HB04', 
                         name: 'হিন্দু বিয়ের কার্ড ডিজাইন ০৪', 
                         code: 'BK-H04', 
-                        img: 'https://lh3.googleusercontent.com/d/1PBDXOz2hLtCB2oE99iC7RAXfpUfmU5uU', 
+                        price: '₹১৬ / পিস',
+                        img1: 'https://lh3.googleusercontent.com/d/1PBDXOz2hLtCB2oE99iC7RAXfpUfmU5uU', 
                         img2: 'https://lh3.googleusercontent.com/d/1QEm80rnG0AhHFw4Zt8oky38wmh9GnaoY', 
                         img3: 'https://lh3.googleusercontent.com/d/1oFw30TwaK71XhlmOy2MIV0qVU32vDINm' 
                     },
-                    { id: 'HB05', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৫', code: 'BK-H05', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB06', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৬', code: 'BK-H06', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB07', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৭', code: 'BK-H07', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB08', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৮', code: 'BK-H08', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB09', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৯', code: 'BK-H09', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB10', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১০', code: 'BK-H10', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB11', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১১', code: 'BK-H11', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB12', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১২', code: 'BK-H12', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB13', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৩', code: 'BK-H13', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB14', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৪', code: 'BK-H14', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB15', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৫', code: 'BK-H15', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB16', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৬', code: 'BK-H16', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB17', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৭', code: 'BK-H17', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB18', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৮', code: 'BK-H18', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB19', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৯', code: 'BK-H19', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB20', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ২০', code: 'BK-H20', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'HB05', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৫', code: 'BK-H05', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB06', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৬', code: 'BK-H06', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB07', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৭', code: 'BK-H07', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB08', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৮', code: 'BK-H08', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB09', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৯', code: 'BK-H09', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB10', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১০', code: 'BK-H10', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB11', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১১', code: 'BK-H11', price: '₹২২ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB12', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১২', code: 'BK-H12', price: '₹২২ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB13', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৩', code: 'BK-H13', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB14', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৪', code: 'BK-H14', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB15', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৫', code: 'BK-H15', price: '₹২৮ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB16', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৬', code: 'BK-H16', price: '₹২৮ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB17', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৭', code: 'BK-H17', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB18', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৮', code: 'BK-H18', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB19', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১৯', code: 'BK-H19', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'HB20', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ২০', code: 'BK-H20', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' }
                 ],
                 'মুসলিম': [
-                    { id: 'MB01', name: 'রয়্যাল নিকা কার্ড ০১', code: 'BK-M01', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB02', name: 'রয়্যাল নিকা কার্ড ০২', code: 'BK-M02', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB03', name: 'রয়্যাল নিকা কার্ড ০৩', code: 'BK-M03', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB04', name: 'রয়্যাল নিকা কার্ড ০৪', code: 'BK-M04', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB05', name: 'রয়্যাল নিকা কার্ড ০৫', code: 'BK-M05', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB06', name: 'রয়্যাল নিকা কার্ড ০৬', code: 'BK-M06', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB07', name: 'রয়্যাল নিকা কার্ড ০৭', code: 'BK-M07', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB08', name: 'রয়্যাল নিকা কার্ড ০৮', code: 'BK-M08', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB09', name: 'রয়্যাল নিকা কার্ড ০৯', code: 'BK-M09', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB10', name: 'রয়্যাল নিকা কার্ড ১০', code: 'BK-M10', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB11', name: 'রয়্যাল নিকা কার্ড ১১', code: 'BK-M11', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB12', name: 'রয়্যাল নিকা কার্ড ১২', code: 'BK-M12', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB13', name: 'রয়্যাল নিকা কার্ড ১৩', code: 'BK-M13', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB14', name: 'রয়্যাল নিকা কার্ড ১৪', code: 'BK-M14', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB15', name: 'রয়্যাল নিকা কার্ড ১৫', code: 'BK-M15', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB16', name: 'রয়্যাল নিকা কার্ড ১৬', code: 'BK-M16', img: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB17', name: 'রয়্যাল নিকা কার্ড ১৭', code: 'BK-M17', img: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB18', name: 'রয়্যাল নিকা কার্ড ১৮', code: 'BK-M18', img: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB19', name: 'রয়্যাল নিকা কার্ড ১৯', code: 'BK-M19', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'MB20', name: 'রয়্যাল নিকা কার্ড ২০', code: 'BK-M20', img: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'MB01', name: 'রয়্যাল নিকা কার্ড ০১', code: 'BK-M01', price: '₹১২ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB02', name: 'রয়্যাল নিকা কার্ড ০২', code: 'BK-M02', price: '₹১৪ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB03', name: 'রয়্যাল নিকা কার্ড ০৩', code: 'BK-M03', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB04', name: 'রয়্যাল নিকা কার্ড ০৪', code: 'BK-M04', price: '₹১৬ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB05', name: 'রয়্যাল নিকা কার্ড ০৫', code: 'BK-M05', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB06', name: 'রয়্যাল নিকা কার্ড ০৬', code: 'BK-M06', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB07', name: 'রয়্যাল নিকা কার্ড ০৭', code: 'BK-M07', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB08', name: 'রয়্যাল নিকা কার্ড ০৮', code: 'BK-M08', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB09', name: 'রয়্যাল নিকা কার্ড ০৯', code: 'BK-M09', price: '₹২২ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB10', name: 'রয়্যাল নিকা কার্ড ১০', code: 'BK-M10', price: '₹২২ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB11', name: 'রয়্যাল নিকা কার্ড ১১', code: 'BK-M11', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB12', name: 'রয়্যাল নিকা কার্ড ১২', code: 'BK-M12', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB13', name: 'রয়্যাল নিকা কার্ড ১৩', code: 'BK-M13', price: '₹২৮ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB14', name: 'রয়্যাল নিকা কার্ড ১৪', code: 'BK-M14', price: '₹২৮ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB15', name: 'রয়্যাল নিকা কার্ড ১৫', code: 'BK-M15', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB16', name: 'রয়্যাল নিকা কার্ড ১৬', code: 'BK-M16', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB17', name: 'রয়্যাল নিকা কার্ড ১৭', code: 'BK-M17', price: '₹৩২ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB18', name: 'রয়্যাল নিকা কার্ড ১৮', code: 'BK-M18', price: '₹৩২ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB19', name: 'রয়্যাল নিকা কার্ড ১৯', code: 'BK-M19', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'MB20', name: 'রয়্যাল নিকা কার্ড ২০', code: 'BK-M20', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' }
                 ]
             }
         };
@@ -3046,7 +3102,11 @@
                 : `(২৫-১০০০ পিস বাল্ক ক্যাটালগ | আপনার টাইপ করা পরিমাণ: ${qty} পিস)`;
 
             currentCardList = weddingCatalogs[categoryMode][selectedType];
+            currentCardList.forEach(item => { item.currentImg = item.img1; });
+
             selectedCardDesign = `${currentCardList[0].name} (${currentCardList[0].code})`;
+            selectedCardPrice = currentCardList[0].price;
+            selectedCardImg = currentCardList[0].img1;
 
             document.getElementById('catalogTitle').innerText = `${selectedType} বিয়ের কার্ড ক্যাটালগ (স্যাম্পল)`;
             document.getElementById('catalogSubtitle').innerText = subtitleText;
@@ -3054,61 +3114,72 @@
             triggerAdFlow('wedding');
         }
 
+        function switchWeddingThumb(e, index, imgNum, thumbEl) {
+            e.stopPropagation();
+            const item = currentCardList[index];
+            const newSrc = item['img' + imgNum];
+            item.currentImg = newSrc;
+            changeDisplayImage(`wedding-main-img-${index}`, newSrc, thumbEl);
+
+            if (selectedCardDesign === `${item.name} (${item.code})`) {
+                selectedCardImg = newSrc;
+            }
+        }
+
+        function selectWeddingCardByIndex(index) {
+            const item = currentCardList[index];
+            selectedCardDesign = `${item.name} (${item.code})`;
+            selectedCardPrice = item.price;
+            selectedCardImg = item.currentImg || item.img1;
+            renderWeddingCatalogGrid();
+        }
+
         function renderWeddingCatalogGrid() {
             const container = document.getElementById('catalogContainer');
             container.innerHTML = '';
 
             currentCardList.forEach((item, index) => {
-                const isSelected = (selectedCardDesign === `${item.name} (${item.code})`);
+                const fullDesignTitle = `${item.name} (${item.code})`;
+                const isSelected = (selectedCardDesign === fullDesignTitle);
+                const activeSrc = item.currentImg || item.img1;
+
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectWeddingCardByIndex(index);
                 
-                const img1 = item.img;
-                const img2 = item.img2 || 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80';
-                const img3 = item.img3 || 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80';
                 const mainImgId = `wedding-main-img-${index}`;
                 const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
                 const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div class="ecom-img-box" onclick="selectWeddingCardItem('${item.name} (${item.code})')">
+                    <div class="ecom-img-box">
                         <span class="ecom-badge ${badgeClass}">${badgeText}</span>
-                        <img src="${img1}" id="${mainImgId}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${fullDesignTitle} | মূল্য: ${item.price}')">
                     </div>
-                    <div class="ecom-body" onclick="selectWeddingCardItem('${item.name} (${item.code})')">
+                    <div class="ecom-body">
                         <div>
                             <div class="thumb-row">
-                                <img src="${img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img1}', this)" title="ছবি ১">
-                                <img src="${img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img2}', this)" title="ছবি ২">
-                                <img src="${img3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${img3}', this)" title="ছবি ৩">
+                                <img src="${item.img1}" class="thumb-box ${activeSrc === item.img1 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchWeddingThumb(event, ${index}, 1, this)" title="ছবি ১">
+                                <img src="${item.img2}" class="thumb-box ${activeSrc === item.img2 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchWeddingThumb(event, ${index}, 2, this)" title="ছবি ২">
+                                <img src="${item.img3}" class="thumb-box ${activeSrc === item.img3 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchWeddingThumb(event, ${index}, 3, this)" title="ছবি ৩">
                             </div>
                             <div class="ecom-title">${item.name}</div>
                             <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                            <span class="ecom-price-main">মূল্য: ${item.price}</span>
                         </div>
-                        <div style="margin-top: 8px;">
-                            <button type="button" class="ecom-green-btn" onclick="event.stopPropagation(); selectWeddingCardItem('${item.name} (${item.code})')">
-                                <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
-                            </button>
-                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                            </button>
-                        </div>
+                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
+                            <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
+                        </button>
                     </div>
                 `;
                 container.appendChild(cardDiv);
 
-                // প্রতি ৪টি কার্ডের পর ১টি AdSense বক্স
                 if ((index + 1) % 4 === 0) {
                     container.appendChild(createCatalogAdBox());
                 }
             });
 
-            document.getElementById('selectedWeddingDesignDisplay').value = selectedCardDesign;
-        }
-
-        function selectWeddingCardItem(designStr) {
-            selectedCardDesign = designStr;
-            renderWeddingCatalogGrid();
+            document.getElementById('selectedWeddingDesignDisplay').value = `${selectedCardDesign} | মূল্য: ${selectedCardPrice}`;
         }
 
         function submitWeddingToWhatsApp() {
@@ -3119,41 +3190,46 @@
                             `• ক্যাটাগরি: ${selectedType} কার্ড%0A` +
                             `• অর্ডার পরিমাণ: ${currentQuantity} পিস%0A` +
                             `• পছন্দ করা ডিজাইন: ${selectedCardDesign}%0A` +
+                            `• নির্ধারিত মূল্য: ${selectedCardPrice}%0A` +
+                            `• ডিজাইনের ছবির লিঙ্ক: ${encodeURIComponent(selectedCardImg)}%0A` +
                             `• ডেলিভারি মাধ্যম: ${deliveryMethod}%0A` +
                             `--------------------------------%0A` +
                             `আমি অর্ডার ফাইনাল করতে চাই।`;
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
 
-        /* ---------------- ২. অন্নপ্রাশন কার্ড (ই-কমার্স স্টাইল + ৪টি কার্ডের পর ১টি অ্যাড বক্স) ---------------- */
-        let selectedAnnaType = 'অফসেট কার্ড';
+/* ---------------- ২. অন্নপ্রাশন কার্ড (ফ্রন্ট স্টাইল + ৩টি ছবি + দাম + ৪ কার্ড পর ১ অ্যাড + ছবির লিঙ্ক) ---------------- */
+let selectedAnnaType = 'অফসেট কার্ড';
         let currentAnnaQuantity = 100;
         let selectedAnnaDesign = '';
+        let selectedAnnaPrice = '';
+        let selectedAnnaImg = '';
         let currentAnnaList = [];
 
         const annaprashanCatalogs = {
             'অফসেট কার্ড': [
-                { id: 'AO01', name: 'অফসেট অন্নপ্রাশন ০১', code: 'AP-OF01', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO02', name: 'অফসেট অন্নপ্রাশন ০২', code: 'AP-OF02', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO03', name: 'অফসেট অন্নপ্রাশন ০৩', code: 'AP-OF03', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO04', name: 'অফসেট অন্নপ্রাশন ০৪', code: 'AP-OF04', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO05', name: 'অফসেট অন্নপ্রাশন ০৫', code: 'AP-OF05', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO06', name: 'অফসেট অন্নপ্রাশন ০৬', code: 'AP-OF06', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO07', name: 'অফসেট অন্নপ্রাশন ০৭', code: 'AP-OF07', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO08', name: 'অফসেট অন্নপ্রাশন ০৮', code: 'AP-OF08', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO09', name: 'অফসেট অন্নপ্রাশন ০৯', code: 'AP-OF09', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO10', name: 'অফসেট অন্নপ্রাশন ১০', code: 'AP-OF10', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO11', name: 'অফসেট অন্নপ্রাশন ১১', code: 'AP-OF11', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO12', name: 'অফসেট অন্নপ্রাশন ১২', code: 'AP-OF12', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO13', name: 'অফসেট অন্নপ্রাশন ১৩', code: 'AP-OF13', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO14', name: 'অফসেট অন্নপ্রাশন ১৪', code: 'AP-OF14', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AO15', name: 'অফসেট অন্নপ্রাশন ১৫', code: 'AP-OF15', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' }
+                { id: 'AO01', name: 'অফসেট অন্নপ্রাশন ০১', code: 'AP-OF01', price: '₹১০ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO02', name: 'অফসেট অন্নপ্রাশন ০২', code: 'AP-OF02', price: '₹১২ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO03', name: 'অফসেট অন্নপ্রাশন ০৩', code: 'AP-OF03', price: '₹১২ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO04', name: 'অফসেট অন্নপ্রাশন ০৪', code: 'AP-OF04', price: '₹১৪ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO05', name: 'অফসেট অন্নপ্রাশন ০৫', code: 'AP-OF05', price: '₹১৪ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO06', name: 'অফসেট অন্নপ্রাশন ০৬', code: 'AP-OF06', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO07', name: 'অফসেট অন্নপ্রাশন ০৭', code: 'AP-OF07', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO08', name: 'অফসেট অন্নপ্রাশন ০৮', code: 'AP-OF08', price: '₹১৬ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO09', name: 'অফসেট অন্নপ্রাশন ০৯', code: 'AP-OF09', price: '₹১৬ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO10', name: 'অফসেট অন্নপ্রাশন ১০', code: 'AP-OF10', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO11', name: 'অফসেট অন্নপ্রাশন ১১', code: 'AP-OF11', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO12', name: 'অফসেট অন্নপ্রাশন ১২', code: 'AP-OF12', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO13', name: 'অফসেট অন্নপ্রাশন ১৩', code: 'AP-OF13', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO14', name: 'অফসেট অন্নপ্রাশন ১৪', code: 'AP-OF14', price: '₹২২ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AO15', name: 'অফসেট অন্নপ্রাশন ১৫', code: 'AP-OF15', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' }
             ],
             'ডিজিট্যাল কার্ড': [
                 { 
                     id: 'AD01', 
                     name: 'ডিজিট্যাল অন্নপ্রাশন সাইজ 9x6 ০১', 
                     code: 'AP-DG01', 
+                    price: '₹১৫ / পিস',
                     img1: 'https://lh3.googleusercontent.com/d/1FzQp4B64ehmlKM8_kIINHNQJ_M8nrmXo', 
                     img2: 'https://lh3.googleusercontent.com/d/13CikAaZ8Tgz-y_JnUPlbGAZcPsDxoHQO', 
                     img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
@@ -3162,6 +3238,7 @@
                     id: 'AD02', 
                     name: 'ডিজিট্যাল অন্নপ্রাশন সাইজ 9x6 ০২', 
                     code: 'AP-DG02', 
+                    price: '₹১৫ / পিস',
                     img1: 'https://lh3.googleusercontent.com/d/1nmvZ79D1OKyzxO4LyJHy0SH2b8ovPc7A', 
                     img2: 'https://lh3.googleusercontent.com/d/1NIU25r0jRkED6N7H2kBEn_QwHXf-ICpf', 
                     img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
@@ -3170,22 +3247,23 @@
                     id: 'AD03', 
                     name: 'ডিজিট্যাল অন্নপ্রাশন পোস্ট কার্ড সাইজ 4x6 ০৩', 
                     code: 'AP-DG03', 
+                    price: '₹১২ / পিস',
                     img1: 'https://lh3.googleusercontent.com/d/1byuFzUoDAJ4-1VPyHig6_lCf8A7508vJ', 
                     img2: 'https://lh3.googleusercontent.com/d/13CikAaZ8Tgz-y_JnUPlbGAZcPsDxoHQO', 
                     img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
                 },
-                { id: 'AD04', name: 'ডিজিট্যাল অন্নপ্রাশন ০৪', code: 'AP-DG04', img1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD05', name: 'ডিজিট্যাল অন্নপ্রাশন ০৫', code: 'AP-DG05', img1: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD06', name: 'ডিজিট্যাল অন্নপ্রাশন ০৬', code: 'AP-DG06', img1: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD07', name: 'ডিজিট্যাল অন্নপ্রাশন ০৭', code: 'AP-DG07', img1: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD08', name: 'ডিজিট্যাল অন্নপ্রাশন ০৮', code: 'AP-DG08', img1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD09', name: 'ডিজিট্যাল অন্নপ্রাশন ০৯', code: 'AP-DG09', img1: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD10', name: 'ডিজিট্যাল অন্নপ্রাশন ১০', code: 'AP-DG10', img1: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD11', name: 'ডিজিট্যাল অন্নপ্রাশন ১১', code: 'AP-DG11', img1: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD12', name: 'ডিজিট্যাল অন্নপ্রাশন ১২', code: 'AP-DG12', img1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD13', name: 'ডিজিট্যাল অন্নপ্রাশন ১৩', code: 'AP-DG13', img1: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD14', name: 'ডিজিট্যাল অন্নপ্রাশন ১৪', code: 'AP-DG14', img1: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80' },
-                { id: 'AD15', name: 'ডিজিট্যাল অন্নপ্রাশন ১৫', code: 'AP-DG15', img1: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' }
+                { id: 'AD04', name: 'ডিজিট্যাল অন্নপ্রাশন ০৪', code: 'AP-DG04', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD05', name: 'ডিজিট্যাল অন্নপ্রাশন ০৫', code: 'AP-DG05', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD06', name: 'ডিজিট্যাল অন্নপ্রাশন ০৬', code: 'AP-DG06', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD07', name: 'ডিজিট্যাল অন্নপ্রাশন ০৭', code: 'AP-DG07', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD08', name: 'ডিজিট্যাল অন্নপ্রাশন ০৮', code: 'AP-DG08', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD09', name: 'ডিজিট্যাল অন্নপ্রাশন ০৯', code: 'AP-DG09', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD10', name: 'ডিজিট্যাল অন্নপ্রাশন ১০', code: 'AP-DG10', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD11', name: 'ডিজিট্যাল অন্নপ্রাশন ১১', code: 'AP-DG11', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD12', name: 'ডিজিট্যাল অন্নপ্রাশন ১২', code: 'AP-DG12', price: '₹২২ / পিস', img1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD13', name: 'ডিজিট্যাল অন্নপ্রাশন ১৩', code: 'AP-DG13', price: '₹২২ / পিস', img1: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD14', name: 'ডিজিট্যাল অন্নপ্রাশন ১৪', code: 'AP-DG14', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80' },
+                { id: 'AD15', name: 'ডিজিট্যাল অন্নপ্রাশন ১৫', code: 'AP-DG15', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80' }
             ]
         };
 
@@ -3220,7 +3298,11 @@
             closeModal('annaprashanStep1');
 
             currentAnnaList = annaprashanCatalogs[selectedAnnaType];
+            currentAnnaList.forEach(item => { item.currentImg = item.img1; });
+
             selectedAnnaDesign = `${currentAnnaList[0].name} (${currentAnnaList[0].code})`;
+            selectedAnnaPrice = currentAnnaList[0].price;
+            selectedAnnaImg = currentAnnaList[0].img1;
 
             document.getElementById('annaCatalogTitle').innerText = `অন্নপ্রাশন ${selectedAnnaType} ক্যাটালগ`;
             document.getElementById('annaCatalogSubtitle').innerText = `পছন্দের ডিজাইন নির্বাচন করুন | অর্ডার পরিমাণ: ${qty} পিস`;
@@ -3228,59 +3310,73 @@
             triggerAdFlow('anna');
         }
 
+        function switchAnnaThumb(e, index, imgNum, thumbEl) {
+            e.stopPropagation();
+            const item = currentAnnaList[index];
+            const newSrc = item['img' + imgNum];
+            item.currentImg = newSrc;
+            changeDisplayImage(`anna-main-img-${index}`, newSrc, thumbEl);
+
+            if (selectedAnnaDesign === `${item.name} (${item.code})`) {
+                selectedAnnaImg = newSrc;
+            }
+        }
+
+        function selectAnnaCardByIndex(index) {
+            const item = currentAnnaList[index];
+            selectedAnnaDesign = `${item.name} (${item.code})`;
+            selectedAnnaPrice = item.price;
+            selectedAnnaImg = item.currentImg || item.img1;
+            renderAnnaCatalogGrid();
+        }
+
         function renderAnnaCatalogGrid() {
             const container = document.getElementById('annaCatalogContainer');
             container.innerHTML = '';
 
             currentAnnaList.forEach((item, index) => {
-                const isSelected = (selectedAnnaDesign === `${item.name} (${item.code})`);
+                const fullDesignTitle = `${item.name} (${item.code})`;
+                const isSelected = (selectedAnnaDesign === fullDesignTitle);
+                const activeSrc = item.currentImg || item.img1;
+
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectAnnaCardByIndex(index);
                 
                 const mainImgId = `anna-main-img-${index}`;
-                const thumb3 = item.img3 || item.img1;
                 const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
                 const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div class="ecom-img-box" onclick="selectAnnaCardItem('${item.name} (${item.code})')">
+                    <div class="ecom-img-box">
                         <span class="ecom-badge ${badgeClass}">${badgeText}</span>
-                        <img src="${item.img1}" id="${mainImgId}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${fullDesignTitle} | মূল্য: ${item.price}')">
                     </div>
-                    <div class="ecom-body" onclick="selectAnnaCardItem('${item.name} (${item.code})')">
+                    <div class="ecom-body">
                         <div>
                             <div class="thumb-row">
-                                <img src="${item.img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img1}', this)" title="ছবি ১">
-                                <img src="${item.img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img2}', this)" title="ছবি ২">
-                                <img src="${thumb3}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${thumb3}', this)" title="ছবি ৩">
+                                <img src="${item.img1}" class="thumb-box ${activeSrc === item.img1 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 1, this)" title="ছবি ১">
+                                <img src="${item.img2}" class="thumb-box ${activeSrc === item.img2 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 2, this)" title="ছবি ২">
+                                <img src="${item.img3}" class="thumb-box ${activeSrc === item.img3 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 3, this)" title="ছবি ৩">
                             </div>
                             <div class="ecom-title">${item.name}</div>
                             <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                            <span class="ecom-price-main">মূল্য: ${item.price}</span>
                         </div>
-                        <div style="margin-top: 8px;">
-                            <button type="button" class="ecom-green-btn" onclick="event.stopPropagation(); selectAnnaCardItem('${item.name} (${item.code})')">
-                                <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
-                            </button>
-                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                            </button>
-                        </div>
+                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
+                            <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
+                        </button>
                     </div>
                 `;
                 container.appendChild(cardDiv);
 
-                // প্রতি ৪টি কার্ডের পর ১টি AdSense বক্স
+                // প্রতি ৪টি কার্ডের পর ১টি গুগল অ্যাড বক্স
                 if ((index + 1) % 4 === 0) {
                     container.appendChild(createCatalogAdBox());
                 }
             });
 
-            document.getElementById('selectedAnnaDesignDisplay').value = selectedAnnaDesign;
-        }
-
-        function selectAnnaCardItem(designStr) {
-            selectedAnnaDesign = designStr;
-            renderAnnaCatalogGrid();
+            document.getElementById('selectedAnnaDesignDisplay').value = `${selectedAnnaDesign} | মূল্য: ${selectedAnnaPrice}`;
         }
 
         function submitAnnaToWhatsApp() {
@@ -3291,6 +3387,8 @@
                             `• কার্ডের ধরন: ${selectedAnnaType}%0A` +
                             `• অর্ডার পরিমাণ: ${currentAnnaQuantity} পিস%0A` +
                             `• পছন্দ করা ডিজাইন: ${selectedAnnaDesign}%0A` +
+                            `• নির্ধারিত মূল্য: ${selectedAnnaPrice}%0A` +
+                            `• ডিজাইনের ছবির লিঙ্ক: ${encodeURIComponent(selectedAnnaImg)}%0A` +
                             `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
                             `--------------------------------%0A` +
                             `আমি অন্নপ্রাশন কার্ডের অর্ডার কনফার্ম করতে চাই।`;
@@ -3558,67 +3656,104 @@
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
 
-        /* ---------------- ৭. স্টেশনারি (মোট ২০টি আইটেম) ---------------- */
-        const stationeryProducts = [
-            { id: 'st1', name: 'স্কুল খাতা', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st2', name: 'দিস্তা খাতা', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st3', name: 'পেন / বলপেন সেট', img: 'https://images.unsplash.com/photo-1585336261026-77884ffb17c9?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st4', name: 'রেজিস্টার খাতা', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st5', name: 'মিটিং রেজুলেশন বুক', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st6', name: 'ক্যাশবুক', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st7', name: 'নোটিস বুক', img: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st8', name: 'সার্ভিস বুক', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st9', name: 'লেজার খাতা', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st10', name: 'স্টুডেন্ট ডায়েরি', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st11', name: 'অফিস ফাইল কভার', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st12', name: 'অ্যাটেনডেন্স রেজিস্টার', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st13', name: 'ড্রয়িং বুক', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st14', name: 'গ্রাফ খাতা', img: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st15', name: 'স্পাইরাল নোটবুক', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st16', name: 'প্র্যাকটিক্যাল খাতা', img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st17', name: 'স্টক রেজিস্টার', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st18', name: 'ভাউচার ফাইল', img: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st19', name: 'এনভেলাপ / খাম সেট', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st20', name: 'ডকুমেন্ট ফোল্ডার', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' }
+/* ---------------- ৭. স্টেশনারি (ফ্রন্ট স্টাইল + ২টি ছবি + দাম + ৪ কার্ড পর ১ অ্যাড + ছবির লিঙ্ক) ---------------- */
+const stationeryProducts = [
+            { id: 'st1', name: 'স্কুল খাতা', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st2', name: 'দিস্তা খাতা', price: '₹৪৫ / পিস', img1: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st3', name: 'পেন / বলপেন সেট', price: '₹৫০ / প্যাক', img1: 'https://images.unsplash.com/photo-1585336261026-77884ffb17c9?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st4', name: 'রেজিস্টার খাতা', price: '₹৮০ / পিস', img1: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st5', name: 'মিটিং রেজুলেশন বুক', price: '₹১২০ / পিস', img1: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st6', name: 'ক্যাশবুক', price: '₹১১০ / পিস', img1: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st7', name: 'নোটিস বুক', price: '₹৯০ / পিস', img1: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st8', name: 'সার্ভিস বুক', price: '₹১০০ / পিস', img1: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st9', name: 'লেজার খাতা', price: '₹১৩০ / পিস', img1: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st10', name: 'স্টুডেন্ট ডায়েরি', price: '₹৬০ / পিস', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st11', name: 'অফিস ফাইল কভার', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st12', name: 'অ্যাটেনডেন্স রেজিস্টার', price: '₹৯৫ / পিস', img1: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st13', name: 'ড্রয়িং বুক', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st14', name: 'গ্রাফ খাতা', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st15', name: 'স্পাইরাল নোটবুক', price: '₹৭০ / পিস', img1: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st16', name: 'প্র্যাকটিক্যাল খাতা', price: '₹৫৫ / পিস', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st17', name: 'স্টক রেজিস্টার', price: '₹১১০ / পিস', img1: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st18', name: 'ভাউচার ফাইল', price: '₹৪০ / পিস', img1: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st19', name: 'এনভেলাপ / খাম সেট', price: '₹৬০ / প্যাক', img1: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
+            { id: 'st20', name: 'ডকুমেন্ট ফোল্ডার', price: '₹৬৫ / পিস', img1: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' }
         ];
 
         let selectedStatItem = stationeryProducts[0].name;
+        let selectedStatPrice = stationeryProducts[0].price;
+        let selectedStatImg = stationeryProducts[0].img1;
 
         function openStationeryFlow() {
+            stationeryProducts.forEach(prod => { if (!prod.currentImg) prod.currentImg = prod.img1; });
             document.getElementById('stationeryModal').style.display = 'flex';
             showSkeletonInGrid('stationeryProductGrid', 6, renderStationeryGrid);
+        }
+
+        function switchStatThumb(e, index, imgNum, thumbEl) {
+            e.stopPropagation();
+            const prod = stationeryProducts[index];
+            const newSrc = prod['img' + imgNum];
+            prod.currentImg = newSrc;
+            changeDisplayImage(`stat-main-img-${index}`, newSrc, thumbEl);
+
+            if (selectedStatItem === prod.name) {
+                selectedStatImg = newSrc;
+            }
+        }
+
+        function selectStatProductByIndex(index) {
+            const prod = stationeryProducts[index];
+            selectedStatItem = prod.name;
+            selectedStatPrice = prod.price;
+            selectedStatImg = prod.currentImg || prod.img1;
+            renderStationeryGrid();
         }
 
         function renderStationeryGrid() {
             const grid = document.getElementById('stationeryProductGrid');
             grid.innerHTML = '';
             
-            stationeryProducts.forEach((prod) => {
+            stationeryProducts.forEach((prod, index) => {
                 const isChecked = (prod.name === selectedStatItem);
+                const activeSrc = prod.currentImg || prod.img1;
+
                 const cardDiv = document.createElement('div');
-                cardDiv.className = `catalog-item ${isChecked ? 'selected' : ''}`;
+                cardDiv.className = `ecom-card ${isChecked ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectStatProductByIndex(index);
+
+                const mainImgId = `stat-main-img-${index}`;
+                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
+                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
                 
                 cardDiv.innerHTML = `
-                    <div onclick="selectStatProduct('${prod.name}')">
-                        <img class="catalog-main-img" src="${prod.img}" alt="${prod.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${prod.name}')">
-                        <div class="item-title">${prod.name}</div>
-                        <label onclick="event.stopPropagation(); selectStatProduct('${prod.name}')">
-                            <input type="radio" name="statProductRadio" value="${prod.name}" ${isChecked ? 'checked' : ''}>
-                            এটি নেব
-                        </label>
+                    <div class="ecom-img-box">
+                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${prod.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${prod.name} | মূল্য: ${prod.price}')">
                     </div>
-                    <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${prod.name}', 'স্টেশনারি আইটেম')">
-                        <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                    </button>
+                    <div class="ecom-body">
+                        <div>
+                            <div class="thumb-row">
+                                <img src="${prod.img1}" class="thumb-box ${activeSrc === prod.img1 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchStatThumb(event, ${index}, 1, this)" title="ছবি ১">
+                                <img src="${prod.img2}" class="thumb-box ${activeSrc === prod.img2 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchStatThumb(event, ${index}, 2, this)" title="ছবি ২">
+                            </div>
+                            <div class="ecom-title">${prod.name}</div>
+                            <div class="ecom-meta">কাস্টম ও স্কুল-অফিস স্টেশনারি</div>
+                            <span class="ecom-price-main">মূল্য: ${prod.price}</span>
+                        </div>
+                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
+                            <i class="fa-solid ${isChecked ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isChecked ? 'নির্বাচিত হয়েছে' : 'এটি নির্বাচন করুন'}
+                        </button>
+                    </div>
                 `;
                 grid.appendChild(cardDiv);
-            });
-            document.getElementById('selectedStatItemDisplay').value = selectedStatItem;
-        }
 
-        function selectStatProduct(name) {
-            selectedStatItem = name;
-            renderStationeryGrid();
+                // প্রতি ৪টি কার্ডের পর ১টি গুগল অ্যাড বক্স
+                if ((index + 1) % 4 === 0) {
+                    grid.appendChild(createCatalogAdBox());
+                }
+            });
+            document.getElementById('selectedStatItemDisplay').value = `${selectedStatItem} | মূল্য: ${selectedStatPrice}`;
         }
 
         function submitStationeryToWhatsApp() {
@@ -3629,6 +3764,8 @@
                             `--------------------------------%0A` +
                             `• সার্ভিস: স্টেশনারি%0A` +
                             `• নির্বাচিত প্রোডাক্ট: ${selectedStatItem}%0A` +
+                            `• নির্ধারিত মূল্য: ${selectedStatPrice}%0A` +
+                            `• প্রোডাক্টের ছবির লিঙ্ক: ${encodeURIComponent(selectedStatImg)}%0A` +
                             `• পরিমাণ: ${qty} পিস%0A` +
                             `• বিবরণ/সাইজ: ${note}%0A` +
                             `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
