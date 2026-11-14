@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>টিউশন মাস্টার তালিকা | Sub Prints</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #f4f6f9;
+      color: #1e293b;
+      padding-bottom: 40px;
+    }
+
+    /* ================= স্ক্যালিটান লোডার (Shimmer Animation) ================= */
+    .skeleton {
+      background: #e2e8f0;
+      background-image: linear-gradient(
+        90deg,
+        #e2e8f0 0px,
+        #f8fafc 40px,
+        #e2e8f0 80px
+      );
+      background-size: 200% 100%;
+      animation: skeletonShimmer 1.3s infinite linear;
+    }
+    @keyframes skeletonShimmer {
+      0% { background-position: -150% 0; }
+      100% { background-position: 150% 0; }
+    }
+    .skeleton-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 15px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+      border-left: 4px solid #cbd5e1;
+    }
+    .skeleton-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .skeleton-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .skeleton-lines {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .skeleton-line {
+      height: 12px;
+      border-radius: 6px;
+    }
+    .skeleton-line.short { width: 40%; height: 10px; }
+    .skeleton-line.medium { width: 65%; }
+    .skeleton-line.title { width: 78%; height: 15px; }
+    .skeleton-box {
+      height: 52px;
+      border-radius: 8px;
+      margin-bottom: 11px;
+    }
+    .skeleton-btn {
+      height: 38px;
+      border-radius: 9px;
+      width: 100%;
+    }
+    .skeleton-status-bar {
+      height: 16px;
+      width: 65%;
+      margin: 0 auto;
+      border-radius: 6px;
+    }
+
+    /* ================= নেভিগেশন ও পেজ ডিজাইন ================= */
+    .top-navbar {
+      background: #ffffff;
+      padding: 14px 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #ff6b00;
+      line-height: 1.1;
+    }
+    .brand-sub {
+      font-size: 10px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 0.5px;
+    }
+    .back-home-btn {
+      background: #1e293b;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 13px;
+      border-radius: 8px;
+    }
+    .container {
+      max-width: 560px;
+      margin: 16px auto;
+      padding: 0 14px;
+    }
+    .page-banner {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px 15px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid #ff6b00;
+      margin-bottom: 14px;
+    }
+    .badge {
+      background: #fff0e6;
+      color: #ff6b00;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .page-banner h1 {
+      font-size: 20px;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .page-banner p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .area-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+      margin: 14px 0 6px 0;
+    }
+    .area-btn {
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 7px 13px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .area-btn.active {
+      background: #ff6b00;
+      color: #ffffff;
+      border-color: #ff6b00;
+      box-shadow: 0 3px 8px rgba(255, 107, 0, 0.25);
+    }
+    .slot-status {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 9px 12px;
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 14px;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slot-status span {
+      color: #ff6b00;
+      font-weight: 700;
+      margin: 0 3px;
+    }
+    .area-group-title {
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 10px;
+      margin: 18px 0 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .area-group-title span {
+      background: #ff6b00;
+      color: #ffffff;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+    .teacher-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    /* পূর্ণ হওয়া টিচার কার্ড */
+    .teacher-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 15px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid #ff6b00;
+      animation: fadeInCard 0.28s ease;
+    }
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    /* ছবির কন্টেইনার (ছবি লোড হওয়ার আগে শিমার দেখাবে) */
+    .avatar-wrap {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2.5px solid #ff6b00;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .teacher-avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .teacher-avatar.loaded {
+      opacity: 1;
+    }
+    .teacher-header-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .slot-and-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    .slot-badge-filled {
+      background: #fff0e6;
+      color: #ff6b00;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+    .area-tag {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .teacher-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.25;
+    }
+    .teacher-degree {
+      font-size: 12px;
+      font-weight: 600;
+      color: #ff6b00;
+      margin-top: 2px;
+    }
+    .teacher-details {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.6;
+      background: #f8fafc;
+      padding: 9px 11px;
+      border-radius: 8px;
+      margin-bottom: 11px;
+    }
+    .wa-direct-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      background: #25D366;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 9px;
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+    }
+
+    /* খালি স্লট কার্ড */
+    .empty-slot-card {
+      background: #ffffff;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      animation: fadeInCard 0.28s ease;
+    }
+    .empty-slot-info {
+      text-align: left;
+    }
+    .empty-slot-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+    }
+    .empty-slot-sub {
+      font-size: 11.5px;
+      color: #16a34a;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .book-this-slot-btn {
+      background: #fff0e6;
+      color: #ff6b00;
+      border: 1px solid #ff6b00;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    .book-this-slot-btn:hover {
+      background: #ff6b00;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- টপ নেভিগেশন বার -->
+  <div class="top-navbar">
+    <div>
+      <div class="brand-title">Sub Prints</div>
+      <div class="brand-sub">POWERED BY DEB DIGITAL SHOP</div>
+    </div>
+    <a href="index.html" class="back-home-btn">← হোম পেজ</a>
+  </div>
+
+  <div class="container">
+    <!-- পেজ শিরোনাম -->
+    <div class="page-banner">
+      <span class="badge">🎓 প্রতি এলাকায় ১০টি করে নির্ধারিত স্লট</span>
+      <h1>টিউশন মাস্টার ডিরেক্টরি</h1>
+      <p>নিজের এলাকা বেছে নিন এবং পছন্দের বিষয়ের মাস্টারমশাইয়ের সাথে সরাসরি WhatsApp-এ যোগাযোগ করুন।</p>
+
+      <!-- এলাকা ফিল্টার বাটন -->
+      <div class="area-filters">
+        <button class="area-btn active" onclick="filterArea('সব', this)">সব এলাকা (৪০)</button>
+        <button class="area-btn" onclick="filterArea('রামপুরহাট', this)">রামপুরহাট (১০)</button>
+        <button class="area-btn" onclick="filterArea('মল্লারপুর', this)">মল্লারপুর (১০)</button>
+        <button class="area-btn" onclick="filterArea('নলহাটি', this)">নলহাটি (১০)</button>
+        <button class="area-btn" onclick="filterArea('মুররাই', this)">মুররাই (১০)</button>
+      </div>
+    </div>
+
+    <!-- স্লট স্ট্যাটাস -->
+    <div id="slotStatus" class="slot-status">
+      <div class="skeleton skeleton-status-bar"></div>
+    </div>
+
+    <!-- টিচারদের ১০টি করে স্লট তালিকা (প্রথমে স্ক্যালিটান দেখাবে) -->
+    <div id="teacherList" class="teacher-list">
+      <div class="skeleton-card">
+        <div class="skeleton-top">
+          <div class="skeleton skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <div class="skeleton skeleton-line short"></div>
+            <div class="skeleton skeleton-line title"></div>
+            <div class="skeleton skeleton-line medium"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton-box"></div>
+        <div class="skeleton skeleton-btn"></div>
+      </div>
+      <div class="skeleton-card">
+        <div class="skeleton-top">
+          <div class="skeleton skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <div class="skeleton skeleton-line short"></div>
+            <div class="skeleton skeleton-line title"></div>
+            <div class="skeleton skeleton-line medium"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton-box"></div>
+        <div class="skeleton skeleton-btn"></div>
+      </div>
+      <div class="skeleton-card">
+        <div class="skeleton-top">
+          <div class="skeleton skeleton-avatar"></div>
+          <div class="skeleton-lines">
+            <div class="skeleton skeleton-line short"></div>
+            <div class="skeleton skeleton-line title"></div>
+            <div class="skeleton skeleton-line medium"></div>
+          </div>
+        </div>
+        <div class="skeleton skeleton-box"></div>
+        <div class="skeleton skeleton-btn"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_WHATSAPP = "919732322525";
+
+    // ছবি না থাকলে বা লিংক প্রাইভেট থাকলে এই ডিফল্ট প্রোফাইল আইকন দেখাবে
+    const DEFAULT_AVATAR = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23fff0e6'/><circle cx='50' cy='38' r='18' fill='%23ff6b00'/><path d='M20 88 C20 66, 80 66, 80 88' fill='%23ff6b00'/></svg>";
+
+    // গুগল ড্রাইভের সাধারণ লিংককে অটোমেটিক ডাইরেক্ট ইমেজ লিংকে রূপান্তর করার ফাংশন
+    function getDirectImageUrl(url) {
+      if (!url || url.trim() === "") return DEFAULT_AVATAR;
+      const driveMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+      if (driveMatch && driveMatch[1]) {
+        return `https://lh3.googleusercontent.com/d/${driveMatch[1]}`;
+      }
+      return url.trim();
+    }
+
+    // =========================================================================
+    // প্রতিটি স্লটে photo: "" এর ভেতরে সরাসরি Google Drive-এর Copy Link পেস্ট করবেন
+    // =========================================================================
+    const areaTeachers = {
+      "রামপুরহাট": [
+        { slot: 1, name: "অরিন্দম চক্রবর্তী", degree: "M.Sc (Physics), B.Ed", classes: "Class IX – XII", subjects: "ভৌতবিজ্ঞান ও পদার্থবিদ্যা", whatsapp: "9732322525", photo: "" },
+        { slot: 2, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 3, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 4, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 5, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 6, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 7, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 8, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 9, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 10, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" }
+      ],
+
+      "মল্লারপুর": [
+        { slot: 1, name: "সৌমেন মণ্ডল", degree: "M.A (English), D.El.Ed", classes: "Class V – X", subjects: "ইংরেজি (Grammar & Literature)", whatsapp: "9732322525", photo: "" },
+        { slot: 2, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 3, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 4, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 5, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 6, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 7, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 8, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 9, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 10, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" }
+      ],
+
+      "নলহাটি": [
+        { slot: 1, name: "তাপস দাস", degree: "B.Sc (Mathematics Honours)", classes: "Class VII – X", subjects: "অঙ্ক (Mathematics) ও জীবনবিজ্ঞান", whatsapp: "9732322525", photo: "" },
+        { slot: 2, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 3, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 4, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 5, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 6, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 7, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 8, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 9, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 10, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" }
+      ],
+
+      "মুররাই": [
+        { slot: 1, name: "সুদীপ ভট্টাচার্য", degree: "M.Com, B.Ed", classes: "Class XI – XII (Commerce)", subjects: "Accountancy, Cost & Tax", whatsapp: "9732322525", photo: "" },
+        { slot: 2, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 3, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 4, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 5, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 6, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 7, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 8, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 9, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" },
+        { slot: 10, name: "", degree: "", classes: "", subjects: "", whatsapp: "", photo: "" }
+      ]
+    };
+
+    function formatWhatsApp(num) {
+      const clean = String(num).replace(/\D/g, "");
+      return clean.length === 10 ? "91" + clean : clean;
+    }
+
+    // স্ক্যালিটান লোডার দেখানোর ফাংশন
+    function showSkeletonLoader(cardCount = 3) {
+      const listContainer = document.getElementById("teacherList");
+      const statusBox = document.getElementById("slotStatus");
+      statusBox.innerHTML = `<div class="skeleton skeleton-status-bar"></div>`;
+
+      let skeletonHTML = "";
+      for (let i = 0; i < cardCount; i++) {
+        skeletonHTML += `
+          <div class="skeleton-card">
+            <div class="skeleton-top">
+              <div class="skeleton skeleton-avatar"></div>
+              <div class="skeleton-lines">
+                <div class="skeleton skeleton-line short"></div>
+                <div class="skeleton skeleton-line title"></div>
+                <div class="skeleton skeleton-line medium"></div>
+              </div>
+            </div>
+            <div class="skeleton skeleton-box"></div>
+            <div class="skeleton skeleton-btn"></div>
+          </div>
+        `;
+      }
+      listContainer.innerHTML = skeletonHTML;
+    }
+
+    function createSlotCard(area, item) {
+      if (item.name && item.name.trim() !== "") {
+        const msg = encodeURIComponent(`নমস্কার ${item.name} স্যার, Sub Prints ওয়েবসাইটে আপনার বিজ্ঞাপন দেখে টিউশনের ব্যাপারে যোগাযোগ করছি।`);
+        const waLink = `https://wa.me/${formatWhatsApp(item.whatsapp)}?text=${msg}`;
+        const imgSrc = getDirectImageUrl(item.photo);
+
+        return `
+          <div class="teacher-card">
+            <div class="card-top">
+              <div class="avatar-wrap skeleton">
+                <img 
+                  src="${imgSrc}" 
+                  alt="${item.name}" 
+                  class="teacher-avatar" 
+                  onload="this.classList.add('loaded'); this.parentElement.classList.remove('skeleton');"
+                  onerror="this.src='${DEFAULT_AVATAR}'; this.classList.add('loaded'); this.parentElement.classList.remove('skeleton');" 
+                />
+              </div>
+              <div class="teacher-header-info">
+                <div class="slot-and-area">
+                  <span class="slot-badge-filled">স্লট #${item.slot}</span>
+                  <span class="area-tag">📍 ${area}</span>
+                </div>
+                <div class="teacher-name">${item.name}</div>
+                <div class="teacher-degree">${item.degree}</div>
+              </div>
+            </div>
+            <div class="teacher-details">
+              📚 <strong>ক্লাস:</strong> ${item.classes}<br>
+              📝 <strong>বিষয়:</strong> ${item.subjects}
+            </div>
+            <a href="${waLink}" target="_blank" class="wa-direct-btn">
+              💬 স্যারের সাথে WhatsApp-এ কথা বলুন
+            </a>
+          </div>
+        `;
+      } else {
+        const bookMsg = encodeURIComponent(`নমস্কার Sub Prints, আমি ${area} এলাকার ${item.slot} নম্বর টিউশন স্লটটি বুক করতে চাই। মাসিক চার্জ কত?`);
+        return `
+          <div class="empty-slot-card">
+            <div class="empty-slot-info">
+              <div class="empty-slot-num">স্লট #${item.slot} — 📍 ${area}</div>
+              <div class="empty-slot-sub">✅ এই স্লটটি খালি আছে</div>
+            </div>
+            <a href="https://wa.me/${ADMIN_WHATSAPP}?text=${bookMsg}" target="_blank" class="book-this-slot-btn">
+              📢 বুক করুন
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    function renderTeachers(selectedArea) {
+      const listContainer = document.getElementById("teacherList");
+      const statusBox = document.getElementById("slotStatus");
+      listContainer.innerHTML = "";
+
+      if (selectedArea === "সব") {
+        let totalFilled = 0;
+        for (const area in areaTeachers) {
+          const slots = areaTeachers[area];
+          const filledInArea = slots.filter(s => s.name && s.name.trim() !== "").length;
+          totalFilled += filledInArea;
+
+          listContainer.innerHTML += `
+            <div class="area-group-title">
+              📍 ${area} এলাকা
+              <span>${filledInArea}/১০ পূর্ণ</span>
+            </div>
+          `;
+          slots.forEach(item => {
+            listContainer.innerHTML += createSlotCard(area, item);
+          });
+        }
+        statusBox.innerHTML = `মোট ৪০টি স্লটের মধ্যে <span>${totalFilled}টি পূর্ণ</span> এবং <span>${40 - totalFilled}টি খালি</span> আছে`;
+      } else {
+        const slots = areaTeachers[selectedArea] || [];
+        const filled = slots.filter(s => s.name && s.name.trim() !== "").length;
+        const empty = 10 - filled;
+
+        statusBox.innerHTML = `📍 ${selectedArea}: <span>${filled}/১০টি স্লট পূর্ণ</span> (${empty}টি স্লট খালি আছে)`;
+        slots.forEach(item => {
+          listContainer.innerHTML += createSlotCard(selectedArea, item);
+        });
+      }
+    }
+
+    let filterTimer;
+    function filterArea(area, btn) {
+      document.querySelectorAll(".area-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      clearTimeout(filterTimer);
+      showSkeletonLoader(3);
+      filterTimer = setTimeout(() => {
+        renderTeachers(area);
+      }, 320);
+    }
+
+    // পেজ ওপেন হলে স্ক্যালিটান লোডার দেখিয়ে স্মুথভাবে কার্ড লোড করবে
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        renderTeachers("সব");
+      }, 400);
+    });
+  </script>
+
+</body>
+</html>

@@ -1695,7 +1695,25 @@
                 <h4>হ্যান্ডবিল ও পোস্টার</h4>
                 <p>বিজ্ঞাপনের জন্য প্রচারপত্র হ্যান্ডবিল এবং দেয়াল পোস্টার প্রিন্টিং।</p>
             </div>
+        </div> <!-- ১৬৯৮ নম্বর লাইন -->
+    
+        <!-- এখানে পেস্ট করুন (১৬৯৯ নম্বর লাইনে)[cite: 2] -->
+        <div style="background: #ffffff; border-radius: 16px; padding: 20px 16px; margin: 16px auto; max-width: 92%; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 5px solid #ff6b00; text-align: center; font-family: sans-serif;">
+          <span style="background: #fff0e6; color: #ff6b00; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 8px;">
+            🎓 ছাত্রছাত্রী ও শিক্ষকদের জন্য বিশেষ সুবিধা
+          </span>
+          <h3 style="color: #1e293b; font-size: 19px; margin: 4px 0 8px 0; font-weight: 700;">
+            এলাকাভিত্তিক টিউশন মাস্টার তালিকা
+          </h3>
+          <p style="color: #64748b; font-size: 13px; line-height: 1.5; margin: 0 0 14px 0;">
+            রামপুরহাট, মল্লারপুর, নলহাটি ও মুররাই এলাকার সেরা গৃহশিক্ষকদের সাথে সরাসরি WhatsApp-এ যোগাযোগ করুন বা আপনার টিউশন ব্যাচের বিজ্ঞাপন দিন।
+          </p>
+          <a href="tuition.html" style="display: block; background: #ff6b00; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 12px 18px; border-radius: 10px; box-shadow: 0 3px 10px rgba(255, 107, 0, 0.28);">
+            🔍 টিউশন মাস্টার তালিকা খুলুন →
+          </a>
         </div>
+        
+        <section class="terms-section">
 
         <!-- Terms and Conditions -->
         <section class="terms-section">
@@ -2418,7 +2436,7 @@
                     <option value="1/8 সাইজ (ছোট ক্যাশমেমো / রসিদ)">1/8 সাইজ (ছোট মাপ)</option>
                     <option value="1/6 সাইজ (স্ট্যান্ডার্ড মেমো)">1/6 সাইজ (স্ট্যান্ডার্ড মাপ)</option>
                     <option value="1/4 সাইজ (মিডিয়াম সাইজ)">1/4 সাইজ (মিডিয়াম মাপ)</option>
-                    <option value="A5 সাইজ">A5 সাইজ</option>
+                    <option value="1/5 সাইজ">1/5 সাইজ</option>
                     <option value="A4 সাইজ (জি.এস.টি / লেটারহেড প্যাড)">A4 সাইজ (ফুল সাইজ)</option>
                     <option value="কাস্টম সাইজ">কাস্টম সাইজ (নিচে লিখুন)</option>
                 </select>
@@ -4074,48 +4092,185 @@ const prashnaPublishersData = {
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
             closeModal('prashnaBichitraModal');
         }
-        /* ---------------- মোবাইল ব্যাক বাটন (Back Button) কন্ট্রোল ---------------- */
-        // সব পপ-আপ মোডালের লিস্ট
-        const allModals = [
-            'prashnaBichitraModal', 'predefinedBookModal', 'studentOrderModal',
-            'imageLightboxModal', 'adModal', 'weddingModalStep1', 'catalogModal',
-            'annaprashanStep1', 'annaCatalogModal', 'menuModalStep1', 'menuCatalogModal',
-            'visitingModal', 'flexModal', 'stampModal', 'stationeryModal',
-            'billBookModal', 'handbillModal'
-        ];
+      /* ---------------- সব ক্যাটালগে আলাদা অর্ডার পপ-আপ ও সঠিক ব্যাক বাটন কন্ট্রোল ---------------- */
+(function () {
+    const allModals = [
+        'quickDirectOrderModal', 'prashnaBichitraModal', 'predefinedBookModal',
+        'studentOrderModal', 'imageLightboxModal', 'adModal', 'weddingModalStep1',
+        'catalogModal', 'annaprashanStep1', 'annaCatalogModal', 'menuModalStep1',
+        'menuCatalogModal', 'visitingModal', 'flexModal', 'stampModal',
+        'stationeryModal', 'billBookModal', 'handbillModal'
+    ];
 
-        // কোনো পপ-আপ খুললে ব্রাউজার হিস্ট্রিতে একটি স্টেট যোগ হবে
+    const catalogConfigs = [
+        { modalId: 'catalogModal', gridId: 'catalogContainer', title: 'বিয়ের কার্ড অর্ডার কনফার্মেশন' },
+        { modalId: 'annaCatalogModal', gridId: 'annaCatalogContainer', title: 'অন্নপ্রাশন কার্ড অর্ডার কনফার্মেশন' },
+        { modalId: 'menuCatalogModal', gridId: 'menuCatalogContainer', title: 'মেনু কার্ড অর্ডার কনফার্মেশন' },
+        { modalId: 'stationeryModal', gridId: 'stationeryProductGrid', title: 'স্টেশনারি অর্ডার কনফার্মেশন' },
+        { modalId: 'billBookModal', gridId: 'billBookProductGrid', title: 'বিল বুক অর্ডার কনফার্মেশন' },
+        { modalId: 'prashnaBichitraModal', gridId: 'prashnaBichitraGrid', title: 'বই অর্ডার কনফার্মেশন' }
+    ];
+
+    let modalStack = [];
+    let ignorePopState = false;
+
+    function pushModalHistory(id) {
+        if (!modalStack.includes(id)) {
+            modalStack.push(id);
+            try {
+                history.pushState({ modalId: id }, '');
+            } catch (e) {}
+        }
+    }
+
+    function removeModalFromStack(id, triggerHistoryBack) {
+        const idx = modalStack.indexOf(id);
+        if (idx !== -1) {
+            modalStack.splice(idx, 1);
+            if (triggerHistoryBack) {
+                ignorePopState = true;
+                try { history.back(); } catch (e) {}
+                setTimeout(() => { ignorePopState = false; }, 300);
+            }
+        }
+    }
+
+    function setupUnifiedSystem() {
+        let popupOverlay = document.getElementById('quickDirectOrderModal');
+        if (!popupOverlay) {
+            popupOverlay = document.createElement('div');
+            popupOverlay.id = 'quickDirectOrderModal';
+            popupOverlay.className = 'modal-overlay';
+            popupOverlay.style.zIndex = '1500';
+            popupOverlay.innerHTML = `
+                <div class="modal-box" style="max-width: 480px; text-align: left;">
+                    <button type="button" class="close-btn" id="closeQuickOrderBtn">&times;</button>
+                    <h3 id="quickOrderPopupTitle" style="color: var(--primary-orange); margin-bottom: 1rem;">
+                        <i class="fa-solid fa-bag-shopping"></i> অর্ডার কনফার্মেশন
+                    </h3>
+                    <div id="quickOrderPopupBody"></div>
+                </div>
+            `;
+            document.body.appendChild(popupOverlay);
+        }
+
+        const popupBody = document.getElementById('quickOrderPopupBody');
+        const popupTitle = document.getElementById('quickOrderPopupTitle');
+        const hiddenStorage = document.createElement('div');
+        hiddenStorage.style.display = 'none';
+        document.body.appendChild(hiddenStorage);
+
+        let activeFormBlock = null;
+
+        function closeQuickOrderPopup(fromBackButton) {
+            if (activeFormBlock) {
+                hiddenStorage.appendChild(activeFormBlock);
+                activeFormBlock = null;
+            }
+            popupOverlay.style.display = 'none';
+            removeModalFromStack('quickDirectOrderModal', !fromBackButton);
+        }
+
+        document.getElementById('closeQuickOrderBtn').onclick = () => closeQuickOrderPopup(false);
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) closeQuickOrderPopup(false);
+        });
+
+        catalogConfigs.forEach(({ modalId, gridId, title }) => {
+            const modalEl = document.getElementById(modalId);
+            const gridEl = document.getElementById(gridId);
+            if (!modalEl || !gridEl) return;
+
+            const hrEl = gridEl.nextElementSibling;
+            if (!hrEl || hrEl.tagName !== 'HR') return;
+
+            const formBlock = document.createElement('div');
+            let nextNode = hrEl.nextElementSibling;
+            while (nextNode) {
+                const current = nextNode;
+                nextNode = nextNode.nextElementSibling;
+                formBlock.appendChild(current);
+            }
+            hrEl.remove();
+            hiddenStorage.appendChild(formBlock);
+
+            const waBtn = formBlock.querySelector('.btn-primary');
+            if (waBtn) {
+                waBtn.addEventListener('click', () => {
+                    setTimeout(() => closeQuickOrderPopup(false), 300);
+                });
+            }
+
+            gridEl.addEventListener('click', (e) => {
+                if (
+                    e.target.tagName === 'IMG' ||
+                    e.target.closest('.sample-share-btn') ||
+                    e.target.closest('.catalog-ad-card')
+                ) {
+                    return;
+                }
+
+                const clickedCard = e.target.closest('.ecom-card, .catalog-item');
+                if (!clickedCard) return;
+
+                setTimeout(() => {
+                    if (activeFormBlock) {
+                        hiddenStorage.appendChild(activeFormBlock);
+                    }
+                    activeFormBlock = formBlock;
+                    popupBody.appendChild(formBlock);
+                    popupTitle.innerHTML = `<i class="fa-solid fa-bag-shopping"></i> ${title}`;
+                    popupOverlay.style.display = 'flex';
+                    pushModalHistory('quickDirectOrderModal');
+                }, 30);
+            }, true);
+        });
+
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'style') {
                     const el = mutation.target;
-                    if (el.style.display === 'flex' && !el.dataset.historyPushed) {
-                        history.pushState({ modalOpen: el.id }, '');
-                        el.dataset.historyPushed = 'true';
+                    if (el.id === 'quickDirectOrderModal') return;
+                    if (el.style.display === 'flex') {
+                        pushModalHistory(el.id);
                     } else if (el.style.display === 'none') {
-                        delete el.dataset.historyPushed;
+                        removeModalFromStack(el.id, false);
                     }
                 }
             });
         });
 
         allModals.forEach(id => {
-            const modalEl = document.getElementById(id);
-            if (modalEl) {
-                observer.observe(modalEl, { attributes: true });
+            const el = document.getElementById(id);
+            if (el && id !== 'quickDirectOrderModal') {
+                observer.observe(el, { attributes: true });
             }
         });
 
-        // ইউজার ব্যাক বাটন চাপলে শুধু খোলা পপ-আপটি বন্ধ হবে, পুরো সাইট কাটবে না
         window.addEventListener('popstate', () => {
-            allModals.forEach(id => {
-                const modalEl = document.getElementById(id);
-                if (modalEl && modalEl.style.display === 'flex') {
-                    modalEl.style.display = 'none';
-                    delete modalEl.dataset.historyPushed;
+            if (ignorePopState) {
+                ignorePopState = false;
+                return;
+            }
+            if (modalStack.length > 0) {
+                const topModalId = modalStack[modalStack.length - 1];
+                if (topModalId === 'quickDirectOrderModal') {
+                    closeQuickOrderPopup(true);
+                } else {
+                    modalStack.pop();
+                    const topEl = document.getElementById(topModalId);
+                    if (topEl) topEl.style.display = 'none';
                 }
-            });
+            }
         });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupUnifiedSystem);
+    } else {
+        setupUnifiedSystem();
+    }
+})();
     </script>
 </body>
 </html>
