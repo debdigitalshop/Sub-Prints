@@ -1974,15 +1974,17 @@
         </div>
     </div>
 
-    <!-- ফুলস্ক্রিন ইমেজ ভিউয়ার মোডাল (Lightbox) -->
-    <div class="modal-overlay" id="imageLightboxModal" onclick="closeLightbox()">
-        <div class="lightbox-content" onclick="event.stopPropagation()">
-            <button class="lightbox-close-btn" onclick="closeLightbox()">&times;</button>
-            <img id="lightboxImage" src="" alt="Full Preview" class="skeleton-loader" onload="this.classList.add('img-loaded')">
-            <div class="lightbox-caption" id="lightboxCaption"></div>
-        </div>
+   <!-- ফুলস্ক্রিন ইমেজ ভিউয়ার মোডাল (Lightbox - সোয়াইপ গ্যালারি সহ) -->
+   <div class="modal-overlay" id="imageLightboxModal" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()" ontouchstart="lightboxTouchStart(event)" ontouchend="lightboxTouchEnd(event)">
+        <button class="lightbox-close-btn" onclick="closeLightbox()">&times;</button>
+        <button type="button" id="lbPrevBtn" onclick="changeLightboxSlide(-1)" style="display:none; position:absolute; left:8px; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.55); color:#FFF; border:none; width:38px; height:38px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:10;">&#10094;</button>
+        <img id="lightboxImage" src="" alt="Full Preview" class="skeleton-loader" onload="this.classList.add('img-loaded')">
+        <button type="button" id="lbNextBtn" onclick="changeLightboxSlide(1)" style="display:none; position:absolute; right:8px; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.55); color:#FFF; border:none; width:38px; height:38px; border-radius:50%; font-size:1.2rem; cursor:pointer; z-index:10;">&#10095;</button>
+        <div id="lightboxCounter" style="display:none; color:#FACC15; font-size:0.88rem; font-weight:700; margin-top:8px;"></div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
-
+</div>
     <!-- বিজ্ঞাপন মোডাল -->
     <div class="modal-overlay" id="adModal">
         <div class="modal-box ad-modal-box">
@@ -2048,41 +2050,55 @@
         </div>
     </div>
 
-    <!-- Catalog & Final Order Modal (Wedding) -->
-    <div class="modal-overlay" id="catalogModal">
-        <div class="modal-box">
-            <button class="close-btn" onclick="closeModal('catalogModal')">&times;</button>
-            <h3 id="catalogTitle" style="color: var(--primary-orange); margin-bottom: 0.3rem;"></h3>
-            <p id="catalogSubtitle" style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;"></p>
+<!-- Catalog & Final Order Modal (Wedding) -->
+<div class="modal-overlay" id="catalogModal">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closeModal('catalogModal')">&times;</button>
+        <h3 id="catalogTitle" style="color: var(--primary-orange); margin-bottom: 0.3rem;"></h3>
+        <p id="catalogSubtitle" style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;"></p>
 
-            <div class="catalog-grid" id="catalogContainer"></div>
+        <div class="catalog-grid" id="catalogContainer"></div>
 
-            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
 
-            <div class="form-group">
-                <label>নির্বাচিত ডিজাইন:</label>
-                <input type="text" id="selectedWeddingDesignDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
-            </div>
-
-            <div class="form-group">
-                <label>ডেলিভারির ধরন বেছে নিন:</label>
-                <div class="radio-options">
-                    <label class="radio-card">
-                        <input type="radio" name="weddingDeliveryMethod" value="হোম ডেলিভারি" checked>
-                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি (ঠিকানায় পৌঁছানো হবে)</span>
-                    </label>
-                    <label class="radio-card">
-                        <input type="radio" name="weddingDeliveryMethod" value="অফিস পিক-আপ">
-                        <span><i class="fa-solid fa-store"></i> আমাদের অফিস থেকে ডেলিভারি (<a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none;">Deb Digital Shop ম্যাপ দেখুন</a>)</span>
-                    </label>
-                </div>
-            </div>
-
-            <button class="btn-primary" onclick="submitWeddingToWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বিয়ের কার্ড অর্ডার পাঠান
-            </button>
+        <div class="form-group">
+            <label>নির্বাচিত ডিজাইন:</label>
+            <input type="text" id="selectedWeddingDesignDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
         </div>
+
+        <div class="form-group">
+            <label>কাজের ধরন বেছে নিন:</label>
+            <div class="radio-options">
+                <label class="radio-card">
+                    <input type="radio" name="weddingPrintOption" value="প্রিন্ট করতে চাই" checked>
+                    <span><i class="fa-solid fa-print"></i> প্রিন্ট করতে চাই (লেখা ছাপানো সহ)</span>
+                </label>
+                <label class="radio-card">
+                    <input type="radio" name="weddingPrintOption" value="শুধু কার্ড দরকার">
+                    <span><i class="fa-solid fa-envelope-open-text"></i> শুধু কার্ড দরকার (প্রিন্ট ছাড়া খালি কার্ড)</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>ডেলিভারির ধরন বেছে নিন:</label>
+            <div class="radio-options">
+                <label class="radio-card">
+                    <input type="radio" name="weddingDeliveryMethod" value="হোম ডেলিভারি" checked>
+                    <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি (ঠিকানায় পৌঁছানো হবে)</span>
+                </label>
+                <label class="radio-card">
+                    <input type="radio" name="weddingDeliveryMethod" value="অফিস পিক-আপ">
+                    <span><i class="fa-solid fa-store"></i> আমাদের অফিস থেকে ডেলিভারি (<a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none;">Deb Digital Shop ম্যাপ দেখুন</a>)</span>
+                </label>
+            </div>
+        </div>
+
+        <button class="btn-primary" onclick="submitWeddingToWhatsApp()">
+            <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বিয়ের কার্ড অর্ডার পাঠান
+        </button>
     </div>
+</div>
 
     <!-- অন্নপ্রাশন কার্ড মোডাল -->
     <div class="modal-overlay" id="annaprashanStep1">
@@ -2863,17 +2879,65 @@
             document.getElementById(id).style.display = 'none';
         }
 
-        /* ---------------- ফুলস্ক্রিন ইমেজ ভিউয়ার ফাংশন (Lightbox) ---------------- */
+/* ---------------- ফুলস্ক্রিন ইমেজ ভিউয়ার ফাংশন (Lightbox + Swipe) ---------------- */
+let lbGalleryImages = [];
+        let lbCurrentIndex = 0;
+        let lbTitleText = '';
+        let lbTouchStartX = 0;
+
         function openImageLightbox(e, src, title) {
-            if(e) e.stopPropagation();
-            const lightbox = document.getElementById('imageLightboxModal');
+            if (e) e.stopPropagation();
+            openGalleryLightbox([src], 0, title);
+        }
+
+        function openGalleryLightbox(imagesArray, startIndex, title) {
+            lbGalleryImages = imagesArray || [];
+            lbCurrentIndex = startIndex || 0;
+            lbTitleText = title || '';
+
+            updateLightboxView();
+            document.getElementById('imageLightboxModal').style.display = 'flex';
+        }
+
+        function updateLightboxView() {
             const img = document.getElementById('lightboxImage');
             const caption = document.getElementById('lightboxCaption');
+            const prevBtn = document.getElementById('lbPrevBtn');
+            const nextBtn = document.getElementById('lbNextBtn');
+            const counter = document.getElementById('lightboxCounter');
 
             img.classList.remove('img-loaded');
-            img.src = src;
-            caption.innerText = title || '';
-            lightbox.style.display = 'flex';
+            img.src = lbGalleryImages[lbCurrentIndex];
+            caption.innerText = lbTitleText;
+
+            if (lbGalleryImages.length > 1) {
+                prevBtn.style.display = 'block';
+                nextBtn.style.display = 'block';
+                counter.style.display = 'block';
+                counter.innerText = `ছবি ${toBanglaDigits(lbCurrentIndex + 1)} / ${toBanglaDigits(lbGalleryImages.length)} (পাশে সরান)`;
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                counter.style.display = 'none';
+            }
+        }
+
+        function changeLightboxSlide(step) {
+            if (lbGalleryImages.length <= 1) return;
+            lbCurrentIndex = (lbCurrentIndex + step + lbGalleryImages.length) % lbGalleryImages.length;
+            updateLightboxView();
+        }
+
+        function lightboxTouchStart(e) {
+            lbTouchStartX = e.touches[0].clientX;
+        }
+
+        function lightboxTouchEnd(e) {
+            const diffX = e.changedTouches[0].clientX - lbTouchStartX;
+            if (Math.abs(diffX) > 40) {
+                if (diffX < 0) changeLightboxSlide(1);
+                else changeLightboxSlide(-1);
+            }
         }
 
         function closeLightbox() {
@@ -3153,6 +3217,78 @@
             renderWeddingCatalogGrid();
         }
 
+        let weddingTouchStartX = 0;
+        let weddingTouchStartY = 0;
+        let weddingCardJustSwiped = false;
+
+        function handleWeddingTouchStart(e) {
+            weddingTouchStartX = e.touches[0].clientX;
+            weddingTouchStartY = e.touches[0].clientY;
+            weddingCardJustSwiped = false;
+        }
+
+        function handleWeddingTouchEnd(e, index) {
+            const diffX = e.changedTouches[0].clientX - weddingTouchStartX;
+            const diffY = e.changedTouches[0].clientY - weddingTouchStartY;
+
+            // ছবির ওপর হাত দিয়ে ডানে-বামে সরালে পরপর ৩টি ছবি বদলাবে
+            if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
+                e.stopPropagation();
+                weddingCardJustSwiped = true;
+
+                const item = currentCardList[index];
+                const imgs = [item.img1, item.img2, item.img3];
+                const currentSrc = item.currentImg || item.img1;
+                let currIdx = imgs.indexOf(currentSrc);
+                if (currIdx === -1) currIdx = 0;
+
+                if (diffX < 0) {
+                    currIdx = (currIdx + 1) % 3; // বামে সরালে পরের ছবি
+                } else {
+                    currIdx = (currIdx + 2) % 3; // ডানে সরালে আগের ছবি
+                }
+
+                const newSrc = imgs[currIdx];
+                item.currentImg = newSrc;
+
+                const mainImg = document.getElementById(`wedding-main-img-${index}`);
+                if (mainImg) {
+                    mainImg.classList.remove('img-loaded');
+                    mainImg.src = newSrc;
+                }
+
+                const cardEl = mainImg ? mainImg.closest('.ecom-card') : null;
+                if (cardEl) {
+                    cardEl.querySelectorAll('.thumb-box').forEach((t, i) => {
+                        t.classList.toggle('active', i === currIdx);
+                    });
+                    cardEl.querySelectorAll('.card-swipe-dot').forEach((d, i) => {
+                        d.style.background = (i === currIdx) ? '#FF6A00' : 'rgba(255,255,255,0.75)';
+                    });
+                }
+
+                if (selectedCardDesign === `${item.name} (${item.code})`) {
+                    selectedCardImg = newSrc;
+                }
+
+                setTimeout(() => { weddingCardJustSwiped = false; }, 250);
+            }
+        }
+
+        function openWeddingCardImageClick(e, index, title) {
+            if (e) e.stopPropagation();
+            if (weddingCardJustSwiped) return;
+            const item = currentCardList[index];
+            const imgs = [item.img1, item.img2, item.img3];
+            const currentSrc = item.currentImg || item.img1;
+            const startIdx = Math.max(0, imgs.indexOf(currentSrc));
+            if (typeof openGalleryLightbox === 'function') {
+                openGalleryLightbox(imgs, startIdx, title);
+            } else {
+                openImageLightbox(e, currentSrc, title);
+            }
+        }
+
         function renderWeddingCatalogGrid() {
             const container = document.getElementById('catalogContainer');
             container.innerHTML = '';
@@ -3161,6 +3297,7 @@
                 const fullDesignTitle = `${item.name} (${item.code})`;
                 const isSelected = (selectedCardDesign === fullDesignTitle);
                 const activeSrc = item.currentImg || item.img1;
+                const activeIdx = Math.max(0, [item.img1, item.img2, item.img3].indexOf(activeSrc));
 
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
@@ -3171,9 +3308,14 @@
                 const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div class="ecom-img-box">
+                    <div class="ecom-img-box" style="touch-action: pan-y;" ontouchstart="handleWeddingTouchStart(event)" ontouchend="handleWeddingTouchEnd(event, ${index})">
                         <span class="ecom-badge ${badgeClass}">${badgeText}</span>
-                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${fullDesignTitle} | মূল্য: ${item.price}')">
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ক্লিক করুন বা পাশে সরান" onload="this.classList.add('img-loaded')" onclick="openWeddingCardImageClick(event, ${index}, '${fullDesignTitle} | মূল্য: ${item.price}')">
+                        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); display:flex; gap:5px; background:rgba(0,0,0,0.4); padding:3px 8px; border-radius:10px; pointer-events:none;">
+                            <span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${activeIdx === 0 ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>
+                            <span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${activeIdx === 1 ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>
+                            <span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${activeIdx === 2 ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>
+                        </div>
                     </div>
                     <div class="ecom-body">
                         <div>
@@ -3187,7 +3329,7 @@
                             <span class="ecom-price-main">মূল্য: ${item.price}</span>
                         </div>
                         <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
-                            <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
+                            <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
                         </button>
                     </div>
                 `;
@@ -3202,11 +3344,15 @@
         }
 
         function submitWeddingToWhatsApp() {
+            const printOptionEl = document.querySelector('input[name="weddingPrintOption"]:checked');
+            const printOption = printOptionEl ? printOptionEl.value : 'প্রিন্ট করতে চাই';
             const deliveryMethod = document.querySelector('input[name="weddingDeliveryMethod"]:checked').value;
+
             const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
                             `--------------------------------%0A` +
                             `• সার্ভিস: বিয়ের কার্ড%0A` +
                             `• ক্যাটাগরি: ${selectedType} কার্ড%0A` +
+                            `• কাজের ধরন: ${printOption}%0A` +
                             `• অর্ডার পরিমাণ: ${currentQuantity} পিস%0A` +
                             `• পছন্দ করা ডিজাইন: ${selectedCardDesign}%0A` +
                             `• নির্ধারিত মূল্য: ${selectedCardPrice}%0A` +
@@ -3418,6 +3564,7 @@ let selectedAnnaType = 'অফসেট কার্ড';
         let currentMenuOccasion = 'বিয়ের মেনুকার্ড';
         let currentMenuQuantity = 0;
         let selectedMenuDesign = '';
+        let selectedMenuImg = '';
         let currentMenuList = [];
 
         const menuCatalogsByOccasion = {
@@ -3428,7 +3575,7 @@ let selectedAnnaType = 'অফসেট কার্ড';
                 { id: 'WMN04', name: 'বিয়ের টেবিল মেনুকার্ড ডিজাইন ০৪', code: 'W-MN04', img: 'https://lh3.googleusercontent.com/d/1_245G2pAbG2Djfh2ebKx8mzjbtfG8q9h' },
                 { id: 'WMN05', name: 'হ্যাণ্ড মেনুকার্ড ডিজাইন ০৫', code: 'W-MN05', img: 'https://lh3.googleusercontent.com/d/1RtgEKbyMhhiiYdRXvNBK_-wGYOGkBPr3' },
                 { id: 'WMN06', name: 'হ্যাণ্ড মেনুকার্ড ডিজাইন ০৬', code: 'W-MN06', img: 'https://lh3.googleusercontent.com/d/1EPylHqAI_08HSy0KB50IbyJgDLvRiIMR' },
-                { id: 'WMN07', name: 'ring ceremony মেনু ০৭', code: 'W-MN07', img: 'https://lh3.googleusercontent.com/d/1VYoccJs18570Z7buBO2JvQOYDIozjoID' },
+                { id: 'WMN07', name: 'রিং সেরিমনি মেনু ০৭', code: 'W-MN07', img: 'https://lh3.googleusercontent.com/d/1VYoccJs18570Z7buBO2JvQOYDIozjoID' },
                 { id: 'WMN08', name: 'বিয়ের ডিনার কার্ড ০৮', code: 'W-MN08', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=80' },
                 { id: 'WMN09', name: 'বিয়ের ভিন্টেজ আর্ট মেনু ০৯', code: 'W-MN09', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
                 { id: 'WMN10', name: 'বিয়ের লাক্সারি ফয়েল মেনু ১০', code: 'W-MN10', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80' }
@@ -3527,6 +3674,7 @@ let selectedAnnaType = 'অফসেট কার্ড';
 
             currentMenuList = menuCatalogsByOccasion[currentMenuOccasion] || menuCatalogsByOccasion['যেকোনো অনুষ্ঠানের মেনুকার্ড'];
             selectedMenuDesign = `${currentMenuList[0].name} (${currentMenuList[0].code})`;
+            selectedMenuImg = currentMenuList[0].img;
 
             document.getElementById('menuCatalogTitle').innerText = `${currentMenuOccasion} ক্যাটালগ`;
             document.getElementById('menuCatalogSubtitle').innerText = `পছন্দের ডিজাইন নির্বাচন করুন | অর্ডার পরিমাণ: ${qty} পিস`;
@@ -3542,22 +3690,23 @@ let selectedAnnaType = 'অফসেট কার্ড';
                 const isSelected = (selectedMenuDesign === `${item.name} (${item.code})`);
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectMenuCardItem(`${item.name} (${item.code})`, item.img);
                 const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
                 const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div class="ecom-img-box" onclick="selectMenuCardItem('${item.name} (${item.code})')">
+                    <div class="ecom-img-box">
                         <span class="ecom-badge ${badgeClass}">${badgeText}</span>
                         <img src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
                     </div>
-                    <div class="ecom-body" onclick="selectMenuCardItem('${item.name} (${item.code})')">
+                    <div class="ecom-body">
                         <div>
                             <div class="ecom-title">${item.name}</div>
                             <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
                         </div>
                         <div style="margin-top: 8px;">
-                            <button type="button" class="ecom-green-btn" onclick="event.stopPropagation(); selectMenuCardItem('${item.name} (${item.code})')">
-                                <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
+                            <button type="button" class="ecom-green-btn">
+                                <i class="fa-brands fa-whatsapp"></i> অর্ডার পাঠান
                             </button>
                             <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
                                 <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
@@ -3567,7 +3716,6 @@ let selectedAnnaType = 'অফসেট কার্ড';
                 `;
                 container.appendChild(cardDiv);
 
-                // প্রতি ৪টি কার্ডের পর ১টি AdSense বক্স
                 if ((index + 1) % 4 === 0) {
                     container.appendChild(createCatalogAdBox());
                 }
@@ -3576,8 +3724,9 @@ let selectedAnnaType = 'অফসেট কার্ড';
             document.getElementById('selectedMenuDesignDisplay').value = selectedMenuDesign;
         }
 
-        function selectMenuCardItem(designStr) {
+        function selectMenuCardItem(designStr, imgUrl) {
             selectedMenuDesign = designStr;
+            if (imgUrl) selectedMenuImg = imgUrl;
             renderMenuCatalogGrid();
         }
 
@@ -3591,6 +3740,7 @@ let selectedAnnaType = 'অফসেট কার্ড';
                             `• অনুষ্ঠানের ধরন: ${currentMenuOccasion}%0A` +
                             `• অর্ডার পরিমাণ: ${currentMenuQuantity} পিস%0A` +
                             `• পছন্দ করা ডিজাইন: ${selectedMenuDesign}%0A` +
+                            `• ডিজাইনের ছবির লিঙ্ক: ${encodeURIComponent(selectedMenuImg)}%0A` +
                             `• মেনু বিবরণ/নোট: ${notes}%0A` +
                             `• ডেলিভারি মাধ্যম: ${deliveryMethod}%0A` +
                             `--------------------------------%0A` +
@@ -3794,7 +3944,8 @@ const stationeryProducts = [
         }
 
         /* ---------------- ৮. বিল বুক প্রিন্ট (১৫টি স্যাম্পল স্লট) ---------------- */
-        const billBookProducts = [
+/* ---------------- ৮. বিল বুক প্রিন্ট (১৫টি স্যাম্পল স্লট + ছবির লিঙ্ক সহ) ---------------- */
+const billBookProducts = [
             { id: 'bb1', name: 'ক্যাশমেমো প্রিণ্ট ০১', code: 'CM-01', img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
             { id: 'bb2', name: 'প্যাড প্রিণ্ট ০২', code: 'PD-02', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
             { id: 'bb3', name: 'জি.এস.টি বিল প্রিণ্ট ০৩', code: 'GST-03', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
@@ -3812,7 +3963,8 @@ const stationeryProducts = [
             { id: 'bb15', name: 'কাস্টম বিল বুক ১৫', code: 'CB-15', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' }
         ];
 
-        let selectedBillBookItem = billBookProducts[0].name;
+        let selectedBillBookItem = `${billBookProducts[0].name} (${billBookProducts[0].code})`;
+        let selectedBillBookImg = billBookProducts[0].img;
 
         function openBillBookFlow() {
             document.getElementById('billBookModal').style.display = 'flex';
@@ -3823,33 +3975,49 @@ const stationeryProducts = [
             const grid = document.getElementById('billBookProductGrid');
             grid.innerHTML = '';
 
-            billBookProducts.forEach((item) => {
-                const isSelected = (item.name === selectedBillBookItem);
+            billBookProducts.forEach((item, index) => {
+                const fullTitle = `${item.name} (${item.code})`;
+                const isSelected = (fullTitle === selectedBillBookItem);
                 const cardDiv = document.createElement('div');
-                cardDiv.className = `catalog-item ${isSelected ? 'selected' : ''}`;
+                cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectBillBookProduct(fullTitle, item.img);
+
+                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
+                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
 
                 cardDiv.innerHTML = `
-                    <div onclick="selectBillBookProduct('${item.name}')">
-                        <img class="catalog-main-img" src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
-                        <div class="item-title">${item.name}</div>
-                        <div class="item-code">কোড: ${item.code}</div>
-                        <label onclick="event.stopPropagation(); selectBillBookProduct('${item.name}')">
-                            <input type="radio" name="billBookRadio" value="${item.name}" ${isSelected ? 'checked' : ''}>
-                            এটি নেব
-                        </label>
+                    <div class="ecom-img-box">
+                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
+                        <img src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${fullTitle}')">
                     </div>
-                    <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                        <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                    </button>
+                    <div class="ecom-body">
+                        <div>
+                            <div class="ecom-title">${item.name}</div>
+                            <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <button type="button" class="ecom-green-btn">
+                                <i class="fa-brands fa-whatsapp"></i> অর্ডার পাঠান
+                            </button>
+                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
+                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
+                            </button>
+                        </div>
+                    </div>
                 `;
                 grid.appendChild(cardDiv);
+
+                if ((index + 1) % 4 === 0) {
+                    grid.appendChild(createCatalogAdBox());
+                }
             });
 
             document.getElementById('selectedBillBookDisplay').value = selectedBillBookItem;
         }
 
-        function selectBillBookProduct(name) {
+        function selectBillBookProduct(name, imgUrl) {
             selectedBillBookItem = name;
+            if (imgUrl) selectedBillBookImg = imgUrl;
             renderBillBookGrid();
         }
 
@@ -3871,6 +4039,7 @@ const stationeryProducts = [
                             `--------------------------------%0A` +
                             `• সার্ভিস: বিল বুক প্রিন্ট%0A` +
                             `• প্রোডাক্ট: ${selectedBillBookItem}%0A` +
+                            `• ডিজাইনের ছবির লিঙ্ক: ${encodeURIComponent(selectedBillBookImg)}%0A` +
                             `• সাইজ/মাপ: ${size}%0A` +
                             `• অর্ডার পরিমাণ: ${qty} পিস%0A` +
                             `• পেজ/কপি বিবরণ: ${note}%0A` +
@@ -4005,16 +4174,34 @@ const prashnaPublishersData = {
             const pubData = prashnaPublishersData[pubKey];
             document.getElementById('activePubHeading').innerText = pubData.title;
 
+            pubData.books.forEach(b => { if (!b.currentImg) b.currentImg = b.img1; });
             const firstBook = pubData.books[0];
+
             selectedPrashnaBookObj = {
                 pubName: pubData.pubName,
                 name: firstBook.name,
                 author: firstBook.author,
-                price: firstBook.price
+                price: firstBook.price,
+                img: firstBook.currentImg || firstBook.img1
             };
             document.getElementById('selectedPrashnaDisplay').value = `${firstBook.name} | ${firstBook.author} | মূল্য: ${firstBook.price}`;
 
             showSkeletonInGrid('prashnaBichitraGrid', 6, renderPrashnaGrid);
+        }
+
+        function switchPrashnaThumb(e, index, imgNum, thumbEl) {
+            e.stopPropagation();
+            const pubData = prashnaPublishersData[currentPrashnaPubKey];
+            const item = pubData.books[index];
+            const newSrc = item['img' + imgNum];
+            item.currentImg = newSrc;
+
+            const mainImgId = `prashna-main-img-${currentPrashnaPubKey}-${index}`;
+            changeDisplayImage(mainImgId, newSrc, thumbEl);
+
+            if (selectedPrashnaBookObj && selectedPrashnaBookObj.name === item.name && selectedPrashnaBookObj.pubName === pubData.pubName) {
+                selectedPrashnaBookObj.img = newSrc;
+            }
         }
 
         function renderPrashnaGrid() {
@@ -4026,22 +4213,24 @@ const prashnaPublishersData = {
 
             pubData.books.forEach((item, index) => {
                 const isSelected = (selectedPrashnaBookObj && selectedPrashnaBookObj.name === item.name && selectedPrashnaBookObj.pubName === pubData.pubName);
+                const activeSrc = item.currentImg || item.img1;
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectPrashnaClass(index);
 
                 const mainImgId = `prashna-main-img-${currentPrashnaPubKey}-${index}`;
                 const badgeClass = (item.badge === 'Best Seller') ? 'badge-bestseller' : 'badge-trending';
 
                 cardDiv.innerHTML = `
-                    <div class="ecom-img-box" onclick="selectPrashnaClass('${item.name}', '${item.author}', '${item.price}')">
+                    <div class="ecom-img-box">
                         <span class="ecom-badge ${badgeClass}">${item.badge}</span>
-                        <img src="${item.img1}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${pubData.pubName}) | ${item.author} | মূল্য: ${item.price}')">
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${pubData.pubName}) | ${item.author} | মূল্য: ${item.price}')">
                     </div>
-                    <div class="ecom-body" onclick="selectPrashnaClass('${item.name}', '${item.author}', '${item.price}')">
+                    <div class="ecom-body">
                         <div>
                             <div class="thumb-row">
-                                <img src="${item.img1}" class="thumb-box active" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img1}', this)" title="ছবি ১">
-                                <img src="${item.img2}" class="thumb-box" onload="this.classList.add('img-loaded')" onclick="event.stopPropagation(); changeDisplayImage('${mainImgId}', '${item.img2}', this)" title="ছবি ২">
+                                <img src="${item.img1}" class="thumb-box ${activeSrc === item.img1 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchPrashnaThumb(event, ${index}, 1, this)" title="ছবি ১">
+                                <img src="${item.img2}" class="thumb-box ${activeSrc === item.img2 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchPrashnaThumb(event, ${index}, 2, this)" title="ছবি ২">
                             </div>
                             <div class="ecom-title" style="font-size:0.9rem;">${item.name}</div>
                             <div class="ecom-meta">প্রকাশনী: ${pubData.pubName}</div>
@@ -4049,7 +4238,7 @@ const prashnaPublishersData = {
                             <span class="ecom-price-main" style="font-size:1.05rem;">মূল্য: ${item.price}</span>
                         </div>
                         <button type="button" class="ecom-green-btn" style="padding: 7px; font-size: 0.82rem;">
-                            <i class="fa-brands fa-whatsapp"></i> ${isSelected ? 'নির্বাচিত (অর্ডার করুন)' : 'অর্ডার করুন'}
+                            <i class="fa-brands fa-whatsapp"></i> অর্ডার পাঠান
                         </button>
                     </div>
                 `;
@@ -4062,13 +4251,15 @@ const prashnaPublishersData = {
             }
         }
 
-        function selectPrashnaClass(name, author, price) {
+        function selectPrashnaClass(index) {
             const pubData = prashnaPublishersData[currentPrashnaPubKey];
+            const item = pubData.books[index];
             selectedPrashnaBookObj = {
                 pubName: pubData.pubName,
-                name: name,
-                author: author,
-                price: price
+                name: item.name,
+                author: item.author,
+                price: item.price,
+                img: item.currentImg || item.img1
             };
             renderPrashnaGrid();
         }
@@ -4080,10 +4271,11 @@ const prashnaPublishersData = {
 
             const message = `*প্রশ্নবিচিত্রা / সহায়িকা অর্ডার (Sub Prints)*%0A` +
                             `--------------------------------%0A` +
-                            `• বইয়ের নাম: ${selectedPrashnaBookObj.name}%0A` +
+                            `• বইয়ের নাম: ${selectedPrashnaBookObj.name}%0A` +
                             `• প্রকাশনী: ${selectedPrashnaBookObj.pubName}%0A` +
                             `• ${selectedPrashnaBookObj.author}%0A` +
                             `• নির্ধারিত মূল্য: ${selectedPrashnaBookObj.price}%0A` +
+                            `• বইয়ের ছবির লিঙ্ক: ${encodeURIComponent(selectedPrashnaBookObj.img)}%0A` +
                             `• নোট/বিবরণ: ${extraNote}%0A` +
                             `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
                             `--------------------------------%0A` +
@@ -4092,7 +4284,7 @@ const prashnaPublishersData = {
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
             closeModal('prashnaBichitraModal');
         }
-      /* ---------------- সব ক্যাটালগে আলাদা অর্ডার পপ-আপ ও সঠিক ব্যাক বাটন কন্ট্রোল ---------------- */
+/* ---------------- সব ক্যাটালগে আলাদা অর্ডার পপ-আপ (স্কেলিটন লোডার সহ) ও সঠিক ব্যাক বাটন কন্ট্রোল ---------------- */
 (function () {
     const allModals = [
         'quickDirectOrderModal', 'prashnaBichitraModal', 'predefinedBookModal',
@@ -4161,12 +4353,15 @@ const prashnaPublishersData = {
         document.body.appendChild(hiddenStorage);
 
         let activeFormBlock = null;
+        let popupLoadTimer = null;
 
         function closeQuickOrderPopup(fromBackButton) {
+            if (popupLoadTimer) clearTimeout(popupLoadTimer);
             if (activeFormBlock) {
                 hiddenStorage.appendChild(activeFormBlock);
                 activeFormBlock = null;
             }
+            popupBody.innerHTML = '';
             popupOverlay.style.display = 'none';
             removeModalFromStack('quickDirectOrderModal', !fromBackButton);
         }
@@ -4214,14 +4409,29 @@ const prashnaPublishersData = {
                 if (!clickedCard) return;
 
                 setTimeout(() => {
+                    if (popupLoadTimer) clearTimeout(popupLoadTimer);
                     if (activeFormBlock) {
                         hiddenStorage.appendChild(activeFormBlock);
                     }
-                    activeFormBlock = formBlock;
-                    popupBody.appendChild(formBlock);
+
                     popupTitle.innerHTML = `<i class="fa-solid fa-bag-shopping"></i> ${title}`;
+                    // অর্ডার বক্সে স্কেলিটন লোডার দেখানো হচ্ছে
+                    popupBody.innerHTML = `
+                        <div style="display:flex; flex-direction:column; gap:12px; padding:6px 0;">
+                            <div class="skeleton-loader" style="height:42px; width:100%; border-radius:10px;"></div>
+                            <div class="skeleton-loader" style="height:48px; width:100%; border-radius:10px;"></div>
+                            <div class="skeleton-loader" style="height:48px; width:100%; border-radius:10px;"></div>
+                            <div class="skeleton-loader" style="height:44px; width:100%; border-radius:10px; margin-top:4px;"></div>
+                        </div>
+                    `;
                     popupOverlay.style.display = 'flex';
                     pushModalHistory('quickDirectOrderModal');
+
+                    popupLoadTimer = setTimeout(() => {
+                        popupBody.innerHTML = '';
+                        activeFormBlock = formBlock;
+                        popupBody.appendChild(formBlock);
+                    }, 300);
                 }, 30);
             }, true);
         });
