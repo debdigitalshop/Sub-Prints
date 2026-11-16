@@ -515,7 +515,7 @@
             transform: scale(1.04);
         }
 
-        /* উপরের কোণার ব্যাজ (Best Seller / Trending Now) */
+        /* উপরের কোণার ব্যাজ (জনপ্রিয় / নতুন কালেকশন) */
         .ecom-badge {
             position: absolute;
             top: 8px;
@@ -529,6 +529,7 @@
             letter-spacing: 0.3px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
             pointer-events: none;
+            white-space: nowrap;
         }
         .badge-bestseller { background: #D9381E; }
         .badge-trending { background: #F57C00; }
@@ -1292,7 +1293,7 @@
             <!-- কার্ড ১: নেম স্টিকার -->
             <div class="ecom-card" onclick="openStudentItemModal('sticker')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
                     <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80" 
                          alt="বই-খাতার নেম স্টিকার" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1314,7 +1315,7 @@
             <!-- কার্ড ২: প্রজেক্ট ফ্রন্ট পেজ -->
             <div class="ecom-card" onclick="openStudentItemModal('project')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
                     <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80" 
                          alt="প্রজেক্ট ফ্রন্ট পেজ" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1336,7 +1337,7 @@
             <!-- কার্ড ৩: সিভি / বায়োডাটা তৈরি (আপনার গুগল ড্রাইভের ছবি সহ) -->
             <div class="ecom-card" onclick="openStudentItemModal('cv')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
                     <img src="https://lh3.googleusercontent.com/d/1ZJ1oCDMDNsamy503mJRHyfG057ADdaW1" 
                          alt="সিভি ও বায়োডাটা তৈরি" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1358,7 +1359,7 @@
             <!-- কার্ড ৪: পড়ার রুটিন ও চার্ট -->
             <div class="ecom-card" onclick="openStudentItemModal('routine')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
                     <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&auto=format&fit=crop&q=80" 
                          alt="পড়ার রুটিন ও চার্ট" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1380,7 +1381,7 @@
             <!-- কার্ড ৫: স্টুডেন্ট PVC আইডি কার্ড -->
             <div class="ecom-card" onclick="openStudentItemModal('idcard')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
                     <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=600&auto=format&fit=crop&q=80" 
                          alt="স্টুডেন্ট PVC আইডি কার্ড" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1427,7 +1428,7 @@
             <!-- বই ২ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('ভৌতবিজ্ঞান সহায়িকা (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', '₹৩২০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
                     <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80" 
                          alt="ভৌতবিজ্ঞান সহায়িকা" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1450,7 +1451,7 @@
             <!-- বই ৩ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('Applied English Grammar', 'কথা ও কাহিনী প্রকাশনী', 'লেখক: P.C. Das', '₹৪০০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
                     <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80" 
                          alt="English Grammar P.C. Das" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1473,7 +1474,7 @@
             <!-- বই ৪ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('জীবনবিজ্ঞান সহায়িকা (Class 12)', 'সাঁতরা পাবলিকেশন', 'লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা', '₹৪৫০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80" 
                          alt="জীবনবিজ্ঞান দ্বাদশ শ্রেণি" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1496,7 +1497,7 @@
             <!-- বই ৫ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('কলেজ বাংলা সহায়িকা (BA)', 'পারুল প্রকাশনী', 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', '₹২৬০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
                     <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80" 
                          alt="কলেজ সহায়িকা বই" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1519,7 +1520,7 @@
             <!-- বই ৬ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('ইতিহাস সহায়িকা (Class 10)', 'প্রান্তিক প্রকাশনী', 'লেখক: ড. সুভাষ বিশ্বাস', '₹২৯০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
                     <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80" 
                          alt="ইতিহাস সহায়িকা দশম শ্রেণি" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1542,7 +1543,7 @@
             <!-- বই ৭ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('ভূগোল ও পরিবেশ (Class 10)', 'বাণী সংসদ প্রকাশনী', 'লেখক: বসু ও মৌলিক', '₹৩১০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
                     <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80" 
                          alt="ভূগোল ও পরিবেশ দশম শ্রেণি" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1565,7 +1566,7 @@
             <!-- বই ৮ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('গণিত প্রকাশ সমাধান (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: কেশব চন্দ্র নাগ', '₹৩৫০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
                     <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80" 
                          alt="গণিত সহায়িকা দশম শ্রেণি" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1588,7 +1589,7 @@
             <!-- বই ৯ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12)', 'নিউ বুক এজেন্সি', 'লেখক: ড. অনাদি কুমার মহাপাত্র', '₹৩৪০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">Best Seller</span>
+                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
                     <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80" 
                          alt="উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1611,7 +1612,7 @@
             <!-- বই ১০ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('কলেজ ইতিহাস অনার্স ও পাস (BA)', 'বুকস ওয়ে প্রকাশনী', 'লেখক: ড. গোপালকৃষ্ণ পাহাড়ী', '₹৩৯০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">Trending Now</span>
+                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
                     <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80" 
                          alt="কলেজ ইতিহাস বই" 
                          title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
@@ -1676,12 +1677,6 @@
                 <div class="category-icon"><i class="fa-solid fa-stamp"></i></div>
                 <h4>স্ট্যাম্প</h4>
                 <p>পলিমার স্ট্যাম্প (কালি ছাড়া) এবং নিও স্ট্যাম্প (কালি ভরা)।</p>
-            </div>
-
-            <div class="category-card" onclick="openStationeryFlow()">
-                <div class="category-icon"><i class="fa-solid fa-book"></i></div>
-                <h4>স্টেশনারি</h4>
-                <p>স্কুল খাতা, দিস্তা খাতা, ক্যাশবুক, রেজিস্টার ও রেজুলেশন বুক ছবি সহ ক্যাটালগ।</p>
             </div>
 
             <div class="category-card" onclick="openBillBookFlow()">
@@ -2149,6 +2144,20 @@
                 <input type="text" id="selectedAnnaDesignDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
             </div>
 
+            <div class="form-group" id="annaPrintOptionGroup">
+                <label>কাজের ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="annaPrintOption" value="প্রিন্ট করতে চাই" checked>
+                        <span><i class="fa-solid fa-print"></i> প্রিন্ট করতে চাই (লেখা ছাপানো সহ)</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="annaPrintOption" value="শুধু কার্ড দরকার">
+                        <span><i class="fa-solid fa-envelope-open-text"></i> শুধু কার্ড দরকার (প্রিন্ট ছাড়া খালি কার্ড)</span>
+                    </label>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label>ডেলিভারির ধরন বেছে নিন:</label>
                 <div class="radio-options">
@@ -2185,7 +2194,6 @@
                     <option value="উপনয়ন মেনুকার্ড">উপনয়ন মেনুকার্ড</option>
                     <option value="শ্রাদ্ধের মেনুকার্ড">শ্রাদ্ধের মেনুকার্ড</option>
                     <option value="রেস্টুরেণ্ট মেনুকার্ড">রেস্টুরেণ্ট মেনুকার্ড</option>
-                    <option value="যেকোনো অনুষ্ঠানের মেনুকার্ড">যেকোনো অনুষ্ঠানের মেনুকার্ড</option>
                 </select>
             </div>
 
@@ -2206,46 +2214,46 @@
         </div>
     </div>
 
-    <!-- মেনু ক্যাটালগ মোডাল -->
-    <div class="modal-overlay" id="menuCatalogModal">
-        <div class="modal-box">
-            <button class="close-btn" onclick="closeModal('menuCatalogModal')">&times;</button>
-            <h3 id="menuCatalogTitle" style="color: var(--primary-orange); margin-bottom: 0.3rem;"></h3>
-            <p id="menuCatalogSubtitle" style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;"></p>
+  <!-- Catalog & Final Order Modal (Menu Card) -->
+  <div class="modal-overlay" id="menuCatalogModal">
+    <div class="modal-box">
+        <button class="close-btn" onclick="closeModal('menuCatalogModal')">&times;</button>
+        <h3 id="menuCatalogTitle" style="color: var(--primary-orange); margin-bottom: 0.3rem;"></h3>
+        <p id="menuCatalogSubtitle" style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;"></p>
 
-            <div class="catalog-grid" id="menuCatalogContainer"></div>
+        <div class="catalog-grid" id="menuCatalogContainer"></div>
 
-            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
 
-            <div class="form-group">
-                <label>নির্বাচিত ডিজাইন:</label>
-                <input type="text" id="selectedMenuDesignDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
-            </div>
-
-            <div class="form-group">
-                <label>মেনুর খাবারের তালিকা বা বিশেষ নোট (ঐচ্ছিক):</label>
-                <input type="text" id="menuNotes" class="form-control" placeholder="হোয়াটসঅ্যাপে খাবারের মেনু পাঠিয়ে দেব / অন্য কোনো তথ্য">
-            </div>
-
-            <div class="form-group">
-                <label>ডেলিভারির ধরন বেছে নিন:</label>
-                <div class="radio-options">
-                    <label class="radio-card">
-                        <input type="radio" name="menuDeliveryMethod" value="হোম ডেলিভারি" checked>
-                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
-                    </label>
-                    <label class="radio-card">
-                        <input type="radio" name="menuDeliveryMethod" value="অফিস পিক-আপ">
-                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ (Deb Digital Shop)</span>
-                    </label>
-                </div>
-            </div>
-
-            <button class="btn-primary" onclick="submitMenuToWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে মেনু কার্ড অর্ডার পাঠান
-            </button>
+        <div class="form-group">
+            <label>নির্বাচিত ডিজাইন:</label>
+            <input type="text" id="selectedMenuDesignDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
         </div>
+
+        <div class="form-group">
+            <label>খাবারের তালিকা বা বিশেষ নোট (ঐচ্ছিক):</label>
+            <textarea id="menuNotes" class="form-control" rows="2" placeholder="খাবারের মেনু লিখুন অথবা হোয়াটসঅ্যাপে পাঠাবেন তা জানান..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>ডেলিভারির ধরন বেছে নিন:</label>
+            <div class="radio-options">
+                <label class="radio-card">
+                    <input type="radio" name="menuDeliveryMethod" value="হোম ডেলিভারি" checked>
+                    <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি (ঠিকানায় পৌঁছানো হবে)</span>
+                </label>
+                <label class="radio-card">
+                    <input type="radio" name="menuDeliveryMethod" value="অফিস পিক-আপ">
+                    <span><i class="fa-solid fa-store"></i> আমাদের অফিস থেকে ডেলিভারি (<a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none;">Deb Digital Shop ম্যাপ দেখুন</a>)</span>
+                </label>
+            </div>
+        </div>
+
+        <button class="btn-primary" onclick="submitMenuToWhatsApp()">
+            <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে মেনু কার্ড অর্ডার পাঠান
+        </button>
     </div>
+</div>
 
     <!-- ভিজিটিং কার্ড মোডাল -->
     <div class="modal-overlay" id="visitingModal">
@@ -2381,113 +2389,56 @@
             </button>
         </div>
     </div>
-
-    <!-- স্টেশনারি মোডাল -->
-    <div class="modal-overlay" id="stationeryModal">
-        <div class="modal-box">
-            <button class="close-btn" onclick="closeModal('stationeryModal')">&times;</button>
-            <h3 style="margin-bottom: 0.3rem; color: var(--primary-orange);"><i class="fa-solid fa-book"></i> স্টেশনারি ও খাতা ক্যাটালগ</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">প্রোডাক্টের ছবি ও নাম দেখে যেটি পছন্দ তা নির্বাচন করুন:</p>
-            
-            <div class="catalog-grid" id="stationeryProductGrid"></div>
-
-            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
-
-            <div class="form-group">
-                <label>নির্বাচিত প্রোডাক্ট:</label>
-                <input type="text" id="selectedStatItemDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
-            </div>
-
-            <div class="form-group">
-                <label>কত পিস লাগবে? (Quantity):</label>
-                <input type="number" id="stationeryQty" class="form-control" value="1" min="1">
-            </div>
-
-            <div class="form-group">
-                <label>সাইজ / পেজ সংখ্যা বা বিবরণ (ঐচ্ছিক):</label>
-                <input type="text" id="stationeryNote" class="form-control" placeholder="যেমন: ১০০/২০০ পেজ, রুলটানা, বিশেষ ব্র‍্যান্ড ইত্যাদি">
-            </div>
-
-            <div class="form-group">
-                <label>ডেলিভারির ধরন বেছে নিন:</label>
-                <div class="radio-options">
-                    <label class="radio-card">
-                        <input type="radio" name="statDelivery" value="হোম ডেলিভারি" checked>
-                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি</span>
-                    </label>
-                    <label class="radio-card">
-                        <input type="radio" name="statDelivery" value="অফিস পিক-আপ">
-                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ (Deb Digital Shop)</span>
-                    </label>
-                </div>
-            </div>
-
-            <button class="btn-primary" onclick="submitStationeryToWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে স্টেশনারি অর্ডার পাঠান
-            </button>
-        </div>
-    </div>
-
-    <!-- বিল বুক প্রিন্ট মোডাল -->
+<!-- Bill Book Print Modal -->
     <div class="modal-overlay" id="billBookModal">
         <div class="modal-box">
             <button class="close-btn" onclick="closeModal('billBookModal')">&times;</button>
-            <h3 style="margin-bottom: 0.3rem; color: var(--primary-orange);"><i class="fa-solid fa-receipt"></i> বিল বুক প্রিন্টিং ক্যাটালগ</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">পছন্দের প্রোডাক্টটি সিলেক্ট করে সাইজ ও পরিমাণ নির্ধারণ করুন:</p>
-            
+            <h3 style="margin-bottom: 0.3rem; color: var(--primary-orange);"><i class="fa-solid fa-receipt"></i> বিল বুক ও ক্যাশমেমো প্রিন্ট ক্যাটালগ</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">পছন্দের ডিজাইন নির্বাচন করুন ও নিচে অর্ডারের বিবরণ দিন</p>
+
             <div class="catalog-grid" id="billBookProductGrid"></div>
 
             <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color);">
 
             <div class="form-group">
-                <label>নির্বাচিত আইটেম:</label>
+                <label>নির্বাচিত বিল বুক ডিজাইন:</label>
                 <input type="text" id="selectedBillBookDisplay" class="form-control" readonly style="background:#F1F5F9; font-weight:700; color:var(--primary-orange);">
             </div>
 
             <div class="form-group">
-                <label>সাইজ বা মাপ নির্বাচন করুন:</label>
-                <select id="billBookSize" class="form-control">
-                    <option value="1/8 সাইজ (ছোট ক্যাশমেমো / রসিদ)">1/8 সাইজ (ছোট মাপ)</option>
-                    <option value="1/6 সাইজ (স্ট্যান্ডার্ড মেমো)">1/6 সাইজ (স্ট্যান্ডার্ড মাপ)</option>
-                    <option value="1/4 সাইজ (মিডিয়াম সাইজ)">1/4 সাইজ (মিডিয়াম মাপ)</option>
-                    <option value="1/5 সাইজ">1/5 সাইজ</option>
-                    <option value="A4 সাইজ (জি.এস.টি / লেটারহেড প্যাড)">A4 সাইজ (ফুল সাইজ)</option>
-                    <option value="কাস্টম সাইজ">কাস্টম সাইজ (নিচে লিখুন)</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>কত পিস / বই প্রয়োজন? (৫০ থেকে ১,০০,০০০ পিস টাইপ করুন):</label>
-                <input type="text" id="billBookQty" class="form-control" placeholder="যেমন: 50, 100, 500, 1000 বা ৫০, ১০০, ৫০০..." value="50" autocomplete="off">
-                
-                <div class="quick-pills">
-                    <span class="pill-btn" onclick="setQuickBillQty(50)">৫০ পিস</span>
-                    <span class="pill-btn" onclick="setQuickBillQty(100)">১০০ পিস</span>
-                    <span class="pill-btn" onclick="setQuickBillQty(200)">২০০ পিস</span>
-                    <span class="pill-btn" onclick="setQuickBillQty(500)">৫০০ পিস</span>
-                    <span class="pill-btn" onclick="setQuickBillQty(1000)">১,০০০ পিস</span>
-                    <span class="pill-btn" onclick="setQuickBillQty(5000)">৫,০০০ পিস</span>
-                    <span class="pill-btn" onclick="setQuickBillQty(10000)">১০,০০০ পিস</span>
-                    <span class="pill-btn" onclick="setQuickBillQty(100000)">১,০০,০০০ পিস</span>
+                <label>কাজের ধরন বেছে নিন:</label>
+                <div class="radio-options">
+                    <label class="radio-card">
+                        <input type="radio" name="billBookPrintOption" value="প্রিন্ট করতে চাই" checked onchange="toggleBillBookPrintFields()">
+                        <span><i class="fa-solid fa-print"></i> প্রিন্ট করতে চাই (নাম ও ঠিকানা ছাপানো সহ)</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="billBookPrintOption" value="রেডিমেট চাই" onchange="toggleBillBookPrintFields()">
+                        <span><i class="fa-solid fa-box-open"></i> রেডিমেট চাই (নাম ছাপানো ছাড়া রেডিমেট বই)</span>
+                    </label>
                 </div>
-                <small style="color: var(--text-muted); display: block; margin-top: 6px;">* সর্বনিম্ন ৫০ পিস থেকে শুরু করে ১,০০,০০০ পিস পর্যন্ত অর্ডার করতে পারবেন।</small>
+            </div>
+
+            <div class="form-group" id="billBookPrintNameGroup">
+                <label>দোকান, প্রতিষ্ঠান বা পুজোর নাম ও বিবরণ লিখুন:</label>
+                <textarea id="billBookPrintText" class="form-control" rows="2" placeholder="যেমন: দোকানের নাম, প্রোপ্রাইটরের নাম, ঠিকানা ও মোবাইল নম্বর লিখুন (অথবা হোয়াটসঅ্যাপে পাঠাবেন তা লিখুন)..."></textarea>
             </div>
 
             <div class="form-group">
-                <label>পেজ সংখ্যা / ডুপ্লিকেট কপি / বিশেষ নোট (ঐচ্ছিক):</label>
-                <input type="text" id="billBookNote" class="form-control" placeholder="যেমন: কার্বন কপি ১+১, ৫০ পাতা, সিরিয়াল নম্বর ইত্যাদি">
+                <label>কত পিস / বই লাগবে? (Quantity):</label>
+                <input type="number" id="billBookQty" class="form-control" value="5" min="1" placeholder="যেমন: ৫, ১০, ২০, ৫০">
             </div>
 
             <div class="form-group">
                 <label>ডেলিভারির ধরন বেছে নিন:</label>
                 <div class="radio-options">
                     <label class="radio-card">
-                        <input type="radio" name="billDelivery" value="হোম ডেলিভারি" checked>
-                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি / পার্সেল</span>
+                        <input type="radio" name="billBookDeliveryMethod" value="হোম ডেলিভারি" checked>
+                        <span><i class="fa-solid fa-truck-fast"></i> হোম ডেলিভারি (ঠিকানায় পৌঁছানো হবে)</span>
                     </label>
                     <label class="radio-card">
-                        <input type="radio" name="billDelivery" value="অফিস পিক-আপ">
-                        <span><i class="fa-solid fa-store"></i> অফিস পিক-আপ (Deb Digital Shop)</span>
+                        <input type="radio" name="billBookDeliveryMethod" value="অফিস পিক-আপ">
+                        <span><i class="fa-solid fa-store"></i> আমাদের অফিস থেকে ডেলিভারি (<a href="https://www.google.com/search?kgmid=%2Fg%2F11ggs40k92&hl=en-IN&q=Deb%20Digital%20Shop" target="_blank" style="color: var(--primary-orange); text-decoration: none;">Deb Digital Shop ম্যাপ দেখুন</a>)</span>
                     </label>
                 </div>
             </div>
@@ -3100,9 +3051,33 @@ let lbGalleryImages = [];
                         img2: 'https://lh3.googleusercontent.com/d/1QEm80rnG0AhHFw4Zt8oky38wmh9GnaoY', 
                         img3: 'https://lh3.googleusercontent.com/d/1oFw30TwaK71XhlmOy2MIV0qVU32vDINm' 
                     },
-                    { id: 'HB05', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৫', code: 'BK-H05', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB06', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৬', code: 'BK-H06', price: '₹১৫ / পিস', img1: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'HB07', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৭', code: 'BK-H07', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80' },
+                    { 
+                        id: 'HB05', 
+                        name: 'হিন্দু কার্ড ০৫', 
+                        code: 'BK-H05', 
+                        price: '₹১৫ / পিস', 
+                        img1: 'https://lh3.googleusercontent.com/d/16O606TVCCHqm5gNvjOsOpTtUw4u86PY-', 
+                        img2: 'https://lh3.googleusercontent.com/d/16LGQLDC3JmejAs9naToDutv2jvmhXUNu', 
+                        img3: 'https://lh3.googleusercontent.com/d/1Gby3a7AiM2TPBDr9MDI9zubwtzNmqGQQ' 
+                    },
+                    { 
+                        id: 'HB06', 
+                        name: 'সিঙ্গেল হারমোনিয়াম কার্ড হলুদ ০৬', 
+                        code: 'BK-H06', 
+                        price: '₹১২ / পিস', 
+                        img1: 'https://lh3.googleusercontent.com/d/1yhwIfwU0xD5dAGiqzQViSLaMlQsarN9v', 
+                        img2: 'https://lh3.googleusercontent.com/d/1IO2CrFEfSdbrzmrDzlhoxj3ao0GmHBTG', 
+                        img3: 'https://lh3.googleusercontent.com/d/1oTKcmYfO-9vu9zVChSty3rAL7iEiZ6EC' 
+                    },
+                    { 
+                        id: 'HB07', 
+                        name: 'হারমোনিয়াম লাল কালার হিন্দু কার্ড ০৭', 
+                        code: 'BK-H07', 
+                        price: '₹১৫ / পিস', 
+                        img1: 'https://lh3.googleusercontent.com/d/14p_fycDkXkm9vbarIhGmD1sxqesi64WL', 
+                        img2: 'https://lh3.googleusercontent.com/d/1cq_a3o2rdyrh4ZyLOHnFbvHe6TFqGs73', 
+                        img3: 'https://lh3.googleusercontent.com/d/1sH2fPbbeSSrVysZxVkXPxY4oZ2v6nSpi' 
+                    },
                     { id: 'HB08', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৮', code: 'BK-H08', price: '₹১৮ / পিস', img1: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80' },
                     { id: 'HB09', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ০৯', code: 'BK-H09', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80' },
                     { id: 'HB10', name: 'ঐতিহ্যবাহী হিন্দু কার্ড ১০', code: 'BK-H10', price: '₹২০ / পিস', img1: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&auto=format&fit=crop&q=80', img3: 'https://images.unsplash.com/photo-1607190074257-dd4b7af0309f?w=600&auto=format&fit=crop&q=80' },
@@ -3303,7 +3278,7 @@ let lbGalleryImages = [];
                 
                 const mainImgId = `wedding-main-img-${index}`;
                 const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
-                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
+                const badgeText = (index % 2 === 0) ? 'জনপ্রিয়' : 'নতুন কালেকশন';
 
                 cardDiv.innerHTML = `
                     <div class="ecom-img-box" style="touch-action: pan-y;" ontouchstart="handleWeddingTouchStart(event)" ontouchend="handleWeddingTouchEnd(event, ${index})">
@@ -3451,7 +3426,7 @@ let selectedAnnaType = 'অফসেট কার্ড';
             const rawVal = document.getElementById('annaQuantity').value;
             const qty = parseQuantityNumber(rawVal);
 
-            if(!rawVal || isNaN(qty) || qty <= 0) {
+            if (!rawVal || isNaN(qty) || qty <= 0) {
                 alert('অনুগ্রহ করে সঠিক সংখ্যায় অন্নপ্রাশন কার্ডের পরিমাণ লিখুন।');
                 document.getElementById('annaQuantity').focus();
                 return;
@@ -3459,6 +3434,18 @@ let selectedAnnaType = 'অফসেট কার্ড';
 
             currentAnnaQuantity = qty;
             closeModal('annaprashanStep1');
+
+            // ডিজিট্যাল কার্ড হলে 'শুধু কার্ড দরকার' অপশন লুকিয়ে শুধু প্রিন্ট অপশন রাখা হচ্ছে
+            const printGroup = document.getElementById('annaPrintOptionGroup');
+            const printRadios = document.getElementsByName('annaPrintOption');
+            if (printGroup) {
+                if (selectedAnnaType === 'ডিজিট্যাল কার্ড') {
+                    printGroup.style.display = 'none';
+                    if (printRadios.length > 0) printRadios[0].checked = true;
+                } else {
+                    printGroup.style.display = 'block';
+                }
+            }
 
             currentAnnaList = annaprashanCatalogs[selectedAnnaType];
             currentAnnaList.forEach(item => { item.currentImg = item.img1; });
@@ -3473,12 +3460,147 @@ let selectedAnnaType = 'অফসেট কার্ড';
             triggerAdFlow('anna');
         }
 
+        let annaTouchStartX = 0;
+        let annaTouchStartY = 0;
+        let annaCardJustSwiped = false;
+
+        function handleAnnaTouchStart(e) {
+            annaTouchStartX = e.touches[0].clientX;
+            annaTouchStartY = e.touches[0].clientY;
+            annaCardJustSwiped = false;
+        }
+
+        function handleAnnaTouchEnd(e, index) {
+            const diffX = e.changedTouches[0].clientX - annaTouchStartX;
+            const diffY = e.changedTouches[0].clientY - annaTouchStartY;
+
+            // ছবির ওপর হাত দিয়ে ডানে-বামে সরালে পরপর ৩টি ছবি বদলাবে
+            if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
+                e.stopPropagation();
+                annaCardJustSwiped = true;
+
+                const item = currentAnnaList[index];
+                const imgs = [item.img1, item.img2, item.img3];
+                const currentSrc = item.currentImg || item.img1;
+                let currIdx = imgs.indexOf(currentSrc);
+                if (currIdx === -1) currIdx = 0;
+
+                if (diffX < 0) {
+                    currIdx = (currIdx + 1) % 3; // বামে সরালে পরের ছবি
+                } else {
+                    currIdx = (currIdx + 2) % 3; // ডানে সরালে আগের ছবি
+                }
+
+                const newSrc = imgs[currIdx];
+                item.currentImg = newSrc;
+
+                const mainImg = document.getElementById(`anna-main-img-${index}`);
+                if (mainImg) {
+                    mainImg.classList.remove('img-loaded');
+                    mainImg.src = newSrc;
+                }
+
+                const cardEl = mainImg ? mainImg.closest('.ecom-card') : null;
+                if (cardEl) {
+                    cardEl.querySelectorAll('.thumb-box').forEach((t, i) => {
+                        t.classList.toggle('active', i === currIdx);
+                    });
+                    cardEl.querySelectorAll('.card-swipe-dot').forEach((d, i) => {
+                        d.style.background = (i === currIdx) ? '#FF6A00' : 'rgba(255,255,255,0.75)';
+                    });
+                }
+
+                if (selectedAnnaDesign === `${item.name} (${item.code})`) {
+                    selectedAnnaImg = newSrc;
+                }
+
+                setTimeout(() => { annaCardJustSwiped = false; }, 250);
+            }
+        }
+
+        function openAnnaCardImageClick(e, index, title) {
+            if (e) e.stopPropagation();
+            if (annaCardJustSwiped) return;
+            const item = currentAnnaList[index];
+            const imgs = [item.img1, item.img2, item.img3];
+            const currentSrc = item.currentImg || item.img1;
+            const startIdx = Math.max(0, imgs.indexOf(currentSrc));
+            if (typeof openGalleryLightbox === 'function') {
+                openGalleryLightbox(imgs, startIdx, title);
+            } else {
+                openImageLightbox(e, currentSrc, title);
+            }
+        }
+
+        function renderAnnaCatalogGrid() {
+            const container = document.getElementById('annaCatalogContainer');
+            container.innerHTML = '';
+
+            currentAnnaList.forEach((item, index) => {
+                const fullDesignTitle = `${item.name} (${item.code})`;
+                const isSelected = (selectedAnnaDesign === fullDesignTitle);
+                const activeSrc = item.currentImg || item.img1;
+                const activeIdx = Math.max(0, [item.img1, item.img2, item.img3].indexOf(activeSrc));
+
+                const cardDiv = document.createElement('div');
+                cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
+                cardDiv.onclick = () => selectAnnaCardByIndex(index);
+
+                const mainImgId = `anna-main-img-${index}`;
+                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
+                const badgeText = (index % 2 === 0) ? 'জনপ্রিয়' : 'নতুন কালেকশন';
+
+                cardDiv.innerHTML = `
+                    <div class="ecom-img-box" style="touch-action: pan-y;" ontouchstart="handleAnnaTouchStart(event)" ontouchend="handleAnnaTouchEnd(event, ${index})">
+                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ক্লিক করুন বা পাশে সরান" onload="this.classList.add('img-loaded')" onclick="openAnnaCardImageClick(event, ${index}, '${fullDesignTitle} | মূল্য: ${item.price}')">
+                        <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); display:flex; gap:5px; background:rgba(0,0,0,0.4); padding:3px 8px; border-radius:10px; pointer-events:none;">
+                            <span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${activeIdx === 0 ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>
+                            <span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${activeIdx === 1 ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>
+                            <span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${activeIdx === 2 ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>
+                        </div>
+                    </div>
+                    <div class="ecom-body">
+                        <div>
+                            <div class="thumb-row">
+                                <img src="${item.img1}" class="thumb-box ${activeSrc === item.img1 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 1, this)" title="ছবি ১">
+                                <img src="${item.img2}" class="thumb-box ${activeSrc === item.img2 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 2, this)" title="ছবি ২">
+                                <img src="${item.img3}" class="thumb-box ${activeSrc === item.img3 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 3, this)" title="ছবি ৩">
+                            </div>
+                            <div class="ecom-title">${item.name}</div>
+                            <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                            <span class="ecom-price-main">মূল্য: ${item.price}</span>
+                        </div>
+                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
+                            <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                        </button>
+                    </div>
+                `;
+                container.appendChild(cardDiv);
+
+                if ((index + 1) % 4 === 0) {
+                    container.appendChild(createCatalogAdBox());
+                }
+            });
+
+            document.getElementById('selectedAnnaDesignDisplay').value = `${selectedAnnaDesign} | মূল্য: ${selectedAnnaPrice}`;
+        }
+
         function switchAnnaThumb(e, index, imgNum, thumbEl) {
             e.stopPropagation();
             const item = currentAnnaList[index];
             const newSrc = item['img' + imgNum];
             item.currentImg = newSrc;
-            changeDisplayImage(`anna-main-img-${index}`, newSrc, thumbEl);
+
+            const mainImgId = `anna-main-img-${index}`;
+            changeDisplayImage(mainImgId, newSrc, thumbEl);
+
+            const cardEl = thumbEl ? thumbEl.closest('.ecom-card') : null;
+            if (cardEl) {
+                cardEl.querySelectorAll('.card-swipe-dot').forEach((d, i) => {
+                    d.style.background = (i === (imgNum - 1)) ? '#FF6A00' : 'rgba(255,255,255,0.75)';
+                });
+            }
 
             if (selectedAnnaDesign === `${item.name} (${item.code})`) {
                 selectedAnnaImg = newSrc;
@@ -3493,61 +3615,18 @@ let selectedAnnaType = 'অফসেট কার্ড';
             renderAnnaCatalogGrid();
         }
 
-        function renderAnnaCatalogGrid() {
-            const container = document.getElementById('annaCatalogContainer');
-            container.innerHTML = '';
-
-            currentAnnaList.forEach((item, index) => {
-                const fullDesignTitle = `${item.name} (${item.code})`;
-                const isSelected = (selectedAnnaDesign === fullDesignTitle);
-                const activeSrc = item.currentImg || item.img1;
-
-                const cardDiv = document.createElement('div');
-                cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
-                cardDiv.onclick = () => selectAnnaCardByIndex(index);
-                
-                const mainImgId = `anna-main-img-${index}`;
-                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
-                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
-
-                cardDiv.innerHTML = `
-                    <div class="ecom-img-box">
-                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
-                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${fullDesignTitle} | মূল্য: ${item.price}')">
-                    </div>
-                    <div class="ecom-body">
-                        <div>
-                            <div class="thumb-row">
-                                <img src="${item.img1}" class="thumb-box ${activeSrc === item.img1 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 1, this)" title="ছবি ১">
-                                <img src="${item.img2}" class="thumb-box ${activeSrc === item.img2 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 2, this)" title="ছবি ২">
-                                <img src="${item.img3}" class="thumb-box ${activeSrc === item.img3 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchAnnaThumb(event, ${index}, 3, this)" title="ছবি ৩">
-                            </div>
-                            <div class="ecom-title">${item.name}</div>
-                            <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
-                            <span class="ecom-price-main">মূল্য: ${item.price}</span>
-                        </div>
-                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
-                            <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isSelected ? 'নির্বাচিত হয়েছে' : 'এই ডিজাইনটি নিন'}
-                        </button>
-                    </div>
-                `;
-                container.appendChild(cardDiv);
-
-                // প্রতি ৪টি কার্ডের পর ১টি গুগল অ্যাড বক্স
-                if ((index + 1) % 4 === 0) {
-                    container.appendChild(createCatalogAdBox());
-                }
-            });
-
-            document.getElementById('selectedAnnaDesignDisplay').value = `${selectedAnnaDesign} | মূল্য: ${selectedAnnaPrice}`;
-        }
-
         function submitAnnaToWhatsApp() {
+            const printOptionEl = document.querySelector('input[name="annaPrintOption"]:checked');
+            const printOption = (selectedAnnaType === 'ডিজিট্যাল কার্ড')
+                ? 'প্রিন্ট করতে চাই'
+                : (printOptionEl ? printOptionEl.value : 'প্রিন্ট করতে চাই');
             const delivery = document.querySelector('input[name="annaDeliveryMethod"]:checked').value;
+
             const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
                             `--------------------------------%0A` +
                             `• সার্ভিস: অন্নপ্রাশন কার্ড%0A` +
                             `• কার্ডের ধরন: ${selectedAnnaType}%0A` +
+                            `• কাজের ধরন: ${printOption}%0A` +
                             `• অর্ডার পরিমাণ: ${currentAnnaQuantity} পিস%0A` +
                             `• পছন্দ করা ডিজাইন: ${selectedAnnaDesign}%0A` +
                             `• নির্ধারিত মূল্য: ${selectedAnnaPrice}%0A` +
@@ -3637,18 +3716,6 @@ let selectedAnnaType = 'অফসেট কার্ড';
                 { id: 'RMN09', name: 'ফ্যামিলি রেস্তোরাঁ মেনু ০৯', code: 'R-MN09', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80' },
                 { id: 'RMN10', name: 'বেকারি ও ডেজার্ট কার্ড ১০', code: 'R-MN10', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80' }
             ],
-            'যেকোনো অনুষ্ঠানের মেনুকার্ড': [
-                { id: 'GMN01', name: 'মাল্টিকালার ইউনিভার্সাল ০১', code: 'G-MN01', img: 'https://lh3.googleusercontent.com/d/1RtgEKbyMhhiiYdRXvNBK_-wGYOGkBPr3' },
-                { id: 'GMN02', name: 'ক্লাসিক আর্ট পেপার ০২', code: 'G-MN02', img: 'https://lh3.googleusercontent.com/d/1EPylHqAI_08HSy0KB50IbyJgDLvRiIMR' },
-                { id: 'GMN03', name: 'ফোল্ডিং প্রিমিয়াম পার্টি ০৩', code: 'G-MN03', img: 'https://lh3.googleusercontent.com/d/1tZzhidbIIXCHokBY8-grYTNBGawaC29T' },
-                { id: 'GMN04', name: 'কর্পোরেট লাঞ্চ মেনু ০৪', code: 'G-MN04', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                { id: 'GMN05', name: 'উৎসব ভোজ কার্ড ০৫', code: 'G-MN05', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80' },
-                { id: 'GMN06', name: 'স্মার্ট মিনি মেনু ০৬', code: 'G-MN06', img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80' },
-                { id: 'GMN07', name: 'গেস্ট স্পেশাল মেনু ০৭', code: 'G-MN07', img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80' },
-                { id: 'GMN08', name: 'সাধারণ ভোজ তালিকা ০৮', code: 'G-MN08', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=80' },
-                { id: 'GMN09', name: 'ডাবল সাইড প্রিন্ট ০৯', code: 'G-MN09', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
-                { id: 'GMN10', name: 'রয়্যাল গ্র্যান্ড ফিস্ট ১০', code: 'G-MN10', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80' }
-            ]
         };
 
         function openMenuCardFlow() {
@@ -3656,11 +3723,20 @@ let selectedAnnaType = 'অফসেট কার্ড';
             document.getElementById('menuModalStep1').style.display = 'flex';
         }
 
+        let menuSkeletonShown = false;
+        let menuTouchStartX = 0;
+        let menuTouchStartY = 0;
+        let menuCardJustSwiped = false;
+
+        function getMenuItemImages(item) {
+            return [item.img1 || item.img, item.img2, item.img3].filter(Boolean);
+        }
+
         function proceedToMenuCatalog() {
             const rawVal = document.getElementById('menuQuantity').value;
             const qty = parseQuantityNumber(rawVal);
 
-            if(!rawVal || isNaN(qty) || qty <= 0) {
+            if (!rawVal || isNaN(qty) || qty <= 0) {
                 alert('অনুগ্রহ করে সঠিক সংখ্যায় মেনুকার্ডের পরিমাণ লিখুন (যেমন: ৫০, ১০০, ২০০ ইত্যাদি)।');
                 document.getElementById('menuQuantity').focus();
                 return;
@@ -3670,9 +3746,15 @@ let selectedAnnaType = 'অফসেট কার্ড';
             currentMenuQuantity = qty;
             closeModal('menuModalStep1');
 
-            currentMenuList = menuCatalogsByOccasion[currentMenuOccasion] || menuCatalogsByOccasion['যেকোনো অনুষ্ঠানের মেনুকার্ড'];
+            currentMenuList = menuCatalogsByOccasion[currentMenuOccasion] || menuCatalogsByOccasion['বিয়ের মেনুকার্ড'];
+            currentMenuList.forEach(item => {
+                const imgs = getMenuItemImages(item);
+                item.currentImg = imgs[0];
+            });
+
             selectedMenuDesign = `${currentMenuList[0].name} (${currentMenuList[0].code})`;
-            selectedMenuImg = currentMenuList[0].img;
+            selectedMenuImg = currentMenuList[0].currentImg;
+            menuSkeletonShown = false;
 
             document.getElementById('menuCatalogTitle').innerText = `${currentMenuOccasion} ক্যাটালগ`;
             document.getElementById('menuCatalogSubtitle').innerText = `পছন্দের ডিজাইন নির্বাচন করুন | অর্ডার পরিমাণ: ${qty} পিস`;
@@ -3680,36 +3762,152 @@ let selectedAnnaType = 'অফসেট কার্ড';
             triggerAdFlow('menu');
         }
 
+        function handleMenuTouchStart(e) {
+            menuTouchStartX = e.touches[0].clientX;
+            menuTouchStartY = e.touches[0].clientY;
+            menuCardJustSwiped = false;
+        }
+
+        function handleMenuTouchEnd(e, index) {
+            const item = currentMenuList[index];
+            const imgs = getMenuItemImages(item);
+            if (imgs.length <= 1) return;
+
+            const diffX = e.changedTouches[0].clientX - menuTouchStartX;
+            const diffY = e.changedTouches[0].clientY - menuTouchStartY;
+
+            if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
+                e.stopPropagation();
+                menuCardJustSwiped = true;
+
+                const currentSrc = item.currentImg || imgs[0];
+                let currIdx = imgs.indexOf(currentSrc);
+                if (currIdx === -1) currIdx = 0;
+
+                if (diffX < 0) {
+                    currIdx = (currIdx + 1) % imgs.length;
+                } else {
+                    currIdx = (currIdx - 1 + imgs.length) % imgs.length;
+                }
+
+                const newSrc = imgs[currIdx];
+                item.currentImg = newSrc;
+
+                const mainImg = document.getElementById(`menu-main-img-${index}`);
+                if (mainImg) {
+                    mainImg.classList.remove('img-loaded');
+                    mainImg.src = newSrc;
+                }
+
+                const cardEl = mainImg ? mainImg.closest('.ecom-card') : null;
+                if (cardEl) {
+                    cardEl.querySelectorAll('.thumb-box').forEach((t, i) => {
+                        t.classList.toggle('active', i === currIdx);
+                    });
+                    cardEl.querySelectorAll('.card-swipe-dot').forEach((d, i) => {
+                        d.style.background = (i === currIdx) ? '#FF6A00' : 'rgba(255,255,255,0.75)';
+                    });
+                }
+
+                if (selectedMenuDesign === `${item.name} (${item.code})`) {
+                    selectedMenuImg = newSrc;
+                }
+
+                setTimeout(() => { menuCardJustSwiped = false; }, 250);
+            }
+        }
+
+        function switchMenuThumb(e, index, imgIdx, thumbEl) {
+            e.stopPropagation();
+            const item = currentMenuList[index];
+            const imgs = getMenuItemImages(item);
+            const newSrc = imgs[imgIdx];
+            if (!newSrc) return;
+
+            item.currentImg = newSrc;
+            changeDisplayImage(`menu-main-img-${index}`, newSrc, thumbEl);
+
+            const cardEl = thumbEl ? thumbEl.closest('.ecom-card') : null;
+            if (cardEl) {
+                cardEl.querySelectorAll('.card-swipe-dot').forEach((d, i) => {
+                    d.style.background = (i === imgIdx) ? '#FF6A00' : 'rgba(255,255,255,0.75)';
+                });
+            }
+
+            if (selectedMenuDesign === `${item.name} (${item.code})`) {
+                selectedMenuImg = newSrc;
+            }
+        }
+
+        function openMenuCardImageClick(e, index, title) {
+            if (e) e.stopPropagation();
+            if (menuCardJustSwiped) return;
+            const item = currentMenuList[index];
+            const imgs = getMenuItemImages(item);
+            const currentSrc = item.currentImg || imgs[0];
+            const startIdx = Math.max(0, imgs.indexOf(currentSrc));
+            if (typeof openGalleryLightbox === 'function') {
+                openGalleryLightbox(imgs, startIdx, title);
+            } else {
+                openImageLightbox(e, currentSrc, title);
+            }
+        }
+
         function renderMenuCatalogGrid() {
             const container = document.getElementById('menuCatalogContainer');
+            if (!container) return;
+
+            if (!menuSkeletonShown && typeof showSkeletonInGrid === 'function') {
+                menuSkeletonShown = true;
+                showSkeletonInGrid('menuCatalogContainer', 6, renderMenuCatalogGrid);
+                return;
+            }
+
             container.innerHTML = '';
 
             currentMenuList.forEach((item, index) => {
-                const isSelected = (selectedMenuDesign === `${item.name} (${item.code})`);
+                const fullDesignTitle = `${item.name} (${item.code})`;
+                const isSelected = (selectedMenuDesign === fullDesignTitle);
+                const imgs = getMenuItemImages(item);
+                const activeSrc = item.currentImg || imgs[0];
+                const activeIdx = Math.max(0, imgs.indexOf(activeSrc));
+
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
-                cardDiv.onclick = () => selectMenuCardItem(`${item.name} (${item.code})`, item.img);
+                cardDiv.onclick = () => selectMenuCardByIndex(index);
+
+                const mainImgId = `menu-main-img-${index}`;
                 const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
-                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
+                const badgeText = (index % 2 === 0) ? 'জনপ্রিয়' : 'নতুন কালেকশন';
+
+                const dotsHtml = imgs.length > 1 ? `
+                    <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); display:flex; gap:5px; background:rgba(0,0,0,0.4); padding:3px 8px; border-radius:10px; pointer-events:none;">
+                        ${imgs.map((_, i) => `<span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${i === activeIdx ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>`).join('')}
+                    </div>` : '';
+
+                const thumbsHtml = imgs.length > 1 ? `
+                    <div class="thumb-row">
+                        ${imgs.map((src, i) => `<img src="${src}" class="thumb-box ${activeSrc === src ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchMenuThumb(event, ${index}, ${i}, this)" title="ছবি ${toBanglaDigits(i + 1)}">`).join('')}
+                    </div>` : '';
+
+                const priceHtml = item.price ? `<span class="ecom-price-main">মূল্য: ${item.price}</span>` : '';
 
                 cardDiv.innerHTML = `
-                    <div class="ecom-img-box">
+                    <div class="ecom-img-box" style="touch-action: pan-y;" ontouchstart="handleMenuTouchStart(event)" ontouchend="handleMenuTouchEnd(event, ${index})">
                         <span class="ecom-badge ${badgeClass}">${badgeText}</span>
-                        <img src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} (${item.code})')">
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openMenuCardImageClick(event, ${index}, '${fullDesignTitle}')">
+                        ${dotsHtml}
                     </div>
                     <div class="ecom-body">
                         <div>
+                            ${thumbsHtml}
                             <div class="ecom-title">${item.name}</div>
                             <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                            ${priceHtml}
                         </div>
-                        <div style="margin-top: 8px;">
-                            <button type="button" class="ecom-green-btn">
-                                <i class="fa-brands fa-whatsapp"></i> অর্ডার পাঠান
-                            </button>
-                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                            </button>
-                        </div>
+                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
+                            <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                        </button>
                     </div>
                 `;
                 container.appendChild(cardDiv);
@@ -3722,15 +3920,17 @@ let selectedAnnaType = 'অফসেট কার্ড';
             document.getElementById('selectedMenuDesignDisplay').value = selectedMenuDesign;
         }
 
-        function selectMenuCardItem(designStr, imgUrl) {
-            selectedMenuDesign = designStr;
-            if (imgUrl) selectedMenuImg = imgUrl;
+        function selectMenuCardByIndex(index) {
+            const item = currentMenuList[index];
+            const imgs = getMenuItemImages(item);
+            selectedMenuDesign = `${item.name} (${item.code})`;
+            selectedMenuImg = item.currentImg || imgs[0];
             renderMenuCatalogGrid();
         }
 
         function submitMenuToWhatsApp() {
             const deliveryMethod = document.querySelector('input[name="menuDeliveryMethod"]:checked').value;
-            const notes = document.getElementById('menuNotes').value || 'খাবারের তালিকা হোয়াটসঅ্যাপে পাঠাচ্ছি';
+            const notes = document.getElementById('menuNotes').value.trim() || 'খাবারের তালিকা হোয়াটসঅ্যাপে পাঠাচ্ছি';
 
             const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
                             `--------------------------------%0A` +
@@ -3823,124 +4023,6 @@ let selectedAnnaType = 'অফসেট কার্ড';
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
 
-/* ---------------- ৭. স্টেশনারি (ফ্রন্ট স্টাইল + ২টি ছবি + দাম + ৪ কার্ড পর ১ অ্যাড + ছবির লিঙ্ক) ---------------- */
-const stationeryProducts = [
-            { id: 'st1', name: 'স্কুল খাতা', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st2', name: 'দিস্তা খাতা', price: '₹৪৫ / পিস', img1: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st3', name: 'পেন / বলপেন সেট', price: '₹৫০ / প্যাক', img1: 'https://images.unsplash.com/photo-1585336261026-77884ffb17c9?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st4', name: 'রেজিস্টার খাতা', price: '₹৮০ / পিস', img1: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st5', name: 'মিটিং রেজুলেশন বুক', price: '₹১২০ / পিস', img1: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st6', name: 'ক্যাশবুক', price: '₹১১০ / পিস', img1: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st7', name: 'নোটিস বুক', price: '₹৯০ / পিস', img1: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st8', name: 'সার্ভিস বুক', price: '₹১০০ / পিস', img1: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st9', name: 'লেজার খাতা', price: '₹১৩০ / পিস', img1: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st10', name: 'স্টুডেন্ট ডায়েরি', price: '₹৬০ / পিস', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st11', name: 'অফিস ফাইল কভার', price: '₹২৫ / পিস', img1: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st12', name: 'অ্যাটেনডেন্স রেজিস্টার', price: '₹৯৫ / পিস', img1: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st13', name: 'ড্রয়িং বুক', price: '₹৩৫ / পিস', img1: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st14', name: 'গ্রাফ খাতা', price: '₹৩০ / পিস', img1: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st15', name: 'স্পাইরাল নোটবুক', price: '₹৭০ / পিস', img1: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st16', name: 'প্র্যাকটিক্যাল খাতা', price: '₹৫৫ / পিস', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st17', name: 'স্টক রেজিস্টার', price: '₹১১০ / পিস', img1: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st18', name: 'ভাউচার ফাইল', price: '₹৪০ / পিস', img1: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st19', name: 'এনভেলাপ / খাম সেট', price: '₹৬০ / প্যাক', img1: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=600&auto=format&fit=crop&q=80' },
-            { id: 'st20', name: 'ডকুমেন্ট ফোল্ডার', price: '₹৬৫ / পিস', img1: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80' }
-        ];
-
-        let selectedStatItem = stationeryProducts[0].name;
-        let selectedStatPrice = stationeryProducts[0].price;
-        let selectedStatImg = stationeryProducts[0].img1;
-
-        function openStationeryFlow() {
-            stationeryProducts.forEach(prod => { if (!prod.currentImg) prod.currentImg = prod.img1; });
-            document.getElementById('stationeryModal').style.display = 'flex';
-            showSkeletonInGrid('stationeryProductGrid', 6, renderStationeryGrid);
-        }
-
-        function switchStatThumb(e, index, imgNum, thumbEl) {
-            e.stopPropagation();
-            const prod = stationeryProducts[index];
-            const newSrc = prod['img' + imgNum];
-            prod.currentImg = newSrc;
-            changeDisplayImage(`stat-main-img-${index}`, newSrc, thumbEl);
-
-            if (selectedStatItem === prod.name) {
-                selectedStatImg = newSrc;
-            }
-        }
-
-        function selectStatProductByIndex(index) {
-            const prod = stationeryProducts[index];
-            selectedStatItem = prod.name;
-            selectedStatPrice = prod.price;
-            selectedStatImg = prod.currentImg || prod.img1;
-            renderStationeryGrid();
-        }
-
-        function renderStationeryGrid() {
-            const grid = document.getElementById('stationeryProductGrid');
-            grid.innerHTML = '';
-            
-            stationeryProducts.forEach((prod, index) => {
-                const isChecked = (prod.name === selectedStatItem);
-                const activeSrc = prod.currentImg || prod.img1;
-
-                const cardDiv = document.createElement('div');
-                cardDiv.className = `ecom-card ${isChecked ? 'selected' : ''}`;
-                cardDiv.onclick = () => selectStatProductByIndex(index);
-
-                const mainImgId = `stat-main-img-${index}`;
-                const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
-                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
-                
-                cardDiv.innerHTML = `
-                    <div class="ecom-img-box">
-                        <span class="ecom-badge ${badgeClass}">${badgeText}</span>
-                        <img src="${activeSrc}" id="${mainImgId}" alt="${prod.name}" title="বড় করে দেখতে ছবির ওপর ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${prod.name} | মূল্য: ${prod.price}')">
-                    </div>
-                    <div class="ecom-body">
-                        <div>
-                            <div class="thumb-row">
-                                <img src="${prod.img1}" class="thumb-box ${activeSrc === prod.img1 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchStatThumb(event, ${index}, 1, this)" title="ছবি ১">
-                                <img src="${prod.img2}" class="thumb-box ${activeSrc === prod.img2 ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchStatThumb(event, ${index}, 2, this)" title="ছবি ২">
-                            </div>
-                            <div class="ecom-title">${prod.name}</div>
-                            <div class="ecom-meta">কাস্টম ও স্কুল-অফিস স্টেশনারি</div>
-                            <span class="ecom-price-main">মূল্য: ${prod.price}</span>
-                        </div>
-                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
-                            <i class="fa-solid ${isChecked ? 'fa-circle-check' : 'fa-hand-pointer'}"></i> ${isChecked ? 'নির্বাচিত হয়েছে' : 'এটি নির্বাচন করুন'}
-                        </button>
-                    </div>
-                `;
-                grid.appendChild(cardDiv);
-
-                // প্রতি ৪টি কার্ডের পর ১টি গুগল অ্যাড বক্স
-                if ((index + 1) % 4 === 0) {
-                    grid.appendChild(createCatalogAdBox());
-                }
-            });
-            document.getElementById('selectedStatItemDisplay').value = `${selectedStatItem} | মূল্য: ${selectedStatPrice}`;
-        }
-
-        function submitStationeryToWhatsApp() {
-            const qty = document.getElementById('stationeryQty').value || 1;
-            const note = document.getElementById('stationeryNote').value || 'কোনো বাড়তি নোট নেই';
-            const delivery = document.querySelector('input[name="statDelivery"]:checked').value;
-            const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
-                            `--------------------------------%0A` +
-                            `• সার্ভিস: স্টেশনারি%0A` +
-                            `• নির্বাচিত প্রোডাক্ট: ${selectedStatItem}%0A` +
-                            `• নির্ধারিত মূল্য: ${selectedStatPrice}%0A` +
-                            `• প্রোডাক্টের ছবির লিঙ্ক: ${encodeURIComponent(selectedStatImg)}%0A` +
-                            `• পরিমাণ: ${qty} পিস%0A` +
-                            `• বিবরণ/সাইজ: ${note}%0A` +
-                            `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
-                            `--------------------------------%0A` +
-                            `আমি এর দাম ও প্রাপ্তিসাধ্যতা জানতে চাই।`;
-            window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
-        }
-
         /* ---------------- ৮. বিল বুক প্রিন্ট (১৫টি স্যাম্পল স্লট) ---------------- */
 /* ---------------- ৮. বিল বুক প্রিন্ট (১৫টি স্যাম্পল স্লট + ছবির লিঙ্ক সহ) ---------------- */
 const billBookProducts = [
@@ -3960,91 +4042,257 @@ const billBookProducts = [
             { id: 'bb14', name: 'ক্লাব চাঁদার রসিদ ১৪', code: 'CR-14', img: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80' },
             { id: 'bb15', name: 'কাস্টম বিল বুক ১৫', code: 'CB-15', img: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&auto=format&fit=crop&q=80' }
         ];
+        let selectedBillBookDesign = '';
+        let selectedBillBookSize = '';
+        let selectedBillBookImg = '';
+        let billBookTouchStartX = 0;
+        let billBookTouchStartY = 0;
+        let billBookCardJustSwiped = false;
 
-        let selectedBillBookItem = `${billBookProducts[0].name} (${billBookProducts[0].code})`;
-        let selectedBillBookImg = billBookProducts[0].img;
+        function getBillBookImages(item) {
+            return [item.img1 || item.img, item.img2].filter(Boolean);
+        }
+
+        function toggleBillBookPrintFields() {
+            const selectedOption = document.querySelector('input[name="billBookPrintOption"]:checked');
+            const nameGroup = document.getElementById('billBookPrintNameGroup');
+            if (!nameGroup) return;
+
+            if (selectedOption && selectedOption.value === 'রেডিমেট চাই') {
+                nameGroup.style.display = 'none';
+            } else {
+                nameGroup.style.display = 'block';
+            }
+        }
 
         function openBillBookFlow() {
+            const list = (typeof billBookProducts !== 'undefined') ? billBookProducts : [];
+            if (list.length > 0) {
+                list.forEach(item => {
+                    const imgs = getBillBookImages(item);
+                    item.currentImg = imgs[0];
+                });
+                selectedBillBookDesign = `${list[0].name} (${list[0].code})`;
+                selectedBillBookSize = list[0].size || '১/৮ (৫.৫ × ৮.৫ ইঞ্চি)';
+                selectedBillBookImg = list[0].currentImg;
+            }
+
+            const printRadios = document.getElementsByName('billBookPrintOption');
+            if (printRadios.length > 0) printRadios[0].checked = true;
+            toggleBillBookPrintFields();
+
             document.getElementById('billBookModal').style.display = 'flex';
-            showSkeletonInGrid('billBookProductGrid', 6, renderBillBookGrid);
+
+            if (typeof showSkeletonInGrid === 'function') {
+                showSkeletonInGrid('billBookProductGrid', 6, renderBillBookGrid);
+            } else {
+                renderBillBookGrid();
+            }
+        }
+
+        function handleBillBookTouchStart(e) {
+            billBookTouchStartX = e.touches[0].clientX;
+            billBookTouchStartY = e.touches[0].clientY;
+            billBookCardJustSwiped = false;
+        }
+
+        function handleBillBookTouchEnd(e, index) {
+            const list = (typeof billBookProducts !== 'undefined') ? billBookProducts : [];
+            const item = list[index];
+            if (!item) return;
+
+            const imgs = getBillBookImages(item);
+            if (imgs.length <= 1) return;
+
+            const diffX = e.changedTouches[0].clientX - billBookTouchStartX;
+            const diffY = e.changedTouches[0].clientY - billBookTouchStartY;
+
+            // ছবির ওপর হাত দিয়ে ডানে-বামে সরালে ২টি ছবি বদলাবে
+            if (Math.abs(diffX) > 30 && Math.abs(diffX) > Math.abs(diffY)) {
+                e.stopPropagation();
+                billBookCardJustSwiped = true;
+
+                const currentSrc = item.currentImg || imgs[0];
+                let currIdx = imgs.indexOf(currentSrc);
+                if (currIdx === -1) currIdx = 0;
+
+                currIdx = (currIdx + 1) % imgs.length;
+                const newSrc = imgs[currIdx];
+                item.currentImg = newSrc;
+
+                const mainImg = document.getElementById(`billbook-main-img-${index}`);
+                if (mainImg) {
+                    mainImg.classList.remove('img-loaded');
+                    mainImg.src = newSrc;
+                }
+
+                const cardEl = mainImg ? mainImg.closest('.ecom-card') : null;
+                if (cardEl) {
+                    cardEl.querySelectorAll('.thumb-box').forEach((t, i) => {
+                        t.classList.toggle('active', i === currIdx);
+                    });
+                    cardEl.querySelectorAll('.card-swipe-dot').forEach((d, i) => {
+                        d.style.background = (i === currIdx) ? '#FF6A00' : 'rgba(255,255,255,0.75)';
+                    });
+                }
+
+                if (selectedBillBookDesign === `${item.name} (${item.code})`) {
+                    selectedBillBookImg = newSrc;
+                }
+
+                setTimeout(() => { billBookCardJustSwiped = false; }, 250);
+            }
+        }
+
+        function switchBillBookThumb(e, index, imgIdx, thumbEl) {
+            e.stopPropagation();
+            const list = (typeof billBookProducts !== 'undefined') ? billBookProducts : [];
+            const item = list[index];
+            if (!item) return;
+
+            const imgs = getBillBookImages(item);
+            const newSrc = imgs[imgIdx];
+            if (!newSrc) return;
+
+            item.currentImg = newSrc;
+            changeDisplayImage(`billbook-main-img-${index}`, newSrc, thumbEl);
+
+            const cardEl = thumbEl ? thumbEl.closest('.ecom-card') : null;
+            if (cardEl) {
+                cardEl.querySelectorAll('.card-swipe-dot').forEach((d, i) => {
+                    d.style.background = (i === imgIdx) ? '#FF6A00' : 'rgba(255,255,255,0.75)';
+                });
+            }
+
+            if (selectedBillBookDesign === `${item.name} (${item.code})`) {
+                selectedBillBookImg = newSrc;
+            }
+        }
+
+        function openBillBookImageClick(e, index) {
+            if (e) e.stopPropagation();
+            if (billBookCardJustSwiped) return;
+
+            const list = (typeof billBookProducts !== 'undefined') ? billBookProducts : [];
+            const item = list[index];
+            if (!item) return;
+
+            const imgs = getBillBookImages(item);
+            const currentSrc = item.currentImg || imgs[0];
+            const startIdx = Math.max(0, imgs.indexOf(currentSrc));
+            const sizeText = item.size || '১/৮ (৫.৫ × ৮.৫ ইঞ্চি)';
+            const title = `${item.name} (${item.code}) | সাইজ: ${sizeText}`;
+
+            if (typeof openGalleryLightbox === 'function') {
+                openGalleryLightbox(imgs, startIdx, title);
+            } else {
+                openImageLightbox(e, currentSrc, title);
+            }
         }
 
         function renderBillBookGrid() {
-            const grid = document.getElementById('billBookProductGrid');
-            grid.innerHTML = '';
+            const container = document.getElementById('billBookProductGrid');
+            if (!container) return;
+            container.innerHTML = '';
 
-            billBookProducts.forEach((item, index) => {
-                const fullTitle = `${item.name} (${item.code})`;
-                const isSelected = (fullTitle === selectedBillBookItem);
+            const list = (typeof billBookProducts !== 'undefined') ? billBookProducts : [];
+
+            list.forEach((item, index) => {
+                const fullDesignTitle = `${item.name} (${item.code})`;
+                const isSelected = (selectedBillBookDesign === fullDesignTitle);
+                const imgs = getBillBookImages(item);
+                const activeSrc = item.currentImg || imgs[0];
+                const activeIdx = Math.max(0, imgs.indexOf(activeSrc));
+                const sizeText = item.size || '১/৮ (৫.৫ × ৮.৫ ইঞ্চি)';
+
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
-                cardDiv.onclick = () => selectBillBookProduct(fullTitle, item.img);
+                cardDiv.onclick = () => selectBillBookCardByIndex(index);
 
+                const mainImgId = `billbook-main-img-${index}`;
                 const badgeClass = (index % 2 === 0) ? 'badge-bestseller' : 'badge-trending';
-                const badgeText = (index % 2 === 0) ? 'Best Seller' : 'Trending Now';
+                const badgeText = (index % 2 === 0) ? 'জনপ্রিয়' : 'নতুন কালেকশন';
+
+                const dotsHtml = imgs.length > 1 ? `
+                    <div style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); display:flex; gap:5px; background:rgba(0,0,0,0.4); padding:3px 8px; border-radius:10px; pointer-events:none;">
+                        ${imgs.map((_, i) => `<span class="card-swipe-dot" style="width:6px; height:6px; border-radius:50%; background:${i === activeIdx ? '#FF6A00' : 'rgba(255,255,255,0.75)'};"></span>`).join('')}
+                    </div>` : '';
+
+                const thumbsHtml = imgs.length > 1 ? `
+                    <div class="thumb-row">
+                        ${imgs.map((src, i) => `<img src="${src}" class="thumb-box ${activeSrc === src ? 'active' : ''}" onload="this.classList.add('img-loaded')" onclick="switchBillBookThumb(event, ${index}, ${i}, this)" title="ছবি ${i + 1}">`).join('')}
+                    </div>` : '';
 
                 cardDiv.innerHTML = `
-                    <div class="ecom-img-box">
+                    <div class="ecom-img-box" style="touch-action: pan-y;" ontouchstart="handleBillBookTouchStart(event)" ontouchend="handleBillBookTouchEnd(event, ${index})">
                         <span class="ecom-badge ${badgeClass}">${badgeText}</span>
-                        <img src="${item.img}" alt="${item.name}" title="পুরো ছবি দেখতে ক্লিক করুন" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${fullTitle}')">
+                        <img src="${activeSrc}" id="${mainImgId}" alt="${item.name}" title="বড় করে দেখতে ক্লিক করুন বা পাশে সরান" onload="this.classList.add('img-loaded')" onclick="openBillBookImageClick(event, ${index})">
+                        ${dotsHtml}
                     </div>
                     <div class="ecom-body">
                         <div>
+                            ${thumbsHtml}
                             <div class="ecom-title">${item.name}</div>
                             <div class="ecom-meta">ডিজাইন কোড: ${item.code}</div>
+                            <span class="ecom-price-main">সাইজ: ${sizeText}</span>
                         </div>
-                        <div style="margin-top: 8px;">
-                            <button type="button" class="ecom-green-btn">
-                                <i class="fa-brands fa-whatsapp"></i> অর্ডার পাঠান
-                            </button>
-                            <button class="sample-share-btn" type="button" onclick="shareSpecificProduct(event, '${item.name}', 'ডিজাইন কোড: ${item.code}')">
-                                <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
-                            </button>
-                        </div>
+                        <button type="button" class="ecom-green-btn" style="margin-top: 6px;">
+                            <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                        </button>
                     </div>
                 `;
-                grid.appendChild(cardDiv);
+                container.appendChild(cardDiv);
 
                 if ((index + 1) % 4 === 0) {
-                    grid.appendChild(createCatalogAdBox());
+                    container.appendChild(createCatalogAdBox());
                 }
             });
 
-            document.getElementById('selectedBillBookDisplay').value = selectedBillBookItem;
+            document.getElementById('selectedBillBookDisplay').value = `${selectedBillBookDesign} | সাইজ: ${selectedBillBookSize}`;
         }
 
-        function selectBillBookProduct(name, imgUrl) {
-            selectedBillBookItem = name;
-            if (imgUrl) selectedBillBookImg = imgUrl;
+        function selectBillBookCardByIndex(index) {
+            const list = (typeof billBookProducts !== 'undefined') ? billBookProducts : [];
+            const item = list[index];
+            if (!item) return;
+
+            const imgs = getBillBookImages(item);
+            selectedBillBookDesign = `${item.name} (${item.code})`;
+            selectedBillBookSize = item.size || '১/৮ (৫.৫ × ৮.৫ ইঞ্চি)';
+            selectedBillBookImg = item.currentImg || imgs[0];
             renderBillBookGrid();
         }
 
         function submitBillBookToWhatsApp() {
-            const rawQty = document.getElementById('billBookQty').value;
-            const qty = parseQuantityNumber(rawQty);
-
-            if(!rawQty || isNaN(qty) || qty < 50) {
-                alert('অনুগ্রহ করে সর্বনিম্ন ৫০ পিস থেকে শুরু করে আপনার প্রয়োজনীয় সংখ্যা উল্লেখ করুন (যেমন: ৫০, ১০০, ৫০০ ইত্যাদি)।');
+            const qtyVal = parseInt(document.getElementById('billBookQty').value, 10);
+            if (!qtyVal || qtyVal <= 0) {
+                alert('অনুগ্রহ করে সঠিক সংখ্যায় বিল বুকের পরিমাণ লিখুন।');
                 document.getElementById('billBookQty').focus();
                 return;
             }
 
-            const size = document.getElementById('billBookSize').value;
-            const note = document.getElementById('billBookNote').value || 'সাধারণ স্পেসিফিকেশন';
-            const delivery = document.querySelector('input[name="billDelivery"]:checked').value;
+            const printOptionEl = document.querySelector('input[name="billBookPrintOption"]:checked');
+            const printOption = printOptionEl ? printOptionEl.value : 'প্রিন্ট করতে চাই';
+            const delivery = document.querySelector('input[name="billBookDeliveryMethod"]:checked').value;
+
+            let printDetailsLine = '';
+            if (printOption === 'প্রিন্ট করতে চাই') {
+                const rawName = document.getElementById('billBookPrintText').value.trim() || 'দোকানের নাম ও বিবরণ হোয়াটসঅ্যাপে পাঠাচ্ছি';
+                printDetailsLine = `• ছাপানোর নাম/বিবরণ: ${rawName}%0A`;
+            }
 
             const message = `*নতুন অর্ডার রিকোয়েস্ট (Sub Prints)*%0A` +
                             `--------------------------------%0A` +
-                            `• সার্ভিস: বিল বুক প্রিন্ট%0A` +
-                            `• প্রোডাক্ট: ${selectedBillBookItem}%0A` +
+                            `• সার্ভিস: বিল বুক ও ক্যাশমেমো প্রিন্ট%0A` +
+                            `• কাজের ধরন: ${printOption}%0A` +
+                            printDetailsLine +
+                            `• পছন্দ করা ডিজাইন: ${selectedBillBookDesign}%0A` +
+                            `• সাইজ: ${selectedBillBookSize}%0A` +
+                            `• অর্ডার পরিমাণ: ${qtyVal} পিস/বই%0A` +
                             `• ডিজাইনের ছবির লিঙ্ক: ${encodeURIComponent(selectedBillBookImg)}%0A` +
-                            `• সাইজ/মাপ: ${size}%0A` +
-                            `• অর্ডার পরিমাণ: ${qty} পিস%0A` +
-                            `• পেজ/কপি বিবরণ: ${note}%0A` +
                             `• ডেলিভারি মাধ্যম: ${delivery}%0A` +
                             `--------------------------------%0A` +
-                            `আমি এর রেট ও প্রিন্টিং কোয়ালিটি নিয়ে আলোচনা করতে চাই।`;
-
+                            `আমি বিল বুক অর্ডার কনফার্ম করতে চাই।`;
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
         }
 
@@ -4105,48 +4353,48 @@ const prashnaPublishersData = {
                 title: 'ছায়া প্রকাশনী : প্রশ্ন সাথী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'ছায়া প্রকাশনী (প্রশ্ন সাথী)',
                 books: [
-                    { id: 'ch5', name: 'প্রশ্ন সাথী - ক্লাস ৫ (Class 5)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৪০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'ch6', name: 'প্রশ্ন সাথী - ক্লাস ৬ (Class 6)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৭০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'ch7', name: 'প্রশ্ন সাথী - ক্লাস ৭ (Class 7)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৯০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'ch8', name: 'প্রশ্ন সাথী - ক্লাস ৮ (Class 8)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹৩২০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'ch9', name: 'প্রশ্ন সাথী - ক্লাস ৯ (Class 9)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', price: '₹৩৫০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'ch10', name: 'প্রশ্ন সাথী - ক্লাস ১০ (Class 10)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', price: '₹৩৮০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'ch5', name: 'প্রশ্ন সাথী - ক্লাস ৫ (Class 5)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৪০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'ch6', name: 'প্রশ্ন সাথী - ক্লাস ৬ (Class 6)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৭০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'ch7', name: 'প্রশ্ন সাথী - ক্লাস ৭ (Class 7)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৯০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'ch8', name: 'প্রশ্ন সাথী - ক্লাস ৮ (Class 8)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹৩২০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'ch9', name: 'প্রশ্ন সাথী - ক্লাস ৯ (Class 9)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', price: '₹৩৫০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'ch10', name: 'প্রশ্ন সাথী - ক্লাস ১০ (Class 10)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', price: '₹৩৮০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' }
                 ]
             },
             'parul': {
                 title: 'পারুল প্রকাশনী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'পারুল প্রকাশনী',
                 books: [
-                    { id: 'pr5', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৩০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'pr6', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৬০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'pr7', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৮৫', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'pr8', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹৩১০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'pr9', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', price: '₹৩৪০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'pr10', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', price: '₹৩৭০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'pr5', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৩০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'pr6', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৬০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'pr7', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৮৫', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'pr8', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹৩১০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'pr9', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', price: '₹৩৪০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'pr10', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', price: '₹৩৭০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80' }
                 ]
             },
             'raymartin': {
                 title: 'রায় ও মার্টিন প্রকাশনী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'রায় ও মার্টিন প্রকাশনী',
                 books: [
-                    { id: 'rm5', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৫', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹২৫০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'rm6', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৬', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹২৮০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'rm7', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৭', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩০০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'rm8', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৮', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৩০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'rm9', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৯', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৬০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'rm10', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ১০', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৯০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'rm5', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৫', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹২৫০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'rm6', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৬', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹২৮০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'rm7', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৭', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩০০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'rm8', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৮', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৩০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'rm9', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৯', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৬০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'rm10', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ১০', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৯০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' }
                 ]
             },
             'tulsi': {
                 title: 'তুলসী প্রকাশনী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'তুলসী প্রকাশনী',
                 books: [
-                    { id: 'tl5', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২২০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'tl6', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২৫০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'tl7', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২৭৫', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'tl8', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩০০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'tl9', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩৩০', badge: 'Trending Now', img1: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80' },
-                    { id: 'tl10', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩৬০', badge: 'Best Seller', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80' }
+                    { id: 'tl5', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২২০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'tl6', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২৫০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'tl7', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২৭৫', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'tl8', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩০০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'tl9', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩৩০', badge: 'নতুন কালেকশন', img1: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&auto=format&fit=crop&q=80' },
+                    { id: 'tl10', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩৬০', badge: 'জনপ্রিয়', img1: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80', img2: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80' }
                 ]
             }
         };
@@ -4217,7 +4465,7 @@ const prashnaPublishersData = {
                 cardDiv.onclick = () => selectPrashnaClass(index);
 
                 const mainImgId = `prashna-main-img-${currentPrashnaPubKey}-${index}`;
-                const badgeClass = (item.badge === 'Best Seller') ? 'badge-bestseller' : 'badge-trending';
+                const badgeClass = (item.badge === 'জনপ্রিয়') ? 'badge-bestseller' : 'badge-trending';
 
                 cardDiv.innerHTML = `
                     <div class="ecom-img-box">
@@ -4289,14 +4537,13 @@ const prashnaPublishersData = {
         'studentOrderModal', 'imageLightboxModal', 'adModal', 'weddingModalStep1',
         'catalogModal', 'annaprashanStep1', 'annaCatalogModal', 'menuModalStep1',
         'menuCatalogModal', 'visitingModal', 'flexModal', 'stampModal',
-        'stationeryModal', 'billBookModal', 'handbillModal'
+        'billBookModal', 'handbillModal'
     ];
 
     const catalogConfigs = [
         { modalId: 'catalogModal', gridId: 'catalogContainer', title: 'বিয়ের কার্ড অর্ডার কনফার্মেশন' },
         { modalId: 'annaCatalogModal', gridId: 'annaCatalogContainer', title: 'অন্নপ্রাশন কার্ড অর্ডার কনফার্মেশন' },
         { modalId: 'menuCatalogModal', gridId: 'menuCatalogContainer', title: 'মেনু কার্ড অর্ডার কনফার্মেশন' },
-        { modalId: 'stationeryModal', gridId: 'stationeryProductGrid', title: 'স্টেশনারি অর্ডার কনফার্মেশন' },
         { modalId: 'billBookModal', gridId: 'billBookProductGrid', title: 'বিল বুক অর্ডার কনফার্মেশন' },
         { modalId: 'prashnaBichitraModal', gridId: 'prashnaBichitraGrid', title: 'বই অর্ডার কনফার্মেশন' }
     ];
