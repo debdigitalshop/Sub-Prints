@@ -1402,44 +1402,56 @@
 
         </div>
     </div>
-    <!-- ২য় সেকশন: পড়ার বই স্লাইডার -->
-    <div class="student-slider-container">
-        <div class="student-slider">
+   <!-- ২য় সেকশন: পড়ার বই স্লাইডার -->
+   <div class="student-slider-container">
 
-<!-- নতুন প্রশ্নবিচিত্রা ও প্রশ্ন সাথী (ক্লাস ৫ - ১০) কার্ড -->
-<div class="ecom-card" onclick="openPrashnaBichitraFlow()">
-    <div class="ecom-img-box">
-        <span class="ecom-badge badge-bestseller">Class 5 - 10</span>
-        <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-             alt="প্রশ্নবিচিত্রা ও প্রশ্ন সাথী ক্লাস ৫ থেকে ১০" 
-             onload="this.classList.add('img-loaded')">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding: 0 4px;">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1E293B; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-book-open" style="color: var(--primary-orange);"></i> 
+            পড়ার বই ও ধর্মগ্রন্থ বই
+        </h3>
+        <span style="font-size: 0.78rem; font-weight: 600; color: var(--primary-orange); background: #FFF5EE; padding: 3px 10px; border-radius: 20px; border: 1px solid #FFD4B8;">
+            পাশে সরান &rarr;
+        </span>
     </div>
-    <div class="ecom-body">
-        <div>
-            <div class="ecom-title">প্রশ্নবিচিত্রা ও প্রশ্ন সাথী (V - X)</div>
-            <div class="ecom-meta">ছায়া, পারুল, রায় ও মার্টিন, তুলসী</div>
-            <span class="ecom-price-main">ক্লাস ৫ - ১০</span>
-        </div>
-        <button type="button" class="ecom-green-btn">
-            <i class="fa-solid fa-list"></i> প্রকাশনী বাছুন
-        </button>
-    </div>
-</div>
-          <!-- বই ২ -->
-          <div class="ecom-card" onclick="openPredefinedBookModal('শ্রীমদ্ বাল্মীকীয় রামায়ণ', 'গীতাপ্রেস, গোরক্ষপুর', '₹৩৫০')">
+
+    <div class="student-slider">
+
+        <!-- নতুন প্রশ্নবিচিত্রা ও প্রশ্ন সাথী (ক্লাস ৫ - ১০) কার্ড -->
+        <div class="ecom-card" onclick="openPrashnaBichitraFlow()">
             <div class="ecom-img-box">
-                <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                <img src="https://lh3.googleusercontent.com/d/1p8i_Ljk0_q2U3CGM4ce0LR_JsT5C48VI" 
-                     alt="শ্রীমদ্ বাল্মীকীয় রামায়ণ" 
-                     title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                     onload="this.classList.add('img-loaded')"
-                     onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ বাল্মীকীয় রামায়ণ - গীতাপ্রেস, গোরক্ষপুর | মূল্য: ₹৩৫০')">
+                <span class="ecom-badge badge-bestseller">Class 5 - 10</span>
+                <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
+                     alt="প্রশ্নবিচিত্রা ও প্রশ্ন সাথী ক্লাস ৫ থেকে ১০" 
+                     onload="this.classList.add('img-loaded')">
             </div>
             <div class="ecom-body">
                 <div>
-                    <div class="ecom-title">শ্রীমদ্ বাল্মীকীয় রামায়ণ</div>
+                    <div class="ecom-title">প্রশ্নবিচিত্রা ও প্রশ্ন সাথী (V - X)</div>
+                    <div class="ecom-meta">ছায়া, পারুল, রায় ও মার্টিন, তুলসী</div>
+                    <span class="ecom-price-main">ক্লাস ৫ - ১০</span>
+                </div>
+                <button type="button" class="ecom-green-btn">
+                    <i class="fa-solid fa-list"></i> প্রকাশনী বাছুন
+                </button>
+            </div>
+        </div>
+
+        <!-- বই ২ -->
+        <div class="ecom-card" onclick="openPredefinedBookModal('শ্রীমদ্ বাল্মীকীয় রামায়ণ', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৩৫০')">
+            <div class="ecom-img-box">
+                <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
+                <img src="https://lh3.googleusercontent.com/d/1p8i_Ljk0_q2U3CGM4ce0LR_JsT5C48VI" 
+                     alt="শ্রীমদ্ বাল্মীকীয় রামায়ণ" 
+                     title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                     onload="this.classList.add('img-loaded')"
+                     onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ বাল্মীকীয় রামায়ণ - গীতাপ্রেস, গোরক্ষপুর | মূল্য: ₹৩৫০')">
+            </div>
+            <div class="ecom-body">
+                <div>
+                    <div class="ecom-title">শ্রীমদ্ বাল্মীকীয় রামায়ণ</div>
                     <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
-                    <div class="ecom-meta">বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
+                    <div class="ecom-meta" style="font-size: 0.72rem; color: #64748B;">*AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
                     <span class="ecom-price-main">মূল্য: ₹৩৫০</span>
                 </div>
                 <button type="button" class="ecom-green-btn">
@@ -1448,28 +1460,28 @@
             </div>
         </div>
 
-<!-- বই ৩ -->
-<div class="ecom-card" onclick="openPredefinedBookModal('শ্রীমদ্ভাগবত-মহাপুরাণ প্রথম স্কন্ধ থেকে অষ্টম স্কন্ধ পর্যন্ত', 'গীতাপ্রেস, গোরক্ষপুর', '₹৪০০')">
-    <div class="ecom-img-box">
-        <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-        <img src="https://lh3.googleusercontent.com/d/1LrlzUsCY4cw1e77VC5dX3fCQtvRTfCeb" 
-             alt="English Grammar P.C. Das" 
-             title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-             onload="this.classList.add('img-loaded')"
-             onclick="openImageLightbox(event, this.src, 'Applied English Grammar (P.C. Das) | মূল্য: ₹৪০০')">
-    </div>
-    <div class="ecom-body">
-        <div>
-            <div class="ecom-title">শ্রীমদ্ভাগবত-মহাপুরাণ</div>
-            <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
-            <div class="ecom-meta">বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
-            <span class="ecom-price-main">মূল্য: ₹৪০০</span>
+        <!-- বই ৩ -->
+        <div class="ecom-card" onclick="openPredefinedBookModal('শ্রীমদ্ভাগবত-মহাপুরাণ (১ম - ৮ম স্কন্ধ)', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৪০০')">
+            <div class="ecom-img-box">
+                <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
+                <img src="https://lh3.googleusercontent.com/d/1LrlzUsCY4cw1e77VC5dX3fCQtvRTfCeb" 
+                     alt="শ্রীমদ্ভাগবত-মহাপুরাণ" 
+                     title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
+                     onload="this.classList.add('img-loaded')"
+                     onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ভাগবত-মহাপুরাণ - গীতাপ্রেস, গোরক্ষপুর | মূল্য: ₹৪০০')">
+            </div>
+            <div class="ecom-body">
+                <div>
+                    <div class="ecom-title">শ্রীমদ্ভাগবত-মহাপুরাণ</div>
+                    <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
+                    <div class="ecom-meta" style="font-size: 0.72rem; color: #64748B;">*AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
+                    <span class="ecom-price-main">মূল্য: ₹৪০০</span>
+                </div>
+                <button type="button" class="ecom-green-btn">
+                    <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
+                </button>
+            </div>
         </div>
-        <button type="button" class="ecom-green-btn">
-            <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-        </button>
-    </div>
-</div>
 
             <!-- বই ৪ -->
             <div class="ecom-card" onclick="openPredefinedBookModal('জীবনবিজ্ঞান সহায়িকা (Class 12)', 'সাঁতরা পাবলিকেশন', 'লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা', '₹৪৫০')">
