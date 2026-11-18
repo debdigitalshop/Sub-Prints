@@ -1206,6 +1206,57 @@
                 }
             });
         });
+        // পপ-আপ মোডাল খোলা থাকলে মোবাইলের Back বাটনে শুধু মোডাল বন্ধ করার সিস্টেম
+        (function () {
+            const modalIds = ['predefinedBookModal', 'prashnaBichitraModal', 'imageLightboxModal'];
+            let modalStack = [];
+            let ignorePopState = false;
+
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'style') {
+                        const el = mutation.target;
+                        if (el.style.display === 'flex') {
+                            if (!modalStack.includes(el.id)) {
+                                modalStack.push(el.id);
+                                history.pushState({ modalId: el.id }, '');
+                            }
+                        } else if (el.style.display === 'none') {
+                            const idx = modalStack.indexOf(el.id);
+                            if (idx !== -1) {
+                                modalStack.splice(idx, 1);
+                                if (!ignorePopState) {
+                                    ignorePopState = true;
+                                    history.back();
+                                    setTimeout(() => { ignorePopState = false; }, 200);
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+            modalIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) observer.observe(el, { attributes: true });
+            });
+
+            window.addEventListener('popstate', () => {
+                if (ignorePopState) {
+                    ignorePopState = false;
+                    return;
+                }
+                if (modalStack.length > 0) {
+                    const topModalId = modalStack.pop();
+                    const topEl = document.getElementById(topModalId);
+                    if (topEl) {
+                        ignorePopState = true;
+                        topEl.style.display = 'none';
+                        setTimeout(() => { ignorePopState = false; }, 200);
+                    }
+                }
+            });
+        })();
     </script>
 </body>
 </html>
