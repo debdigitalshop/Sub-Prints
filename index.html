@@ -1282,6 +1282,9 @@
                 <a href="about.html" class="btn-outline-nav">
                     <i class="fa-solid fa-circle-info"></i> আমাদের সম্পর্কে
                 </a>
+                <a href="books.html" class="btn-outline-nav">
+                    <i class="fa-solid fa-book-open"></i> পড়ার বই স্টোর
+                </a>
                 <a href="https://wa.me/919732322525" target="_blank" class="btn-primary" style="padding: 0.5rem 1.2rem; text-decoration: none; font-size: 0.9rem; width: auto;">
                     <i class="fa-brands fa-whatsapp"></i> সরাসরি যোগাযোগ
                 </a>
@@ -1411,251 +1414,23 @@
 
         </div>
     </div>
-   <!-- ২য় সেকশন: পড়ার বই স্লাইডার -->
-   <div class="student-slider-container">
-
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding: 0 4px;">
-        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1E293B; display: flex; align-items: center; gap: 8px;">
-            <i class="fa-solid fa-book-open" style="color: var(--primary-orange);"></i> 
-            পড়ার বই ও ধর্মগ্রন্থ বই
-        </h3>
-        <span style="font-size: 0.78rem; font-weight: 600; color: var(--primary-orange); background: #FFF5EE; padding: 3px 10px; border-radius: 20px; border: 1px solid #FFD4B8;">
-            পাশে সরান &rarr;
+<!-- ২য় সেকশন: আলাদা বই স্টোর পেজের বাটন -->
+<div style="background: #ffffff; border-radius: 16px; padding: 18px 16px; margin: 16px auto; max-width: 1152px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-left: 5px solid #FF6A00; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+    <div>
+        <span style="background: #FFF5EE; color: #FF6A00; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 5px;">
+            📚 বই ও ধর্মগ্রন্থ কালেকশন
         </span>
+        <h3 style="color: #1E293B; font-size: 18px; margin: 2px 0; font-weight: 700;">
+            প্রশ্নবিচিত্রা, সহায়িকা বই ও গীতাপ্রেস ধর্মগ্রন্থ
+        </h3>
+        <p style="color: #64748B; font-size: 13px; margin: 0;">
+            ক্লাস ৫ থেকে ১২-এর প্রশ্নবিচিত্রা, বাল্মীকীয় রামায়ণ ও শ্রীমদ্ভাগবত-মহাপুরাণ অর্ডার করতে বুক স্টোরে প্রবেশ করুন।
+        </p>
     </div>
-
-    <div class="student-slider">
-
-        <!-- নতুন প্রশ্নবিচিত্রা ও প্রশ্ন সাথী (ক্লাস ৫ - ১০) কার্ড -->
-        <div class="ecom-card" onclick="openPrashnaBichitraFlow()">
-            <div class="ecom-img-box">
-                <span class="ecom-badge badge-bestseller">Class 5 - 10</span>
-                <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                     alt="প্রশ্নবিচিত্রা ও প্রশ্ন সাথী ক্লাস ৫ থেকে ১০" 
-                     onload="this.classList.add('img-loaded')">
-            </div>
-            <div class="ecom-body">
-                <div>
-                    <div class="ecom-title">প্রশ্নবিচিত্রা ও প্রশ্ন সাথী (V - X)</div>
-                    <div class="ecom-meta">ছায়া, পারুল, রায় ও মার্টিন, তুলসী</div>
-                    <span class="ecom-price-main">ক্লাস ৫ - ১০</span>
-                </div>
-                <button type="button" class="ecom-green-btn">
-                    <i class="fa-solid fa-list"></i> প্রকাশনী বাছুন
-                </button>
-            </div>
-        </div>
-
-        <!-- বই ২ -->
-        <div class="ecom-card" onclick="openPredefinedBookModal('শ্রীমদ্ বাল্মীকীয় রামায়ণ', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৩৫০')">
-            <div class="ecom-img-box">
-                <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                <img src="https://lh3.googleusercontent.com/d/1p8i_Ljk0_q2U3CGM4ce0LR_JsT5C48VI" 
-                     alt="শ্রীমদ্ বাল্মীকীয় রামায়ণ" 
-                     title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                     onload="this.classList.add('img-loaded')"
-                     onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ বাল্মীকীয় রামায়ণ - গীতাপ্রেস, গোরক্ষপুর | মূল্য: ₹৩৫০')">
-            </div>
-            <div class="ecom-body">
-                <div>
-                    <div class="ecom-title">শ্রীমদ্ বাল্মীকীয় রামায়ণ</div>
-                    <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
-                    <div class="ecom-meta" style="font-size: 0.72rem; color: #64748B;">*AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
-                    <span class="ecom-price-main">মূল্য: ₹৩৫০</span>
-                </div>
-                <button type="button" class="ecom-green-btn">
-                    <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                </button>
-            </div>
-        </div>
-
-        <!-- বই ৩ -->
-        <div class="ecom-card" onclick="openPredefinedBookModal('শ্রীমদ্ভাগবত-মহাপুরাণ (১ম - ৮ম স্কন্ধ)', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৪০০')">
-            <div class="ecom-img-box">
-                <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                <img src="https://lh3.googleusercontent.com/d/1LrlzUsCY4cw1e77VC5dX3fCQtvRTfCeb" 
-                     alt="শ্রীমদ্ভাগবত-মহাপুরাণ" 
-                     title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                     onload="this.classList.add('img-loaded')"
-                     onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ভাগবত-মহাপুরাণ - গীতাপ্রেস, গোরক্ষপুর | মূল্য: ₹৪০০')">
-            </div>
-            <div class="ecom-body">
-                <div>
-                    <div class="ecom-title">শ্রীমদ্ভাগবত-মহাপুরাণ</div>
-                    <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
-                    <div class="ecom-meta" style="font-size: 0.72rem; color: #64748B;">*AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
-                    <span class="ecom-price-main">মূল্য: ₹৪০০</span>
-                </div>
-                <button type="button" class="ecom-green-btn">
-                    <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                </button>
-            </div>
-        </div>
-
-            <!-- বই ৪ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('জীবনবিজ্ঞান সহায়িকা (Class 12)', 'সাঁতরা পাবলিকেশন', 'লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা', '₹৪৫০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                         alt="জীবনবিজ্ঞান দ্বাদশ শ্রেণি" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'জীবনবিজ্ঞান (Class 12) - সাঁতরা পাবলিকেশন | মূল্য: ₹৪৫০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">জীবনবিজ্ঞান (Class 12)</div>
-                        <div class="ecom-meta">প্রকাশনী: সাঁতরা পাবলিকেশন</div>
-                        <div class="ecom-meta">লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা</div>
-                        <span class="ecom-price-main">মূল্য: ₹৪৫০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
-            </div>
-
-            <!-- বই ৫ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('কলেজ বাংলা সহায়িকা (BA)', 'পারুল প্রকাশনী', 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', '₹২৬০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                         alt="কলেজ সহায়িকা বই" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'কলেজ বাংলা সহায়িকা (BA) - পারুল প্রকাশনী | মূল্য: ₹২৬০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">কলেজ বাংলা সহায়িকা (BA)</div>
-                        <div class="ecom-meta">প্রকাশনী: পারুল প্রকাশনী</div>
-                        <div class="ecom-meta">লেখক: ড. সৌমিত্র শেখর ও অন্যান্য</div>
-                        <span class="ecom-price-main">মূল্য: ₹২৬০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
-            </div>
-
-            <!-- বই ৬ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('ইতিহাস সহায়িকা (Class 10)', 'প্রান্তিক প্রকাশনী', 'লেখক: ড. সুভাষ বিশ্বাস', '₹২৯০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                         alt="ইতিহাস সহায়িকা দশম শ্রেণি" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'ইতিহাস সহায়িকা (Class 10) - প্রান্তিক প্রকাশনী | মূল্য: ₹২৯০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">ইতিহাস সহায়িকা (X)</div>
-                        <div class="ecom-meta">প্রকাশনী: প্রান্তিক প্রকাশনী</div>
-                        <div class="ecom-meta">লেখক: ড. সুভাষ বিশ্বাস</div>
-                        <span class="ecom-price-main">মূল্য: ₹২৯০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
-            </div>
-
-            <!-- বই ৭ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('ভূগোল ও পরিবেশ (Class 10)', 'বাণী সংসদ প্রকাশনী', 'লেখক: বসু ও মৌলিক', '₹৩১০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                         alt="ভূগোল ও পরিবেশ দশম শ্রেণি" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'ভূগোল ও পরিবেশ (Class 10) - বাণী সংসদ | মূল্য: ₹৩১০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">ভূগোল ও পরিবেশ (X)</div>
-                        <div class="ecom-meta">প্রকাশনী: বাণী সংসদ</div>
-                        <div class="ecom-meta">লেখক: বসু ও মৌলিক</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩১০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
-            </div>
-
-            <!-- বই ৮ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('গণিত প্রকাশ সমাধান (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: কেশব চন্দ্র নাগ', '₹৩৫০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                         alt="গণিত সহায়িকা দশম শ্রেণি" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'গণিত সহায়িকা (Class 10) - ছায়া প্রকাশনী | মূল্য: ₹৩৫০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">গণিত সহায়িকা (Class 10)</div>
-                        <div class="ecom-meta">প্রকাশনী: ছায়া প্রকাশনী</div>
-                        <div class="ecom-meta">লেখক: কেশব চন্দ্র নাগ</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৫০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
-            </div>
-
-            <!-- বই ৯ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12)', 'নিউ বুক এজেন্সি', 'লেখক: ড. অনাদি কুমার মহাপাত্র', '₹৩৪০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                         alt="উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12) | মূল্য: ₹৩৪০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">রাষ্ট্রবিজ্ঞান (Class 12)</div>
-                        <div class="ecom-meta">প্রকাশনী: নিউ বুক এজেন্সি</div>
-                        <div class="ecom-meta">লেখক: ড. অনাদি কুমার মহাপাত্র</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৪০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
-            </div>
-
-            <!-- বই ১০ -->
-            <div class="ecom-card" onclick="openPredefinedBookModal('কলেজ ইতিহাস অনার্স ও পাস (BA)', 'বুকস ওয়ে প্রকাশনী', 'লেখক: ড. গোপালকৃষ্ণ পাহাড়ী', '₹৩৯০')">
-                <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" 
-                         alt="কলেজ ইতিহাস বই" 
-                         title="বড় করে দেখতে ছবির ওপর ক্লিক করুন"
-                         onload="this.classList.add('img-loaded')"
-                         onclick="openImageLightbox(event, this.src, 'কলেজ ইতিহাস অনার্স ও পাস (BA) - বুকস ওয়ে | মূল্য: ₹৩৯০')">
-                </div>
-                <div class="ecom-body">
-                    <div>
-                        <div class="ecom-title">কলেজ ইতিহাস গাইড (BA)</div>
-                        <div class="ecom-meta">প্রকাশনী: বুকস ওয়ে</div>
-                        <div class="ecom-meta">লেখক: ড. গোপালকৃষ্ণ পাহাড়ী</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৯০</span>
-                    </div>
-                    <button type="button" class="ecom-green-btn">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার করুন
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+    <a href="books.html" style="background: #FF6A00; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 11px 20px; border-radius: 10px; white-space: nowrap; box-shadow: 0 3px 10px rgba(255, 106, 0, 0.25);">
+        <i class="fa-solid fa-book-open"></i> বুক স্টোর খুলুন &rarr;
+    </a>
+</div>
     <!-- Main Container -->
     <main class="container">
         <div class="section-title">
