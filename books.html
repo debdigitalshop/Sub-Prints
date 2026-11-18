@@ -332,6 +332,37 @@
             margin-bottom: 2px;
         }
 
+        /* প্রিন্ট দাম (কাটা) ও অফার দাম ডিজাইন */
+        .ecom-price-box {
+            margin: 8px 0 10px;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .ecom-print-price {
+            font-size: 0.82rem;
+            color: #94A3B8;
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
+        .ecom-offer-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .ecom-offer-tag {
+            background: #DCFCE7;
+            color: #15803D;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
         .ecom-price-main {
             font-size: 1.12rem;
             font-weight: 700;
@@ -538,7 +569,7 @@
 
     <section class="hero">
         <h2><i class="fa-solid fa-book-open"></i> পড়ার বই ও ধর্মগ্রন্থ কালেকশন</h2>
-        <p>প্রশ্নবিচিত্রা, প্রশ্ন সাথী (ক্লাস ৫ - ১০), স্কুল-কলেজের সহায়িকা বই এবং গীতাপ্রেস ধর্মগ্রন্থ সুলভ মূল্যে অর্ডার করুন।</p>
+        <p>প্রশ্নবিচিত্রা, প্রশ্ন সাথী (ক্লাস ৫ - ১০), স্কুল-কলেজের সহায়িকা বই এবং গীতাপ্রেস ধর্মগ্রন্থ বিশেষ ছাড়ে অর্ডার করুন।</p>
     </section>
 
     <main class="container">
@@ -554,7 +585,10 @@
                     <div>
                         <div class="ecom-title">প্রশ্নবিচিত্রা ও প্রশ্ন সাথী (V - X)</div>
                         <div class="ecom-meta">ছায়া, পারুল, রায় ও মার্টিন, তুলসী</div>
-                        <span class="ecom-price-main">ক্লাস ৫ - ১০</span>
+                        <div class="ecom-price-box">
+                            <span class="ecom-offer-price">ক্লাস ৫ - ১০</span>
+                            <span class="ecom-offer-tag">বিশেষ ছাড়</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-solid fa-list"></i> প্রকাশনী বাছুন</button>
@@ -564,17 +598,20 @@
             </div>
 
             <!-- বই ২: শ্রীমদ্ বাল্মীকীয় রামায়ণ -->
-            <div class="ecom-card" id="book-ramayana" onclick="openPredefinedBookModal('শ্রীমদ্ বাল্মীকীয় রামায়ণ', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৩৫০')">
+            <div class="ecom-card" id="book-ramayana" onclick="openPredefinedBookModal('শ্রীমদ্ বাল্মীকীয় রামায়ণ', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৪২০', '₹৩৫০')">
                 <div class="ecom-img-box">
                     <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1p8i_Ljk0_q2U3CGM4ce0LR_JsT5C48VI" alt="শ্রীমদ্ বাল্মীকীয় রামায়ণ" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ বাল্মীকীয় রামায়ণ - গীতাপ্রেস, গোরক্ষপুর | মূল্য: ₹৩৫০')">
+                    <img src="https://lh3.googleusercontent.com/d/1p8i_Ljk0_q2U3CGM4ce0LR_JsT5C48VI" alt="শ্রীমদ্ বাল্মীকীয় রামায়ণ" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ বাল্মীকীয় রামায়ণ - গীতাপ্রেস, গোরক্ষপুর | প্রিন্ট দাম: ₹৪২০ | অফার দাম: ₹৩৫০')">
                 </div>
                 <div class="ecom-body">
                     <div>
                         <div class="ecom-title">শ্রীমদ্ বাল্মীকীয় রামায়ণ</div>
                         <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
                         <div class="ecom-meta" style="font-size: 0.72rem; color: #64748B;">*AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৫০</span>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪২০</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৫০</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
@@ -584,17 +621,20 @@
             </div>
 
             <!-- বই ৩: শ্রীমদ্ভাগবত-মহাপুরাণ -->
-            <div class="ecom-card" id="book-bhagavat" onclick="openPredefinedBookModal('শ্রীমদ্ভাগবত-মহাপুরাণ (১ম - ৮ম স্কন্ধ)', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৪০০')">
+            <div class="ecom-card" id="book-bhagavat" onclick="openPredefinedBookModal('শ্রীমদ্ভাগবত-মহাপুরাণ (১ম - ৮ম স্কন্ধ)', 'গীতাপ্রেস, গোরক্ষপুর', 'বিশেষ দ্রষ্টব্য: AI প্রযুক্তিতে তৈরি প্রতীকী ছবি', '₹৪৮০', '₹৪০০')">
                 <div class="ecom-img-box">
                     <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                    <img src="https://lh3.googleusercontent.com/d/1LrlzUsCY4cw1e77VC5dX3fCQtvRTfCeb" alt="শ্রীমদ্ভাগবত-মহাপুরাণ" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ভাগবত-মহাপুরাণ - গীতাপ্রেস, গোরক্ষপুর | মূল্য: ₹৪০০')">
+                    <img src="https://lh3.googleusercontent.com/d/1LrlzUsCY4cw1e77VC5dX3fCQtvRTfCeb" alt="শ্রীমদ্ভাগবত-মহাপুরাণ" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ভাগবত-মহাপুরাণ - গীতাপ্রেস, গোরক্ষপুর | প্রিন্ট দাম: ₹৪৮০ | অফার দাম: ₹৪০০')">
                 </div>
                 <div class="ecom-body">
                     <div>
                         <div class="ecom-title">শ্রীমদ্ভাগবত-মহাপুরাণ</div>
                         <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
                         <div class="ecom-meta" style="font-size: 0.72rem; color: #64748B;">*AI প্রযুক্তিতে তৈরি প্রতীকী ছবি</div>
-                        <span class="ecom-price-main">মূল্য: ₹৪০০</span>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪৮০</span>
+                            <span class="ecom-offer-price">অফার: ₹৪০০</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
@@ -603,98 +643,159 @@
                 </div>
             </div>
 
-            <!-- বই ৪ -->
-            <div class="ecom-card" id="book-lifescience12" onclick="openPredefinedBookModal('জীবনবিজ্ঞান সহায়িকা (Class 12)', 'সাঁতরা পাবলিকেশন', 'লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা', '₹৪৫০')">
+            <!-- নতুন বই: Lila's CRACK-ICDS অঙ্গনওয়াড়ি গাইড বুক -->
+            <div class="ecom-card" id="book-crack-icds" onclick="openPredefinedBookModal('Lila\'s CRACK-ICDS অঙ্গনওয়াড়ি কর্মী ও সহায়িকা গাইড বুক', 'Bright Academy (3rd Revised Edition)', 'লেখক: Lila Roy | Chief Editor: Dr. Sujoy Kumar Sikder', '₹৪৪০', '₹৩৬০')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="জীবনবিজ্ঞান দ্বাদশ শ্রেণি" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'জীবনবিজ্ঞান (Class 12) - সাঁতরা পাবলিকেশন | মূল্য: ₹৪৫০')">
+                    <span class="ecom-badge badge-bestseller">ICDS স্পেশাল</span>
+                    <img src="https://lh3.googleusercontent.com/d/1mF3yCOyBu-5zbUHVY049hFO2sI1QkidP" alt="Lila's CRACK-ICDS অঙ্গনওয়াড়ি কর্মী ও সহায়িকা গাইড বুক" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'Lila\'s CRACK-ICDS অঙ্গনওয়াড়ি গাইড বুক - Bright Academy | প্রিন্ট দাম: ₹৪৪০ | অফার দাম: ₹৩৬০')">
                 </div>
                 <div class="ecom-body">
                     <div>
-                        <div class="ecom-title">জীবনবিজ্ঞান (Class 12)</div>
-                        <div class="ecom-meta">প্রকাশনী: সাঁতরা পাবলিকেশন</div>
-                        <div class="ecom-meta">লেখক: চৌধুরী, ভট্টাচার্য, সাঁতরা</div>
-                        <span class="ecom-price-main">মূল্য: ₹৪৫০</span>
+                        <div class="ecom-title">CRACK-ICDS অঙ্গনওয়াড়ি গাইড বুক</div>
+                        <div class="ecom-meta">প্রকাশনী: Bright Academy (3rd Ed.)</div>
+                        <div class="ecom-meta">লেখক: Lila Roy ও Dr. Sujoy Kumar Sikder</div>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪৪০</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৬০</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-lifescience12', 'জীবনবিজ্ঞান Class 12')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-crack-icds', 'CRACK-ICDS অঙ্গনওয়াড়ি গাইড বুক')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
                     </div>
                 </div>
             </div>
 
-            <!-- বই ৫ -->
-            <div class="ecom-card" id="book-ba-bengali" onclick="openPredefinedBookModal('কলেজ বাংলা সহায়িকা (BA)', 'পারুল প্রকাশনী', 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', '₹২৬০')">
+            <!-- নতুন বই: রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER -->
+            <div class="ecom-card" id="book-rm-icds-cracker" onclick="openPredefinedBookModal('রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER', 'রায় ও মার্টিন প্রকাশনী (Latest Edition)', 'ICDS Supervisor, Worker (AWW) ও Helper (20 Years Solved)', '₹৫৯৯', '₹৩৮৫')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="কলেজ সহায়িকা বই" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'কলেজ বাংলা সহায়িকা (BA) - পারুল প্রকাশনী | মূল্য: ₹২৬০')">
+                    <span class="ecom-badge badge-trending">রায় ও মার্টিন</span>
+                    <img src="https://lh3.googleusercontent.com/d/1aj7efQxMKMgvqT1whqMK7hbr2foUp5oM" alt="রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER | প্রিন্ট দাম: ₹৫৯৯ | অফার দাম: ₹৩৮৫')">
                 </div>
                 <div class="ecom-body">
                     <div>
-                        <div class="ecom-title">কলেজ বাংলা সহায়িকা (BA)</div>
-                        <div class="ecom-meta">প্রকাশনী: পারুল প্রকাশনী</div>
-                        <div class="ecom-meta">লেখক: ড. সৌমিত্র শেখর ও অন্যান্য</div>
-                        <span class="ecom-price-main">মূল্য: ₹২৬০</span>
+                        <div class="ecom-title">রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER</div>
+                        <div class="ecom-meta">প্রকাশনী: রায় ও মার্টিন (Latest Edition)</div>
+                        <div class="ecom-meta">ICDS Supervisor, Worker ও Helper গাইড</div>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৫৯৯</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৮৫</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ba-bengali', 'কলেজ বাংলা সহায়িকা')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-rm-icds-cracker', 'রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
                     </div>
                 </div>
             </div>
 
-            <!-- বই ৬ -->
-            <div class="ecom-card" id="book-history10" onclick="openPredefinedBookModal('ইতিহাস সহায়িকা (Class 10)', 'প্রান্তিক প্রকাশনী', 'লেখক: ড. সুভাষ বিশ্বাস', '₹২৯০')">
+            <!-- নতুন বই: সুন্দরকাণ্ড (গীতাপ্রেস, গোরক্ষপুর) -->
+            <div class="ecom-card" id="book-sundarkand" onclick="openPredefinedBookModal('সুন্দরকাণ্ড (সটীক বাংলা - শ্রীরামচরিতমানস)', 'গীতাপ্রেস, গোরক্ষপুর', 'রচয়িতা: গোস্বামী তুলসীদাস (কোড: 1356)', '₹১৫', '₹১৫')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="ইতিহাস সহায়িকা দশম শ্রেণি" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'ইতিহাস সহায়িকা (Class 10) - প্রান্তিক প্রকাশনী | মূল্য: ₹২৯০')">
+                    <span class="ecom-badge badge-bestseller">গীতাপ্রেস</span>
+                    <img src="https://lh3.googleusercontent.com/d/1dvJ9Yu5J2PP2ngeh8j8mF3IdAM2DtrGD" alt="সুন্দরকাণ্ড - গীতাপ্রেস, গোরক্ষপুর" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'সুন্দরকাণ্ড (সটীক বাংলা) - গীতাপ্রেস, গোরক্ষপুর | প্রিন্ট দাম: ₹১৫ | অফার দাম: ₹১৫')">
                 </div>
                 <div class="ecom-body">
                     <div>
-                        <div class="ecom-title">ইতিহাস সহায়িকা (X)</div>
-                        <div class="ecom-meta">প্রকাশনী: প্রান্তিক প্রকাশনী</div>
-                        <div class="ecom-meta">লেখক: ড. সুভাষ বিশ্বাস</div>
-                        <span class="ecom-price-main">মূল্য: ₹২৯০</span>
+                        <div class="ecom-title">সুন্দরকাণ্ড (সটীক বাংলা)</div>
+                        <div class="ecom-meta">প্রকাশনী: গীতাপ্রেস, গোরক্ষপুর</div>
+                        <div class="ecom-meta">তুলসীদাস বিরচিত শ্রীরামচরিতমানস</div>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹১৫</span>
+                            <span class="ecom-offer-price">অফার: ₹১৫</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-history10', 'ইতিহাস সহায়িকা Class 10')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-sundarkand', 'সুন্দরকাণ্ড - গীতাপ্রেস')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
                     </div>
                 </div>
             </div>
 
-            <!-- বই ৭ -->
-            <div class="ecom-card" id="book-geo10" onclick="openPredefinedBookModal('ভূগোল ও পরিবেশ (Class 10)', 'বাণী সংসদ প্রকাশনী', 'লেখক: বসু ও মৌলিক', '₹৩১০')">
+            <!-- নতুন বই: ধর্মগ্রন্থ কালেকশন -->
+            <div class="ecom-card" id="book-devotional-new" onclick="openPredefinedBookModal('মেয়েদের ব্রতকথা', 'অক্ষয় লাইব্রেরী', 'সম্পূর্ণ বাংলা সংস্করণ', '₹৮৫', '₹৮৫')">
                 <div class="ecom-img-box">
-                    <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="ভূগোল ও পরিবেশ দশম শ্রেণি" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'ভূগোল ও পরিবেশ (Class 10) - বাণী সংসদ | মূল্য: ₹৩১০')">
+                    <span class="ecom-badge badge-bestseller">ধর্মগ্রন্থ</span>
+                    <img src="https://lh3.googleusercontent.com/d/1Ykdj4-aMRT0KKMg1l61OqgvNCNLrkPI3" alt="বাংলা ধর্মগ্রন্থ - Sub Prints" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'মেয়েদের ব্রতকথা | প্রিন্ট দাম: ₹৮৫ | অফার দাম: ₹৮৫')">
                 </div>
                 <div class="ecom-body">
                     <div>
-                        <div class="ecom-title">ভূগোল ও পরিবেশ (X)</div>
-                        <div class="ecom-meta">প্রকাশনী: বাণী সংসদ</div>
-                        <div class="ecom-meta">লেখক: বসু ও মৌলিক</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩১০</span>
+                        <div class="ecom-title">মেয়েদের ব্রতকথা</div>
+                        <div class="ecom-meta">প্রকাশনী: অক্ষয় লাইব্রেরী</div>
+                        <div class="ecom-meta">বাংলা</div>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৮৫</span>
+                            <span class="ecom-offer-price">অফার: ₹৮৫</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-geo10', 'ভূগোল ও পরিবেশ Class 10')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-devotional-new', 'মেয়েদের ব্রতকথা')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- নতুন বই: শ্রীমদ্ভগবদ্গীতা (ওরিয়েণ্ট লাইব্রেরী) -->
+            <div class="ecom-card" id="book-bhagavad-gita" onclick="openPredefinedBookModal('শ্রীমদ্ভগবদ্গীতা (সটীক বাংলা অনুবাদ সহ)', 'ওরিয়েণ্ট লাইব্রেরী', 'মূল শ্লোক ও সরল বঙ্গানুবাদ সহ', '₹৪০০', '₹৩৫০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-bestseller">ধর্মগ্রন্থ</span>
+                    <img src="https://lh3.googleusercontent.com/d/1WzWd1t7mbgZcXGfK3zQCg2EHogXgl2vl" alt="শ্রীমদ্ভগবদ্গীতা - ওরিয়েণ্ট লাইব্রেরী" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'শ্রীমদ্ভগবদ্গীতা (সটীক বাংলা) - ওরিয়েণ্ট লাইব্রেরী | প্রিন্ট দাম: ₹৪০০ | অফার দাম: ₹৩৫০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">শ্রীমদ্ভগবদ্গীতা (সটীক বাংলা)</div>
+                        <div class="ecom-meta">প্রকাশনী: ওরিয়েণ্ট লাইব্রেরী</div>
+                        <div class="ecom-meta">মূল শ্লোক ও সরল বঙ্গানুবাদ সহ</div>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪০০</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৫০</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-bhagavad-gita', 'শ্রীমদ্ভগবদ্গীতা - ওরিয়েণ্ট লাইব্রেরী')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                    </div>
+                </div>
+            </div>
+
+           <!-- নতুন বই: আয়ুর্বেদিক চিকিৎসা -->
+           <div class="ecom-card" id="book-ayurvedic-chikitsa" onclick="openPredefinedBookModal('আয়ুর্বেদিক চিকিৎসা ও ভেষজ গুণাগুণ', 'বাংলা আয়ুর্বেদ প্রকাশনী', 'ঘরোয়া ভেষজ ও প্রাকৃতিক চিকিৎসা পদ্ধতি', '₹৪০০', '₹৩৫০')">
+                <div class="ecom-img-box">
+                    <span class="ecom-badge badge-trending">আয়ুর্বেদ</span>
+                    <img src="https://lh3.googleusercontent.com/d/1SBH8YTMziQHRKWDttY2ujsF4xgFXLPLT" alt="আয়ুর্বেদিক চিকিৎসা বই" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'আয়ুর্বেদিক চিকিৎসা ও ভেষজ গুণাগুণ | প্রিন্ট দাম: ₹৪০০ | অফার দাম: ₹৩৫০')">
+                </div>
+                <div class="ecom-body">
+                    <div>
+                        <div class="ecom-title">আয়ুর্বেদিক চিকিৎসা ও ভেষজ গুণাগুণ</div>
+                        <div class="ecom-meta">বিষয়: ঘরোয়া ও প্রাকৃতিক আয়ুর্বেদ চিকিৎসা</div>
+                        <div class="ecom-meta">সহজ বাংলা ভাষায় ভেষজ উপায়</div>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪০০</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৫০</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ayurvedic-chikitsa', 'আয়ুর্বেদিক চিকিৎসা ও ভেষজ গুণাগুণ')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
                     </div>
                 </div>
             </div>
 
             <!-- বই ৮ -->
-            <div class="ecom-card" id="book-math10" onclick="openPredefinedBookModal('গণিত প্রকাশ সমাধান (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: কেশব চন্দ্র নাগ', '₹৩৫০')">
+            <div class="ecom-card" id="book-math10" onclick="openPredefinedBookModal('গণিত প্রকাশ সমাধান (Class 10)', 'ছায়া প্রকাশনী', 'লেখক: কেশব চন্দ্র নাগ', '₹৪১০', '₹৩৫০')">
                 <div class="ecom-img-box">
                     <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="গণিত সহায়িকা দশম শ্রেণি" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'গণিত সহায়িকা (Class 10) - ছায়া প্রকাশনী | মূল্য: ₹৩৫০')">
+                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="গণিত সহায়িকা দশম শ্রেণি" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'গণিত সহায়িকা (Class 10) - ছায়া প্রকাশনী | প্রিন্ট দাম: ₹৪১০ | অফার দাম: ₹৩৫০')">
                 </div>
                 <div class="ecom-body">
                     <div>
                         <div class="ecom-title">গণিত সহায়িকা (Class 10)</div>
                         <div class="ecom-meta">প্রকাশনী: ছায়া প্রকাশনী</div>
                         <div class="ecom-meta">লেখক: কেশব চন্দ্র নাগ</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৫০</span>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪১০</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৫০</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
@@ -704,17 +805,20 @@
             </div>
 
             <!-- বই ৯ -->
-            <div class="ecom-card" id="book-polsc12" onclick="openPredefinedBookModal('উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12)', 'নিউ বুক এজেন্সি', 'লেখক: ড. অনাদি কুমার মহাপাত্র', '₹৩৪০')">
+            <div class="ecom-card" id="book-polsc12" onclick="openPredefinedBookModal('উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12)', 'নিউ বুক এজেন্সি', 'লেখক: ড. অনাদি কুমার মহাপাত্র', '₹৪০০', '₹৩৪০')">
                 <div class="ecom-img-box">
                     <span class="ecom-badge badge-bestseller">জনপ্রিয়</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12) | মূল্য: ₹৩৪০')">
+                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'উচ্চমাধ্যমিক রাষ্ট্রবিজ্ঞান (Class 12) | প্রিন্ট দাম: ₹৪০০ | অফার দাম: ₹৩৪০')">
                 </div>
                 <div class="ecom-body">
                     <div>
                         <div class="ecom-title">রাষ্ট্রবিজ্ঞান (Class 12)</div>
                         <div class="ecom-meta">প্রকাশনী: নিউ বুক এজেন্সি</div>
                         <div class="ecom-meta">লেখক: ড. অনাদি কুমার মহাপাত্র</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৪০</span>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪০০</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৪০</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
@@ -724,17 +828,20 @@
             </div>
 
             <!-- বই ১০ -->
-            <div class="ecom-card" id="book-ba-history" onclick="openPredefinedBookModal('কলেজ ইতিহাস অনার্স ও পাস (BA)', 'বুকস ওয়ে প্রকাশনী', 'লেখক: ড. গোপালকৃষ্ণ পাহাড়ী', '₹৩৯০')">
+            <div class="ecom-card" id="book-ba-history" onclick="openPredefinedBookModal('কলেজ ইতিহাস অনার্স ও পাস (BA)', 'বুকস ওয়ে প্রকাশনী', 'লেখক: ড. গোপালকৃষ্ণ পাহাড়ী', '₹৪৬০', '₹৩৯০')">
                 <div class="ecom-img-box">
                     <span class="ecom-badge badge-trending">নতুন কালেকশন</span>
-                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="কলেজ ইতিহাস বই" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'কলেজ ইতিহাস অনার্স ও পাস (BA) - বুকস ওয়ে | মূল্য: ₹৩৯০')">
+                    <img src="https://lh3.googleusercontent.com/d/1xS-M6sX6LDOItOPJ8TcU2uMfVZnaag-M" alt="কলেজ ইতিহাস বই" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, 'কলেজ ইতিহাস অনার্স ও পাস (BA) - বুকস ওয়ে | প্রিন্ট দাম: ₹৪৬০ | অফার দাম: ₹৩৯০')">
                 </div>
                 <div class="ecom-body">
                     <div>
                         <div class="ecom-title">কলেজ ইতিহাস গাইড (BA)</div>
                         <div class="ecom-meta">প্রকাশনী: বুকস ওয়ে</div>
                         <div class="ecom-meta">লেখক: ড. গোপালকৃষ্ণ পাহাড়ী</div>
-                        <span class="ecom-price-main">মূল্য: ₹৩৯০</span>
+                        <div class="ecom-price-box">
+                            <span class="ecom-print-price">প্রিন্ট: ₹৪৬০</span>
+                            <span class="ecom-offer-price">অফার: ₹৩৯০</span>
+                        </div>
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
@@ -755,7 +862,7 @@
                 <div id="selBookTitle" style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);"></div>
                 <div id="selBookPub" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;"></div>
                 <div id="selBookAuthor" style="font-size: 0.88rem; color: var(--text-muted);"></div>
-                <div id="selBookPrice" style="font-size: 1.05rem; font-weight: 700; color: var(--primary-orange); margin-top: 6px;"></div>
+                <div id="selBookPrice" style="margin-top: 8px; display: flex; align-items: baseline; gap: 8px;"></div>
             </div>
             <div class="form-group">
                 <label>ডেলিভারির ধরন বেছে নিন:</label>
@@ -893,13 +1000,16 @@
             }
         });
 
-        let currentBookData = { title: '', pub: '', author: '', price: '' };
-        function openPredefinedBookModal(title, pub, author, price) {
-            currentBookData = { title, pub, author, price };
+        let currentBookData = { title: '', pub: '', author: '', printPrice: '', offerPrice: '' };
+        function openPredefinedBookModal(title, pub, author, printPrice, offerPrice) {
+            currentBookData = { title, pub, author, printPrice, offerPrice };
             document.getElementById('selBookTitle').innerText = title;
             document.getElementById('selBookPub').innerText = `প্রকাশনী: ${pub}`;
             document.getElementById('selBookAuthor').innerText = author;
-            document.getElementById('selBookPrice').innerText = `মূল্য: ${price}`;
+            document.getElementById('selBookPrice').innerHTML = `
+                <span style="font-size: 0.92rem; color: #94A3B8; text-decoration: line-through;">প্রিন্ট দাম: ${printPrice}</span>
+                <span style="font-size: 1.15rem; font-weight: 700; color: var(--primary-orange);">অফার দাম: ${offerPrice}</span>
+            `;
             document.getElementsByName('preBookDelivery')[0].checked = true;
             toggleBookDeliveryView('home');
             document.getElementById('predefinedBookModal').style.display = 'flex';
@@ -925,7 +1035,7 @@
                 addressSection = `• পিক-আপ লোকেশন: Deb Digital Shop (রামপুরহাট, বীরভূম)%0A`;
             }
 
-            const waMessage = `*নতুন পড়ার বই অর্ডার (Sub Prints)*%0A--------------------------------%0A• বইয়ের নাম: ${currentBookData.title}%0A• প্রকাশনী: ${currentBookData.pub}%0A• ${currentBookData.author}%0A• নির্ধারিত মূল্য: ${currentBookData.price}%0A• ডেলিভারি মাধ্যম: ${deliveryType}%0A${addressSection}--------------------------------%0Aআমি এই বইটি অর্ডার করতে চাই।`;
+            const waMessage = `*নতুন পড়ার বই অর্ডার (Sub Prints)*%0A--------------------------------%0A• বইয়ের নাম: ${currentBookData.title}%0A• প্রকাশনী: ${currentBookData.pub}%0A• ${currentBookData.author}%0A• প্রিন্ট দাম (MRP): ${currentBookData.printPrice}%0A• অফার দাম: ${currentBookData.offerPrice}%0A• ডেলিভারি মাধ্যম: ${deliveryType}%0A${addressSection}--------------------------------%0Aআমি এই বইটি অর্ডার করতে চাই।`;
             window.open(`https://wa.me/919732322525?text=${waMessage}`, '_blank');
             closeModal('predefinedBookModal');
         }
@@ -936,48 +1046,48 @@
                 title: 'ছায়া প্রকাশনী : প্রশ্ন সাথী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'ছায়া প্রকাশনী (প্রশ্ন সাথী)',
                 books: [
-                    { id: 'ch5', name: 'প্রশ্ন সাথী - ক্লাস ৫ (Class 5)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৪০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'ch6', name: 'প্রশ্ন সাথী - ক্লাস ৬ (Class 6)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৭০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'ch7', name: 'প্রশ্ন সাথী - ক্লাস ৭ (Class 7)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹২৯০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'ch8', name: 'প্রশ্ন সাথী - ক্লাস ৮ (Class 8)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', price: '₹৩২০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'ch9', name: 'প্রশ্ন সাথী - ক্লাস ৯ (Class 9)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', price: '₹৩৫০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'ch10', name: 'প্রশ্ন সাথী - ক্লাস ১০ (Class 10)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', price: '₹৩৮০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg }
+                    { id: 'ch5', name: 'প্রশ্ন সাথী - ক্লাস ৫ (Class 5)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', printPrice: '₹২৮০', offerPrice: '₹২৪০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'ch6', name: 'প্রশ্ন সাথী - ক্লাস ৬ (Class 6)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', printPrice: '₹৩২০', offerPrice: '₹২৭০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'ch7', name: 'প্রশ্ন সাথী - ক্লাস ৭ (Class 7)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', printPrice: '₹৩৪০', offerPrice: '₹২৯০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'ch8', name: 'প্রশ্ন সাথী - ক্লাস ৮ (Class 8)', author: 'লেখক: ছায়া সম্পাদনা মণ্ডলী', printPrice: '₹৩৮০', offerPrice: '₹৩২০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'ch9', name: 'প্রশ্ন সাথী - ক্লাস ৯ (Class 9)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', printPrice: '₹৪১০', offerPrice: '₹৩৫০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'ch10', name: 'প্রশ্ন সাথী - ক্লাস ১০ (Class 10)', author: 'লেখক: দুয়ারী, গাঙ্গুলী, মাইতি', printPrice: '₹৪৫০', offerPrice: '₹৩৮০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg }
                 ]
             },
             'parul': {
                 title: 'পারুল প্রকাশনী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'পারুল প্রকাশনী',
                 books: [
-                    { id: 'pr5', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৩০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'pr6', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৬০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'pr7', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹২৮৫', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'pr8', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: পারুল সম্পাদনা পরিষদ', price: '₹৩১০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'pr9', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', price: '₹৩৪০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'pr10', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', price: '₹৩৭০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg }
+                    { id: 'pr5', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: পারুল সম্পাদনা পরিষদ', printPrice: '₹২৭০', offerPrice: '₹২৩০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'pr6', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: পারুল সম্পাদনা পরিষদ', printPrice: '₹৩১০', offerPrice: '₹২৬০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'pr7', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: পারুল সম্পাদনা পরিষদ', printPrice: '₹৩৩৫', offerPrice: '₹২৮৫', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'pr8', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: পারুল সম্পাদনা পরিষদ', printPrice: '₹৩৬৫', offerPrice: '₹৩১০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'pr9', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', printPrice: '₹৪০০', offerPrice: '₹৩৪০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'pr10', name: 'পারুল প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: ড. সৌমিত্র শেখর ও অন্যান্য', printPrice: '₹৪৪০', offerPrice: '₹৩৭০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg }
                 ]
             },
             'raymartin': {
                 title: 'রায় ও মার্টিন প্রকাশনী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'রায় ও মার্টিন প্রকাশনী',
                 books: [
-                    { id: 'rm5', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৫', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹২৫০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'rm6', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৬', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹২৮০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'rm7', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৭', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩০০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'rm8', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৮', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৩০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'rm9', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৯', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৬০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'rm10', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ১০', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', price: '₹৩৯০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg }
+                    { id: 'rm5', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৫', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', printPrice: '₹২৯৫', offerPrice: '₹২৫০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'rm6', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৬', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', printPrice: '₹৩৩০', offerPrice: '₹২৮০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'rm7', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৭', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', printPrice: '₹৩৫৫', offerPrice: '₹৩০০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'rm8', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৮', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', printPrice: '₹৩৯০', offerPrice: '₹৩৩০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'rm9', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ৯', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', printPrice: '₹৪২৫', offerPrice: '₹৩৬০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'rm10', name: 'রায় ও মার্টিন প্রশ্নবিচিত্রা - ক্লাস ১০', author: 'লেখক: রায় ও মার্টিন সম্পাদনা মণ্ডলী', printPrice: '₹৪৬০', offerPrice: '₹৩৯০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg }
                 ]
             },
             'tulsi': {
                 title: 'তুলসী প্রকাশনী (ক্লাস ৫ থেকে ১০)',
                 pubName: 'তুলসী প্রকাশনী',
                 books: [
-                    { id: 'tl5', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২২০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'tl6', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২৫০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'tl7', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹২৭৫', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'tl8', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩০০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'tl9', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩৩০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
-                    { id: 'tl10', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', price: '₹৩৬০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg }
+                    { id: 'tl5', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৫', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', printPrice: '₹২৬০', offerPrice: '₹২২০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'tl6', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৬', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', printPrice: '₹২৯৫', offerPrice: '₹২৫০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'tl7', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৭', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', printPrice: '₹৩২৫', offerPrice: '₹২৭৫', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'tl8', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৮', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', printPrice: '₹৩৫৫', offerPrice: '₹৩০০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'tl9', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ৯', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', printPrice: '₹৩৯০', offerPrice: '₹৩৩০', badge: 'নতুন কালেকশন', img1: defaultBookImg, img2: defaultBookImg },
+                    { id: 'tl10', name: 'তুলসী প্রশ্ন সংকলন - ক্লাস ১০', author: 'লেখক: তুলসী সম্পাদনা মণ্ডলী', printPrice: '₹৪২৫', offerPrice: '₹৩৬০', badge: 'জনপ্রিয়', img1: defaultBookImg, img2: defaultBookImg }
                 ]
             }
         };
@@ -1005,7 +1115,8 @@
                 pubName: pubData.pubName,
                 name: firstBook.name,
                 author: firstBook.author,
-                price: firstBook.price,
+                printPrice: firstBook.printPrice,
+                offerPrice: firstBook.offerPrice,
                 img: firstBook.img1
             };
             renderPrashnaGrid();
@@ -1021,7 +1132,14 @@
                 const cardDiv = document.createElement('div');
                 cardDiv.className = `ecom-card ${isSelected ? 'selected' : ''}`;
                 cardDiv.onclick = () => {
-                    selectedPrashnaBookObj = { pubName: pubData.pubName, name: item.name, author: item.author, price: item.price, img: item.img1 };
+                    selectedPrashnaBookObj = {
+                        pubName: pubData.pubName,
+                        name: item.name,
+                        author: item.author,
+                        printPrice: item.printPrice,
+                        offerPrice: item.offerPrice,
+                        img: item.img1
+                    };
                     renderPrashnaGrid();
                 };
 
@@ -1029,14 +1147,17 @@
                 cardDiv.innerHTML = `
                     <div class="ecom-img-box" style="height:140px;">
                         <span class="ecom-badge ${badgeClass}">${item.badge}</span>
-                        <img src="${item.img1}" alt="${item.name}" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name}')">
+                        <img src="${item.img1}" alt="${item.name}" onload="this.classList.add('img-loaded')" onclick="openImageLightbox(event, this.src, '${item.name} | প্রিন্ট: ${item.printPrice} | অফার: ${item.offerPrice}')">
                     </div>
                     <div class="ecom-body">
                         <div>
                             <div class="ecom-title" style="font-size:0.9rem;">${item.name}</div>
                             <div class="ecom-meta">প্রকাশনী: ${pubData.pubName}</div>
                             <div class="ecom-meta" style="color:#0F172A; font-weight:500;">${item.author}</div>
-                            <span class="ecom-price-main" style="font-size:1.05rem;">মূল্য: ${item.price}</span>
+                            <div class="ecom-price-box">
+                                <span class="ecom-print-price">প্রিন্ট: ${item.printPrice}</span>
+                                <span class="ecom-offer-price" style="font-size:1.05rem;">অফার: ${item.offerPrice}</span>
+                            </div>
                         </div>
                         <button type="button" class="ecom-green-btn" style="padding:7px; font-size:0.82rem;">
                             <i class="fa-brands fa-whatsapp"></i> নির্বাচন করুন
@@ -1047,7 +1168,7 @@
             });
 
             if (selectedPrashnaBookObj) {
-                document.getElementById('selectedPrashnaDisplay').value = `${selectedPrashnaBookObj.name} | ${selectedPrashnaBookObj.author} | মূল্য: ${selectedPrashnaBookObj.price}`;
+                document.getElementById('selectedPrashnaDisplay').value = `${selectedPrashnaBookObj.name} | প্রিন্ট: ${selectedPrashnaBookObj.printPrice} | অফার: ${selectedPrashnaBookObj.offerPrice}`;
             }
         }
 
@@ -1055,15 +1176,15 @@
             if (!selectedPrashnaBookObj) return;
             const delivery = document.querySelector('input[name="prashnaDelivery"]:checked').value;
             const extraNote = document.getElementById('prashnaExtraNote').value.trim() || 'কোনো বাড়তি নোট নেই';
-            const message = `*প্রশ্নবিচিত্রা / সহায়িকা অর্ডার (Sub Prints)*%0A--------------------------------%0A• বইয়ের নাম: ${selectedPrashnaBookObj.name}%0A• প্রকাশনী: ${selectedPrashnaBookObj.pubName}%0A• ${selectedPrashnaBookObj.author}%0A• নির্ধারিত মূল্য: ${selectedPrashnaBookObj.price}%0A• বইয়ের ছবির লিঙ্ক: ${encodeURIComponent(selectedPrashnaBookObj.img)}%0A• নোট/বিবরণ: ${extraNote}%0A• ডেলিভারি মাধ্যম: ${delivery}%0A--------------------------------%0Aআমি এই বইটি অর্ডার করতে চাই।`;
+            const message = `*প্রশ্নবিচিত্রা / সহায়িকা অর্ডার (Sub Prints)*%0A--------------------------------%0A• বইয়ের নাম: ${selectedPrashnaBookObj.name}%0A• প্রকাশনী: ${selectedPrashnaBookObj.pubName}%0A• ${selectedPrashnaBookObj.author}%0A• প্রিন্ট দাম (MRP): ${selectedPrashnaBookObj.printPrice}%0A• অফার দাম: ${selectedPrashnaBookObj.offerPrice}%0A• বইয়ের ছবির লিঙ্ক: ${encodeURIComponent(selectedPrashnaBookObj.img)}%0A• নোট/বিবরণ: ${extraNote}%0A• ডেলিভারি মাধ্যম: ${delivery}%0A--------------------------------%0Aআমি এই বইটি অর্ডার করতে চাই।`;
             window.open(`https://wa.me/919732322525?text=${message}`, '_blank');
             closeModal('prashnaBichitraModal');
         }
 
-        // প্রতি ৩টি বইয়ের কার্ডের পর অটোমেটিক AdSense বক্স বসানোর ফাংশন
+        // প্রতি ৩টি বইয়ের কার্ডের পর অটোমেটিক AdSense বক্স বসানোর ফাংশন
         window.addEventListener('DOMContentLoaded', () => {
             const bookCards = document.querySelectorAll('.books-page-grid .ecom-card');
-            const interval = 3; // কতগুলো বইয়ের পর অ্যাড দেখাবে (চাইলে 2 বা 4 করতে পারেন)
+            const interval = 3; // কতগুলো বইয়ের পর অ্যাড দেখাবে (চাইলে 2 বা 4 করতে পারেন)
 
             bookCards.forEach((card, index) => {
                 if ((index + 1) % interval === 0) {
