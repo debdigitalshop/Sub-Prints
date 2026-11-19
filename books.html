@@ -22,10 +22,8 @@
     <link rel="canonical" href="https://debdigitalshop.github.io/Sub-Prints/books.html">
 
     <!-- Open Graph (Facebook & WhatsApp Preview) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://debdigitalshop.github.io/Sub-Prints/books.html">
-    <meta property="og:title" content="বর্ধমান বিশ্ববিদ্যালয়, পুজো-মন্ত্র ও সব ধর্মের ধর্মগ্রন্থ স্টোর | Sub Prints">
-    <meta property="og:description" content="বর্ধমান বিশ্ববিদ্যালয়ের সমস্ত অনার্স ও পাস বই, পুজো ও মন্ত্রের বই, এবং সব ধর্মের পবিত্র ধর্মগ্রন্থ হোম ডেলিভারি।">
+    <meta property="og:title" content="Sub Prints | কাস্টম প্রিন্টিং প্রেস ও অনলাইন বুক স্টোর">
+    <meta property="og:description" content="বিয়ের কার্ড, ব্যানার, ভিজিটিং কার্ড সহ সব ধরনের ছাপার কাজ এবং স্কুল-কলেজের বই ও ধর্মগ্রন্থ বিশেষ ছাড়ে হোম ডেলিভারি।">
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/1p8i_Ljk0_q2U3CGM4ce0LR_JsT5C48VI">
     <meta property="og:locale" content="bn_IN">
 
@@ -228,11 +226,19 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #FF6A00 0%, #FF8008 100%);
-            color: #FFF;
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-        }
+    background: linear-gradient(-45deg, #FF6A00, #FF8008, #EE0979, #FF6A00);
+    background-size: 300% 300%;
+    animation: heroGradientShift 10s ease infinite;
+    color: #FFF;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+}
+
+@keyframes heroGradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
         .hero h2 { font-size: 1.9rem; font-weight: 700; margin-bottom: 0.5rem; }
         .hero p { font-size: 1rem; max-width: 650px; margin: 0 auto; opacity: 0.95; }
@@ -546,9 +552,61 @@
             letter-spacing: 1px;
             margin-bottom: 6px;
         }
+        /* ভাসমান বইয়ের আইকন ব্যাকগ্রাউন্ড অ্যানিমেশন */
+.floating-books-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FFFBF7 0%, #F8FAFC 50%, #FFF3E8 100%);
+}
+
+.floating-books-bg i {
+    position: absolute;
+    bottom: -60px;
+    color: rgba(255, 106, 0, 0.08); /* হালকা কমলা আভা */
+    animation: floatUpBooks 16s linear infinite;
+}
+
+.floating-books-bg i:nth-child(1) { left: 10%; font-size: 2.2rem; animation-duration: 14s; animation-delay: 0s; }
+.floating-books-bg i:nth-child(2) { left: 25%; font-size: 1.6rem; animation-duration: 18s; animation-delay: 3s; }
+.floating-books-bg i:nth-child(3) { left: 45%; font-size: 2.6rem; animation-duration: 15s; animation-delay: 6s; }
+.floating-books-bg i:nth-child(4) { left: 65%; font-size: 1.8rem; animation-duration: 20s; animation-delay: 2s; }
+.floating-books-bg i:nth-child(5) { left: 82%; font-size: 2.4rem; animation-duration: 16s; animation-delay: 5s; }
+.floating-books-bg i:nth-child(6) { left: 92%; font-size: 1.5rem; animation-duration: 19s; animation-delay: 8s; }
+
+@keyframes floatUpBooks {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
     </style>
 </head>
 <body>
+    <!-- ব্যাকগ্রাউন্ড অ্যানিমেশন এলিমেন্ট -->
+    <div class="floating-books-bg">
+        <i class="fa-solid fa-book"></i>
+        <i class="fa-solid fa-book-open"></i>
+        <i class="fa-solid fa-graduation-cap"></i>
+        <i class="fa-solid fa-om"></i>
+        <i class="fa-solid fa-feather-pointed"></i>
+        <i class="fa-solid fa-star"></i>
+    </div>
 
     <header>
         <div class="navbar">
@@ -592,7 +650,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-solid fa-list"></i> প্রকাশনী বাছুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-prashnabichitra', 'প্রশ্নবিচিত্রা ও প্রশ্ন সাথী')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-prashnabichitra', 'প্রশ্নবিচিত্রা ও প্রশ্ন সাথী')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -615,7 +673,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ramayana', 'শ্রীমদ্ বাল্মীকীয় রামায়ণ')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ramayana', 'শ্রীমদ্ বাল্মীকীয় রামায়ণ')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -638,7 +696,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-bhagavat', 'শ্রীমদ্ভাগবত-মহাপুরাণ')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-bhagavat', 'শ্রীমদ্ভাগবত-মহাপুরাণ')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -661,7 +719,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-crack-icds', 'CRACK-ICDS অঙ্গনওয়াড়ি গাইড বুক')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-crack-icds', 'CRACK-ICDS অঙ্গনওয়াড়ি গাইড বুক')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -684,7 +742,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-rm-icds-cracker', 'রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-rm-icds-cracker', 'রায় ও মার্টিন ICDS অঙ্গনওয়াড়ি CRACKER')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -707,7 +765,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-sundarkand', 'সুন্দরকাণ্ড - গীতাপ্রেস')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-sundarkand', 'সুন্দরকাণ্ড - গীতাপ্রেস')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -730,7 +788,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-devotional-new', 'মেয়েদের ব্রতকথা')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-devotional-new', 'মেয়েদের ব্রতকথা')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -753,7 +811,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-bhagavad-gita', 'শ্রীমদ্ভগবদ্গীতা - ওরিয়েণ্ট লাইব্রেরী')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-bhagavad-gita', 'শ্রীমদ্ভগবদ্গীতা - ওরিয়েণ্ট লাইব্রেরী')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -776,7 +834,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ayurvedic-chikitsa', 'আয়ুর্বেদিক চিকিৎসা ও ভেষজ গুণাগুণ')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ayurvedic-chikitsa', 'আয়ুর্বেদিক চিকিৎসা ও ভেষজ গুণাগুণ')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -799,7 +857,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-math10', 'গণিত সহায়িকা Class 10')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-math10', 'গণিত সহায়িকা Class 10')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -822,7 +880,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-polsc12', 'রাষ্ট্রবিজ্ঞান Class 12')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-polsc12', 'রাষ্ট্রবিজ্ঞান Class 12')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -845,7 +903,7 @@
                     </div>
                     <div>
                         <button type="button" class="ecom-green-btn"><i class="fa-brands fa-whatsapp"></i> অর্ডার করুন</button>
-                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ba-history', 'কলেজ ইতিহাস গাইড BA')"><i class="fa-solid fa-share-nodes"></i> বইয়ের লিঙ্ক কপি করুন</button>
+                        <button type="button" class="share-link-btn" onclick="copyBookLink(event, 'book-ba-history', 'কলেজ ইতিহাস গাইড BA')"><i class="fa-solid fa-share-nodes"></i> বইয়ের ডিটেলস ও লিঙ্ক কপি</button>
                     </div>
                 </div>
             </div>
@@ -975,16 +1033,58 @@
         }
         function closeLightbox() { document.getElementById('imageLightboxModal').style.display = 'none'; }
 
-        // Facebook অ্যাড বা শেয়ারের জন্য নির্দিষ্ট বইয়ের সরাসরি লিঙ্ক কপি ফাংশন
-        function copyBookLink(e, bookId, bookName) {
+        // বইয়ের নাম, লেখক/প্রকাশনী, দাম ও সরাসরি লিঙ্ক সহ শেয়ার/কপি ফাংশন
+        function copyBookLink(e, bookId, fallbackName) {
             e.stopPropagation();
             const baseUrl = window.location.href.split('#')[0].split('?')[0];
             const directLink = `${baseUrl}?book=${bookId}`;
-            navigator.clipboard.writeText(directLink).then(() => {
-                alert(`"${bookName}" বইয়ের সরাসরি লিঙ্ক কপি হয়েছে:\n${directLink}`);
-            }).catch(() => {
-                prompt('নিচের লিঙ্কটি কপি করুন:', directLink);
-            });
+
+            let shareText = `📚 *${fallbackName}*\n🔗 *অর্ডার লিঙ্ক:* ${directLink}`;
+
+            const cardEl = document.getElementById(bookId);
+            if (cardEl) {
+                const titleEl = cardEl.querySelector('.ecom-title');
+                const metaEls = cardEl.querySelectorAll('.ecom-meta');
+                const printPriceEl = cardEl.querySelector('.ecom-print-price');
+                const offerPriceEl = cardEl.querySelector('.ecom-offer-price');
+
+                const title = titleEl ? titleEl.innerText.trim() : fallbackName;
+                let metaLines = [];
+                metaEls.forEach(el => {
+                    const txt = el.innerText.trim();
+                    if (txt && !txt.includes('প্রতীকী ছবি')) {
+                        metaLines.push(`✍️ ${txt}`);
+                    }
+                });
+
+                let priceLine = '';
+                if (printPriceEl && offerPriceEl) {
+                    priceLine = `💰 *দাম:* ~${printPriceEl.innerText.replace('প্রিন্ট:', '').trim()}~ *${offerPriceEl.innerText.trim()}*`;
+                } else if (offerPriceEl) {
+                    priceLine = `💰 *দাম:* *${offerPriceEl.innerText.trim()}*`;
+                }
+
+                shareText = [
+                    `📚 *বইয়ের নাম:* ${title}`,
+                    ...metaLines,
+                    priceLine,
+                    `🏪 *Sub Prints (Deb Digital Shop)*`,
+                    `🔗 *বইটি দেখতে ও অর্ডার করতে ক্লিক করুন:*\n${directLink}`
+                ].filter(Boolean).join('\n');
+            }
+
+            if (navigator.share) {
+                navigator.share({
+                    title: fallbackName,
+                    text: shareText
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(shareText).then(() => {
+                    alert(`বইয়ের নাম, লেখক, দাম ও লিঙ্ক কপি হয়েছে! এখন WhatsApp বা Facebook-এ পেস্ট করুন:\n\n${shareText}`);
+                }).catch(() => {
+                    prompt('নিচের সম্পূর্ণ মেসেজটি কপি করুন:', shareText);
+                });
+            }
         }
 
         // URL-এ ?book=book-ramayana থাকলে অটোমেটিক সেই বইয়ের অর্ডার বক্স খুলে যাবে
@@ -1206,6 +1306,7 @@
                 }
             });
         });
+
         // পপ-আপ মোডাল খোলা থাকলে মোবাইলের Back বাটনে শুধু মোডাল বন্ধ করার সিস্টেম
         (function () {
             const modalIds = ['predefinedBookModal', 'prashnaBichitraModal', 'imageLightboxModal'];

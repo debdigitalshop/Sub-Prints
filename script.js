@@ -1120,8 +1120,8 @@ let selectedAnnaType = 'অফসেট কার্ড';
             { id: 'WMN05', name: 'হ্যাণ্ড মেনুকার্ড ডিজাইন ০৫', code: 'W-MN05', img: 'https://lh3.googleusercontent.com/d/1RtgEKbyMhhiiYdRXvNBK_-wGYOGkBPr3' },
             { id: 'WMN06', name: 'হ্যাণ্ড মেনুকার্ড ডিজাইন ০৬', code: 'W-MN06', img: 'https://lh3.googleusercontent.com/d/1EPylHqAI_08HSy0KB50IbyJgDLvRiIMR' },
             { id: 'WMN07', name: 'রিং সেরিমনি মেনু ০৭', code: 'W-MN07', img: 'https://lh3.googleusercontent.com/d/1VYoccJs18570Z7buBO2JvQOYDIozjoID' },
-            { id: 'WMN08', name: 'বিয়ের ডিনার কার্ড ০৮', code: 'W-MN08', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=80' },
-            { id: 'WMN09', name: 'বিয়ের ভিন্টেজ আর্ট মেনু ০৯', code: 'W-MN09', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80' },
+            { id: 'WMN08', name: 'সুমি : স্পেশাল বিয়ের মেনু কার্ড ০৮', img: 'https://lh3.googleusercontent.com/d/10NHm8HDjs_kYjjLVyZBvu1vFrXgfZFPe' },
+            { id: 'WMN09', name: 'সুমি : স্পেশাল বিয়ের মেনু কার্ড ০৯', img: 'https://lh3.googleusercontent.com/d/17f-VMFOX5UQfE3eq2ti77D5BhjVbLcfj' },
             { id: 'WMN10', name: 'বিয়ের লাক্সারি ফয়েল মেনু ১০', code: 'W-MN10', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80' }
         ],
         'অন্নপ্রাশন মেনুকার্ড': [
@@ -1138,7 +1138,7 @@ let selectedAnnaType = 'অফসেট কার্ড';
         'জন্মদিন মেনুকার্ড': [
             { id: 'BMN01', name: 'শুভ জন্মদিন টেবিল মেনুকার্ড ০১', code: 'B-MN01', img: 'https://lh3.googleusercontent.com/d/1gcby_KM48rxC2p6hSQ77Lyxnm40P2hHv' },
             { id: 'BMN02', name: 'জন্মদিনের হ্যাণ্ড মেনুকার্ড ডিজাইন ০২', code: 'B-MN02', img: 'https://lh3.googleusercontent.com/d/1x-sKEo8D6DM0cu95uBYhlpj56dlce-HH' },
-            { id: 'BMN03', name: 'ডিজিটাল বার্থডে স্পেশাল ০৩', code: 'B-MN03', img: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80' },
+            { id: 'BMN03', name: ' সুমি : স্পেশাল জন্মদিন মেনু কার্ড ০৩', img: 'https://lh3.googleusercontent.com/d/1p2cGPI8qxm_kT09g9uh33Hs1T48ZIoSw' },
             { id: 'BMN04', name: 'কিডস বার্থডে মেনু ০৪', code: 'B-MN04', img: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop&q=80' },
             { id: 'BMN05', name: 'বার্থডে ডিনার কার্ড ০৫', code: 'B-MN05', img: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&auto=format&fit=crop&q=80' },
             { id: 'BMN06', name: 'চকলেট থিম বার্থডে ০৬', code: 'B-MN06', img: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80' },
